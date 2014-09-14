@@ -10,7 +10,8 @@ Plugin 'tpope/vim-fugitive'
 Plugin 'kien/ctrlp.vim'
 Plugin 'scrooloose/syntastic'
 Plugin 'Lokaltog/vim-easymotion'
-Plugin 'Valloric/YouCompleteMe'
+Plugin 'Shougo/neocomplcache.vim'
+Plugin 'ervandew/supertab'
 Plugin 'sjl/gundo.vim'
 Plugin 'tomtom/tcomment_vim'
 Plugin 'ScrollColors'
@@ -65,3 +66,5 @@ map <Leader> <Plug>(easymotion-prefix)
 
 map <Esc><Esc> :w<CR>
 nnoremap U :GundoToggle<CR>
+
+let g:neocomplcache_enable_at_startup = 1
