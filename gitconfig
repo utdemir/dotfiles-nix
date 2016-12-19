@@ -1,0 +1,7 @@
+[user]
+name = Utku Demir
+email = utdemir@gmail.com
+
+[alias]
+st = status -sb
+co = checkout
