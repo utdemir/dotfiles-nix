@@ -2,4 +2,4 @@
 
 set -ex
 
-ln -sf $PWD/emacs ~/.emacs
+ln -sf $PWD/emacs.el ~/.emacs.el

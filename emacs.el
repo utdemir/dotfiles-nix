@@ -18,13 +18,16 @@
 (add-to-list 'exec-path "/usr/local/bin")
 
 (setq
- inhibit-startup-screen t
-)
+ inhibit-startup-screen t)
 
 (menu-bar-mode -1)
-(global-font-lock-mode 1)
 (winner-mode 1)
 (windmove-default-keybindings)
+(global-font-lock-mode 1)
+(show-paren-mode 1)
+
+(setq custom-file "~/.emacs.d/custom.el")
+(load custom-file)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
@@ -57,11 +60,6 @@
   :config
   (helm-flx-mode 1))
 
-(use-package helm-projectile
-  :ensure t :pin melpa
-  :config
-  (helm-projectile-on))
-
 (use-package undo-tree
   :ensure t :pin melpa
   :config
@@ -76,13 +74,17 @@
   (setq dashboard-items '((recents  . 5)
 			  (projects . 5)))
   :config
-  (dashboard-setup-startup-hook)
-  )
+  (dashboard-setup-startup-hook))
 
 (use-package projectile
   :ensure t :pin melpa
   :config
   (projectile-mode 1))
+
+(use-package helm-projectile
+  :ensure t :pin melpa
+  :config
+  (helm-projectile-on))
 
 (use-package shackle
   :ensure t :pin melpa
@@ -96,21 +98,30 @@
   (define-key global-map (kbd "C-c SPC") 'ace-jump-mode))
 
 (use-package rainbow-delimiters
+ :ensure t :pin melpa)
+
+(use-package intero
   :ensure t :pin melpa)
+  
+(use-package haskell-mode
+  :ensure t :pin melpa
+  :config
+  (add-hook 'haskell-mode-hook 'intero-mode))
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+(use-package flycheck
+  :ensure t 
+  :config
+  (global-flycheck-mode))
 
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(package-selected-packages
-   (quote
-    (ace-jump-mode helm-swoop helm-projectile shackle dashboard magit undo-tree ensime use-package))))
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- )
+(use-package focus
+  :ensure t)
+
+(use-package browse-kill-ring
+  :ensure t
+  :config
+  (require 'browse-kill-ring))
+
+(use-package google-this
+  :ensure t
+  :config
+  (google-this-mode 1))
