@@ -116,3 +116,13 @@
   :ensure t
   :config
   (google-this-mode 1))
+
+(use-package flycheck-flow
+  :ensure t)
+
+(use-package exec-path-from-shell
+  :ensure t
+  :config
+  (exec-path-from-shell-initialize))
+
+
