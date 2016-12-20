@@ -1,4 +1,3 @@
-;; the package manager
 (require 'package)
 (setq
  package-archives '(("gnu" . "http://elpa.gnu.org/packages/")
@@ -67,14 +66,6 @@
 
 (use-package magit
   :ensure t :pin melpa)
-
-(use-package dashboard
-  :ensure t :pin melpa
-  :init
-  (setq dashboard-items '((recents  . 5)
-			  (projects . 5)))
-  :config
-  (dashboard-setup-startup-hook))
 
 (use-package projectile
   :ensure t :pin melpa
