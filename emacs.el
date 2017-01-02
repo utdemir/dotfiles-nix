@@ -75,7 +75,8 @@
 (use-package helm-projectile
   :ensure t :pin melpa
   :config
-  (helm-projectile-on))
+  (helm-projectile-on)
+  (define-key global-map (kbd "C-x p f") 'helm-projectile-find-file))
 
 (use-package shackle
   :ensure t :pin melpa
