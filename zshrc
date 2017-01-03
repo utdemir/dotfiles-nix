@@ -1,4 +1,4 @@
-export PATH=$HOME/.local/bin:.node_modules/.bin/:$HOME/bin:/usr/local/bin:$PATH
+export PATH=$HOME/.local/bin:node_modules/.bin/:$HOME/bin:/usr/local/bin:$PATH
 
 export ZSH=$HOME/.oh-my-zsh
 
