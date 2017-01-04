@@ -121,6 +121,13 @@
 (use-package flycheck-flow
   :ensure t)
 
+(use-package es-mode
+  :ensure t
+  :init
+  (setq es-always-pretty-print t)
+  :config
+  (add-to-list 'auto-mode-alist '("\\.es$" . es-mode)))
+
 (use-package exec-path-from-shell
   :ensure t
   :config
