@@ -129,6 +129,8 @@
   :config
   (exec-path-from-shell-initialize))
 
+(use-package coffee-mode
+  :ensure t)
 
 (use-package ag
   :ensure t)
