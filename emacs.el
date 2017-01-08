@@ -130,3 +130,5 @@
   (exec-path-from-shell-initialize))
 
 
+(use-package ag
+  :ensure t)
