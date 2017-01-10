@@ -5,4 +5,5 @@ email = utdemir@gmail.com
 [alias]
 st = status -sb
 co = checkout
+ci = commit
 ignore = "!gi() { curl -L -s https://www.gitignore.io/api/$@ ;}; gi"
