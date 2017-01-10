@@ -32,6 +32,9 @@
 
 
 (use-package ensime
+  :init
+  (setq ensime-auto-generate-config t)
+;  (setq ensime-sem-high-enabled-p nil)
   :ensure t :pin melpa-stable)
 
 (use-package monokai-theme
