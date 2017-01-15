@@ -19,11 +19,15 @@
 (setq
  inhibit-startup-screen t)
 
+(setq-default indent-tabs-mode nil)
+
 (menu-bar-mode -1)
 (winner-mode 1)
 (windmove-default-keybindings)
 (global-font-lock-mode 1)
 (show-paren-mode 1)
+
+(setq js-indent-level 2)
 
 (setq custom-file "~/.emacs.d/custom.el")
 (load custom-file)
