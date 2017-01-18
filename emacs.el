@@ -128,6 +128,12 @@
 (use-package flycheck-flow
   :ensure t)
 
+(use-package company-flow
+  :ensure t
+  :init
+  (eval-after-load 'company
+    (add-to-list 'company-backends 'company-flow)))
+
 (use-package restclient
   :ensure t)
 
