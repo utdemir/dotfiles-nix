@@ -21,11 +21,13 @@
 
 (setq-default indent-tabs-mode nil)
 
+(tool-bar-mode -1)
 (menu-bar-mode -1)
 (winner-mode 1)
 (windmove-default-keybindings)
 (global-font-lock-mode 1)
 (show-paren-mode 1)
+(scroll-bar-mode -1)
 
 (setq js-indent-level 2)
 
@@ -38,7 +40,7 @@
 (use-package ensime
   :init
   (setq ensime-auto-generate-config t)
-;  (setq ensime-sem-high-enabled-p nil)
+  (setq ensime-sem-high-enabled-p nil)
   :ensure t :pin melpa-stable)
 
 (use-package monokai-theme
@@ -146,4 +148,10 @@
   :ensure t)
 
 (use-package ag
+  :ensure t)
+
+(use-package ranger
+  :ensure t)
+
+(use-package apidoc-checker
   :ensure t)
