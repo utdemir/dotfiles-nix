@@ -38,18 +38,19 @@
 
 
 (use-package ensime
+  :ensure t
   :init
   (setq ensime-auto-generate-config t)
   (setq ensime-sem-high-enabled-p nil)
-  :ensure t :pin melpa-stable)
+  (setq ensime-typecheck-when-idle nil))
 
 (use-package monokai-theme
-  :ensure t :pin melpa-stable
+  :ensure t
   :config
   (load-theme 'monokai t))
 
 (use-package helm
-  :ensure t :pin melpa-stable
+  :ensure t
   :init
   (setq helm-display-function 'pop-to-buffer)
   :config
@@ -64,53 +65,58 @@
   (helm-mode 1))
 
 (use-package helm-flx
-  :ensure t :pin melpa
+  :ensure t
   :config
   (helm-flx-mode 1))
 
 (use-package undo-tree
-  :ensure t :pin melpa
+  :ensure t
   :config
   (global-undo-tree-mode))
 
 (use-package magit
-  :ensure t :pin melpa)
+  :ensure t)
+
+(use-package magithub
+  :ensure t
+  :after magit
+  :config (magithub-feature-autoinject t))
 
 (use-package projectile
-  :ensure t :pin melpa
+  :ensure t
   :config
   (projectile-mode 1))
 
 (use-package helm-projectile
-  :ensure t :pin melpa
+  :ensure t
   :config
   (helm-projectile-on)
   (define-key global-map (kbd "C-x p f") 'helm-projectile-find-file))
 
 (use-package shackle
-  :ensure t :pin melpa
+  :ensure t
   :config
   (shackle-mode 1)
   (setq shackle-rules '(("\\`\\*helm.*?\\*\\'" :regexp t :align t :ratio 0.4))))
 
 (use-package ace-jump-mode
-  :ensure t :pin melpa
+  :ensure t
   :config
   (define-key global-map (kbd "C-c SPC") 'ace-jump-mode))
 
 (use-package rainbow-delimiters
- :ensure t :pin melpa)
+  :ensure t)
 
 (use-package intero
-  :ensure t :pin melpa)
+  :ensure t)
   
 (use-package haskell-mode
-  :ensure t :pin melpa
+  :ensure t
   :config
   (add-hook 'haskell-mode-hook 'intero-mode))
 
 (use-package flycheck
-  :ensure t 
+  :ensure t
   :config
   (global-flycheck-mode))
 
@@ -130,11 +136,11 @@
 (use-package flycheck-flow
   :ensure t)
 
-(use-package company-flow
-  :ensure t
-  :init
-  (eval-after-load 'company
-    (add-to-list 'company-backends 'company-flow)))
+; (use-package company-flow
+;   :ensure t
+;   :init
+;   (eval-after-load 'company
+;     (add-to-list 'company-backends 'company-flow)))
 
 (use-package restclient
   :ensure t)
