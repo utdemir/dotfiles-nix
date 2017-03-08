@@ -49,25 +49,35 @@
   :config
   (load-theme 'monokai t))
 
-(use-package helm
+(use-package counsel
   :ensure t
   :init
-  (setq helm-display-function 'pop-to-buffer)
-  :config
-  (require 'helm)
-  (require 'helm-config)
-  (global-set-key (kbd "M-x") 'helm-M-x)
-  (global-set-key (kbd "C-x C-f") 'helm-find-files)
-  (global-set-key (kbd "C-x b") 'helm-buffers-list)
-  (global-set-key (kbd "C-x C-b") 'helm-buffers-list)
-  (global-set-key (kbd "C-c h") 'helm-command-prefix)
-  (global-unset-key (kbd "C-x c"))
-  (helm-mode 1))
+  (ivy-mode 1))
 
-(use-package helm-flx
+(use-package counsel-projectile
   :ensure t
-  :config
-  (helm-flx-mode 1))
+  :init
+  (counsel-projectile-on))
+
+; (use-package helm
+;   :ensure t
+;   :init
+;   (setq helm-display-function 'pop-to-buffer)
+;   :config
+;   (require 'helm)
+;   (require 'helm-config)
+;   (global-set-key (kbd "M-x") 'helm-M-x)
+;   (global-set-key (kbd "C-x C-f") 'helm-find-files)
+;   (global-set-key (kbd "C-x b") 'helm-buffers-list)
+;   (global-set-key (kbd "C-x C-b") 'helm-buffers-list)
+;   (global-set-key (kbd "C-c h") 'helm-command-prefix)
+;   (global-unset-key (kbd "C-x c"))
+;   (helm-mode 1))
+; 
+; (use-package helm-flx
+;   :ensure t
+;   :config
+;   (helm-flx-mode 1))
 
 (use-package undo-tree
   :ensure t
@@ -87,17 +97,17 @@
   :config
   (projectile-mode 1))
 
-(use-package helm-projectile
-  :ensure t
-  :config
-  (helm-projectile-on)
-  (define-key global-map (kbd "C-x p f") 'helm-projectile-find-file))
-
-(use-package shackle
-  :ensure t
-  :config
-  (shackle-mode 1)
-  (setq shackle-rules '(("\\`\\*helm.*?\\*\\'" :regexp t :align t :ratio 0.4))))
+; (use-package helm-projectile
+;   :ensure t
+;   :config
+;   (helm-projectile-on)
+;   (define-key global-map (kbd "C-x p f") 'helm-projectile-find-file))
+; 
+; (use-package shackle
+;   :ensure t
+;   :config
+;   (shackle-mode 1)
+;   (setq shackle-rules '(("\\`\\*helm.*?\\*\\'" :regexp t :align t :ratio 0.4))))
 
 (use-package ace-jump-mode
   :ensure t
