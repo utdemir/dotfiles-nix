@@ -171,3 +171,4 @@
 
 (use-package apidoc-checker
   :ensure t)
+(put 'upcase-region 'disabled nil)
