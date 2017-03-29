@@ -1,12 +1,15 @@
-export PATH=$HOME/.local/bin:node_modules/.bin/:$HOME/bin:/usr/local/bin:$PATH
+export PATH=$HOME/.local/bin:node_modules/.bin/:$HOME/bin:/usr/local/opt/coreutils/libexec/gnubin:/usr/bin:/bin:$PATH
+
+ZSH_CUSTOM=$HOME/.zsh_custom
 
 export ZSH=$HOME/.oh-my-zsh
 
-ZSH_THEME="flazz"
+ZSH_THEME="utdemir"
 
 plugins=(
     git
     aws
+    kubectl
     )
 
 source $ZSH/oh-my-zsh.sh
@@ -45,13 +48,14 @@ function gh() {
       else
         trace rm -rf $tmpdir; return
       fi
-  else
-      trace cd "$root/$repo/$owner"
-      git fetch
+	  else
+	trace cd "$root/$repo/$owner"
+git fetch
   fi
 
 }
 
+alias t1="tree -L 1"
 alias t2="tree -L 2"
 alias t3="tree -L 3"
 alias t4="tree -L 4" 
