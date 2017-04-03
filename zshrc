@@ -19,6 +19,10 @@ export EDITOR='emacs -nw'
 
 . $HOME/.nix-profile/etc/profile.d/nix.sh
 
+if [[ -e $HOME/.zshrc_local ]]; then
+  . $HOME/.zshrc_local
+fi
+
 ## CUSTOM SCRIPTS
 
 function trace() {
