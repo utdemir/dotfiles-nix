@@ -37,12 +37,16 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 
-(use-package ensime
+(use-package sbt-mode
+  :ensure t)
+
+(use-package scala-mode
   :ensure t
   :init
-  (setq ensime-auto-generate-config t)
-  (setq ensime-sem-high-enabled-p nil)
-  (setq ensime-typecheck-when-idle nil))
+  (global-set-key (kbd "C-c C-l") (lambda() (interactive) (sbt-command "compile")))
+  (global-set-key (kbd "C-c C-t") (lambda() (interactive) (sbt-command "test")))
+  (global-set-key (kbd "C-c C-s") (lambda() (interactive)))
+  )
 
 (use-package monokai-theme
   :ensure t
@@ -58,26 +62,6 @@
   :ensure t
   :init
   (counsel-projectile-on))
-
-; (use-package helm
-;   :ensure t
-;   :init
-;   (setq helm-display-function 'pop-to-buffer)
-;   :config
-;   (require 'helm)
-;   (require 'helm-config)
-;   (global-set-key (kbd "M-x") 'helm-M-x)
-;   (global-set-key (kbd "C-x C-f") 'helm-find-files)
-;   (global-set-key (kbd "C-x b") 'helm-buffers-list)
-;   (global-set-key (kbd "C-x C-b") 'helm-buffers-list)
-;   (global-set-key (kbd "C-c h") 'helm-command-prefix)
-;   (global-unset-key (kbd "C-x c"))
-;   (helm-mode 1))
-; 
-; (use-package helm-flx
-;   :ensure t
-;   :config
-;   (helm-flx-mode 1))
 
 (use-package undo-tree
   :ensure t
@@ -96,18 +80,6 @@
   :ensure t
   :config
   (projectile-mode 1))
-
-; (use-package helm-projectile
-;   :ensure t
-;   :config
-;   (helm-projectile-on)
-;   (define-key global-map (kbd "C-x p f") 'helm-projectile-find-file))
-; 
-; (use-package shackle
-;   :ensure t
-;   :config
-;   (shackle-mode 1)
-;   (setq shackle-rules '(("\\`\\*helm.*?\\*\\'" :regexp t :align t :ratio 0.4))))
 
 (use-package ace-jump-mode
   :ensure t
@@ -171,4 +143,3 @@
 
 (use-package apidoc-checker
   :ensure t)
-(put 'upcase-region 'disabled nil)
