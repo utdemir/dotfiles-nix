@@ -39,10 +39,10 @@ function gh() {
   else
     echo "Invalid params" >&2
   fi
-  
+
   root="$HOME/Documents/workspace/github"
   tmpdir=$(mktemp -d)
-  
+
   if ! [[ -e "$root/$repo/$owner" ]]; then
       url="git@github.com:$repo/$owner"
       if trace git clone --depth 1 "$url" "$tmpdir"; then
@@ -52,9 +52,9 @@ function gh() {
       else
         trace rm -rf $tmpdir; return
       fi
-	  else
-	trace cd "$root/$repo/$owner"
-git fetch
+  else
+      trace cd "$root/$repo/$owner"
+      trace git fetch
   fi
 
 }

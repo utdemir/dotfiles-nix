@@ -1,7 +1,4 @@
-{ nixpkgs ? builtins.fetchTarball {
-    url = "https://github.com/NixOS/nixpkgs/archive/release-17.03.zip";
-  }
-}:
+{ nixpkgs }:
 let
   pkgs = import nixpkgs {};
   
@@ -27,3 +24,5 @@ let
     ];
   };
 in  env
+
+# nix-env -f default.nix -i utdemir-env -j 4 --arg nixpkgs $HOME/Documents/workspace/github/nixos/nixpkgs
