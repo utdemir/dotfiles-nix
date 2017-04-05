@@ -10,6 +10,10 @@ let
 
       gitMinimal gitAndTools.hub
       pv jq silver-searcher tree
+      kt
+
+      haskellPackages.lentil
+      haskellPackages.darcs
 
       (import ./emacs.nix { inherit pkgs; })
       
