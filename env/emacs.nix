@@ -60,7 +60,31 @@ let mkEmacs = epkgs: conf:
        packageRequires = [ self.dash self.magit ];
      };
    });
-           
+
+   mkSnippets = snippets:
+     let mapped = pkgs.lib.mapAttrsToList (mode: pkgs.lib.mapAttrsToList (name: snippet:
+         let file = pkgs.writeText "snippet-${name}" ''
+             # -*- mode: snippet -*-
+             # name: ${name}
+             # key: ${name}
+             # --
+             ${snippet}
+             '';
+         in  "mkdir -p $out/${mode}/; ln -s ${file} $out/${mode}/${name};"
+       )) snippets;
+     in pkgs.runCommand "snippets" {} (
+          pkgs.lib.concatStringsSep "\n" (pkgs.lib.concatLists mapped)
+        );
+
+   mySnippets = mkSnippets {
+     haskell-mode = {
+       fun = ''
+         ''\${1:function-name} :: ''\${2:type}
+         $1 = $0error "Not implemented: $1"
+         '';
+     };
+   };
+
 in mkEmacs emacsPackages {
   config = ''
     (setq inhibit-startup-screen t)
@@ -114,6 +138,11 @@ in mkEmacs emacsPackages {
       {
         package = "flycheck";
         config  = "(global-flycheck-mode)";
+      }
+      {
+        package = "yasnippet";
+        init    = "(setq yas-snippet-dirs '(\"${mySnippets}\"))";
+        config  = "(yas-global-mode 1)";
       }
     ];
 }
