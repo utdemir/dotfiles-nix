@@ -140,6 +140,10 @@ in mkEmacs emacsPackages {
         config  = "(global-flycheck-mode)";
       }
       {
+        package = "ace-jump-mode";
+        bind    = "(\"C-c SPC\" . ace-jump-mode)";
+      }
+      {
         package = "yasnippet";
         init    = "(setq yas-snippet-dirs '(\"${mySnippets}\"))";
         config  = "(yas-global-mode 1)";
