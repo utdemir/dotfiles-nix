@@ -19,6 +19,8 @@ let mkEmacs = epkgs: conf:
             ${pkgs.lib.concatMapStringsSep "\n" renderItem conf.packages}
           '';
 
+          # not for performance, mostly because i want to get
+          # compile time errors on invalid syntax.
           compiledConfiguration = pkgs.runCommand "emacs-elc" {} ''
             cp ${configuration} emacs.el
             ${emacs}/bin/emacs -Q --batch -f batch-byte-compile emacs.el
