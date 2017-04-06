@@ -56,8 +56,8 @@ let mkEmacs = epkgs: conf:
        src = pkgs.fetchFromGitHub {
          owner = "chrisbarrett";
          repo = "kubernetes-el";
-         rev = "120b89a3532ada83b1efe1d0f24d252899c85ae7";
-         sha256 = "17vlxvcpp8pmgr06l6k1jzk2d8n8x7615pxin8r1p7vrlcwg7nw7";
+         rev = "f53ce6f6ddda5efef165c2642dd13518025543c7";
+         sha256 = "1ljp7yllx6g5iyj17y2dqx0k4zbfa7qy54fj1j32kz4ka9j228z4";
        };
        packageRequires = [ self.dash self.magit ];
      };
