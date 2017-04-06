@@ -146,6 +146,10 @@ in mkEmacs emacsPackages {
         bind    = "(\"C-c SPC\" . ace-jump-mode)";
       }
       {
+        package = "ws-butler";
+        config  = "(ws-butler-global-mode)";
+      }
+      {
         package = "yasnippet";
         init    = "(setq yas-snippet-dirs '(\"${mySnippets}\"))";
         config  = "(yas-global-mode 1)";
