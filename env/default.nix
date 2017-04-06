@@ -10,10 +10,13 @@ let
 
       gitMinimal gitAndTools.hub
       pv jq silver-searcher tree
-      kt
+      kt ncdu htop
+
+      mtr nmap
 
       haskellPackages.lentil
       haskellPackages.darcs
+      haskellPackages.pandoc
 
       (import ./emacs.nix { inherit pkgs; })
       
