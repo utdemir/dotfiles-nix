@@ -19,6 +19,7 @@ let
       haskellPackages.pandoc
 
       (import ./emacs.nix { inherit pkgs; })
+      (import ./dotfiles.nix { inherit pkgs; })
       
       awscli     
       (kubernetes.override { components = [ "cmd/kubectl" ]; })

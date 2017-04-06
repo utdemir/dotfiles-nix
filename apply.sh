@@ -1,13 +1,9 @@
 #!/usr/bin/env sh
 
-set -ex
+set -x
 
-ln -sf $PWD/gitconfig $HOME/.gitconfig
-ln -sf $PWD/gitignore $HOME/.gitignore_global
+nix-env -f default.nix -i utdemir-env \
+  --arg nixpkgs $HOME/Documents/workspace/github/nixos/nixpkgs \
+  -j 4 --show-trace
 
-ln -sf $PWD/zshrc      $HOME/.zshrc
-ln -sf $PWD/zsh_custom $HOME/.zsh_custom
-
-mkdir -p $HOME/.stack
-ln -sf $PWD/stackconfig.yaml $HOME/.stack/config.yaml
-
+dotfiles
