@@ -36,14 +36,16 @@ let mkEmacs = epkgs: conf:
 
    renderItem =
      { package
-     , config ? ""
-     , init   ? ""
-     , bind   ? ""
+     , config   ? ""
+     , init     ? ""
+     , bind     ? ""
+     , commands ? ""
      }: ''
      (use-package ${package}
        ${pkgs.lib.optionalString (init != "") ":init\n${init}"}
        ${pkgs.lib.optionalString (config != "") ":config\n${config}"}
        ${pkgs.lib.optionalString (bind != "") ":bind\n${bind}"}
+       ${pkgs.lib.optionalString (commands != "") ":commands\n${commands}"}
      )
      '';
           
@@ -60,6 +62,20 @@ let mkEmacs = epkgs: conf:
          sha256 = "1ljp7yllx6g5iyj17y2dqx0k4zbfa7qy54fj1j32kz4ka9j228z4";
        };
        packageRequires = [ self.dash self.magit ];
+     };
+
+     intero = self.melpaBuild {
+       pname = "intero";
+       version = "0.0.1";
+       src =
+         let repo = pkgs.fetchFromGitHub {
+           owner = "commercialhaskell";
+           repo = "intero";
+           rev = "04265e68647bbf27772df7b71c9927d451e6256f";
+           sha256 = "0zax01dmrk1zbqw8j8css1w6qynbavfdjfgfxs34pb37gp4v8mgg";
+         };
+	 in pkgs.runCommand "intero" {} "ln -s ${repo}/elisp $out";
+       packageRequires = [ self.flycheck self.company self.haskell-mode ];
      };
    });
 
@@ -105,8 +121,6 @@ in mkEmacs emacsPackages {
       "magit"
       "restclient"
       "ag"
-      "intero"
-      "kubernetes"
     ]) ++ [
       {
         package = "sbt-mode";
@@ -154,6 +168,14 @@ in mkEmacs emacsPackages {
         package = "yasnippet";
         init    = "(setq yas-snippet-dirs '(\"${mySnippets}\"))";
         config  = "(yas-global-mode 1)";
+      }
+      {
+        package  = "kubernetes";
+	commands = "kubernetes-overview";
+      }
+      {
+        package = "intero";
+        config  = "(add-hook 'haskell-mode-hook 'intero-mode)";
       }
     ];
 }
