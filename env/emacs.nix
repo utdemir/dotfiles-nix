@@ -118,6 +118,7 @@ in mkEmacs emacsPackages {
       }
       {
         package = "undo-tree";
+        init    = "(setq undo-tree-visualizer-timestamps t)";
         config  = "(global-undo-tree-mode)";
       }
       {
