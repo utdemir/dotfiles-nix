@@ -10,7 +10,7 @@ let mkDotfiles = files:
 
     ${ pkgs.lib.concatMapStringsSep "\n" ({path, target}: ''
          mkdir -p "$HOME/$(dirname ${path})";
-	 trace ln -sf "${target}" "$HOME/${path}"
+	 trace ln -sfn "${target}" "$HOME/${path}"
          '')
        files }
   '';
