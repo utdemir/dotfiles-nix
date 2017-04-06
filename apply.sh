@@ -1,6 +1,7 @@
 #!/usr/bin/env sh
 
-set -x
+set -o xtrace
+set -o errexit
 
 nix-env -f default.nix -i utdemir-env \
   --arg nixpkgs $HOME/Documents/workspace/github/nixos/nixpkgs \
