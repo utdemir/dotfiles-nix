@@ -29,6 +29,7 @@ let
       (sbt.override { jre = jre8; })
       haskellPackages.ShellCheck
       python2 python3
+      python3Packages.virtualenv
     ];
   };
 in  env
