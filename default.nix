@@ -6,7 +6,7 @@ let
     name = "utdemir-env";
     paths = with pkgs; [
       findutils gnugrep coreutils gnused
-      watch
+      watch graphviz
 
       gitMinimal gitAndTools.hub
       pv jq silver-searcher tree
