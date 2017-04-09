@@ -1,54 +1,9 @@
 { pkgs 
 }:
 
-let mkEmacs = epkgs: conf:
-      let emacs = epkgs.emacsWithPackages (epkgs:
-            [ epkgs.use-package ] ++ 
-              builtins.map (i: builtins.getAttr i.package epkgs) conf.packages
-          );
+with import ./lib.nix { inherit pkgs; };
 
-          configuration = pkgs.writeText "emacs-el" ''
-            (setq user-init-file (or load-file-name (buffer-file-name)))
-            (setq user-emacs-directory (file-name-directory user-init-file))
-
-            (package-initialize)
-            
-            (require 'use-package)
-
-            ${conf.config}
-            ${pkgs.lib.concatMapStringsSep "\n" renderItem conf.packages}
-          '';
-
-          # not for performance, mostly because i want to get
-          # compile time errors on invalid syntax.
-          compiledConfiguration = pkgs.runCommand "emacs-elc" {} ''
-            cp ${configuration} emacs.el
-            ${emacs}/bin/emacs -Q --batch -f batch-byte-compile emacs.el
-            cp emacs.elc $out
-          '';
-          
-      in  pkgs.stdenv.lib.overrideDerivation emacs (super: {
-            installPhase = super.installPhase + ''
-              wrapProgram $out/bin/emacs \
-                --add-flags "-q --load ${compiledConfiguration}"
-            '';
-          });
-
-   renderItem =
-     { package
-     , config   ? ""
-     , init     ? ""
-     , bind     ? ""
-     , commands ? ""
-     }: ''
-     (use-package ${package}
-       ${pkgs.lib.optionalString (init != "") ":init\n${init}"}
-       ${pkgs.lib.optionalString (config != "") ":config\n${config}"}
-       ${pkgs.lib.optionalString (bind != "") ":bind\n${bind}"}
-       ${pkgs.lib.optionalString (commands != "") ":commands\n${commands}"}
-     )
-     '';
-          
+let
    emacsPackages = pkgs.emacsPackagesNg.override (super: self: {
      emacs = pkgs.emacs25Macport;
      
@@ -79,22 +34,7 @@ let mkEmacs = epkgs: conf:
      };
    });
 
-   mkSnippets = snippets:
-     let mapped = pkgs.lib.mapAttrsToList (mode: pkgs.lib.mapAttrsToList (name: snippet:
-         let file = pkgs.writeText "snippet-${name}" ''
-             # -*- mode: snippet -*-
-             # name: ${name}
-             # key: ${name}
-             # --
-             ${snippet}
-             '';
-         in  "mkdir -p $out/${mode}/; ln -s ${file} $out/${mode}/${name};"
-       )) snippets;
-     in pkgs.runCommand "snippets" {} (
-          pkgs.lib.concatStringsSep "\n" (pkgs.lib.concatLists mapped)
-        );
-
-   mySnippets = mkSnippets {
+   mySnippets = mkYaSnippetsDir {
      haskell-mode = {
        fun = ''
          ''\${1:function-name} :: ''\${2:type}
@@ -102,7 +42,6 @@ let mkEmacs = epkgs: conf:
          '';
      };
    };
-
 in mkEmacs emacsPackages {
   config = ''
     (setq inhibit-startup-screen t)

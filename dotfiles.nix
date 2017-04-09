@@ -1,21 +1,7 @@
 { pkgs }:
-let mkDotfiles = files:
-  pkgs.writeScriptBin "dotfiles" ''
-    function trace() {
-      echo "! $@"; $@
-    }
 
-    set -o errexit
-    set -o nounset
+with import ./lib.nix { inherit pkgs; };
 
-    ${ pkgs.lib.concatMapStringsSep "\n" ({path, target}: ''
-         mkdir -p "$HOME/$(dirname ${path})";
-	 trace ln -sfn "${target}" "$HOME/${path}"
-         '')
-       files }
-  '';
-
-in
 mkDotfiles [
   { path = ".gitconfig";          target = ./dotfiles/gitconfig;        }
   { path = ".gitignore_global";   target = ./dotfiles/gitignore;        }
