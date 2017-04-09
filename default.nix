@@ -5,27 +5,26 @@ let
   env = pkgs.buildEnv {
     name = "utdemir-env";
     paths = with pkgs; [
+      (import ./emacs.nix { inherit pkgs; })
+      (import ./dotfiles.nix { inherit pkgs; })
+
       findutils gnugrep coreutils gnused
       watch graphviz
 
       gitMinimal gitAndTools.hub
+      haskellPackages.darcs
+
       pv jq silver-searcher tree
-      kt ncdu htop
+      kt ncdu htop cloc
+      haskellPackages.lentil
+      haskellPackages.pandoc
 
       mtr nmap
 
-      haskellPackages.lentil
-      haskellPackages.darcs
-      haskellPackages.pandoc
-
-      (import ./emacs.nix { inherit pkgs; })
-      (import ./dotfiles.nix { inherit pkgs; })
-      
-      awscli     
+      awscli
       (kubernetes.override { components = [ "cmd/kubectl" ]; })
-      gcc
 
-      openjdk8      
+      gcc openjdk8
       (sbt.override { jre = jre8; })
       haskellPackages.ShellCheck
       python2 python3
