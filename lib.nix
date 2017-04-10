@@ -35,6 +35,10 @@
           ${pkgs.lib.concatMapStringsSep "\n" renderItem conf.packages}
         '';
 
+	systemPackages = builtins.concatLists (
+	  pkgs.lib.catAttrs "systemPackages" conf.packages
+	);
+
         # not for performance, mostly because i want to get
         # compile time errors on invalid syntax.
         compiledConfiguration = pkgs.runCommand "emacs-elc" {} ''
@@ -48,6 +52,7 @@
           , init     ? ""
           , bind     ? ""
           , commands ? ""
+	  , ...
           }: ''
           (use-package ${package}
             ${pkgs.lib.optionalString (init != "") ":init\n${init}"}
@@ -59,7 +64,8 @@
     in  pkgs.stdenv.lib.overrideDerivation emacs (super: {
           installPhase = super.installPhase + ''
             wrapProgram $out/bin/emacs \
-              --add-flags "-q --load ${compiledConfiguration}"
+              --add-flags "-q --load ${compiledConfiguration}" \
+              --prefix "PATH" ":" ${pkgs.lib.concatStringsSep ":" systemPackages}
           '';
         });
 
