@@ -1,5 +1,4 @@
-{ pkgs 
-}:
+{ pkgs }:
 
 with import ./lib.nix { inherit pkgs; };
 
@@ -29,10 +28,29 @@ let
            rev = "04265e68647bbf27772df7b71c9927d451e6256f";
            sha256 = "0zax01dmrk1zbqw8j8css1w6qynbavfdjfgfxs34pb37gp4v8mgg";
          };
-	 in pkgs.runCommand "intero" {} "ln -s ${repo}/elisp $out";
+	 in pkgs.runCommand "intero-el" {} "ln -s ${repo}/elisp $out";
        packageRequires = [ self.flycheck self.company self.haskell-mode ];
      };
+
+     apidoc-checker = self.melpaBuild {
+       pname = "apidoc-checker";
+       version = "0.0.1";
+       src = pkgs.runCommand "apidoc-checker-el" {} "ln -s ${apidoc-checker-src}/elisp $out";
+       packageRequires = [ self.flycheck self.js2-mode ];
+     };
    });
+
+   apidoc-checker-src = pkgs.fetchFromGitHub {
+     owner = "chrisbarrett";
+     repo = "apidoc-checker";
+     rev = "3d4325964c40301f7ba6e032aca44034a01afe75";
+     sha256 = "0i96xcvi2qpxqff03w9z90x6c848sq9ahg0naa4l9d9wm01f0yd7";
+   };
+
+   apidoc-checker-hs = pkgs.haskellPackages.haskellSrc2nix {
+     name = "apidoc-checker";
+     src = apidoc-checker-src;
+   };
 
    mySnippets = mkYaSnippetsDir {
      haskell-mode = {
@@ -59,7 +77,8 @@ in mkEmacs emacsPackages {
       "nix-mode"
       "magit"
       "restclient"
-      "ag"
+      "go-mode"
+      "apidoc-checker"
     ]) ++ [
       {
         package = "sbt-mode";
@@ -68,6 +87,10 @@ in mkEmacs emacsPackages {
           (global-set-key (kbd "C-c C-t") (lambda() (interactive) (sbt-command "test")))
           (global-set-key (kbd "C-c C-z") (lambda() (interactive) (sbt-command "!!")))
           '';
+      }
+      {
+        package = "ag";
+	systemPackages = [ pkgs.silver-searcher ];
       }
       {
         package = "undo-tree";
@@ -115,6 +138,10 @@ in mkEmacs emacsPackages {
       {
         package = "intero";
         config  = "(add-hook 'haskell-mode-hook 'intero-mode)";
+      }
+      {
+        package        = "apidoc-checker";
+        systemPackages = [ apidoc-checker-hs ];
       }
     ];
 }
