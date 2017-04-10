@@ -21,14 +21,19 @@ let
 
       mtr nmap
 
+      cmatrix
+
       awscli
       (kubernetes.override { components = [ "cmd/kubectl" ]; })
 
-      gcc openjdk8
+      cabal2nix
+      gcc openjdk8 nodejs
       (sbt.override { jre = jre8; })
       haskellPackages.ShellCheck
       python2 python3
       python3Packages.virtualenv
+      haskellPackages.idris
+      go
     ];
   };
 in  env
