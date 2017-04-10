@@ -140,6 +140,13 @@ in mkEmacs emacsPackages {
         config  = "(add-hook 'haskell-mode-hook 'intero-mode)";
       }
       {
+        package = "perspective";
+	config  = ''
+	  (persp-mode 1)
+	  (persp-mode-set-prefix-key (kbd "C-x C-x"))
+          '';
+      }
+      {
         package        = "apidoc-checker";
         systemPackages = [ apidoc-checker-hs ];
       }
