@@ -75,24 +75,35 @@ in mkEmacs emacsPackages {
   '';
   packages = 
     (map (i: { package = i; }) [
-      "scala-mode"
       "nix-mode"
-      "magit"
-      "restclient"
-      "go-mode"
       "apidoc-checker"
     ]) ++ [
       {
+        package = "scala-mode";
+	modes = {
+	  ${ext "scala"} = "scala-mode";
+	  ${ext "sbt"}   = "sbt-mode";
+	};
+      }
+      {
         package = "sbt-mode";
-        init    = ''
-          (global-set-key (kbd "C-c C-l") (lambda() (interactive) (sbt-command "compile")))
-          (global-set-key (kbd "C-c C-t") (lambda() (interactive) (sbt-command "test")))
-          (global-set-key (kbd "C-c C-z") (lambda() (interactive) (sbt-command "!!")))
-          '';
+	init = ''
+	  (defun sbt-compile ()
+	    "runs 'sbt-command compile'" (interactive)
+	    (sbt-command "compile"))
+	  (defun sbt-test ()
+	    "runs 'sbt-command test'" (interactive)
+	    (sbt-command "test"))
+	  '';
+	binds = {
+          "C-c C-l" = "sbt-compile";
+          "C-c C-t" = "sbt-test";
+	};
       }
       {
         package = "ag";
 	systemPackages = [ pkgs.silver-searcher ];
+	commands = [ "ag" "ag-project" ];
       }
       {
         package  = "undo-tree";
@@ -112,7 +123,9 @@ in mkEmacs emacsPackages {
       {
         package = "counsel-projectile";
         init    = "(counsel-projectile-on)";
-        bind    = "(\"C-c p f\" . counsel-projectile-find-file)";
+        binds   = {
+	  "C-c p f" = "counsel-projectile-find-file";
+	};
       }
       {
         package = "projectile";
@@ -125,7 +138,9 @@ in mkEmacs emacsPackages {
       }
       {
         package = "ace-jump-mode";
-        bind    = "(\"C-c SPC\" . ace-jump-mode)";
+        binds   = {
+	  "C-c SPC" = "ace-jump-mode";
+	};
       }
       {
         package  = "ws-butler";
@@ -140,11 +155,12 @@ in mkEmacs emacsPackages {
       }
       {
         package  = "kubernetes";
-	commands = "kubernetes-overview";
+	commands = [ "kubernetes-overview" ];
       }
       {
         package = "intero";
         config  = "(add-hook 'haskell-mode-hook 'intero-mode)";
+	defer   = true;
       }
       {
         package = "perspective";
@@ -156,6 +172,22 @@ in mkEmacs emacsPackages {
       {
         package        = "apidoc-checker";
         systemPackages = [ apidoc-checker-hs ];
+      }
+      {
+        package  = "magit";
+	commands = [ "magit-status" ];
+      }
+      {
+        package = "restclient";
+	modes   = {
+	  ${ext ".rest"} = "restclient-mode";
+	};
+      }
+      {
+        package = "go-mode";
+	modes   = {
+	  ${ext ".go"} = "go-mode";
+	};
       }
     ];
 }

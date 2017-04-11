@@ -19,11 +19,14 @@
 
   mkEmacs = epkgs: conf:
     let emacs = epkgs.emacsWithPackages (epkgs:
-          [ epkgs.use-package ] ++
+          [ epkgs.use-package epkgs.benchmark-init ] ++
             builtins.map (i: builtins.getAttr i.package epkgs) conf.packages
         );
 
         configuration = pkgs.writeText "emacs-el" ''
+    	  ; (require 'benchmark-init)
+          ; (benchmark-init/activate)
+
           (setq user-init-file (or load-file-name (buffer-file-name)))
           (setq user-emacs-directory (file-name-directory user-init-file))
 
@@ -54,20 +57,39 @@
           { package
           , config         ? ""
           , init           ? ""
-          , bind           ? ""
-          , commands       ? ""
+          , binds          ? ""
+          , modes          ? {}
+          , commands       ? []
 	  , diminish       ? ""
 	  , systemPackages ? null
-	  , ...
+	  , defer          ? false
           }: ''
           (use-package ${package}
-            ${pkgs.lib.optionalString (init != "") ":init\n${init}"}
-            ${pkgs.lib.optionalString (config != "") ":config\n${config}"}
-            ${pkgs.lib.optionalString (bind != "") ":bind\n${bind}"}
-            ${pkgs.lib.optionalString (commands != "") ":commands\n${commands}"}
-	    ${pkgs.lib.optionalString (diminish != "") ":diminish\n${diminish}"}
+            ${pkgs.lib.optionalString
+	        (init != "")
+		":init\n${init}"}
+            ${pkgs.lib.optionalString
+	        (config != "")
+		":config\n${config}"}
+            ${pkgs.lib.optionalString
+	        (commands != [])
+		":commands\n(${pkgs.lib.concatStringsSep " " commands})"}
+            ${pkgs.lib.optionalString
+	        (binds != "")
+		":bind\n${toAList binds}"}
+            ${pkgs.lib.optionalString
+	        (modes != {})
+		":mode\n${toAList modes}"}
+	    ${pkgs.lib.optionalString
+	        (diminish != "")
+		":diminish\n${diminish}"}
+	    ${pkgs.lib.optionalString
+	        defer
+		":defer t"}
           )
           '';
+	toAList = attrs:
+	   "(${pkgs.lib.concatStringsSep " " (pkgs.lib.mapAttrsToList (k: v: "(\"${k}\" . ${v})") attrs)})";
     in  pkgs.stdenv.lib.overrideDerivation emacs (super: {
           installPhase = super.installPhase + ''
             wrapProgram $out/bin/emacs \
@@ -75,6 +97,8 @@
               --prefix "PATH" ":" ${pkgs.lib.concatStringsSep ":" systemPackages}
           '';
         });
+
+   ext = ext: "\\\\.${ext}\\\\'";
 
    mkYaSnippetsDir = snippets:
      let mapped = pkgs.lib.mapAttrsToList (mode: pkgs.lib.mapAttrsToList (name: snippet:
