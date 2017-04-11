@@ -12,7 +12,7 @@
 
       ${ pkgs.lib.concatMapStringsSep "\n" ({path, target}: ''
            mkdir -p "$HOME/$(dirname ${path})";
-    	 trace ln -sfn "${target}" "$HOME/${path}"
+         trace ln -sfn "${target}" "$HOME/${path}"
            '')
          files }
     '';
@@ -24,7 +24,7 @@
         );
 
         configuration = pkgs.writeText "emacs-el" ''
-    	  ; (require 'benchmark-init)
+          ; (require 'benchmark-init)
           ; (benchmark-init/activate)
 
           (setq user-init-file (or load-file-name (buffer-file-name)))
@@ -32,18 +32,18 @@
 
           (package-initialize)
 
-	  (eval-when-compile
+          (eval-when-compile
             (require 'use-package))
-	  (require 'diminish)
-	  (require 'bind-key)
+          (require 'diminish)
+          (require 'bind-key)
 
           ${conf.config}
           ${pkgs.lib.concatMapStringsSep "\n" renderItem conf.packages}
         '';
 
-	systemPackages = builtins.concatLists (
-	  pkgs.lib.catAttrs "systemPackages" conf.packages
-	);
+        systemPackages = builtins.concatLists (
+          pkgs.lib.catAttrs "systemPackages" conf.packages
+        );
 
         # not for performance, mostly because i want to get
         # compile time errors on invalid syntax.
@@ -51,7 +51,7 @@
           cp ${configuration} emacs.el
           ${emacs}/bin/emacs -Q --batch -f batch-byte-compile emacs.el
           cp emacs.elc $out
-	  echo ";;Generated from: ${configuration}" >> $out
+          echo ";;Generated from: ${configuration}" >> $out
         '';
         renderItem =
           { package
@@ -60,36 +60,36 @@
           , binds          ? ""
           , modes          ? {}
           , commands       ? []
-	  , diminish       ? ""
-	  , systemPackages ? null
-	  , defer          ? false
+          , diminish       ? ""
+          , systemPackages ? null
+          , defer          ? false
           }: ''
           (use-package ${package}
             ${pkgs.lib.optionalString
-	        (init != "")
-		":init\n${init}"}
+                (init != "")
+                ":init\n${init}"}
             ${pkgs.lib.optionalString
-	        (config != "")
-		":config\n${config}"}
+                (config != "")
+                ":config\n${config}"}
             ${pkgs.lib.optionalString
-	        (commands != [])
-		":commands\n(${pkgs.lib.concatStringsSep " " commands})"}
+                (commands != [])
+                ":commands\n(${pkgs.lib.concatStringsSep " " commands})"}
             ${pkgs.lib.optionalString
-	        (binds != "")
-		":bind\n${toAList binds}"}
+                (binds != "")
+                ":bind\n${toAList binds}"}
             ${pkgs.lib.optionalString
-	        (modes != {})
-		":mode\n${toAList modes}"}
-	    ${pkgs.lib.optionalString
-	        (diminish != "")
-		":diminish\n${diminish}"}
-	    ${pkgs.lib.optionalString
-	        defer
-		":defer t"}
+                (modes != {})
+                ":mode\n${toAList modes}"}
+            ${pkgs.lib.optionalString
+                (diminish != "")
+                ":diminish\n${diminish}"}
+            ${pkgs.lib.optionalString
+                defer
+                ":defer t"}
           )
           '';
-	toAList = attrs:
-	   "(${pkgs.lib.concatStringsSep " " (pkgs.lib.mapAttrsToList (k: v: "(\"${k}\" . ${v})") attrs)})";
+        toAList = attrs:
+           "(${pkgs.lib.concatStringsSep " " (pkgs.lib.mapAttrsToList (k: v: "(\"${k}\" . ${v})") attrs)})";
     in  pkgs.stdenv.lib.overrideDerivation emacs (super: {
           installPhase = super.installPhase + ''
             wrapProgram $out/bin/emacs \

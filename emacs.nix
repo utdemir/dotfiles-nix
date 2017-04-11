@@ -28,7 +28,7 @@ let
            rev = "04265e68647bbf27772df7b71c9927d451e6256f";
            sha256 = "0zax01dmrk1zbqw8j8css1w6qynbavfdjfgfxs34pb37gp4v8mgg";
          };
-	 in pkgs.runCommand "intero-el" {} "ln -s ${repo}/elisp $out";
+         in pkgs.runCommand "intero-el" {} "ln -s ${repo}/elisp $out";
        packageRequires = [ self.flycheck self.company self.haskell-mode ];
      };
 
@@ -72,6 +72,7 @@ in mkEmacs emacsPackages {
     (scroll-bar-mode -1)
     (diminish 'auto-revert-mode)
     (setq column-number-mode t)
+    (setq-default indent-tabs-mode nil)
   '';
   packages = 
     (map (i: { package = i; }) [
@@ -80,36 +81,36 @@ in mkEmacs emacsPackages {
     ]) ++ [
       {
         package = "scala-mode";
-	modes = {
-	  ${ext "scala"} = "scala-mode";
-	  ${ext "sbt"}   = "sbt-mode";
-	};
+        modes = {
+          ${ext "scala"} = "scala-mode";
+          ${ext "sbt"}   = "sbt-mode";
+        };
       }
       {
         package = "sbt-mode";
-	init = ''
-	  (defun sbt-compile ()
-	    "runs 'sbt-command compile'" (interactive)
-	    (sbt-command "compile"))
-	  (defun sbt-test ()
-	    "runs 'sbt-command test'" (interactive)
-	    (sbt-command "test"))
-	  '';
-	binds = {
+        init = ''
+          (defun sbt-compile ()
+            "runs 'sbt-command compile'" (interactive)
+            (sbt-command "compile"))
+          (defun sbt-test ()
+            "runs 'sbt-command test'" (interactive)
+            (sbt-command "test"))
+          '';
+        binds = {
           "C-c C-l" = "sbt-compile";
           "C-c C-t" = "sbt-test";
-	};
+        };
       }
       {
         package = "ag";
-	systemPackages = [ pkgs.silver-searcher ];
-	commands = [ "ag" "ag-project" ];
+        systemPackages = [ pkgs.silver-searcher ];
+        commands = [ "ag" "ag-project" ];
       }
       {
         package  = "undo-tree";
         init     = "(setq undo-tree-visualizer-timestamps t)";
         config   = "(global-undo-tree-mode)";
-	diminish = "'undo-tree-mode";
+        diminish = "'undo-tree-mode";
       }
       {
         package = "monokai-theme";
@@ -118,14 +119,14 @@ in mkEmacs emacsPackages {
       {
         package  = "counsel";
         init     = "(ivy-mode 1)";
-	diminish = "'ivy-mode";
+        diminish = "'ivy-mode";
       }
       {
         package = "counsel-projectile";
         init    = "(counsel-projectile-on)";
         binds   = {
-	  "C-c p f" = "counsel-projectile-find-file";
-	};
+          "C-c p f" = "counsel-projectile-find-file";
+        };
       }
       {
         package = "projectile";
@@ -134,39 +135,39 @@ in mkEmacs emacsPackages {
       {
         package  = "flycheck";
         config   = "(global-flycheck-mode)";
-	diminish = "'flycheck-mode";
+        diminish = "'flycheck-mode";
       }
       {
         package = "ace-jump-mode";
         binds   = {
-	  "C-c SPC" = "ace-jump-mode";
-	};
+          "C-c SPC" = "ace-jump-mode";
+        };
       }
       {
         package  = "ws-butler";
         config   = "(ws-butler-global-mode)";
-	diminish = "'ws-butler-mode";
+        diminish = "'ws-butler-mode";
       }
       {
         package  = "yasnippet";
         init     = "(setq yas-snippet-dirs '(\"${mySnippets}\"))";
         config   = "(yas-global-mode 1)";
-	diminish = "'yas-minor-mode";
+        diminish = "'yas-minor-mode";
       }
       {
         package  = "kubernetes";
-	commands = [ "kubernetes-overview" ];
+        commands = [ "kubernetes-overview" ];
       }
       {
         package = "intero";
         config  = "(add-hook 'haskell-mode-hook 'intero-mode)";
-	defer   = true;
+        defer   = true;
       }
       {
         package = "perspective";
-	config  = ''
-	  (persp-mode 1)
-	  (persp-mode-set-prefix-key (kbd "C-x C-x"))
+        config  = ''
+          (persp-mode 1)
+          (persp-mode-set-prefix-key (kbd "C-x C-x"))
           '';
       }
       {
@@ -175,19 +176,19 @@ in mkEmacs emacsPackages {
       }
       {
         package  = "magit";
-	commands = [ "magit-status" ];
+        commands = [ "magit-status" ];
       }
       {
         package = "restclient";
-	modes   = {
-	  ${ext ".rest"} = "restclient-mode";
-	};
+        modes   = {
+          ${ext ".rest"} = "restclient-mode";
+        };
       }
       {
         package = "go-mode";
-	modes   = {
-	  ${ext ".go"} = "go-mode";
-	};
+        modes   = {
+          ${ext ".go"} = "go-mode";
+        };
       }
     ];
 }
