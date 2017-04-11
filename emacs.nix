@@ -71,6 +71,7 @@ in mkEmacs emacsPackages {
     (show-paren-mode 1)
     (scroll-bar-mode -1)
     (diminish 'auto-revert-mode)
+    (setq column-number-mode t)
   '';
   packages = 
     (map (i: { package = i; }) [
