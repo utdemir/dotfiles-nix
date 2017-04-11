@@ -29,7 +29,10 @@
 
           (package-initialize)
 
-          (require 'use-package)
+	  (eval-when-compile
+            (require 'use-package))
+	  (require 'diminish)
+	  (require 'bind-key)
 
           ${conf.config}
           ${pkgs.lib.concatMapStringsSep "\n" renderItem conf.packages}
@@ -45,13 +48,16 @@
           cp ${configuration} emacs.el
           ${emacs}/bin/emacs -Q --batch -f batch-byte-compile emacs.el
           cp emacs.elc $out
+	  echo ";;Generated from: ${configuration}" >> $out
         '';
         renderItem =
           { package
-          , config   ? ""
-          , init     ? ""
-          , bind     ? ""
-          , commands ? ""
+          , config         ? ""
+          , init           ? ""
+          , bind           ? ""
+          , commands       ? ""
+	  , diminish       ? ""
+	  , systemPackages ? null
 	  , ...
           }: ''
           (use-package ${package}
@@ -59,6 +65,7 @@
             ${pkgs.lib.optionalString (config != "") ":config\n${config}"}
             ${pkgs.lib.optionalString (bind != "") ":bind\n${bind}"}
             ${pkgs.lib.optionalString (commands != "") ":commands\n${commands}"}
+	    ${pkgs.lib.optionalString (diminish != "") ":diminish\n${diminish}"}
           )
           '';
     in  pkgs.stdenv.lib.overrideDerivation emacs (super: {

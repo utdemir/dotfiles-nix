@@ -70,6 +70,7 @@ in mkEmacs emacsPackages {
     (global-font-lock-mode 1)
     (show-paren-mode 1)
     (scroll-bar-mode -1)
+    (diminish 'auto-revert-mode)
   '';
   packages = 
     (map (i: { package = i; }) [
@@ -93,17 +94,19 @@ in mkEmacs emacsPackages {
 	systemPackages = [ pkgs.silver-searcher ];
       }
       {
-        package = "undo-tree";
-        init    = "(setq undo-tree-visualizer-timestamps t)";
-        config  = "(global-undo-tree-mode)";
+        package  = "undo-tree";
+        init     = "(setq undo-tree-visualizer-timestamps t)";
+        config   = "(global-undo-tree-mode)";
+	diminish = "'undo-tree-mode";
       }
       {
         package = "monokai-theme";
         config  = "(load-theme 'monokai t)";
       }
       {
-        package = "counsel";
-        init    = "(ivy-mode 1)";
+        package  = "counsel";
+        init     = "(ivy-mode 1)";
+	diminish = "'ivy-mode";
       }
       {
         package = "counsel-projectile";
@@ -115,21 +118,24 @@ in mkEmacs emacsPackages {
         config  = "(projectile-mode 1)";
       }
       {
-        package = "flycheck";
-        config  = "(global-flycheck-mode)";
+        package  = "flycheck";
+        config   = "(global-flycheck-mode)";
+	diminish = "'flycheck-mode";
       }
       {
         package = "ace-jump-mode";
         bind    = "(\"C-c SPC\" . ace-jump-mode)";
       }
       {
-        package = "ws-butler";
-        config  = "(ws-butler-global-mode)";
+        package  = "ws-butler";
+        config   = "(ws-butler-global-mode)";
+	diminish = "'ws-butler-mode";
       }
       {
-        package = "yasnippet";
-        init    = "(setq yas-snippet-dirs '(\"${mySnippets}\"))";
-        config  = "(yas-global-mode 1)";
+        package  = "yasnippet";
+        init     = "(setq yas-snippet-dirs '(\"${mySnippets}\"))";
+        config   = "(yas-global-mode 1)";
+	diminish = "'yas-minor-mode";
       }
       {
         package  = "kubernetes";
