@@ -204,14 +204,13 @@ in mkEmacs emacsPackages {
       }
       {
         package = "markdown-mode";
-        mode = ''
-          (("README\\.md\\'" . gfm-mode)
-          ("\\.md\\'" . markdown-mode)
-          ("\\.markdown\\'" . markdown-mode))
-          '';
+        modes = {
+          "README.md" = "gfm-mode";
+          ${ext ".md"} = "markdown-mode";
+          ${ext ".markdown"} = "markdown-mode";
+        };
 	init = "(setq markdown-command \"multimarkdown\")";
 	systemPackages = [ pkgs.multimarkdown ];
->>>>>>> Stashed changes
       }
     ];
 }
