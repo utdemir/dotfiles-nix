@@ -1,22 +1,6 @@
 { pkgs }:
 
 {
-  mkDotfiles = files:
-    pkgs.writeScriptBin "dotfiles" ''
-      function trace() {
-        echo "! $@"; $@
-      }
-
-      set -o errexit
-      set -o nounset
-
-      ${ pkgs.lib.concatMapStringsSep "\n" ({path, target}: ''
-           mkdir -p "$HOME/$(dirname ${path})";
-         trace ln -sfn "${target}" "$HOME/${path}"
-           '')
-         files }
-    '';
-
   mkEmacs = epkgs: conf:
     let emacs = epkgs.emacsWithPackages (epkgs:
           [ epkgs.use-package epkgs.benchmark-init ] ++
@@ -94,7 +78,8 @@
           installPhase = super.installPhase + ''
             wrapProgram $out/bin/emacs \
               --add-flags "-q --load ${compiledConfiguration}" \
-              --prefix "PATH" ":" ${pkgs.lib.concatStringsSep ":" systemPackages}
+              --prefix "PATH" ":" \
+	          ${pkgs.lib.concatMapStringsSep ":" (i: "${i}/bin") systemPackages}
           '';
         });
 

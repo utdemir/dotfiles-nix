@@ -8,8 +8,8 @@ let
       (import ./emacs.nix { inherit pkgs; })
       (import ./dotfiles.nix { inherit pkgs; })
 
-      findutils gnugrep coreutils gnused
-      watch graphviz
+      zsh findutils gnugrep coreutils gnused
+      watch graphviz rsync
 
       gitMinimal gitAndTools.hub
       haskellPackages.darcs

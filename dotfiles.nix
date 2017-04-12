@@ -1,6 +1,6 @@
 { pkgs }:
 
-with import ./lib.nix { inherit pkgs; };
+with import ./lib/dotfiles.nix { inherit pkgs; };
 
 mkDotfiles [
   { path = ".gitconfig";          target = ./dotfiles/gitconfig;        }

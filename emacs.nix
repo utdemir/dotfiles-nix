@@ -1,6 +1,6 @@
 { pkgs }:
 
-with import ./lib.nix { inherit pkgs; };
+with import ./lib/emacs.nix { inherit pkgs; };
 
 let
    emacsPackages = pkgs.emacsPackagesNg.override (super: self: {
@@ -201,6 +201,17 @@ in mkEmacs emacsPackages {
       {
         package = "simpleclip";
         config  = "(simpleclip-mode 1)";
+      }
+      {
+        package = "markdown-mode";
+        mode = ''
+          (("README\\.md\\'" . gfm-mode)
+          ("\\.md\\'" . markdown-mode)
+          ("\\.markdown\\'" . markdown-mode))
+          '';
+	init = "(setq markdown-command \"multimarkdown\")";
+	systemPackages = [ pkgs.multimarkdown ];
+>>>>>>> Stashed changes
       }
     ];
 }
