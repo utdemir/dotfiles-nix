@@ -73,11 +73,11 @@ in mkEmacs emacsPackages {
     (diminish 'auto-revert-mode)
     (setq column-number-mode t)
     (setq-default indent-tabs-mode nil)
+    (setq tab-width 2)
   '';
   packages = 
     (map (i: { package = i; }) [
       "nix-mode"
-      "apidoc-checker"
     ]) ++ [
       {
         package = "scala-mode";
@@ -189,6 +189,18 @@ in mkEmacs emacsPackages {
         modes   = {
           ${ext ".go"} = "go-mode";
         };
+      }
+      {
+        package = "js2-mode";
+        modes = {
+          ${ext ".js"} = "js2-mode";
+          ${ext ".json"} = "js2-mode";
+        };
+        init = ''(setq js2-basic-offset 2)'';
+      }
+      {
+        package = "simpleclip";
+        config  = "(simpleclip-mode 1)";
       }
     ];
 }
