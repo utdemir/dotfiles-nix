@@ -7,9 +7,10 @@ let
     paths = with pkgs; [
       (import ./emacs.nix { inherit pkgs; })
       (import ./dotfiles.nix { inherit pkgs; })
+      scripts
 
       zsh findutils gnugrep coreutils gnused
-      watch graphviz rsync
+      watch graphviz rsync parallel
 
       gitMinimal gitAndTools.hub
       haskellPackages.darcs
@@ -36,6 +37,11 @@ let
       go
     ];
   };
+
+  scripts = pkgs.runCommand "scripts" {} ''
+    mkdir -p "$out"
+    cp -r ${./scripts} "$out/bin" #*/
+  '';
 in  env
 
 # nix-env -f default.nix -i utdemir-env -j 4 --arg nixpkgs $HOME/Documents/workspace/github/nixos/nixpkgs

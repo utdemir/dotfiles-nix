@@ -1,0 +1,77 @@
+#!/usr/bin/env bash
+
+################################################################################
+
+export BASE="$HOME/Documents/workspace/github"
+
+################################################################################
+
+function log() {
+    echo "$@" >&2
+}
+export -f log
+
+function trace() {
+    log "! $@"
+    "$@"
+}
+export -f trace
+
+################################################################################
+
+function invalid_syntax() {
+    log "Usage: $0 <owner> [<repo>]" >&2
+    exit 1
+}
+
+################################################################################
+
+function get_repos_from_args() {
+    set -o errexit
+    set -o nounset
+    set -o pipefail
+
+    owner="$1"
+    [[ -z "$owner" ]] && invalid_syntax
+    shift;
+
+    repos="$@"
+
+    if [[ -z "$repos" ]]; then
+      log "No repo specified. Searching every repository of \"$owner\"." >&2
+
+      curl -# "https://api.github.com/users/$owner/repos" \
+          | jq '.[] | select(.fork | not) | .full_name' -r
+    else
+      for i in repos; do echo "$owner/$i"; done
+    fi
+}
+
+################################################################################
+
+function clone_or_fetch() {
+    set -o errexit
+    set -o nounset
+
+    repo="$1"
+    target="$BASE/$repo"
+
+    if ! [[ -e "$target" ]]; then
+      url="git@github.com:$repo"
+      tmpdir="$(mktemp -d)"
+      trace git clone --progress --depth 1 "$url" "$tmpdir"
+      mkdir -p "$(dirname "$target")"
+      mv -n "$tmpdir" -t "$target"
+    else
+      trace git -C "$target" fetch --progress >&2
+    fi
+}
+export -f clone_or_fetch
+
+################################################################################
+
+set -o errexit
+set -o pipefail
+
+get_repos_from_args "${@}" \
+    | parallel --tagstring "{}: " --line-buffer -j 4 clone_or_fetch
