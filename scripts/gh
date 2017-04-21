@@ -11,12 +11,6 @@ function log() {
 }
 export -f log
 
-function trace() {
-    log "! $@"
-    "$@"
-}
-export -f trace
-
 ################################################################################
 
 function invalid_syntax() {
@@ -25,6 +19,29 @@ function invalid_syntax() {
 }
 
 ################################################################################
+
+# TODO: Implement pagination
+function get_user_repos() {
+    set -o errexit
+    set -o nounset
+    set -o pipefail
+
+    hubPath="$HOME/.config/hub"
+
+    auth=""
+
+    user=$(grep -Po '(?<=user: ).*$' "$hubPath" && echo "")
+    token=$(grep -Po '(?<=oauth_token: ).*$' "$hubPath" && echo "")
+
+    if [[ -n "$user" && -n "$token" ]]; then
+        auth="-u $user:$token"
+    fi
+
+    owner="$1"
+
+    curl -# "https://api.github.com/users/$owner/repos?per_page=100" $auth | \
+        jq '.[] | select(.fork | not) | .full_name' -r
+}
 
 function get_repos_from_args() {
     set -o errexit
@@ -39,11 +56,9 @@ function get_repos_from_args() {
 
     if [[ -z "$repos" ]]; then
       log "No repo specified. Searching every repository of \"$owner\"." >&2
-
-      curl -# "https://api.github.com/users/$owner/repos" \
-          | jq '.[] | select(.fork | not) | .full_name' -r
+      get_user_repos "$owner"
     else
-      for i in repos; do echo "$owner/$i"; done
+      for i in $repos; do echo "$owner/$i"; done
     fi
 }
 
@@ -55,15 +70,17 @@ function clone_or_fetch() {
 
     repo="$1"
     target="$BASE/$repo"
+    url="git@github.com:$repo"
 
     if ! [[ -e "$target" ]]; then
-      url="git@github.com:$repo"
       tmpdir="$(mktemp -d)"
-      trace git clone --progress --depth 1 "$url" "$tmpdir"
+      log "Cloning $target"
+      git clone --quiet --depth 1 "$url" "$tmpdir"
       mkdir -p "$(dirname "$target")"
-      mv -n "$tmpdir" -t "$target"
+      mv -n "$tmpdir" "$target"
     else
-      trace git -C "$target" fetch --progress >&2
+      log "Updating $target"
+      git -C "$target" fetch --quiet >&2
     fi
 }
 export -f clone_or_fetch
@@ -74,4 +91,4 @@ set -o errexit
 set -o pipefail
 
 get_repos_from_args "${@}" \
-    | parallel --tagstring "{}: " --line-buffer -j 4 clone_or_fetch
+    | parallel --line-buffer -j 12 clone_or_fetch
