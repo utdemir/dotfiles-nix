@@ -212,5 +212,12 @@ in mkEmacs emacsPackages {
 	init = "(setq markdown-command \"multimarkdown\")";
 	systemPackages = [ pkgs.multimarkdown ];
       }
+      {
+        package  = "yaml-mode";
+        modes = {
+          ${ext ".yaml"} = "yaml-mode";
+          ${ext ".yml"} = "yaml-mode";
+        };
+      }
     ];
 }
