@@ -2,36 +2,33 @@
 
 ################################################################################
 
-export BASE="$HOME/Documents/workspace/github"
+BASE="$HOME/Documents/workspace/github"
 
 ################################################################################
 
 function log() {
     echo "$@" >&2
 }
-export -f log
 
 ################################################################################
 
 function invalid_syntax() {
     log "Usage: $0 <owner> [<repo>]" >&2
-    exit 1
+    return 1
 }
 
 ################################################################################
 
 # TODO: Implement pagination
 function get_user_repos() {
-    set -o errexit
     set -o nounset
     set -o pipefail
 
-    hubPath="$HOME/.config/hub"
-
     auth=""
 
-    user=$(grep -Po '(?<=user: ).*$' "$hubPath" && echo "")
-    token=$(grep -Po '(?<=oauth_token: ).*$' "$hubPath" && echo "")
+    hub_config="$HOME/.config/hub"
+    user="$(grep -Po '(?<=user: ).*$' "$hub_config")"
+    token="$(grep -Po '(?<=oauth_token: ).*$' "$hub_config")"
 
     if [[ -n "$user" && -n "$token" ]]; then
         auth="-u $user:$token"
@@ -39,12 +36,11 @@ function get_user_repos() {
 
     owner="$1"
 
-    curl -# "https://api.github.com/users/$owner/repos?per_page=100" $auth | \
-        jq '.[] | select(.fork | not) | .full_name' -r
+    curl --fail -# "https://api.github.com/users/$owner/repos?per_page=100" \
+        | jq '.[] | select(.fork | not) | .full_name' -r
 }
 
 function get_repos_from_args() {
-    set -o errexit
     set -o nounset
     set -o pipefail
 
@@ -55,17 +51,14 @@ function get_repos_from_args() {
     repos="$@"
 
     if [[ -z "$repos" ]]; then
-      log "No repo specified. Searching every repository of \"$owner\"." >&2
+      log "Searching every repository of \"$owner\"." >&2
       get_user_repos "$owner"
     else
       for i in $repos; do echo "$owner/$i"; done
     fi
 }
 
-################################################################################
-
 function clone_or_fetch() {
-    set -o errexit
     set -o nounset
 
     repo="$1"
@@ -75,20 +68,34 @@ function clone_or_fetch() {
     if ! [[ -e "$target" ]]; then
       tmpdir="$(mktemp -d)"
       log "Cloning $target"
-      git clone --quiet --depth 1 "$url" "$tmpdir"
-      mkdir -p "$(dirname "$target")"
-      mv -n "$tmpdir" "$target"
+      git clone --quiet --depth 1 "$url" "$tmpdir" \
+          && mkdir -p "$(dirname "$target")" \
+          && mv -n "$tmpdir" "$target"
     else
       log "Updating $target"
       git -C "$target" fetch --quiet >&2
     fi
 }
-export -f clone_or_fetch
+
 
 ################################################################################
 
-set -o errexit
 set -o pipefail
 
-get_repos_from_args "${@}" \
-    | parallel --line-buffer -j 12 clone_or_fetch
+repos="$(get_repos_from_args "${@}")"
+
+export -f clone_or_fetch log
+echo "$repos" | parallel \
+                    --halt now,fail=1 --line-buffer -j 12 \
+                    clone_or_fetch
+
+if [[ $? -eq 0 ]]; then
+  if [[ $(echo "$repos" | wc -l) -eq 1 ]]; then
+      echo cd "$BASE/$repos"
+  else
+      echo cd "$BASE/$(dirname "$(echo "$repos" | head -n 1)")"
+  fi
+else
+    log "Failed."
+    exit 1
+fi
