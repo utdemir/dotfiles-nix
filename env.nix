@@ -33,7 +33,6 @@ let
       haskellPackages.ShellCheck
       python2 python3
       python3Packages.virtualenv
-      haskellPackages.idris
       go
     ];
   };
