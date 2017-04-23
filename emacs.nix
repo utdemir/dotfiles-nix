@@ -12,8 +12,8 @@ let
        src = pkgs.fetchFromGitHub {
          owner = "chrisbarrett";
          repo = "kubernetes-el";
-         rev = "f53ce6f6ddda5efef165c2642dd13518025543c7";
-         sha256 = "1ljp7yllx6g5iyj17y2dqx0k4zbfa7qy54fj1j32kz4ka9j228z4";
+         rev = "68dd3c2184e72b7a669e5706d1a3d95a220276d1";
+         sha256 = "163kx407jj08ifbpvvw1cp24qb4rm6l89ikgzqha01lc0bjglax5";
        };
        packageRequires = [ self.dash self.magit ];
      };
