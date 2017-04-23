@@ -2,7 +2,7 @@
 
 ################################################################################
 
-BASE="$HOME/Documents/workspace/github"
+export BASE="$HOME/Documents/workspace/github"
 
 ################################################################################
 
@@ -76,7 +76,7 @@ function clone_or_fetch() {
       git -C "$target" fetch --quiet >&2
     fi
 }
-
+export -f clone_or_fetch
 
 ################################################################################
 
