@@ -102,9 +102,9 @@ in mkEmacs emacsPackages {
         };
       }
       {
-        package = "ag";
-        systemPackages = [ pkgs.silver-searcher ];
-        commands = [ "ag" "ag-project" ];
+        package = "rg";
+        systemPackages = [ pkgs.ripgrep ];
+        commands = [ "rg" "rg-project" "rg-dwim" ];
       }
       {
         package  = "undo-tree";

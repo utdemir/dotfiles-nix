@@ -15,7 +15,7 @@ let
       gitMinimal gitAndTools.hub
       haskellPackages.darcs
 
-      pv jq silver-searcher tree
+      pv jq ripgrep tree
       kt ncdu htop cloc
       haskellPackages.lentil
       haskellPackages.pandoc
