@@ -38,3 +38,11 @@ alias t5="tree -L 5"
 function gh() {
      $(gh-get "$@")
 }
+
+function hr() {
+    printf '\n%.0s' {1..10}
+    for _ in $(seq 1 3); do
+        printf '=%.0s' {1..$COLUMNS}
+    done
+    printf '\n%.0s' {1..10}
+}
