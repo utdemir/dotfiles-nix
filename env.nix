@@ -7,6 +7,7 @@ let
     paths = with pkgs; [
       (import ./emacs.nix { inherit pkgs; })
       (import ./dotfiles.nix { inherit pkgs; })
+      (import ./docker-cli.nix { inherit pkgs; })
       scripts
 
       zsh findutils gnugrep coreutils gnused
