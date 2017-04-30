@@ -219,5 +219,11 @@ in mkEmacs emacsPackages {
           ${ext ".yml"} = "yaml-mode";
         };
       }
+      {
+        package = "graphviz-dot-mode";
+        modes = {
+          ${ext ".dot"} = "graphviz-dot-mode";
+        };
+      }
     ];
 }
