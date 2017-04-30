@@ -5,6 +5,18 @@ with import ./lib/emacs.nix { inherit pkgs; };
 let
    emacsPackages = pkgs.emacsPackagesNg.override (super: self: {
      emacs = pkgs.emacs25Macport;
+
+     dante = self.melpaBuild {
+       pname = "dante";
+       version = "0.0.1";
+       src = pkgs.fetchFromGitHub {
+         owner = "jyp";
+         repo = "dante";
+         rev = "03afbbd5029339c6a4fa3fe4ff79b4818f062295";
+         sha256 = "03x8p8rjfipgxgy6mjg6r2ss4x565m2d0cai7i6ghk7mf8i7ipl4";
+       };
+       packageRequires = [ self.flycheck ];
+     };
      
      kubernetes = self.melpaBuild {
        pname = "kubernetes";
@@ -16,20 +28,6 @@ let
          sha256 = "163kx407jj08ifbpvvw1cp24qb4rm6l89ikgzqha01lc0bjglax5";
        };
        packageRequires = [ self.dash self.magit ];
-     };
-
-     intero = self.melpaBuild {
-       pname = "intero";
-       version = "0.0.1";
-       src =
-         let repo = pkgs.fetchFromGitHub {
-           owner = "commercialhaskell";
-           repo = "intero";
-           rev = "04265e68647bbf27772df7b71c9927d451e6256f";
-           sha256 = "0zax01dmrk1zbqw8j8css1w6qynbavfdjfgfxs34pb37gp4v8mgg";
-         };
-         in pkgs.runCommand "intero-el" {} "ln -s ${repo}/elisp $out";
-       packageRequires = [ self.flycheck self.company self.haskell-mode ];
      };
 
      apidoc-checker = self.melpaBuild {
@@ -159,16 +157,38 @@ in mkEmacs emacsPackages {
         commands = [ "kubernetes-overview" ];
       }
       {
-        package = "intero";
-        config  = "(add-hook 'haskell-mode-hook 'intero-mode)";
-        defer   = true;
+        package = "haskell-mode";
+        modes   = {
+          ${ext ".hs"} = "haskell-mode";
+          ${ext ".lhs"} = "haskell-mode";
+          ${ext ".hsc"} = "haskell-mode";
+          ${ext ".cabal"} = "haskell-cabal-mode";
+        };
+#        config = ''
+#          (add-hook 'haskell-mode-hook 'interactive-haskell-mode)
+#
+#          (setq haskell-process-wrapper-function
+#            (lambda (argv) (
+#              append (list "nix-shell" "-I" "." "--command")
+#                     (list (mapconcat 'identity argv " "))
+#            ))
+#          )
+#          (setq haskell-process-type 'ghci)
+#        '';
+      }
+      {
+        package = "dante";
+        config  = ''
+          (add-hook 'haskell-mode-hook 'dante-mode)
+          (add-hook 'haskell-mode-hook 'flycheck-mode)
+        '';
       }
       {
         package = "perspective";
         config  = ''
           (persp-mode 1)
           (persp-mode-set-prefix-key (kbd "C-x C-x"))
-          '';
+        '';
       }
       {
         package        = "apidoc-checker";
