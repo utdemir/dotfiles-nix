@@ -3,7 +3,7 @@
 with import ./lib/emacs.nix { inherit pkgs; };
 
 let
-   emacsPackages = pkgs.emacsPackagesNg.override (super: self: {
+   emacsPackages = pkgs.emacsPackagesNg.overrideScope (super: self: {
      emacs = pkgs.emacs25Macport;
 
      dante = self.melpaBuild {
