@@ -1,4 +1,9 @@
-{ nixpkgs }:
+{ nixpkgs ?
+    let rev = "a027f103a0022d4e77d199fc139bb65ab14e278f";
+    in builtins.fetchTarball {
+      url = "https://github.com/NixOS/nixpkgs/archive/${rev}.zip";
+    }
+}:
 let
   pkgs = import nixpkgs {};
   
