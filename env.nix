@@ -39,7 +39,15 @@ let
       haskellPackages.ShellCheck
       python2 python3
       python3Packages.virtualenv
-      go
+      go rustc
+
+      nix-repl nix-prefetch-scripts
+      (let src = pkgs.fetchFromGitHub {
+        owner = "expipiplus1"; repo = "update-nix-fetchgit";
+        rev = "c820f7bfad87ba9dc54fdcb61ad0ca19ce355c94";
+        sha256 = "1f7d7ldw3awgp8q1dqb36l9v0clyygx0vffcsf49w4pq9n1z5z89"; };
+       in haskellPackages.callPackage "${src}/default.nix" {}
+      )
     ];
   };
 
