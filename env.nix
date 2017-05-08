@@ -25,6 +25,7 @@ let
       kt ncdu htop cloc
       haskellPackages.lentil
       haskellPackages.pandoc
+      (pkgs.callPackage ./chart.nix {})
 
       mtr nmap
 
