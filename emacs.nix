@@ -75,7 +75,7 @@ in mkEmacs emacsPackages {
   '';
   packages = 
     (map (i: { package = i; }) [
-      "nix-mode"
+
     ]) ++ [
       {
         package = "scala-mode";
@@ -243,6 +243,18 @@ in mkEmacs emacsPackages {
         package = "graphviz-dot-mode";
         modes = {
           ${ext ".dot"} = "graphviz-dot-mode";
+        };
+      }
+      {
+        package = "protobuf-mode";
+        modes = {
+          ${ext ".proto"} = "protobuf-mode";
+        };
+      }
+      {
+        package = "nix-mode";
+        modes = {
+          ${ext ".nix"} = "nix-mode";
         };
       }
     ];
