@@ -16,6 +16,7 @@ source $ZSH/oh-my-zsh.sh
 
 export LANG=en_US.UTF-8
 export EDITOR='emacs -nw'
+export GOPATH=$HOME/Documents/workspace
 
 . $HOME/.nix-profile/etc/profile.d/nix.sh
 

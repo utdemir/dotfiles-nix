@@ -36,6 +36,13 @@ let
        src = pkgs.runCommand "apidoc-checker-el" {} "ln -s ${apidoc-checker-src}/elisp $out";
        packageRequires = [ self.flycheck self.js2-mode ];
      };
+
+     goflymake = self.melpaBuild {
+       pname = "goflymake";
+       version = "0.0.1";
+       src = goflymake-src;
+       packageRequires = [ self.flycheck ];
+     };
    });
 
    apidoc-checker-src = pkgs.fetchFromGitHub {
@@ -49,6 +56,19 @@ let
      name = "apidoc-checker";
      src = apidoc-checker-src;
    };
+
+   goflymake-src = pkgs.fetchFromGitHub {
+     owner = "dougm"; repo = "goflymake";
+     rev = "3b9634ef394a5ec125c6847195b1101ec1f47708";
+     sha256 = "0fy6frljzwz4y07yk602jiyk0xp83snwdsjmhk7y8akrv18vd9r3";
+   };
+
+   goflymake-bin = pkgs.buildGoPackage rec {
+    name = "goflymake-${version}";
+    version = "2014-07-31";
+    src = goflymake-src;
+    goPackagePath = "github.com/dougm/goflymake";
+  };
 
    mySnippets = mkYaSnippetsDir {
      haskell-mode = {
@@ -256,6 +276,15 @@ in mkEmacs emacsPackages {
         modes = {
           ${ext ".nix"} = "nix-mode";
         };
+      }
+      {
+        package = "goflymake";
+        init = ''
+          (require 'go-flycheck)
+        '';
+        systemPackages = [
+          goflymake-bin
+        ];
       }
     ];
 }

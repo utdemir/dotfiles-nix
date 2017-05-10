@@ -40,7 +40,10 @@ let
       haskellPackages.ShellCheck
       python2 python3
       python3Packages.virtualenv
-      go rustc
+      rustc
+
+      go goimports
+      (pkgs.callPackage ./protoc-gen-go.nix {})
 
       nix-repl nix-prefetch-scripts
       (let src = pkgs.fetchFromGitHub {
