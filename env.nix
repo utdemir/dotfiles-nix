@@ -22,7 +22,7 @@ let
       haskellPackages.darcs
 
       pv jq ripgrep tree
-      kt ncdu htop cloc
+      kt ncdu htop cloc clac
       haskellPackages.lentil
       haskellPackages.pandoc
       (pkgs.callPackage ./chart.nix {})
