@@ -6,18 +6,6 @@ let
    emacsPackages = pkgs.emacsPackagesNg.overrideScope (super: self: {
      emacs = pkgs.emacs25Macport;
 
-     dante = self.melpaBuild {
-       pname = "dante";
-       version = "0.0.1";
-       src = pkgs.fetchFromGitHub {
-         owner = "jyp";
-         repo = "dante";
-         rev = "03afbbd5029339c6a4fa3fe4ff79b4818f062295";
-         sha256 = "03x8p8rjfipgxgy6mjg6r2ss4x565m2d0cai7i6ghk7mf8i7ipl4";
-       };
-       packageRequires = [ self.flycheck ];
-     };
-     
      kubernetes = self.melpaBuild {
        pname = "kubernetes";
        version = "0.0.1";
@@ -184,23 +172,16 @@ in mkEmacs emacsPackages {
           ${ext ".hsc"} = "haskell-mode";
           ${ext ".cabal"} = "haskell-cabal-mode";
         };
-#        config = ''
-#          (add-hook 'haskell-mode-hook 'interactive-haskell-mode)
-#
-#          (setq haskell-process-wrapper-function
-#            (lambda (argv) (
-#              append (list "nix-shell" "-I" "." "--command")
-#                     (list (mapconcat 'identity argv " "))
-#            ))
-#          )
-#          (setq haskell-process-type 'ghci)
-#        '';
-      }
-      {
-        package = "dante";
-        config  = ''
-          (add-hook 'haskell-mode-hook 'dante-mode)
-          (add-hook 'haskell-mode-hook 'flycheck-mode)
+        config = ''
+          (add-hook 'haskell-mode-hook 'interactive-haskell-mode)
+
+          (setq haskell-process-wrapper-function
+            (lambda (argv) (
+              append (list "nix-shell" "-I" "." "--command")
+                     (list (mapconcat 'identity argv " "))
+            ))
+          )
+          (setq haskell-process-type 'ghci)
         '';
       }
       {
@@ -285,6 +266,12 @@ in mkEmacs emacsPackages {
         systemPackages = [
           goflymake-bin
         ];
+      }
+      {
+        package = "hindent";
+        config = ''
+          (add-hook 'haskell-mode-hook #'hindent-mode)
+        '';
       }
     ];
 }
