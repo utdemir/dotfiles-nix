@@ -289,6 +289,7 @@ in mkEmacs emacsPackages {
           (add-hook 'haskell-mode-hook #'hindent-mode)
         '';
       }
+      {
         package = "git-gutter";
         init = "(global-git-gutter-mode +1)";
       }
