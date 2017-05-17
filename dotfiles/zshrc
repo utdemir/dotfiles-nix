@@ -10,6 +10,7 @@ plugins=(
     git
     aws
     kubectl
+    fasd
     )
 
 source $ZSH/oh-my-zsh.sh

@@ -20,7 +20,7 @@ let
       gitMinimal gitAndTools.hub
       haskellPackages.darcs
 
-      pv jq ripgrep tree
+      pv jq ripgrep tree fasd
       kt ncdu htop cloc clac
       haskellPackages.lentil
       haskellPackages.pandoc
