@@ -4,7 +4,17 @@ with import ./lib/emacs.nix { inherit pkgs; };
 
 let
    emacsPackages = pkgs.emacsPackagesNg.overrideScope (super: self: {
-     emacs = pkgs.emacs25Macport;
+     # emacs = pkgs.emacs25Macport;
+     #emacs = pkgs.runCommand "emacs25-macport" {} ''
+     #  mkdir -p $out/bin
+     #  ln -s ${pkgs.emacs25Macport}/bin/emacs $out/bin/emacs
+     #'';
+     emacs = pkgs.stdenv.lib.overrideDerivation pkgs.emacs25Macport (super: {
+       fixupPhase = ''
+         rm $out/bin/emacs
+         ln -s $out/Applications/Emacs.app/Contents/MacOS/Emacs $out/bin/emacs
+       '';
+     });
 
      kubernetes = self.melpaBuild {
        pname = "kubernetes";
@@ -31,6 +41,15 @@ let
        src = goflymake-src;
        packageRequires = [ self.flycheck ];
      };
+
+     company-go = self.melpaBuild {
+       pname = "company-go";
+       version = "0.0.1";
+       src = pkgs.runCommand "gocode-src-emacs" {} ''
+         ln -s ${gocode-src}/emacs-company $out
+       '';
+       packageRequires = [ self.company ];
+     };
    });
 
    apidoc-checker-src = pkgs.fetchFromGitHub {
@@ -52,11 +71,24 @@ let
    };
 
    goflymake-bin = pkgs.buildGoPackage rec {
-    name = "goflymake-${version}";
-    version = "2014-07-31";
-    src = goflymake-src;
-    goPackagePath = "github.com/dougm/goflymake";
-  };
+     name = "goflymake-${version}";
+     version = "2014-07-31";
+     src = goflymake-src;
+     goPackagePath = "github.com/dougm/goflymake";
+   };
+
+   gocode-src = pkgs.fetchFromGitHub {
+     owner = "nsf"; repo = "gocode";
+     rev = "v.20150303";
+     sha256 = "03snnra31b5j6iy94gql240vhkynbjql9b4b5j8bsqp9inmbsia3";
+   };
+
+   gocode-bin = pkgs.buildGoPackage rec {
+     name = "gocode";
+     version = "0.0.1-dev";
+     src = gocode-src;
+     goPackagePath = "github.com/nsf/gocode";
+   };
 
    mySnippets = mkYaSnippetsDir {
      haskell-mode = {
@@ -206,12 +238,6 @@ in mkEmacs emacsPackages {
         };
       }
       {
-        package = "go-mode";
-        modes   = {
-          ${ext ".go"} = "go-mode";
-        };
-      }
-      {
         package = "js2-mode";
         modes = {
           ${ext ".js"} = "js2-mode";
@@ -272,6 +298,34 @@ in mkEmacs emacsPackages {
         config = ''
           (add-hook 'haskell-mode-hook #'hindent-mode)
         '';
+      }
+        package = "git-gutter";
+        init = "(global-git-gutter-mode +1)";
+      }
+      {
+        package = "go-mode";
+        modes   = {
+          ${ext ".go"} = "go-mode";
+        };
+        init = ''
+          (add-hook 'before-save-hook 'gofmt-before-save)
+        '';
+      }
+      {
+        package = "company";
+        init = ''
+          (global-company-mode)
+        '';
+      }
+      {
+        package = "company-go";
+        systemPackages = [
+          gocode-bin
+        ];
+      }
+      {
+        package = "highlight-symbol";
+        config = "(highlight-symbol-mode)";
       }
     ];
 }

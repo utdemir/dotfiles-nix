@@ -42,7 +42,7 @@ let
       python3Packages.virtualenv
       rustc
 
-      go goimports
+      go
       (pkgs.callPackage ./protoc-gen-go.nix {})
 
       nix-repl nix-prefetch-scripts
