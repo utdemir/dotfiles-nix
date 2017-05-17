@@ -4,17 +4,7 @@ with import ./lib/emacs.nix { inherit pkgs; };
 
 let
    emacsPackages = pkgs.emacsPackagesNg.overrideScope (super: self: {
-     # emacs = pkgs.emacs25Macport;
-     #emacs = pkgs.runCommand "emacs25-macport" {} ''
-     #  mkdir -p $out/bin
-     #  ln -s ${pkgs.emacs25Macport}/bin/emacs $out/bin/emacs
-     #'';
-     emacs = pkgs.stdenv.lib.overrideDerivation pkgs.emacs25Macport (super: {
-       fixupPhase = ''
-         rm $out/bin/emacs
-         ln -s $out/Applications/Emacs.app/Contents/MacOS/Emacs $out/bin/emacs
-       '';
-     });
+     emacs = pkgs.emacs25Macport;
 
      kubernetes = self.melpaBuild {
        pname = "kubernetes";
