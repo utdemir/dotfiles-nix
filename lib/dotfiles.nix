@@ -2,7 +2,7 @@
 
 {
   mkDotfiles = files:
-    pkgs.writeScriptBin "dotfiles" ''
+    pkgs.writeScript "dotfiles" ''
       function trace() {
         echo "! $@"; $@
       }

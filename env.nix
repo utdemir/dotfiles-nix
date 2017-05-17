@@ -11,7 +11,6 @@ let
     name = "utdemir-env";
     paths = with pkgs; [
       (import ./emacs.nix { inherit pkgs; })
-      (import ./dotfiles.nix { inherit pkgs; })
 #      (import ./docker-cli.nix { inherit pkgs; })
       scripts
 
@@ -59,6 +58,10 @@ let
     mkdir -p "$out"
     cp -r ${./scripts} "$out/bin" #*/
   '';
-in  env
 
-# nix-env -f default.nix -i utdemir-env -j 4 --arg nixpkgs $HOME/Documents/workspace/github/nixos/nixpkgs
+  dotfiles = import ./dotfiles.nix { inherit pkgs; };
+in pkgs.writeScript "apply.sh" ''
+  nix-env -i ${env}
+  ${dotfiles}
+''
+# $(nix-build env.nix)
