@@ -51,6 +51,14 @@ let
         sha256 = "1f7d7ldw3awgp8q1dqb36l9v0clyygx0vffcsf49w4pq9n1z5z89"; };
        in haskellPackages.callPackage "${src}/default.nix" {}
       )
+
+      (pkgs.haskellPackages.ghcWithPackages (p: with p; [
+        aeson cassava
+        pipes foldl lens lens-aeson split
+        attoparsec trifecta parsers
+        async turtle
+        wai warp
+      ]))
     ];
   };
 
