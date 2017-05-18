@@ -15,7 +15,7 @@ let
       scripts
 
       zsh findutils gnugrep coreutils gnused
-      watch graphviz rsync parallel protobuf3_2
+      watch graphviz rsync parallel
 
       gitMinimal gitAndTools.hub
       haskellPackages.darcs
@@ -41,7 +41,7 @@ let
       python3Packages.virtualenv
       rustc
 
-      go
+      go protobuf3_2
       (pkgs.callPackage ./protoc-gen-go.nix {})
 
       nix-repl nix-prefetch-scripts
