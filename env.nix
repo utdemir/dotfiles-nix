@@ -57,7 +57,9 @@ let
         pipes foldl lens lens-aeson split
         attoparsec trifecta parsers
         async turtle
-        wai warp
+        wreq http-client http-client-tls
+        wai warp servant
+        servant-server servant-client
       ]))
     ];
   };
