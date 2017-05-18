@@ -69,7 +69,10 @@ let
 
   dotfiles = import ./dotfiles.nix { inherit pkgs; };
 in pkgs.writeScript "apply.sh" ''
+  set -o errexit
+  set -o xtrace
   nix-env -i ${env}
   ${dotfiles}
+  echo "Done!"
 ''
 # $(nix-build env.nix)
