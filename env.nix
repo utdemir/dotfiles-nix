@@ -11,7 +11,6 @@ let
     name = "utdemir-env";
     paths = with pkgs; [
       (import ./emacs.nix { inherit pkgs; })
-#      (import ./docker-cli.nix { inherit pkgs; })
       scripts
 
       zsh findutils gnugrep coreutils gnused
@@ -24,7 +23,7 @@ let
       kt ncdu htop cloc clac
       haskellPackages.lentil
       haskellPackages.pandoc
-      (pkgs.callPackage ./chart.nix {})
+      (pkgs.callPackage ./packages/chart.nix {})
 
       mtr nmap
 
@@ -42,7 +41,7 @@ let
       rustc
 
       go protobuf3_2
-      (pkgs.callPackage ./protoc-gen-go.nix {})
+      (pkgs.callPackage ./packages/protoc-gen-go.nix {})
 
       nix-repl nix-prefetch-scripts
       (let src = pkgs.fetchFromGitHub {
