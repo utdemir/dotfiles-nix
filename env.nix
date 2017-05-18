@@ -1,5 +1,5 @@
 { nixpkgs ?
-    let rev = "a027f103a0022d4e77d199fc139bb65ab14e278f";
+    let rev = "afec912d81e08339868e0e1e84234e6ed7f6b3fd";
     in builtins.fetchTarball {
       url = "https://github.com/NixOS/nixpkgs/archive/${rev}.zip";
     }
