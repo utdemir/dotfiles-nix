@@ -27,6 +27,8 @@ if [[ -e $HOME/.zshrc_local ]]; then
   . $HOME/.zshrc_local
 fi
 
+NIX_PATH=nixpkgs=$HOME/Documents/workspace/github/nixos/nixpkgs
+
 ## CUSTOM SCRIPTS
 
 function trace() {

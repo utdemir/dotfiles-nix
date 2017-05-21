@@ -1,12 +1,5 @@
-{ nixpkgs ?
-    let rev = "32033f5bf300f0d94a786983110270fb8e053246";
-    in builtins.fetchTarball {
-      url = "https://github.com/NixOS/nixpkgs/archive/${rev}.zip";
-    }
-}:
+{ pkgs ? import <nixpkgs> {} }:
 let
-  pkgs = import nixpkgs {};
-  
   env = pkgs.buildEnv {
     name = "utdemir-env";
     paths = with pkgs; [
