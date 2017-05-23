@@ -25,13 +25,6 @@ let
        packageRequires = [ self.flycheck self.js2-mode ];
      };
 
-     goflymake = self.melpaBuild {
-       pname = "goflymake";
-       version = "0.0.1";
-       src = goflymake-src;
-       packageRequires = [ self.flycheck ];
-     };
-
      company-go = self.melpaBuild {
        pname = "company-go";
        version = "0.0.1";
@@ -52,19 +45,6 @@ let
    apidoc-checker-hs = pkgs.haskellPackages.haskellSrc2nix {
      name = "apidoc-checker";
      src = apidoc-checker-src;
-   };
-
-   goflymake-src = pkgs.fetchFromGitHub {
-     owner = "dougm"; repo = "goflymake";
-     rev = "3b9634ef394a5ec125c6847195b1101ec1f47708";
-     sha256 = "0fy6frljzwz4y07yk602jiyk0xp83snwdsjmhk7y8akrv18vd9r3";
-   };
-
-   goflymake-bin = pkgs.buildGoPackage rec {
-     name = "goflymake-${version}";
-     version = "2014-07-31";
-     src = goflymake-src;
-     goPackagePath = "github.com/dougm/goflymake";
    };
 
    gocode-src = pkgs.fetchFromGitHub {
@@ -163,8 +143,6 @@ in mkEmacs emacsPackages {
       }
       {
         package  = "flycheck";
-        config   = "(global-flycheck-mode)";
-        diminish = "'flycheck-mode";
       }
       {
         package = "ace-jump-mode";
@@ -276,15 +254,6 @@ in mkEmacs emacsPackages {
         };
       }
       {
-        package = "goflymake";
-        init = ''
-          (require 'go-flycheck)
-        '';
-        systemPackages = [
-          goflymake-bin
-        ];
-      }
-      {
         package = "hindent";
         config = ''
           (add-hook 'haskell-mode-hook #'hindent-mode)
@@ -300,7 +269,9 @@ in mkEmacs emacsPackages {
           ${ext ".go"} = "go-mode";
         };
         init = ''
-          (add-hook 'before-save-hook 'gofmt-before-save)
+          (add-hook 'before-save-hook #'gofmt-before-save)
+          (add-hook 'go-mode-hook #'flycheck-mode)
+          (add-hook 'go-mode-hook (lambda () (setq-local flycheck-checker 'go-build)))
         '';
       }
       {
