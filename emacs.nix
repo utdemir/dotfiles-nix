@@ -102,6 +102,7 @@ in mkEmacs emacsPackages {
     (setq column-number-mode t)
     (setq-default indent-tabs-mode nil)
     (setq tab-width 2)
+    (setq js-indent-level 2)
   '';
   packages = 
     (map (i: { package = i; }) [
