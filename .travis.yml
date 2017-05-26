@@ -7,3 +7,7 @@ install:
 
 script:
   - nix-build env.nix -j 4 --keep-going
+
+cache:
+  directories:
+    - /nix/store
