@@ -1,0 +1,9 @@
+os: osx
+language: c
+
+install:
+  - curl https://nixos.org/nix/install | sh
+  - source $HOME/.nix-profile/etc/profile.d/nix.sh
+
+script:
+  - nix-build env.nix -j 4 --keep-going
