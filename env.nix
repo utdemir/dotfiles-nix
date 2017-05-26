@@ -7,7 +7,7 @@ let
       scripts
 
       zsh findutils gnugrep coreutils gnused
-      watch graphviz rsync parallel
+      watch graphviz rsync parallel ascii
 
       gitMinimal gitAndTools.hub
       haskellPackages.darcs
