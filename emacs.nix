@@ -147,7 +147,7 @@ in mkEmacs emacsPackages {
       {
         package = "ace-jump-mode";
         binds   = {
-          "C-c SPC" = "ace-jump-mode";
+          "C-c C-c" = "ace-jump-mode";
         };
       }
       {
