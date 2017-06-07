@@ -13,4 +13,7 @@ ignore = "!gi() { curl -L -s https://www.gitignore.io/api/$@ ;}; gi"
 excludesfile = ~/.gitignore_global
 
 [push]
-	default = simple
+default = simple
+
+[url "git@github.com:"]
+insteadOf = https://github.com/
