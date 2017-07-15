@@ -1,0 +1,394 @@
+(setq user-init-file (or load-file-name (buffer-file-name)))
+(setq user-emacs-directory (file-name-directory user-init-file))
+
+(package-initialize)
+
+(eval-when-compile
+  (require 'use-package))
+(require 'diminish)
+(require 'bind-key)
+
+(setq inhibit-startup-screen t)
+(tool-bar-mode -1)
+(menu-bar-mode -1)
+(winner-mode 1)
+(windmove-default-keybindings)
+(global-font-lock-mode 1)
+(show-paren-mode 1)
+(scroll-bar-mode -1)
+(diminish 'auto-revert-mode)
+(setq column-number-mode t)
+(setq-default indent-tabs-mode nil)
+(setq tab-width 2)
+(setq js-indent-level 2)
+(setq make-backup-files nil)
+(setq create-lockfiles nil)
+
+(use-package scala-mode
+  :mode
+  (("\\.sbt\\'" . sbt-mode)
+   ("\\.scala\\'" . scala-mode))
+)
+
+(use-package sbt-mode
+  :init
+  (defun sbt-compile ()
+    "runs 'sbt-command compile'" (interactive)
+    (sbt-command "compile"))
+  (defun sbt-test ()
+    "runs 'sbt-command test'" (interactive)
+    (sbt-command "test"))
+  :bind
+  (("C-c C-l" . sbt-compile)
+   ("C-c C-t" . sbt-test))
+)
+
+(use-package rg
+  :commands (rg rg-project rg-dwim)
+)
+
+(use-package undo-tree
+  :init
+(setq undo-tree-visualizer-timestamps t)
+  :config
+(global-undo-tree-mode)
+  
+  
+  
+  :diminish
+'undo-tree-mode
+  
+)
+
+(use-package monokai-theme
+  
+  :config
+(load-theme 'monokai t)
+  
+  
+  
+  
+  
+)
+
+(use-package counsel
+  :init
+(ivy-mode 1)
+  
+  
+  
+  
+  :diminish
+'ivy-mode
+  
+)
+
+(use-package counsel-projectile
+  :init
+(counsel-projectile-on)
+  
+  
+  :bind
+(("C-c p f" . counsel-projectile-find-file))
+  
+  
+  
+)
+
+(use-package projectile
+  
+  :config
+(projectile-mode 1)
+  
+  
+  
+  
+  
+)
+
+(use-package flycheck
+  
+  
+  
+  
+  
+  
+  
+)
+
+(use-package ace-jump-mode
+  
+  
+  
+  :bind
+(("C-c C-c" . ace-jump-mode))
+  
+  
+  
+)
+
+(use-package ws-butler
+  
+  :config
+(ws-butler-global-mode)
+  
+  
+  
+  :diminish
+'ws-butler-mode
+  
+)
+
+(use-package yasnippet
+  :init
+(setq yas-snippet-dirs '("/nix/store/kbj2xwigb4dpg33m55qf2si9angb60bf-snippets"))
+  :config
+(yas-global-mode 1)
+  
+  
+  
+  :diminish
+'yas-minor-mode
+  
+)
+
+(use-package kubernetes
+  
+  
+  :commands
+(kubernetes-overview)
+  
+  
+  
+  
+)
+
+(use-package haskell-mode
+  
+  :config
+(add-hook 'haskell-mode-hook 'interactive-haskell-mode)
+
+(setq haskell-process-wrapper-function
+  (lambda (argv) (
+    append (list "nix-shell" "-I" "." "--command")
+           (list (mapconcat 'identity argv " "))
+  ))
+)
+(setq haskell-process-type 'cabal-repl)
+
+  
+  
+  :mode
+(("\\..cabal\\'" . haskell-cabal-mode) ("\\..hs\\'" . haskell-mode) ("\\..hsc\\'" . haskell-mode) ("\\..lhs\\'" . haskell-mode))
+  
+  
+)
+
+(use-package dante
+  
+  :config
+(add-hook 'haskell-mode-hook 'dante-mode)
+(add-hook 'haskell-mode-hook 'flycheck-mode)
+
+  
+  
+  
+  
+  
+)
+
+(use-package perspective
+  
+  :config
+(persp-mode 1)
+(persp-mode-set-prefix-key (kbd "C-x C-x"))
+
+  
+  
+  
+  
+  
+)
+
+(use-package apidoc-checker
+  
+  
+  
+  
+  
+  
+  
+)
+
+(use-package magit
+  
+  
+  :commands
+(magit-status)
+  
+  
+  
+  
+)
+
+(use-package restclient
+  
+  
+  
+  
+  :mode
+(("\\..rest\\'" . restclient-mode))
+  
+  
+)
+
+(use-package js2-mode
+  :init
+(setq js2-basic-offset 2)
+  
+  
+  
+  :mode
+(("\\..js\\'" . js2-mode) ("\\..json\\'" . js2-mode))
+  
+  
+)
+
+(use-package simpleclip
+  
+  :config
+(simpleclip-mode 1)
+  
+  
+  
+  
+  
+)
+
+(use-package markdown-mode
+  :init
+(setq markdown-command "multimarkdown")
+  
+  
+  
+  :mode
+(("README.md" . gfm-mode) ("\\..markdown\\'" . markdown-mode) ("\\..md\\'" . markdown-mode))
+  
+  
+)
+
+(use-package yaml-mode
+  
+  
+  
+  
+  :mode
+(("\\..yaml\\'" . yaml-mode) ("\\..yml\\'" . yaml-mode))
+  
+  
+)
+
+(use-package graphviz-dot-mode
+  
+  
+  
+  
+  :mode
+(("\\..dot\\'" . graphviz-dot-mode))
+  
+  
+)
+
+(use-package protobuf-mode
+  
+  
+  
+  
+  :mode
+(("\\..proto\\'" . protobuf-mode))
+  
+  
+)
+
+(use-package nix-mode
+  
+  
+  
+  
+  :mode
+(("\\..nix\\'" . nix-mode))
+  
+  
+)
+
+(use-package hindent
+  
+  :config
+(add-hook 'haskell-mode-hook #'hindent-mode)
+
+  
+  
+  
+  
+  
+)
+
+(use-package git-gutter
+  :init
+(global-git-gutter-mode +1)
+  
+  
+  
+  
+  
+  
+)
+
+(use-package go-mode
+  :init
+(add-hook 'before-save-hook #'gofmt-before-save)
+(add-hook 'go-mode-hook #'flycheck-mode)
+(add-hook 'go-mode-hook (lambda () (setq-local flycheck-checker 'go-build)))
+
+  
+  
+  
+  :mode
+(("\\..go\\'" . go-mode))
+  
+  
+)
+
+(use-package company
+  :init
+(global-company-mode)
+
+  
+  
+  
+  
+  
+  
+)
+
+(use-package company-go
+  
+  
+  
+  
+  
+  
+  
+)
+
+(use-package highlight-symbol
+  
+  :config
+(highlight-symbol-mode) 
+  
+  
+  
+  
+  
+)
+
