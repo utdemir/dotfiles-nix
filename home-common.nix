@@ -6,21 +6,15 @@
 
     arandr rxvt_unicode spotify qutebrowser scrot
     qiv zathura xclip networkmanagerapplet i3status dmenu
-    unclutter i3lock feh slack deluge dia
-    dropbox ranger imagemagick pdftk 
-
-    # games
-    hedgewars
+    unclutter i3lock feh slack dia
+    dropbox ranger imagemagick pdftk file dos2unix
 
     # multimedia
-    smplayer mplayer audacity minidlna
+    smplayer mplayer audacity
 
     # looks
     lxappearance xfontsel
     ubuntu_font_family
-
-    # console
-    nixops
 
     unzip atool
     
@@ -44,7 +38,6 @@
     cmatrix
 
     awscli
-    (kubernetes.override { components = [ "cmd/kubectl" ]; })
 
     cabal2nix
     gcc openjdk8 nodejs
@@ -81,12 +74,6 @@
   
   home.file.".zshrc".source = ./dotfiles/zshrc;
   home.file.".zsh_custom/utdemir.zsh-theme".source = ./dotfiles/zsh_custom/utdemir.zsh-theme;
-
-  home.file.".minidlna.conf".text = ''
-    friendly_name=SerenityEntertainmentConsole
-    media_dir=/home/utdemir/Downloads
-    db_dir=/home/utdemir/.cache/minidlna
-    '';
 
   home.file.".emacs".source = ./dotfiles/emacs;
   programs.emacs = {
