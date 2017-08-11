@@ -1,7 +1,7 @@
 { pkgs, ... }:
 
 {
-  imports = [ ./home-common.nix ];
+  imports = [ ./common-home.nix ];
 
   home.packages = with pkgs; [
     minidlna deluge

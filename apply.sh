@@ -1,6 +1,7 @@
 #!/usr/bin/env sh
 
 set -o errexit
+set -o pipefail
 
 cd "$( dirname "${BASH_SOURCE[0]}" )"
 
@@ -12,7 +13,7 @@ sudo cp /etc/nixos/configuration.nix{,-$(date +%s).bac}
 cat <<EOF | sudo tee /etc/nixos/configuration.nix > /dev/null
 {
   imports =
-    [ $(realpath ./configuration-$(hostname).nix)
+    [ $(realpath ./$(hostname)-configuration.nix)
       ./hardware-configuration.nix
     ];
 }
@@ -24,4 +25,4 @@ echo
 echo "# Applying home configuration."
 echo
 
-home-manager -f ./home-$(hostname).nix switch
+home-manager -f ./$(hostname)-home.nix switch
