@@ -2,25 +2,23 @@
 
 {
   home.packages = with pkgs; [
-    # ui   
-
     arandr rxvt_unicode spotify qutebrowser scrot
     qiv zathura xclip networkmanagerapplet i3status dmenu
     unclutter i3lock feh slack dia
-    dropbox ranger imagemagick pdftk file dos2unix
+    ranger imagemagick pdftk file dos2unix
 
-    # multimedia
     smplayer mplayer audacity
 
-    # looks
     lxappearance xfontsel
     ubuntu_font_family
 
     unzip atool
     
     neovim nload siege
-    oh-my-zsh lastpass-cli 
+    lastpass-cli 
 
+    oh-my-zsh
+    
     zsh findutils gnugrep coreutils gnused
     watch graphviz rsync parallel ascii
 

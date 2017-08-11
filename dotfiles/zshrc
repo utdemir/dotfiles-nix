@@ -10,6 +10,7 @@ plugins=(
     git
     aws
     kubectl
+    zsh-navigation-tools
     )
 
 source $ZSH/oh-my-zsh.sh
