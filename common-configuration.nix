@@ -44,7 +44,7 @@
     home = "/home/utdemir";
     isNormalUser = true;
     uid = 1000;
-    extraGroups = [ "wheel" "networkmanager" ];
+    extraGroups = [ "wheel" "networkmanager" "docker" ];
     shell = "${pkgs.zsh}/bin/zsh";
   };
 
