@@ -4,10 +4,11 @@
   home.packages = with pkgs; [
     arandr rxvt_unicode spotify qutebrowser scrot
     qiv zathura xclip networkmanagerapplet i3status dmenu
-    unclutter i3lock feh slack dia xsel
-    ranger imagemagick pdftk file dos2unix
-
-    smplayer mplayer audacity
+    unclutter i3lock feh dia xsel parcellite ncdu
+    ranger imagemagick pdftk file dos2unix bashmount
+    workrave
+    
+    smplayer mplayer audacity gimp
 
     lxappearance xfontsel
     ubuntu_font_family
