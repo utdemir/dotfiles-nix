@@ -89,10 +89,15 @@
 
 (require 'scala-mode)
 (require 'sbt-mode)
+
+
+(defun my-sbt-compile () (interactive) (sbt-command "compile"))
+(defun my-sbt-test () (interactive) (sbt-command "test"))
+
 (add-hook 'scala-mode-hook
           '(lambda ()
-             (local-set-key (kbd "C-c C-l") 'sbt-compile)
-             (local-set-key (kbd "C-c C-t") 'sbt-test)
+             (local-set-key (kbd "C-c C-l") 'my-sbt-compile)
+             (local-set-key (kbd "C-c C-t") 'my-sbt-test)
              ))
 
 ;; JavaScript
