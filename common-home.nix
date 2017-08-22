@@ -26,7 +26,7 @@
     haskellPackages.darcs
 
     pv jq ripgrep tree fasd
-    ncdu htop cloc
+    ncdu htop cloc units
     haskellPackages.lentil
     haskellPackages.pandoc
     curl wget
@@ -37,7 +37,7 @@
 
     awscli
 
-    cabal2nix
+    cabal2nix stack
     gcc openjdk8 nodejs
     (sbt.override { jre = jre8; })
     haskellPackages.ShellCheck
@@ -63,6 +63,8 @@
     userEmail = "me@utdemir.com";
   };
 
+  home.file.".stack/config.yaml".source = ./dotfiles/stack;
+  
   home.file.".config/i3/config".source = ./dotfiles/i3/config;
   home.file.".config/i3/autostart.sh".source = ./dotfiles/i3/autostart.sh;
   home.file.".config/i3status/config".source = ./dotfiles/i3/i3status;
@@ -88,6 +90,8 @@
       counsel-projectile
       undo-tree
       rg
+      haskell-mode
+      intero
     ];
   };
 }
