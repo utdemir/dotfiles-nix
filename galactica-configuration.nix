@@ -20,5 +20,5 @@
     { device = "/swapfile"; size = 2048; }
   ];
 
-  networking.hostName = "galactica"; # Define your hostname.
+  networking.hostName = "galactica";
 }

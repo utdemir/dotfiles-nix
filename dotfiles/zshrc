@@ -1,4 +1,4 @@
-export PATH=$HOME/bin:/usr/local/opt/coreutils/libexec/gnubin:/usr/bin:/bin:$PATH
+export PATH=$HOME/bin:/usr/local/opt/coreutils/libexec/gnubin:/usr/bin:$PATH
 
 ZSH_CUSTOM=$HOME/.zsh_custom
 

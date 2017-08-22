@@ -13,7 +13,7 @@
     lxappearance xfontsel
     ubuntu_font_family
 
-    unzip atool
+    zip unzip atool
     
     neovim nload siege
     lastpass-cli 
@@ -39,7 +39,7 @@
     awscli
 
     cabal2nix stack
-    gcc openjdk8 nodejs
+    gcc gnumake openjdk8 nodejs
     (sbt.override { jre = jre8; })
     haskellPackages.ShellCheck
     python2 python3
