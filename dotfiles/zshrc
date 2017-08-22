@@ -18,15 +18,14 @@ source $ZSH/oh-my-zsh.sh
 export LANG=en_US.UTF-8
 export EDITOR='emacs -nw'
 
-export GOPATH=$HOME/Documents/workspace/golang
-export PATH=$PATH:$GOPATH/bin
-
-# NIX_PATH=nixpkgs=$HOME/Documents/workspace/github/nixos/nixpkgs
-
 ## CUSTOM SCRIPTS
 
 function trace() {
     echo "! $@"; $@
+}
+
+function tmp() {
+    cd "$(mktemp -d)"
 }
 
 alias t1="tree -L 1"
@@ -42,3 +41,5 @@ function hr() {
     done
     printf '\n%.0s' {1..10}
 }
+
+alias hrr="hr; clear"
