@@ -79,7 +79,6 @@
   programs.emacs = {
     enable = true;
     extraPackages = epkgs: with epkgs; [
-      use-package
       monokai-theme
       nix-mode
       counsel
@@ -92,6 +91,14 @@
       rg
       haskell-mode
       intero
+      ace-jump-mode
+      nix-mode
+      protobuf-mode
+      git-gutter
+      highlight-symbol
+      diminish
+      scala-mode
+      sbt-mode
     ];
   };
 }
