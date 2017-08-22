@@ -51,6 +51,15 @@
 (require 'highlight-symbol)
 (highlight-symbol-mode) 
 
+(defun yank-to-x-clipboard ()
+  (interactive)
+  (if (region-active-p)
+      (progn
+        (shell-command-on-region (region-beginning) (region-end) "xsel -i -b")
+        (message "Yanked region to clipboard!")
+        (deactivate-mark))
+    (message "No region active; can't yank to clipboard!")))
+
 ;; Org
 
 (setq org-agenda-files (quote ("/home/utdemir/workspace/diary/diary.org")))
