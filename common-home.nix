@@ -100,6 +100,7 @@
       diminish
       scala-mode
       sbt-mode
+      restclient
     ];
   };
 }
