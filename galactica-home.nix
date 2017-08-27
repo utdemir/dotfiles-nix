@@ -10,11 +10,11 @@
     (callPackage ./packages/kt.nix {})
   ];
 
-  home.file.".autorandr/postswitch" = {
+  home.file.".config/.autorandr/postswitch" = {
     mode = "755";
     text = ''
       #!/usr/bin/env sh
-      feh --bg-center ~/.config/i3/wallpaper.png
+      feh --bg-fill ~/.config/i3/wallpaper.png
     '';
   };
 }
