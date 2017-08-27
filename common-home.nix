@@ -6,7 +6,7 @@
     qiv zathura xclip networkmanagerapplet i3status dmenu
     unclutter i3lock feh dia xsel parcellite ncdu
     ranger imagemagick pdftk file dos2unix bashmount
-    workrave
+    pnmixer
     
     smplayer mplayer audacity gimp
 
@@ -21,7 +21,7 @@
     oh-my-zsh
     
     zsh findutils gnugrep coreutils gnused
-    watch graphviz rsync parallel ascii
+    watch graphviz rsync parallel ascii openssl
 
     gitAndTools.hub
     haskellPackages.darcs

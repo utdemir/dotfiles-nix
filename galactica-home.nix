@@ -7,6 +7,7 @@
     protobuf3_2
     slack
     autorandr
+    (callPackage ./packages/kt.nix {})
   ];
 
   home.file.".autorandr/postswitch" = {
