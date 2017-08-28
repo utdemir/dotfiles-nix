@@ -6,7 +6,7 @@
     qiv zathura xclip networkmanagerapplet i3status dmenu
     unclutter i3lock feh dia xsel parcellite ncdu
     ranger imagemagick pdftk file dos2unix bashmount
-    pnmixer
+    pasystray pavucontrol
     
     smplayer mplayer audacity gimp
 

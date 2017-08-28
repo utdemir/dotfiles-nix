@@ -40,6 +40,8 @@
     };
   };
 
+  hardware.pulseaudio.enable = true;
+
   users.extraUsers.utdemir = {
     home = "/home/utdemir";
     isNormalUser = true;
