@@ -52,7 +52,12 @@
       sha256 = "1f7d7ldw3awgp8q1dqb36l9v0clyygx0vffcsf49w4pq9n1z5z89"; };
      in haskellPackages.callPackage "${src}/default.nix" {}
     )
+
+    autorandr
+
   ];
+
+  programs.chromium.enable = true;
 
   programs.firefox = {
     enable = true;
@@ -102,5 +107,12 @@
       sbt-mode
       restclient
     ];
+  };
+  home.file.".config/.autorandr/postswitch" = {
+    mode = "755";
+    text = ''
+      #!/usr/bin/env sh
+      feh --bg-fill ~/.config/i3/wallpaper.png
+    '';
   };
 }
