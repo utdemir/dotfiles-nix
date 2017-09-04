@@ -7,7 +7,9 @@
     unclutter i3lock feh dia xsel parcellite ncdu
     ranger imagemagick pdftk file dos2unix bashmount
     pasystray pavucontrol
-    
+
+    libreoffice
+
     smplayer mplayer audacity gimp
 
     lxappearance xfontsel
