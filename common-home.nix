@@ -18,7 +18,7 @@
     neovim nload siege
     lastpass-cli 
 
-    oh-my-zsh
+    oh-my-zsh chromium
     
     zsh findutils gnugrep coreutils gnused
     watch graphviz rsync parallel ascii openssl
@@ -56,8 +56,6 @@
     autorandr
 
   ];
-
-  programs.chromium.enable = true;
 
   programs.firefox = {
     enable = true;
