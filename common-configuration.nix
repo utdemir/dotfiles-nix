@@ -10,7 +10,10 @@
   ];
 
   services.openssh.enable = true;
-  networking.firewall.enable = false;
+  networking.firewall = {
+    enable = true;
+    allowedTCPPorts = [ 22 ];
+  };
 
   virtualisation.docker = {
     enable = true;
