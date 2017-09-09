@@ -4,7 +4,7 @@
   imports = [ ./common-home.nix ];
 
   home.packages = with pkgs; [
-    minidlna deluge dropbox minikube
+    minidlna deluge dropbox
   ];
 
   home.file.".minidlna.conf".text = ''

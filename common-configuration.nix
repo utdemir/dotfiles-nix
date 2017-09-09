@@ -20,7 +20,7 @@
     liveRestore = false;
     # autoPrune.enable = true;
   };
-  
+
   services.xserver = {
     enable = true;
     autorun = true;

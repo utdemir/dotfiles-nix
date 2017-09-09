@@ -21,4 +21,6 @@
   ];
 
   networking.hostName = "serenity";
+
+  virtualisation.virtualbox.host.enable = true;
 }
