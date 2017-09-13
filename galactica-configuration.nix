@@ -17,7 +17,7 @@
   ];
 
   swapDevices = [
-    { device = "/swapfile"; size = 2048; }
+    { device = "/swapfile"; size = 4096; }
   ];
 
   networking.hostName = "galactica";
