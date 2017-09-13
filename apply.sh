@@ -19,11 +19,10 @@ cat <<EOF | sudo tee /etc/nixos/configuration.nix > /dev/null
 }
 EOF
 
-sudo nixos-rebuild --upgrade switch
+sudo nixos-rebuild switch
 
 echo
 echo "# Applying home configuration."
 echo
 
-nix-channel --update
 home-manager -f ./$(hostname)-home.nix switch
