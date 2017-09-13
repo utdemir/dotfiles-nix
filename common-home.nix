@@ -2,28 +2,43 @@
 
 {
   home.packages = with pkgs; [
-    arandr rxvt_unicode spotify qutebrowser scrot
-    qiv zathura xclip networkmanagerapplet i3status dmenu
-    unclutter i3lock feh dia xsel parcellite ncdu
-    ranger imagemagick pdftk file dos2unix bashmount
+    # CLI
+    ranger
+    arandr scrot bashmount
+    xsel xclip
+    imagemagick pdftk ncdu
+    htop tree units ascii
+
+    nload siege
+
+    zip unzip
+
+    file dos2unix findutils coreutils
+    watch graphviz rsync parallel openssl
+    inotify-tools
+
+    zsh
+    oh-my-zsh
+
+    lastpass-cli
+
+    # i3
+    i3status i3lock feh dmenu rxvt_unicode unclutter
+    networkmanagerapplet parcellite
+    lxappearance xfontsel ubuntu_font_family
+
+    # Media
+    qiv  zathura
     pasystray pavucontrol
-
-    libreoffice
-
     smplayer mplayer audacity gimp
 
-    lxappearance xfontsel
-    ubuntu_font_family
+    spotify
 
-    zip unzip atool
-    
-    neovim nload siege
-    lastpass-cli 
+    # Utils
+    libreoffice dia chromium
 
-    oh-my-zsh chromium
-    
-    zsh findutils gnugrep coreutils gnused
-    watch graphviz rsync parallel ascii openssl
+    # Programming
+    neovim
 
     gitAndTools.hub
     haskellPackages.darcs
@@ -33,6 +48,8 @@
     haskellPackages.lentil
     haskellPackages.pandoc
     curl wget
+
+    hexedit docker_compose
 
     mtr nmap
 
@@ -106,6 +123,7 @@
       scala-mode
       sbt-mode
       restclient
+      yaml-mode
     ];
   };
   home.file.".config/.autorandr/postswitch" = {
