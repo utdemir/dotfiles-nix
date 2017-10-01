@@ -1,4 +1,7 @@
-{ pkgs, ... }:
+{...}:
+
+let pkgs = import ./nixpkgs {};
+in
 
 {
   home.packages = with pkgs; [
@@ -11,7 +14,7 @@
 
     nload siege
 
-    zip unzip
+    zip unzip man man-db
 
     file dos2unix findutils coreutils
     watch graphviz rsync parallel openssl
@@ -26,6 +29,9 @@
     i3status i3lock feh dmenu rxvt_unicode unclutter
     networkmanagerapplet parcellite
     lxappearance xfontsel ubuntu_font_family
+
+    # Desktop
+    firefox-beta-bin
 
     # Media
     qiv  zathura
@@ -69,16 +75,12 @@
       owner = "expipiplus1"; repo = "update-nix-fetchgit";
       rev = "c820f7bfad87ba9dc54fdcb61ad0ca19ce355c94";
       sha256 = "1f7d7ldw3awgp8q1dqb36l9v0clyygx0vffcsf49w4pq9n1z5z89"; };
-     in haskellPackages.callPackage "${src}/default.nix" {}
+     in haskell.lib.doJailbreak (haskellPackages.callPackage "${src}/default.nix" {})
     )
 
     autorandr
 
   ];
-
-  programs.firefox = {
-    enable = true;
-  };
 
   programs.git = {
     enable = true;
