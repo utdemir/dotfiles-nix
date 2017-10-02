@@ -31,7 +31,7 @@ in
     lxappearance xfontsel ubuntu_font_family
 
     # Desktop
-    firefox-beta-bin
+    firefox
 
     # Media
     qiv  zathura
