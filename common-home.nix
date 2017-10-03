@@ -45,6 +45,7 @@ in
 
     # Programming
     neovim
+    (kubernetes.override { components = [ "cmd/kubectl" ]; })
 
     gitAndTools.hub
     haskellPackages.darcs
