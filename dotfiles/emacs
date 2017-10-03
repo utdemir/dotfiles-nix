@@ -107,6 +107,11 @@
 ;; Haskell
 
 (require 'haskell-mode)
-(require 'intero)
-(add-hook 'haskell-mode-hook 'intero-mode)
-
+(add-hook 'haskell-mode-hook 'interactive-haskell-mode)
+(setq haskell-process-wrapper-function
+  (lambda (argv) (
+    append (list "nix-shell" "-I" "." "--command")
+           (list (mapconcat 'identity argv " "))
+  ))
+)
+(setq haskell-process-type 'cabal-repl)

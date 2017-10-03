@@ -80,7 +80,6 @@ in
     )
 
     autorandr
-
   ];
 
   programs.git = {
@@ -116,7 +115,6 @@ in
       undo-tree
       rg
       haskell-mode
-      intero
       ace-jump-mode
       nix-mode
       protobuf-mode
