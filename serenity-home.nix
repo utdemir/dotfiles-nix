@@ -4,7 +4,9 @@
   imports = [ ./common-home.nix ];
 
   home.packages = with pkgs; [
-    minidlna deluge dropbox minikube
+    minidlna deluge dropbox skype
+
+    google-cloud-sdk
   ];
 
   home.file.".minidlna.conf".text = ''
