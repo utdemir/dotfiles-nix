@@ -9,7 +9,7 @@ in
     protobuf3_1
     travis
     slack
-    (callPackage ./packages/kt.nix {})
+    kt
     spark
   ];
 
