@@ -10,6 +10,7 @@ in
     travis
     slack
     (callPackage ./packages/kt.nix {})
+    spark
   ];
 
 }
