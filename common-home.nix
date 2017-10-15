@@ -23,7 +23,9 @@ in
     zsh
     oh-my-zsh
 
-    lastpass-cli
+    entr xdotool
+
+    lastpass-cli gnupg keybase
 
     # i3
     i3status i3lock feh dmenu rxvt_unicode unclutter
