@@ -33,7 +33,7 @@ in
     lxappearance xfontsel ubuntu_font_family
 
     # Desktop
-    firefox
+    firefox-beta-bin
 
     # Media
     qiv  zathura
@@ -117,6 +117,7 @@ in
       undo-tree
       rg
       haskell-mode
+      hindent
       ace-jump-mode
       nix-mode
       protobuf-mode
