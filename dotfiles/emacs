@@ -115,3 +115,6 @@
   ))
 )
 (setq haskell-process-type 'ghci)
+
+(require 'hindent)
+(add-hook 'haskell-mode-hook #'hindent-mode)
