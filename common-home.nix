@@ -123,11 +123,12 @@ in
       protobuf-mode
       git-gutter
       highlight-symbol
-      diminish
+      rich-minority
       scala-mode
       sbt-mode
       restclient
       yaml-mode
+      smart-mode-line
     ];
   };
   home.file.".config/.autorandr/postswitch" = {

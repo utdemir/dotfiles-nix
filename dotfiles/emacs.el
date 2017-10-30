@@ -12,6 +12,7 @@
 (setq js-indent-level 2)
 (setq make-backup-files nil)
 (setq create-lockfiles nil)
+(setq custom-safe-themes t)
 
 ;; Looks
 
@@ -21,10 +22,12 @@
 (require 'git-gutter)
 (global-git-gutter-mode +1)
 
-(require 'diminish)
-(diminish 'undo-tree-mode)
-(diminish 'ivy-mode)
-(diminish 'ws-butler-mode)
+(require 'rich-minority)
+(setq rm-whitelist '("nothing"))
+(rich-minority-mode 1)
+
+(require 'smart-mode-line)
+(sml/setup)
 
 ;; Utils
 
