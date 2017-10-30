@@ -63,31 +63,6 @@
         (deactivate-mark))
     (message "No region active; can't yank to clipboard!")))
 
-;; Org
-
-(setq org-agenda-files (quote ("/home/utdemir/workspace/diary/diary.org")))
-
-(setq org-adapt-indentation nil)
-(setq org-list-description-max-indent 5)
-(global-set-key (kbd "C-c a") 'org-agenda)
-
-(define-key global-map (kbd "C-c c") 'org-capture)
-(setq org-capture-templates
-      '(("i" "inbox" entry (file+headline "/home/utdemir/workspace/diary/diary.org" "Inbox")
-         "* %?")
-        ))
-
-(defun my-org-update () (interactive)
-  (magit-stage-modified)
-  (magit-commit (list "-m" "update"))
-  (call-interactively #'magit-push-current-to-upstream)
-  )
-
-(add-hook 'org-mode-hook
-          '(lambda ()
-             (local-set-key (kbd "C-c C-p") 'my-org-update)
-             ))
-
 ;; Scala
 
 (require 'scala-mode)
