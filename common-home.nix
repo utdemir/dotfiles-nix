@@ -102,7 +102,7 @@ in
   home.file.".zshrc".source = ./dotfiles/zshrc;
   home.file.".zsh_custom/utdemir.zsh-theme".source = ./dotfiles/zsh_custom/utdemir.zsh-theme;
 
-  home.file.".emacs".source = ./dotfiles/emacs;
+  home.file.".emacs.el".source = ./dotfiles/emacs.el;
   programs.emacs = {
     enable = true;
     extraPackages = epkgs: with epkgs; [
