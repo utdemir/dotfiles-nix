@@ -128,6 +128,7 @@ in
       restclient
       yaml-mode
       smart-mode-line
+      multiple-cursors
     ];
   };
   home.file.".config/.autorandr/postswitch" = {
