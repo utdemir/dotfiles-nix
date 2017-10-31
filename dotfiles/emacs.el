@@ -51,6 +51,10 @@
 (require 'highlight-symbol)
 (highlight-symbol-mode) 
 
+(require 'multiple-cursors)
+(global-set-key (kbd "C-<") 'mc/unmark-next-like-this)
+(global-set-key (kbd "C->") 'mc/mark-next-like-this)
+
 (defun yank-to-x-clipboard ()
   (interactive)
   (if (region-active-p)
@@ -64,7 +68,6 @@
 
 (require 'scala-mode)
 (require 'sbt-mode)
-
 
 (defun my-sbt-compile () (interactive) (sbt-command "compile"))
 (defun my-sbt-test () (interactive) (sbt-command "test"))
