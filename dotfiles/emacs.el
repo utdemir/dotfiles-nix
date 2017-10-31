@@ -64,6 +64,13 @@
         (deactivate-mark))
     (message "No region active; can't yank to clipboard!")))
 
+(require 'company)
+(global-company-mode)
+
+(require 'company-dabbrev)
+(setq company-dabbrev-ignore-case nil)
+(setq company-dabbrev-downcase nil)
+
 ;; Scala
 
 (require 'scala-mode)

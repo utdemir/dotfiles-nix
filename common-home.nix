@@ -106,6 +106,7 @@ in
   programs.emacs = {
     enable = true;
     extraPackages = epkgs: with epkgs; [
+      company
       counsel
       counsel-projectile
       doom-themes
