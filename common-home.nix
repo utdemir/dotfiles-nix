@@ -106,29 +106,28 @@ in
   programs.emacs = {
     enable = true;
     extraPackages = epkgs: with epkgs; [
-      nix-mode
-      counsel
-      magit
-      ws-butler
-      projectile
       counsel
       counsel-projectile
-      undo-tree
-      rg
-      haskell-mode
-      hindent
-      nix-mode
-      protobuf-mode
-      git-gutter
-      highlight-symbol
-      rich-minority
-      scala-mode
-      sbt-mode
-      restclient
-      yaml-mode
-      smart-mode-line
-      multiple-cursors
       doom-themes
+      git-gutter
+      haskell-mode
+      highlight-symbol
+      hindent
+      magit
+      multiple-cursors
+      nix-mode
+      nix-mode
+      projectile
+      protobuf-mode
+      restclient
+      rg
+      rich-minority
+      sbt-mode
+      scala-mode
+      smart-mode-line
+      undo-tree
+      ws-butler
+      yaml-mode
     ];
   };
   home.file.".config/.autorandr/postswitch" = {
