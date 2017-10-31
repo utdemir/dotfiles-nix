@@ -118,7 +118,6 @@ in
       rg
       haskell-mode
       hindent
-      ace-jump-mode
       nix-mode
       protobuf-mode
       git-gutter

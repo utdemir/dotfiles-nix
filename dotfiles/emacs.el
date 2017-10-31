@@ -45,9 +45,6 @@
 (counsel-projectile-on)
 (global-set-key (kbd "C-c p f") 'counsel-projectile-find-file)
 
-(require 'ace-jump-mode)
-(global-set-key (kbd "C-c C-c") 'ace-jump-mode)
-
 (require 'ws-butler)
 (ws-butler-global-mode)
 
