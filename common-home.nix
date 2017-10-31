@@ -106,7 +106,6 @@ in
   programs.emacs = {
     enable = true;
     extraPackages = epkgs: with epkgs; [
-      monokai-theme
       nix-mode
       counsel
       magit
@@ -129,6 +128,7 @@ in
       yaml-mode
       smart-mode-line
       multiple-cursors
+      doom-themes
     ];
   };
   home.file.".config/.autorandr/postswitch" = {

@@ -16,8 +16,8 @@
 
 ;; Looks
 
-(require 'monokai-theme)
-(load-theme 'monokai t)
+(require 'doom-themes)
+(load-theme 'doom-molokai t)
 
 (require 'git-gutter)
 (global-git-gutter-mode +1)
