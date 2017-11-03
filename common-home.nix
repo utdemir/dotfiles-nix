@@ -133,7 +133,6 @@ in
       magit
       multiple-cursors
       nix-mode
-      nix-mode
       projectile
       protobuf-mode
       restclient
