@@ -11,6 +11,7 @@ in
     xsel xclip
     imagemagick pdftk ncdu
     htop tree units ascii
+    powertop
 
     nload siege
 
