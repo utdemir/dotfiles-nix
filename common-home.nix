@@ -89,6 +89,18 @@ in
     enable = true;
     userName = "Utku Demir";
     userEmail = "me@utdemir.com";
+    signing = {
+      signByDefault = true;
+      key = "76CCC3C7A7398C1321F5438BF3F8629C3E0BF60B";
+      gpgPath = "gpg";
+    };
+  };
+
+  services.gpg-agent = {
+    enable = true;
+    enableSshSupport = true;
+  };
+
   xsession = {
     enable = true;
     windowManager = "${pkgs.i3}/bin/i3";
