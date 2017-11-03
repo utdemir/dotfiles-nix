@@ -24,23 +24,13 @@
   services.xserver = {
     enable = true;
     autorun = true;
-
-    desktopManager.default = "none";
-    windowManager = {
-      default = "i3";
-      i3 = {
-        enable = true;
-      };
-    };
     displayManager.slim = {
       enable = true;
       defaultUser = "utdemir";
       autoLogin = true;
     };
 
-    synaptics = {
-      enable = true;
-    };
+    synaptics.enable = true;
   };
 
   hardware.pulseaudio.enable = true;

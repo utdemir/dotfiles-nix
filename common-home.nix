@@ -28,7 +28,7 @@ in
     lastpass-cli gnupg keybase
 
     # i3
-    i3status i3lock feh dmenu rxvt_unicode unclutter
+    i3 i3status i3lock feh dmenu rxvt_unicode unclutter
     networkmanagerapplet parcellite
     lxappearance xfontsel ubuntu_font_family
 
@@ -88,6 +88,9 @@ in
     enable = true;
     userName = "Utku Demir";
     userEmail = "me@utdemir.com";
+  xsession = {
+    enable = true;
+    windowManager = "${pkgs.i3}/bin/i3";
   };
 
   home.file.".stack/config.yaml".source = ./dotfiles/stack;
