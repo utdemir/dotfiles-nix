@@ -127,6 +127,7 @@ in
       counsel-projectile
       doom-themes
       git-gutter
+      graphviz-dot-mode
       haskell-mode
       highlight-symbol
       hindent
