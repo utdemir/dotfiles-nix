@@ -139,6 +139,7 @@ in
       restclient
       rg
       rich-minority
+      rust-mode
       sbt-mode
       scala-mode
       smart-mode-line
