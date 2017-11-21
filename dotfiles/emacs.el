@@ -104,3 +104,7 @@
 
 (require 'hindent)
 (add-hook 'haskell-mode-hook #'hindent-mode)
+
+;; Go
+
+(require 'go-mode)
