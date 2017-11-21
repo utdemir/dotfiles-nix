@@ -125,6 +125,7 @@ in
       company
       counsel
       counsel-projectile
+      csv-mode
       doom-themes
       git-gutter
       go-mode
