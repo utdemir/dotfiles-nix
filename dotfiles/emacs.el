@@ -83,6 +83,7 @@
           '(lambda ()
              (local-set-key (kbd "C-c C-l") 'my-sbt-compile)
              (local-set-key (kbd "C-c C-t") 'my-sbt-test)
+             (local-set-key (kbd "C-c C-e") 'sbt-run-previous-command)
              ))
 
 ;; JavaScript
