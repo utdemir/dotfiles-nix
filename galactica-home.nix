@@ -11,6 +11,8 @@ in
     slack
     kt
     spark
+    mysql
+    mysql-workbench
   ];
 
 }
