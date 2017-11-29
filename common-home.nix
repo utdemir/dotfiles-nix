@@ -11,11 +11,12 @@ in
     xsel xclip
     imagemagick pdftk ncdu
     htop tree units ascii
-    powertop
+    powertop ghostscript
+    haskellPackages.tldr
 
     nload siege
 
-    zip unzip man man-db
+    zip unzip
 
     file dos2unix findutils coreutils
     watch graphviz rsync parallel openssl
@@ -34,7 +35,7 @@ in
     lxappearance xfontsel ubuntu_font_family source-code-pro
 
     # Desktop
-    firefox-beta-bin
+    firefox
 
     # Media
     qiv  zathura
@@ -103,8 +104,11 @@ in
 
   xsession = {
     enable = true;
-    windowManager = "${pkgs.i3}/bin/i3";
+    windowManager.command = "${pkgs.i3}/bin/i3";
   };
+
+  services.keybase.enable = true;
+  services.kbfs.enable = true;
 
   home.file.".stack/config.yaml".source = ./dotfiles/stack;
   
@@ -151,7 +155,7 @@ in
     ];
   };
   home.file.".config/.autorandr/postswitch" = {
-    mode = "755";
+    executable = true;
     text = ''
       #!/usr/bin/env sh
       feh --bg-fill ~/.config/i3/wallpaper.png
