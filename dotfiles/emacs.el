@@ -14,6 +14,8 @@
 (setq create-lockfiles nil)
 (setq custom-safe-themes t)
 
+(set-face-attribute 'default nil :font "Source Code Pro-10" )
+
 ;; Looks
 
 (require 'doom-themes)

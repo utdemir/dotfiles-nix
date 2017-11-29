@@ -31,7 +31,7 @@ in
     # i3
     i3 i3status i3lock feh dmenu rxvt_unicode unclutter
     networkmanagerapplet parcellite
-    lxappearance xfontsel ubuntu_font_family
+    lxappearance xfontsel ubuntu_font_family source-code-pro
 
     # Desktop
     firefox-beta-bin
