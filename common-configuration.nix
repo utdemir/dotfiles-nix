@@ -34,6 +34,7 @@
   };
 
   hardware.pulseaudio.enable = true;
+  hardware.opengl.driSupport32Bit = true;
 
   users.extraUsers.utdemir = {
     home = "/home/utdemir";
