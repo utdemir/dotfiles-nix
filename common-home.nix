@@ -1,6 +1,6 @@
 {...}:
 
-let pkgs = import ./nixpkgs {};
+let pkgs = import ./nixpkgs { config.allowBroken = true; config.allowUnfree = true; };
 in
 
 {
@@ -13,6 +13,7 @@ in
     htop tree units ascii
     powertop ghostscript
     haskellPackages.tldr
+    translate-shell
 
     nload siege
 
