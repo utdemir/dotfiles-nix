@@ -34,8 +34,8 @@ URxvt*color15 : #EEEEEC
 
 !urxvt fonts: 
 
-URxvt*font: xft:Ubuntu Mono:pixelsize=14
-URxvt*boldFont: xft:Ubuntu Mono:bold:pixelsize=14
+URxvt*font: xft:Source Code Pro:pixelsize=14
+URxvt*boldFont: xft:Source Code Pro:bold:pixelsize=14
 
 
 !urxvt extensions:
