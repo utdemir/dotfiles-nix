@@ -9,7 +9,7 @@ bindsym $mod+BackSpace exec i3lock
 
 bindsym $mod+Shift+q kill
 
-bindsym $mod+d exec dmenu_run
+bindsym $mod+d exec rofi -show run -theme DarkBlue
 
 bindsym $mod+j focus left
 bindsym $mod+k focus down

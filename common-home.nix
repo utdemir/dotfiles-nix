@@ -31,7 +31,7 @@ in
     lastpass-cli gnupg keybase
 
     # i3
-    i3 i3status i3lock feh dmenu rxvt_unicode unclutter
+    i3 i3status i3lock feh dmenu rofi rxvt_unicode unclutter
     networkmanagerapplet parcellite
     lxappearance xfontsel ubuntu_font_family source-code-pro
 
