@@ -75,6 +75,7 @@ in
     haskellPackages.ShellCheck
     python2 python3
     python3Packages.virtualenv
+    swiProlog
 
     nix-repl nix-prefetch-scripts
     (let src = pkgs.fetchFromGitHub {
