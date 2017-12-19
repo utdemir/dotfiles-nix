@@ -81,6 +81,8 @@
 (require 'scala-mode)
 (require 'sbt-mode)
 
+(add-to-list 'auto-mode-alist '("\\.sc\\'" . scala-mode))
+
 (defun my-sbt-compile () (interactive) (sbt-command "compile"))
 (defun my-sbt-test () (interactive) (sbt-command "test"))
 
