@@ -73,6 +73,9 @@
 (setq company-dabbrev-ignore-case nil)
 (setq company-dabbrev-downcase nil)
 
+(require 'magit)
+(global-set-key (kbd "C-c m") 'magit-status)
+
 ;; Scala
 
 (require 'scala-mode)
