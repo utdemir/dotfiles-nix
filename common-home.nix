@@ -53,7 +53,6 @@ in
     (kubernetes.override { components = [ "cmd/kubectl" ]; })
 
     gitAndTools.hub
-    haskellPackages.darcs
 
     pv jq ripgrep tree fasd
     ncdu htop cloc units
