@@ -1,6 +1,7 @@
 { pkgs, ... }:
 
 {
+  nixpkgs.config.allowUnfree = true;
   networking.networkmanager.enable = true;
 
   time.timeZone = "Pacific/Auckland";
@@ -31,6 +32,8 @@
     };
 
     synaptics.enable = true;
+    videoDrivers = [ "nvidia" ];
+    dpi = 100;
   };
 
   hardware.pulseaudio.enable = true;
