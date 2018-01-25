@@ -107,6 +107,9 @@ in
   xsession = {
     enable = true;
     windowManager.command = "${pkgs.i3}/bin/i3";
+    profileExtra = ''
+    export SBT_OPTS="-Xms512M -Xmx1024M -Xss2M -XX:MaxMetaspaceSize=1024M"
+    '';
   };
 
   services.keybase.enable = true;
