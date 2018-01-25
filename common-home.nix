@@ -135,6 +135,7 @@ in
       counsel-projectile
       csv-mode
       doom-themes
+      dumb-jump
       git-gutter
       go-mode
       graphviz-dot-mode
