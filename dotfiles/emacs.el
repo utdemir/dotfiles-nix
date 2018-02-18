@@ -44,7 +44,7 @@
 (projectile-mode 1)
 
 (require 'counsel-projectile)
-(counsel-projectile-on)
+(counsel-projectile-mode)
 (global-set-key (kbd "C-c p f") 'counsel-projectile-find-file)
 
 (require 'ws-butler)
@@ -106,8 +106,11 @@
     append (list "nix-shell" "-I" "." "--command")
            (list (mapconcat 'identity argv " "))
   ))
-)
-(setq haskell-process-type 'ghci)
+  )
+
+; workaround: https://github.com/haskell/haskell-mode/issues/1553
+(setq haskell-process-args-ghci
+      '("-ferror-spans" "-fshow-loaded-modules"))(setq haskell-process-type 'ghci)
 
 (require 'hindent)
 (add-hook 'haskell-mode-hook #'hindent-mode)

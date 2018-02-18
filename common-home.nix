@@ -50,10 +50,38 @@ in
 
     # Programming
     neovim
-    (kubernetes.override { components = [ "cmd/kubectl" ]; })
+
+    (emacsWithPackages (epkgs: with epkgs.melpaPackages // epkgs.elpaPackages; [
+      company
+      counsel
+      counsel-projectile
+      csv-mode
+      doom-themes
+      git-gutter
+      go-mode
+      graphviz-dot-mode
+      haskell-mode
+      highlight-symbol
+      hindent
+      magit
+      multiple-cursors
+      nix-mode
+      projectile
+      protobuf-mode
+      restclient
+      rg
+      rich-minority
+      rust-mode
+      sbt-mode
+      scala-mode
+      smart-mode-line
+      undo-tree
+      ws-butler
+      yaml-mode
+    ]))
+
 
     gitAndTools.hub
-    haskellPackages.darcs
 
     pv jq ripgrep tree fasd
     ncdu htop cloc units
@@ -125,37 +153,6 @@ in
   home.file.".zsh_custom/utdemir.zsh-theme".source = ./dotfiles/zsh_custom/utdemir.zsh-theme;
 
   home.file.".emacs.el".source = ./dotfiles/emacs.el;
-  programs.emacs = {
-    enable = true;
-    extraPackages = epkgs: with epkgs; [
-      company
-      counsel
-      counsel-projectile
-      csv-mode
-      doom-themes
-      git-gutter
-      go-mode
-      graphviz-dot-mode
-      haskell-mode
-      highlight-symbol
-      hindent
-      magit
-      multiple-cursors
-      nix-mode
-      projectile
-      protobuf-mode
-      restclient
-      rg
-      rich-minority
-      rust-mode
-      sbt-mode
-      scala-mode
-      smart-mode-line
-      undo-tree
-      ws-butler
-      yaml-mode
-    ];
-  };
   home.file.".config/.autorandr/postswitch" = {
     executable = true;
     text = ''
