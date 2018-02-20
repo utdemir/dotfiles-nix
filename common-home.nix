@@ -68,7 +68,7 @@ in
 
     awscli
 
-    cabal2nix stack
+    cabal2nix stack ghc
     gcc gnumake openjdk8 nodejs
     (sbt.override { jre = jre8; })
     haskellPackages.ShellCheck
