@@ -10,6 +10,8 @@ bindsym $mod+BackSpace exec i3lock -c 000000
 bindsym $mod+Shift+q kill
 
 bindsym $mod+d exec rofi -show run -theme DarkBlue
+bindsym $mod+s exec sh -c 'q=$(rofi -dmenu -p "ddg$ " -l 0) && firefox --new-tab "https://duckduckgo.com/?q=$q"'
+
 
 bindsym $mod+j focus left
 bindsym $mod+k focus down
@@ -37,7 +39,6 @@ bindsym $mod+v split v
 
 bindsym $mod+f fullscreen toggle
 
-bindsym $mod+s layout stacking
 bindsym $mod+w layout tabbed
 bindsym $mod+e layout toggle split
 
