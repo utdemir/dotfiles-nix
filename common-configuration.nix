@@ -10,6 +10,8 @@
     emacs git
   ];
 
+  boot.kernel.sysctl."vm.swappiness" = 0;
+
   services.openssh.enable = true;
   networking.firewall = {
     enable = true;

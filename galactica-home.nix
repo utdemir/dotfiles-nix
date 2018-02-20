@@ -13,6 +13,7 @@ in
     spark
     mysql
     mysql-workbench
+    (kubernetes.override { components = [ "cmd/kubectl" ]; })
   ];
 
 }
