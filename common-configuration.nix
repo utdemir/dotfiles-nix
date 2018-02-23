@@ -24,6 +24,8 @@
     # autoPrune.enable = true;
   };
 
+  services.logind.lidSwitchDocked = "ignore";
+
   services.xserver = {
     enable = true;
     autorun = true;
