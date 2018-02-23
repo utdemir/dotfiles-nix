@@ -49,5 +49,5 @@
     shell = "${pkgs.zsh}/bin/zsh";
   };
 
-  system.stateVersion = "17.03";
+  system.stateVersion = "17.09";
 }
