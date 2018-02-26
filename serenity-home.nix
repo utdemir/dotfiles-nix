@@ -6,6 +6,7 @@
   home.packages = with pkgs; [
     minidlna deluge dropbox skype
 
+    steam
     google-cloud-sdk
   ];
 
