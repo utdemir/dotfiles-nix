@@ -76,6 +76,7 @@ in
       sbt-mode
       scala-mode
       smart-mode-line
+      org-present
       undo-tree
       ws-butler
       yaml-mode
@@ -98,7 +99,7 @@ in
 
     awscli
 
-    cabal2nix stack ghc
+    cabal2nix stack
     gcc gnumake openjdk8 nodejs
     (sbt.override { jre = jre8; })
     haskellPackages.ShellCheck

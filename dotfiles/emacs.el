@@ -118,3 +118,24 @@
 ;; Go
 
 (require 'go-mode)
+
+;; org-present
+
+(require 'org-present)
+(eval-after-load "org-present"
+  '(progn
+     (add-hook 'org-present-mode-hook
+               (lambda ()
+                 (org-present-big)
+                 (org-display-inline-images)
+                 (org-present-hide-cursor)
+                 (org-present-read-only)
+                 (setq mode-line-format nil)
+                 (setq 'truncate-lines t)
+                 (setq 'word-wrap t)))
+     (add-hook 'org-present-mode-quit-hook
+               (lambda ()
+                 (org-present-small)
+                 (org-remove-inline-images)
+                 (org-present-show-cursor)
+                 (org-present-read-write)))))
