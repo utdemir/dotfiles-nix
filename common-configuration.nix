@@ -24,7 +24,7 @@
     # autoPrune.enable = true;
   };
 
-  services.logind.lidSwitchDocked = "ignore";
+  services.logind.lidSwitch = "ignore";
 
   services.xserver = {
     enable = true;
