@@ -80,6 +80,9 @@ in
       undo-tree
       ws-butler
       yaml-mode
+
+      expand-region
+      highlight-thing
     ]))
 
 
