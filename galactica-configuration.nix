@@ -14,4 +14,10 @@
 
   networking.hostName = "galactica";
 
+  services.printing = {
+    enable = true;
+    drivers = [ pkgs.gutenprint pkgs.gutenprintBin ];
+    browsing = true;
+  };
+
 }
