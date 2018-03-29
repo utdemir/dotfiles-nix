@@ -39,6 +39,7 @@
 
 (require 'ivy)
 (ivy-mode 1)
+(global-set-key (kbd "M-x") 'counsel-M-x)
 
 (require 'projectile)
 (projectile-mode 1)
@@ -86,8 +87,18 @@
 (defun my-sbt-compile () (interactive) (sbt-command "compile"))
 (defun my-sbt-test () (interactive) (sbt-command "test"))
 
+(require 'dash)
+(defun rk-set-sbt-root ()
+  "Sets sbt root for the given project."
+  (interactive)
+  (-when-let* ((root (locate-dominating-file (buffer-file-name) "build.sbt"))
+                (sbt-root (and root
+                               (sbt:find-root-impl "build.sbt" root))))
+      (setq-local sbt:buffer-project-root sbt-root)))
+
 (add-hook 'scala-mode-hook
           '(lambda ()
+             (rk-set-sbt-root)
              (local-set-key (kbd "C-c C-l") 'my-sbt-compile)
              (local-set-key (kbd "C-c C-t") 'my-sbt-test)
              (local-set-key (kbd "C-c C-e") 'sbt-run-previous-command)

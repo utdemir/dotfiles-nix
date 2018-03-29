@@ -56,6 +56,7 @@ in
       counsel
       counsel-projectile
       csv-mode
+      dash
       doom-themes
       dumb-jump
       git-gutter
@@ -85,6 +86,47 @@ in
       highlight-thing
     ]))
 
+    ( vscode-with-extensions.override {
+      vscodeExtensions = with vscode-extensions; [
+        bbenoist.Nix
+      ] ++ vscode-utils.extensionsFromVscodeMarketplace [
+        { name = "language-haskell";
+          publisher = "justusadam";
+          version = "2.4.0";
+          sha256 = "1xgxs0s3w5kf356nslf020svn2hr6dq216ndwjk23v6mqs1xfxgv";
+        }
+        { name = "scala";
+          publisher = "daltonjorge";
+          version = "0.0.5";
+          sha256 = "0hvrc6qh0731j0vg9crxr0g8ada726c9r76bb6qz8iv8cnng0vgx";
+        }
+        { name = "rest-client";
+          publisher = "humao";
+          version = "0.17.0";
+          sha256 = "0snjly1k22hpdk8c7dncrxnpykjhja3qi38hcsv7znpwi7325hpg";
+        }
+        { name = "edit-with-shell";
+          publisher = "ryu1kn";
+          version = "0.3.0";
+          sha256 = "1lvnlnykvkjqbb0r3hlxzd0bvxm6j8kpq6sxdyw97hmvjwgy89dy";
+        }
+        { name = "shellcheck";
+          publisher = "timonwong";
+          version = "0.3.0";
+          sha256 = "09l69d6fh5wd8r1phxffn56r10jhmgqpsbwn5d9g2ndj4idqd629";
+        }
+        { name = "bookmarks";
+          publisher = "alefragnani";
+          version = "0.18.2";
+          sha256 = "11fayp0qwvrvh0i86km1dh2fphp58g4j69h04xw3i1qr54c30wiv";
+        }
+        { name = "git-project-manager";
+          publisher = "felipecaputo";
+          version = "1.4.0";
+          sha256 = "0xb3pgf59279il0y1jxsdwy02sdyfzw6y88gvalfnml399w7brps";
+        }
+      ];
+    })
 
     gitAndTools.hub
 
