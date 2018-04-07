@@ -120,8 +120,11 @@
   )
 
 ; workaround: https://github.com/haskell/haskell-mode/issues/1553
+(setq haskell-process-type 'cabal-repl)
 (setq haskell-process-args-ghci
-      '("-ferror-spans" "-fshow-loaded-modules"))(setq haskell-process-type 'ghci)
+      '("-ferror-spans" "-fshow-loaded-modules"))
+(setq haskell-process-args-cabal-repl
+      '("--ghc-option=-ferror-spans" "--ghc-option=-fshow-loaded-modules"))
 
 (require 'hindent)
 (add-hook 'haskell-mode-hook #'hindent-mode)
