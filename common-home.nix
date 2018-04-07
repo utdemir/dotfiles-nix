@@ -51,40 +51,7 @@ in
     # Programming
     neovim
 
-    (emacsWithPackages (epkgs: with epkgs.melpaPackages // epkgs.elpaPackages; [
-      benchmark-init
-      company
-      counsel
-      counsel-projectile
-      csv-mode
-      dash
-      doom-themes
-      git-gutter
-      go-mode
-      graphviz-dot-mode
-      haskell-mode
-      highlight-symbol
-      highlight-thing
-      hindent
-      magit
-      multiple-cursors
-      nix-mode
-      org-present
-      projectile
-      protobuf-mode
-      restclient
-      rg
-      rich-minority
-      rust-mode
-      sbt-mode
-      scala-mode
-      smart-mode-line
-      undo-tree
-      use-package
-      ws-butler
-      yaml-mode
-      yasnippet
-    ]))
+    (import ./lib/mk-emacs.nix { inherit pkgs; } ./dotfiles/emacs.el)
 
     gitAndTools.hub
 
