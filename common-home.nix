@@ -52,22 +52,24 @@ in
     neovim
 
     (emacsWithPackages (epkgs: with epkgs.melpaPackages // epkgs.elpaPackages; [
+      benchmark-init
       company
       counsel
       counsel-projectile
       csv-mode
       dash
       doom-themes
-      dumb-jump
       git-gutter
       go-mode
       graphviz-dot-mode
       haskell-mode
       highlight-symbol
+      highlight-thing
       hindent
       magit
       multiple-cursors
       nix-mode
+      org-present
       projectile
       protobuf-mode
       restclient
@@ -77,13 +79,11 @@ in
       sbt-mode
       scala-mode
       smart-mode-line
-      org-present
       undo-tree
+      use-package
       ws-butler
       yaml-mode
-
-      expand-region
-      highlight-thing
+      yasnippet
     ]))
 
     gitAndTools.hub
@@ -161,6 +161,8 @@ in
   home.file.".zsh_custom/utdemir.zsh-theme".source = ./dotfiles/zsh_custom/utdemir.zsh-theme;
 
   home.file.".emacs.el".source = ./dotfiles/emacs.el;
+  home.file.".emacs.d/snippets".source = ./dotfiles/emacs.d/snippets;
+
   home.file.".config/.autorandr/postswitch" = {
     executable = true;
     text = ''
@@ -168,4 +170,5 @@ in
       feh --bg-fill ~/.config/i3/wallpaper.png
     '';
   };
+
 }
