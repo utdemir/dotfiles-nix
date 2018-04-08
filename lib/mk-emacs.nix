@@ -7,5 +7,5 @@ let
 in
   pkgs.emacsWithPackages (epkgs:
     let s = epkgs.melpaPackages // epkgs.elpaPackages;
-    in  builtins.map (i: s.${i}) packages
+    in  builtins.map (i: s.${i}) (packages ++ ["use-package"])
   )
