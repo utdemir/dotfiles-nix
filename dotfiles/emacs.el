@@ -156,6 +156,7 @@
 (use-package yasnippet
   :init
   (setq yas-snippet-dirs '("~/.emacs.d/snippets"))
+  (setq yas-indent-line nil)
   :config
   (yas-global-mode 1))
 

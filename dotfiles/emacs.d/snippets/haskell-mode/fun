@@ -2,5 +2,5 @@
 # name: fun
 # key: fun
 # --
-${1:function-name} :: ${2:type-signature}
-$1 = error "not implemented: $1"$0
+${1:functionName} :: ${2:a}
+$1 = $0error "Not implemented: $1"
