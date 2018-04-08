@@ -1,5 +1,5 @@
 autorandr -c &
-feh --bg-center ~/.config/i3/wallpaper.png &
+xsetroot -solid '#222255' &
 unclutter &
 nm-applet &
 parcellite &
