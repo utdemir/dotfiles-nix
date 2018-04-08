@@ -133,6 +133,7 @@
   (add-hook 'haskell-mode-hook #'hindent-mode))
 
 (use-package go-mode)
+(use-package nix-mode)
 
 (use-package org-present
   :no-require t
