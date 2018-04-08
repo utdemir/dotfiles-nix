@@ -13,8 +13,8 @@
 (setq make-backup-files nil)
 (setq create-lockfiles nil)
 (setq custom-safe-themes t)
-
-(set-face-attribute 'default nil :font "Source Code Pro-10" )
+(setq default-frame-alist '((font . "Source Code Pro-10")))
+(setq-default mode-line-format nil)
 
 (require 'use-package)
 
@@ -25,12 +25,6 @@
 (use-package git-gutter
   :config
   (global-git-gutter-mode +1))
-
-(use-package rich-minority
-  :init
-  (setq rm-whitelist '("nothing"))
-  :config
-  (rich-minority-mode 1))
 
 (use-package smart-mode-line
   :config
