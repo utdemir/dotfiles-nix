@@ -76,7 +76,7 @@
 (use-package company
   :init
   (setq company-dabbrev-ignore-case nil)
-  (setq company-dabbrev-downcase nil))
+  (setq company-dabbrev-downcase nil)
   (setq company-backends '(company-dabbrev))
   :config
   (global-company-mode))
