@@ -16,6 +16,11 @@
 (setq default-frame-alist '((font . "Source Code Pro-10")))
 (setq-default mode-line-format nil)
 
+(setq window-divider-default-places 't)
+(window-divider-mode)
+(setq window-divider-default-right-width 1)
+(setq window-divider-default-bottom-width 1)
+
 (require 'use-package)
 
 (use-package doom-themes
