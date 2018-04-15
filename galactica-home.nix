@@ -1,6 +1,6 @@
 { ... }:
 
-let pkgs = import ./nixpkgs {};
+let pkgs = import ./pkgs.nix;
 in
 
 {
@@ -13,7 +13,7 @@ in
     spark
     mysql
     mysql-workbench
-    (kubernetes.override { components = [ "cmd/kubectl" ]; })
+    kubectl
   ];
 
 }

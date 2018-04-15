@@ -1,6 +1,6 @@
 {...}:
 
-let pkgs = import ./nixpkgs { config.allowBroken = true; config.allowUnfree = true; };
+let pkgs = import ./pkgs.nix;
 in
 
 {

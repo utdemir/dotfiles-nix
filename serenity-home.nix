@@ -1,4 +1,7 @@
-{ pkgs, ... }:
+{ ... }:
+
+let pkgs = import ./pkgs.nix;
+in
 
 {
   imports = [ ./common-home.nix ];
