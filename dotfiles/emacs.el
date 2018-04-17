@@ -27,13 +27,15 @@
   :config
   (load-theme 'doom-molokai t))
 
+(use-package smooth-scrolling
+  :init
+  (setq smooth-scroll-margin 5)
+  :config
+  (smooth-scrolling-mode 1))
+
 (use-package git-gutter
   :config
   (global-git-gutter-mode +1))
-
-(use-package smart-mode-line
-  :config
-  (sml/setup))
 
 (use-package undo-tree
   :init
