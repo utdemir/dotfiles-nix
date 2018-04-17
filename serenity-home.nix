@@ -7,7 +7,7 @@ in
   imports = [ ./common-home.nix ];
 
   home.packages = with pkgs; [
-    minidlna deluge dropbox skype
+    minidlna deluge dropbox
 
     steam
     google-cloud-sdk
