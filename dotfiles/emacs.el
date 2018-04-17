@@ -21,6 +21,8 @@
 (setq window-divider-default-right-width 1)
 (setq window-divider-default-bottom-width 1)
 
+(pixel-scroll-mode)
+
 (require 'use-package)
 
 (use-package doom-themes
