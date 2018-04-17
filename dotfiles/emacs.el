@@ -136,9 +136,12 @@
   (add-hook 'haskell-mode-hook #'hindent-mode))
 
 (use-package rg)
-(use-package go-mode)
-(use-package nix-mode)
-(use-package yaml-mode)
+(use-package go-mode
+  :mode ("\\.go\\'" . go-mode))
+(use-package nix-mode
+  :mode ("\\.nix\\'" . nix-mode))
+(use-package yaml-mode
+  :mode ("\\.yaml\\'" . yaml-mode))
 
 (use-package org-present
   :no-require t
