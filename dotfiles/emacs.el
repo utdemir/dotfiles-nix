@@ -52,6 +52,11 @@
   :bind
   ("M-x" . counsel-M-x))
 
+(use-package smartparens
+  :demand
+  :config
+  (smartparens-global-mode t))
+
 (use-package projectile
   :config
   (projectile-mode 1))
