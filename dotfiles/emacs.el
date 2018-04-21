@@ -112,26 +112,11 @@
                ))
   )
 
-(use-package haskell-mode
-  :init
-  (setq haskell-process-wrapper-function
-        (lambda (argv) (
-                        append (list "nix-shell" "-I" "." "--command")
-                               (list (mapconcat 'identity argv " "))
-                               )))
-  ; workaround: https://github.com/haskell/haskell-mode/issues/1553
-  (setq haskell-process-type 'cabal-repl)
-  (setq haskell-process-args-ghci
-        '("-ferror-spans" "-fshow-loaded-modules"))
-  (setq haskell-process-args-cabal-repl
-        '("--ghc-option=-ferror-spans" "--ghc-option=-fshow-loaded-modules"))
-  :config
-  (add-hook 'haskell-mode-hook 'interactive-haskell-mode))
-
-(use-package hindent
+(use-package haskell-mode)
+(use-package intero
   :after (haskell-mode)
   :config
-  (add-hook 'haskell-mode-hook #'hindent-mode))
+  (add-hook 'haskell-mode-hook 'intero-mode))
 
 (use-package rg)
 (use-package go-mode
