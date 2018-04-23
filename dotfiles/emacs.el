@@ -125,6 +125,8 @@
   :mode ("\\.nix\\'" . nix-mode))
 (use-package yaml-mode
   :mode ("\\.yaml\\'" . yaml-mode))
+(use-package restclient
+  :mode ("\\.rest\\'" . yaml-mode))
 
 (use-package org-present
   :no-require t

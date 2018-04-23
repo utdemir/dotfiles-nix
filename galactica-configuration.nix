@@ -20,4 +20,7 @@
     browsing = true;
   };
 
+  networking.extraHosts = ''
+    127.0.0.1 galactica
+  '' + builtins.readFile ./movio-hosts.txt;
 }
