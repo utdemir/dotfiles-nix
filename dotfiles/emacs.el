@@ -84,7 +84,7 @@
 
 (use-package magit
   :bind
-  ("C-c m" . magit-status))
+  ("C-x m" . magit-status))
 
 (use-package scala-mode
   :mode
