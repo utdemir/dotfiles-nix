@@ -23,6 +23,8 @@
 
 (require 'use-package)
 
+(global-linum-mode)
+
 (use-package doom-themes
   :config
   (load-theme 'doom-molokai t))
@@ -33,7 +35,7 @@
   :config
   (smooth-scrolling-mode 1))
 
-(use-package git-gutter
+(use-package git-gutter-fringe
   :config
   (global-git-gutter-mode +1))
 
