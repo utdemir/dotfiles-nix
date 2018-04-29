@@ -156,6 +156,10 @@
   :config
   (yas-global-mode 1))
 
+(use-package dumb-jump
+  :config
+  (dumb-jump-mode))
+
 ;; Custom
 
 (defun yank-to-x-clipboard ()
