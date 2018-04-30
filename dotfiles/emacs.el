@@ -45,6 +45,12 @@
   :config
   (global-undo-tree-mode))
 
+(use-package which-key
+  :config
+  (which-key-mode))
+
+(use-package vlf)
+
 (use-package ivy
   :demand
   :config
@@ -84,9 +90,19 @@
   :config
   (global-company-mode))
 
+(use-package dimmer
+  :config
+  (dimmer-mode))
+
 (use-package magit
   :bind
   ("C-x m" . magit-status))
+
+(use-package visual-regexp-steroids
+  :bind
+  ("C-c r" . vr/replace))
+
+(use-package git-link)
 
 (use-package scala-mode
   :mode
