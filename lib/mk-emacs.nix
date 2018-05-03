@@ -6,6 +6,6 @@ let
   } "emacs --script ${./use-package-to-nix.el} ${el} > $out");
 in
   pkgs.emacsWithPackages (epkgs:
-    let s = epkgs.melpaPackages;
+    let s = epkgs.elpaPackages // epkgs.melpaPackages;
     in  builtins.map (i: s.${i}) (packages ++ ["use-package"])
   )

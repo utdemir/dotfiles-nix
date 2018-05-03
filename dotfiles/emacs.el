@@ -25,6 +25,10 @@
 
 (global-linum-mode)
 
+(use-package exec-path-from-shell
+  :config
+  (exec-path-from-shell-initialize))
+
 (use-package doom-themes
   :config
   (load-theme 'doom-molokai t))
@@ -107,6 +111,12 @@
 (use-package scala-mode
   :mode
   ("\\.sc\\'" . scala-mode))
+
+(use-package csv-mode
+  :mode
+  (("\\.csv\\'" . csv-mode)
+   ("\\.tsv\\'" . csv-mode)))
+
 
 (use-package sbt-mode
   :after (scala-mode)
