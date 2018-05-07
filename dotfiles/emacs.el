@@ -1,3 +1,5 @@
+(setq gc-cons-threshold (* 50 1000 1000))
+
 (setq inhibit-startup-screen t)
 (tool-bar-mode -1)
 (menu-bar-mode -1)
@@ -25,7 +27,10 @@
 
 (global-linum-mode)
 
+(use-package esup)
+
 (use-package exec-path-from-shell
+  :defer 1
   :config
   (exec-path-from-shell-initialize))
 
@@ -40,20 +45,24 @@
   (smooth-scrolling-mode 1))
 
 (use-package git-gutter-fringe
+  :defer 2
   :config
   (global-git-gutter-mode +1))
 
 (use-package undo-tree
+  :defer 2
   :init
   (setq undo-tree-visualizer-timestamps t)
   :config
   (global-undo-tree-mode))
 
 (use-package which-key
+  :defer 2
   :config
   (which-key-mode))
 
-(use-package vlf)
+(use-package vlf
+  :defer 2)
 
 (use-package ivy
   :demand
@@ -67,11 +76,17 @@
   (projectile-mode 1))
 
 (use-package counsel-projectile
-  :after (projectile ivy)
   :config
   (counsel-projectile-mode)
+  (defun ud-refresh-projectile-projects ()
+    (when (require 'magit nil t)
+      (projectile-cleanup-known-projects)
+      (mapc #'projectile-add-known-project
+        (mapcar #'file-name-as-directory (magit-list-repos)))))
+  (advice-add #'counsel-projectile-switch-project :before #'ud-refresh-projectile-projects)
   :bind
-  ("C-c p f" . counsel-projectile-find-file))
+  ("C-c p f" . counsel-projectile-find-file)
+  ("C-c p p" . counsel-projectile-switch-project))
 
 (use-package ws-butler
   :config
@@ -87,6 +102,7 @@
   ("C->" . mc/mark-next-like-this))
 
 (use-package company
+  :defer 2
   :init
   (setq company-dabbrev-ignore-case nil)
   (setq company-dabbrev-downcase nil)
@@ -95,18 +111,24 @@
   (global-company-mode))
 
 (use-package dimmer
+  :defer 1
   :config
   (dimmer-mode))
 
 (use-package magit
+  :init
+  (setq magit-repository-directories
+          '(("~/workspace/" . 2)))
   :bind
   ("C-x m" . magit-status))
 
 (use-package visual-regexp-steroids
+  :defer 2
   :bind
   ("C-c r" . vr/replace))
 
-(use-package git-link)
+(use-package git-link
+  :defer 2)
 
 (use-package scala-mode
   :mode
@@ -142,6 +164,7 @@
 
 (use-package haskell-mode)
 (use-package intero
+  :defer 2
   :after (haskell-mode)
   :config
   (add-hook 'haskell-mode-hook 'intero-mode))
@@ -176,6 +199,7 @@
               (org-present-read-write))))
 
 (use-package yasnippet
+  :defer 2
   :init
   (setq yas-snippet-dirs '("~/.emacs.d/snippets"))
   (setq yas-indent-line nil)
@@ -183,6 +207,7 @@
   (yas-global-mode 1))
 
 (use-package dumb-jump
+  :defer 2
   :config
   (dumb-jump-mode))
 
@@ -204,3 +229,14 @@
         (message "Yanked region to clipboard!")
         (deactivate-mark))
     (message "No region active; can't yank to clipboard!")))
+
+;; Use a hook so the message doesn't get clobbered by other messages.
+(add-hook 'emacs-startup-hook
+          (lambda ()
+            (message "Emacs ready in %s with %d garbage collections."
+                     (format "%.2f seconds"
+                             (float-time
+                              (time-subtract after-init-time before-init-time)))
+                     gcs-done)))
+
+(setq gc-cons-threshold (* 2 1000 1000))
