@@ -1,3 +1,6 @@
+(require 'package)
+(package-initialize)
+
 (defun up2n-read-file (path)
   (with-temp-buffer
     (insert-file-contents path)
@@ -22,10 +25,15 @@
    "[ %s ]\n"
    (mapconcat (lambda (p) (format "\"%s\"" (symbol-name p))) pnames " ")))
 
+(defun up2n-filter-installed-packages (pnames)
+  (seq-filter
+   (lambda (p) (not (package-installed-p p)))
+   pnames))
+
 (defun up2n-run (paths)
   (let*
       ((extract (lambda (p) (up2n-find-packages (up2n-parse-file (up2n-read-file p)))))
-       (packages (delete-dups (apply 'append (mapcar extract paths)))))
+       (packages (up2n-filter-installed-packages (delete-dups (apply 'append (mapcar extract paths))))))
     (princ (up2n-format-packages packages))))
 
 (up2n-run command-line-args-left)

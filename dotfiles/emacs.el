@@ -211,7 +211,8 @@
   :config
   (dumb-jump-mode))
 
-(with-eval-after-load 'org
+(use-package org
+  :config
   (define-key org-mode-map (kbd "<S-left>") nil)
   (define-key org-mode-map (kbd "<S-right>") nil)
   (define-key org-mode-map (kbd "<S-up>") nil)
