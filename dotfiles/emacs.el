@@ -167,7 +167,9 @@
   :defer 2
   :after (haskell-mode)
   :config
-  (add-hook 'haskell-mode-hook 'intero-mode))
+  (add-hook 'haskell-mode-hook 'intero-mode)
+  (flycheck-add-next-checker 'intero
+                             '(warning . haskell-hlint)))
 
 (use-package git-auto-commit-mode
   :init
