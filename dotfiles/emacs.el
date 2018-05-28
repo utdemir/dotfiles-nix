@@ -169,6 +169,10 @@
   :config
   (add-hook 'haskell-mode-hook 'intero-mode))
 
+(use-package git-auto-commit-mode
+  :init
+  (setq gac-automatically-push-p 't))
+
 (use-package rg)
 (use-package go-mode
   :mode ("\\.go\\'" . go-mode))
