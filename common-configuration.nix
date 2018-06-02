@@ -1,6 +1,7 @@
 { pkgs, ... }:
 
 {
+  imports = [ ./patches/multi-glibc-locale-paths.nix ];
   nixpkgs.config.allowUnfree = true;
   networking.networkmanager.enable = true;
 
