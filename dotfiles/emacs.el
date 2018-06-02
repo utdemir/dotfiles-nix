@@ -1,14 +1,43 @@
+(setq user-full-name "Utku Demir")
+(setq user-mail-address "me@utdemir.com")
+
 (setq gc-cons-threshold (* 50 1000 1000))
+
+(require 'use-package)
+
+
+;; LOOKS
 
 (setq inhibit-startup-screen t)
 (tool-bar-mode -1)
 (menu-bar-mode -1)
-(winner-mode 1)
-(windmove-default-keybindings)
 (global-font-lock-mode 1)
 (show-paren-mode 1)
 (scroll-bar-mode -1)
-(setq column-number-mode t)
+(setq window-divider-default-places 't)
+(window-divider-mode)
+(setq window-divider-default-right-width 1)
+(setq window-divider-default-bottom-width 1)
+(setq-default mode-line-format nil)
+
+(global-linum-mode)
+
+(use-package doom-themes
+  :config
+  (load-theme 'doom-molokai t))
+
+(use-package git-gutter-fringe
+  :defer 2
+  :config
+  (global-git-gutter-mode +1))
+
+(use-package which-key
+  :defer 2
+  :config
+  (which-key-mode))
+
+;; NAVIGATION
+
 (setq-default indent-tabs-mode nil)
 (setq tab-width 2)
 (setq js-indent-level 2)
@@ -16,16 +45,9 @@
 (setq create-lockfiles nil)
 (setq custom-safe-themes t)
 (setq default-frame-alist '((font . "Source Code Pro-10")))
-(setq-default mode-line-format nil)
 
-(setq window-divider-default-places 't)
-(window-divider-mode)
-(setq window-divider-default-right-width 1)
-(setq window-divider-default-bottom-width 1)
-
-(require 'use-package)
-
-(global-linum-mode)
+(winner-mode 1)
+(windmove-default-keybindings)
 
 (use-package esup)
 
@@ -34,20 +56,11 @@
   :config
   (exec-path-from-shell-initialize))
 
-(use-package doom-themes
-  :config
-  (load-theme 'doom-molokai t))
-
 (use-package smooth-scrolling
   :init
   (setq smooth-scroll-margin 5)
   :config
   (smooth-scrolling-mode 1))
-
-(use-package git-gutter-fringe
-  :defer 2
-  :config
-  (global-git-gutter-mode +1))
 
 (use-package undo-tree
   :defer 2
@@ -55,11 +68,6 @@
   (setq undo-tree-visualizer-timestamps t)
   :config
   (global-undo-tree-mode))
-
-(use-package which-key
-  :defer 2
-  :config
-  (which-key-mode))
 
 (use-package vlf
   :defer 2)
@@ -93,6 +101,8 @@
   (ws-butler-global-mode))
 
 (use-package highlight-symbol
+  :init
+  (setq highlight-symbol-idle-delay 0.5)
   :config
   (highlight-symbol-mode))
 
