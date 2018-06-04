@@ -31,10 +31,10 @@ in
     lastpass-cli gnupg keybase
 
     # i3
-    i3 i3status i3lock feh dmenu rofi rxvt_unicode unclutter
+    i3 i3status i3lock feh dmenu rofi  unclutter
     networkmanagerapplet parcellite
     lxappearance xfontsel ubuntu_font_family source-code-pro
-
+    rxvt_unicode-with-plugins
     # Desktop
     firefox
 
@@ -43,10 +43,11 @@ in
     pasystray pavucontrol
     smplayer mplayer audacity gimp
 
-    spotify
+    # spotify
 
     # Utils
-    libreoffice dia chromium
+    # libreoffice
+    dia chromium
 
     # Programming
     neovim

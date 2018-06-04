@@ -6,6 +6,7 @@ export ZSH=$HOME/.nix-profile/share/oh-my-zsh
 
 ZSH_THEME="utdemir"
 
+
 plugins=(
     git
     aws
@@ -16,6 +17,8 @@ plugins=(
 source $ZSH/oh-my-zsh.sh
 
 export EDITOR='emacs'
+export NIX_PATH=nixpkgs=$HOME/workspace/nixpkgs
+
 
 ## CUSTOM SCRIPTS
 
