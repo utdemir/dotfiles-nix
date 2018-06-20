@@ -2,8 +2,8 @@ let
 nixpkgs = (import <nixpkgs> {}).fetchFromGitHub {
   owner = "NixOS";
   repo = "nixpkgs";
-  rev = "ea3769ec81a3a8e95ecd995d90165998a2d91938";
-  sha256 = "09dclks5byrri5dn83jml06nnpqd8bc6pxdc67qdlzpd0vpqzzfp";
+  rev = "bf6974648ecb0ef7d81eed2a38766ba008996abb";
+  sha256 = "0dn25cxczgdjay7scyaj8fjrdl92lknil0xpnwn6svi8i23li3s9";
 };
 in
 import nixpkgs { config.allowUnfree = true; }
