@@ -82,6 +82,8 @@ in
     nix-repl nix-prefetch-scripts
 
     autorandr
+
+    pass-otp zbar
   ];
 
   programs.git = {

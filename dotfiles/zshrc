@@ -19,6 +19,8 @@ source $ZSH/oh-my-zsh.sh
 export EDITOR='emacs'
 export NIX_PATH=nixpkgs=$HOME/workspace/nixpkgs
 
+export PASSWORD_STORE_ENABLE_EXTENSIONS=true
+export PASSWORD_STORE_EXTENSIONS_DIR=/home/utdemir/.nix-profile/lib/password-store/extensions
 
 ## CUSTOM SCRIPTS
 
