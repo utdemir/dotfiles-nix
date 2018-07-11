@@ -43,10 +43,10 @@ in
     pasystray pavucontrol
     smplayer mplayer audacity gimp
 
-    # spotify
+    spotify
 
     # Utils
-    # libreoffice
+    libreoffice
     dia chromium
 
     # Programming
@@ -113,6 +113,7 @@ in
 
   services.keybase.enable = true;
   services.kbfs.enable = true;
+  manual.manpages.enable = false;
 
   home.file.".stack/config.yaml".source = ./dotfiles/stack;
   
