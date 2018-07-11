@@ -18,7 +18,6 @@
 (window-divider-mode)
 (setq window-divider-default-right-width 1)
 (setq window-divider-default-bottom-width 1)
-(setq-default mode-line-format nil)
 
 (global-linum-mode)
 
@@ -35,6 +34,16 @@
   :defer 2
   :config
   (which-key-mode))
+
+(use-package feebleline
+  :init
+  (defvar ad-do-it)
+  (feebleline-show-git-branch 't)
+  (feebleline-show-dir 't)
+  (feebleline-show-time nil)
+  (feebleline-show-previous-buffer nil)
+  :config
+  (feebleline-mode 1))
 
 ;; NAVIGATION
 
