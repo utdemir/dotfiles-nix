@@ -13,7 +13,13 @@ in
     spark
     mysql
     mysql-workbench
-    kubectl
+    (kubectl.overrideAttrs (oldAttrs: {
+      src = pkgs.fetchFromGitHub {
+        owner = "kubernetes"; repo = "kubernetes";
+        rev = "release-1.5";
+        sha256 = "0kdycfxvmanah9cpvkxs9blhhqgpxwf49bcf1hcy2fhkibgr33v4";
+      };
+    }))
   ];
 
 }
