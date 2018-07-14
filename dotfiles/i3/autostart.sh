@@ -4,3 +4,4 @@ unclutter &
 nm-applet &
 parcellite &
 pasystray &
+compton &

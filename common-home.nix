@@ -8,14 +8,14 @@ in
     # CLI
     ranger
     arandr scrot bashmount
-    xsel xclip
+    xsel xclip compton
     imagemagick pdftk ncdu
     htop tree units ascii
     powertop ghostscript
     haskellPackages.tldr
     translate-shell
 
-    nload siege
+    nload siege asciinema peek
 
     zip unzip
 
