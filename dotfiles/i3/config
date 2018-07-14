@@ -116,5 +116,6 @@ bar {
 }
 
 new_window 1pixel
+client.focused #4c7899 #285577 #ffffff #2e9ef4 #dd0000
 
 exec --no-startup-id sh ~/.config/i3/autostart.sh
