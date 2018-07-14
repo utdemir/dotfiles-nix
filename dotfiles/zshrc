@@ -1,4 +1,5 @@
 export PATH=$HOME/bin:/usr/local/opt/coreutils/libexec/gnubin:/usr/bin:$PATH
+export FPATH=$HOME/.nix-profile/share/zsh/site-functions:$FPATH
 
 ZSH_CUSTOM=$HOME/.zsh_custom
 
@@ -49,3 +50,10 @@ function hr() {
 }
 
 alias hrr="hr; clear"
+
+function qr2pass() {
+         [[ -z "$1" ]] && { echo "otp name empty"; return 1; }
+         maim --delay 0.5 |
+              zbarimg -q --raw /dev/stdin |
+              pass otp insert "otp/$1"
+}

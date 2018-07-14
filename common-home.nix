@@ -83,7 +83,7 @@ in
 
     autorandr
 
-    pass-otp zbar
+    pass-otp zbar maim
   ];
 
   programs.git = {
