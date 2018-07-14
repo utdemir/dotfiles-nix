@@ -10,6 +10,7 @@ in
     travis
     slack
     kt
+    hadoop
     spark
     mysql
     mysql-workbench
