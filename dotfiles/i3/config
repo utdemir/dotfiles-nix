@@ -4,10 +4,10 @@ font pango:monospace 8
 
 floating_modifier $mod
 
-bindsym $mod+backslash exec urxvt -name floating
-for_window [class="URxvt" instance="floating"] floating enable
+bindsym $mod+backslash exec termite --title floating
+for_window [class="Termite" title="floating"] floating enable
 
-bindsym $mod+Return exec urxvt
+bindsym $mod+Return exec termite
 bindsym $mod+BackSpace exec i3lock --color '#332233'
 
 bindsym $mod+Shift+q kill

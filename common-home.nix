@@ -34,7 +34,8 @@ in
     i3 i3status i3lock feh dmenu rofi  unclutter
     networkmanagerapplet parcellite
     lxappearance xfontsel ubuntu_font_family source-code-pro
-    rxvt_unicode-with-plugins
+    termite
+
     # Desktop
     firefox
 
