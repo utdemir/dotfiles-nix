@@ -57,7 +57,7 @@ in
 
     gitAndTools.hub
 
-    pv jq ripgrep tree fasd
+    pv jq ripgrep tree autojump
     ncdu htop cloc units
     haskellPackages.lentil
     haskellPackages.pandoc
