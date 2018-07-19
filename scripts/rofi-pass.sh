@@ -1,0 +1,34 @@
+#!/usr/bin/env sh
+
+set -o errexit
+set -o nounset
+set -o pipefail
+
+REPO="$HOME/.password-store/"
+
+rofi_args="-p pass -dmenu $*"
+
+passwords="$(
+  cd $REPO && find . -type f -name "*.gpg" |
+    cut -c 3- | grep -Po ".*(?=.gpg)"
+)"
+selected="$(echo "$passwords" | rofi $rofi_args)"
+
+option="$(
+cat <<EOF | rofi $rofi_args
+Copy password
+Copy OTP token
+EOF
+)"
+
+case "$option" in
+    "Copy password")
+       pass show -c "$selected"
+       ;;
+    "Copy OTP token")
+       pass otp show -c "$selected"
+       ;;
+    *)
+       echo "Unknown answer from rofi" >&2
+       ;;
+esac

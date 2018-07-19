@@ -85,6 +85,8 @@ in
     autorandr
 
     pass-otp zbar maim
+
+    (writeShellScriptBin "rofi-pass" ./scripts/rofi-pass.sh)
   ];
 
   programs.git = {
