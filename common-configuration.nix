@@ -8,7 +8,7 @@
   time.timeZone = "Pacific/Auckland";
 
   environment.systemPackages = with pkgs; [
-    emacs git
+    emacs git home-manager
   ];
 
   boot.kernel.sysctl."vm.swappiness" = 0;
