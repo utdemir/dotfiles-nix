@@ -57,5 +57,5 @@ function qr2pass() {
          [[ -z "$1" ]] && { echo "otp name empty"; return 1; }
          maim --delay 0.5 |
               zbarimg -q --raw /dev/stdin |
-              pass otp insert "otp/$1"
+              pass otp append "$1"
 }
