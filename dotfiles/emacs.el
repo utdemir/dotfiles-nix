@@ -88,9 +88,6 @@
   :bind
   ("M-x" . counsel-M-x))
 
-(use-package projectile
-  :config
-  (projectile-mode 1))
 
 (use-package counsel-projectile
   :config
@@ -100,10 +97,7 @@
       (projectile-cleanup-known-projects)
       (mapc #'projectile-add-known-project
         (mapcar #'file-name-as-directory (magit-list-repos)))))
-  (advice-add #'counsel-projectile-switch-project :before #'ud-refresh-projectile-projects)
-  :bind
-  ("C-c p f" . counsel-projectile-find-file)
-  ("C-c p p" . counsel-projectile-switch-project))
+  (advice-add #'counsel-projectile-switch-project :before #'ud-refresh-projectile-projects))
 
 (use-package ws-butler
   :config
