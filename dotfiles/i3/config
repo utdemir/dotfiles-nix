@@ -14,7 +14,7 @@ bindsym $mod+Shift+q kill
 
 bindsym $mod+d exec rofi -show run -theme DarkBlue
 bindsym $mod+p exec rofi-pass -theme DarkBlue
-bindsym $mod+s exec sh -c 'q=$(rofi -theme DarkBlue -dmenu -p "ddg" -l 0) && firefox --new-tab "https://duckduckgo.com/?q=$q"'
+bindsym $mod+s exec sh -c 'q=$(rofi -theme DarkBlue -dmenu -p "ddg" -l 0) && qutebrowser "https://duckduckgo.com/?q=$q"'
 
 bindsym $mod+x move workspace to output right
 

@@ -37,7 +37,7 @@ in
     termite
 
     # Desktop
-    firefox
+    firefox qutebrowser
 
     # Media
     qiv  zathura
