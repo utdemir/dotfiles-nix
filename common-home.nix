@@ -100,11 +100,7 @@ in
     };
   };
 
-  services.gpg-agent = {
-    enable = true;
-    enableSshSupport = true;
-    enableExtraSocket = true;
-  };
+  services.gpg-agent.enable = true;
 
   xsession = {
     enable = true;
@@ -115,7 +111,6 @@ in
   };
 
   services.keybase.enable = true;
-  services.kbfs.enable = true;
   manual.manpages.enable = false;
 
   home.file.".stack/config.yaml".source = ./dotfiles/stack;
