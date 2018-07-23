@@ -119,6 +119,10 @@ in
   home.file.".config/i3/autostart.sh".source = ./dotfiles/i3/autostart.sh;
   home.file.".config/i3status/config".source = ./dotfiles/i3/i3status;
 
+  home.file.".config/qutebrowser/config.py".source = ./dotfiles/qutebrowser/config.py;
+  home.file.".config/qutebrowser/bookmarks/urls".source =
+    ./dotfiles/qutebrowser/bookmarks;
+
   home.file.".Xdefaults".source = ./dotfiles/Xdefaults;
   
   home.file.".zshrc".source = ./dotfiles/zshrc;
