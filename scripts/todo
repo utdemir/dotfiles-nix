@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+
+set -o errexit
+set -o pipefail
+
+[[ -n "$*" ]] || { echo "expecting a todo"; return 1; }
+token=~/.todoist
+[[ -e $token ]] || { echo "$token not found"; return 1; }
+
+curl https://todoist.com/api/v7/quick/add \
+     -d token="$(cat $token)" \
+     -d text="$*" \
+     -s > /dev/null
+
+echo "OK."
