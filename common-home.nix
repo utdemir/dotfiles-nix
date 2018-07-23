@@ -86,7 +86,7 @@ in
 
     pass-otp zbar maim
 
-    (writeShellScriptBin "rofi-pass" ./scripts/rofi-pass.sh)
+    (import ./lib/mk-scripts.nix { inherit pkgs; } ./scripts)
   ];
 
   programs.git = {
