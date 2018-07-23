@@ -130,13 +130,4 @@ in
 
   home.file.".emacs.el".source = ./dotfiles/emacs.el;
   home.file.".emacs.d/snippets".source = ./dotfiles/emacs.d/snippets;
-
-  home.file.".config/.autorandr/postswitch" = {
-    executable = true;
-    text = ''
-      #!/usr/bin/env sh
-      feh --bg-fill ~/.config/i3/wallpaper.png
-    '';
-  };
-
 }
