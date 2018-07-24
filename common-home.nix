@@ -34,7 +34,7 @@ in
     i3 i3status i3lock feh dmenu rofi  unclutter
     networkmanagerapplet parcellite
     lxappearance xfontsel ubuntu_font_family source-code-pro
-    termite
+    kitty
 
     # Desktop
     firefox qutebrowser
@@ -118,6 +118,8 @@ in
   home.file.".config/i3/config".source = ./dotfiles/i3/config;
   home.file.".config/i3/autostart.sh".source = ./dotfiles/i3/autostart.sh;
   home.file.".config/i3status/config".source = ./dotfiles/i3/i3status;
+
+  home.file.".config/kitty/kitty.conf".source = ./dotfiles/kitty.conf;
 
   home.file.".config/qutebrowser/config.py".source = ./dotfiles/qutebrowser/config.py;
   home.file.".config/qutebrowser/bookmarks/urls".source =
