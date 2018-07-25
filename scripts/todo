@@ -12,4 +12,8 @@ curl https://todoist.com/api/v7/quick/add \
      -d text="$*" \
      -s > /dev/null
 
-echo "OK."
+# Check if run by rofi
+if [[ "$TERM" == "dumb" ]];
+then rofi -e "OK"
+else echo "OK."
+fi
