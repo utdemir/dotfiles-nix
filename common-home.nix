@@ -5,88 +5,64 @@ in
 
 {
   home.packages = with pkgs; [
-    # CLI
-    ranger
-    arandr scrot bashmount
-    xsel xclip compton
-    imagemagick pdftk ncdu
-    htop tree units ascii
-    powertop ghostscript
-    haskellPackages.tldr
-    translate-shell
-
-    nload siege asciinema peek
-
-    zip unzip
-
-    file dos2unix findutils coreutils
-    watch graphviz rsync parallel openssl
-    inotify-tools
-
-    zsh
-    oh-my-zsh
-
-    entr xdotool
-
-    lastpass-cli gnupg keybase
-
-    # i3
-    i3 i3status i3lock feh dmenu rofi  unclutter
-    networkmanagerapplet parcellite
+    # WM
+    i3 i3status i3lock feh dmenu rofi unclutter autorandr
+    arandr compton maim networkmanagerapplet parcellite
     lxappearance xfontsel ubuntu_font_family source-code-pro
-    kitty
+    pasystray pavucontrol xdotool kitty
 
-    # Desktop
-    firefox qutebrowser
+    # Apps
+    firefox qutebrowser chromium
+    libreoffice dia gimp
+    spotify smplayer mplayer audacity
 
-    # Media
-    qiv  zathura
-    pasystray pavucontrol
-    smplayer mplayer audacity gimp
+    qiv  zathura inotify-tools
+    scrot xsel xclip peek
 
-    spotify
-
-    # Utils
-    libreoffice
-    dia chromium
-
-    # Programming
-    neovim
-
-    (import ./lib/mk-emacs.nix { inherit pkgs; } ./dotfiles/emacs.el)
-
-    gitAndTools.hub
-
-    pv jq ripgrep tree autojump
-    ncdu htop cloc units
-    haskellPackages.lentil
-    haskellPackages.pandoc
-    curl wget
-
-    hexedit docker_compose
-
-    mtr nmap
-
-    cmatrix
-
-    awscli
-
-    cabal2nix stack
-    gcc gnumake openjdk8 nodejs
-    (sbt.override { jre = jre8; })
-    haskellPackages.ShellCheck
-    python2 python3
-    python3Packages.virtualenv
-    swiProlog
-    coq 
-
-    nix-repl nix-prefetch-scripts
-
-    autorandr
-
-    pass-otp zbar maim
+    # CLI
+    zsh oh-my-zsh
+    ranger bashmount imagemagick pdftk ncdu htop tree units
+    ascii powertop ghostscript translate-shell nload siege
+    asciinema zip unzip file dos2unix findutils coreutils
+    watch graphviz rsync parallel openssl entr gnupg keybase
+    gitAndTools.hub pv jq ripgrep tree autojump ncdu htop cloc
+    units haskellPackages.lentil haskellPackages.pandoc curl
+    wget hexedit docker_compose mtr nmap cmatrix awscli
+    pass-otp zbar
 
     (import ./lib/mk-scripts.nix { inherit pkgs; } ./scripts)
+
+    # editors
+    neovim
+    (import ./lib/mk-emacs.nix { inherit pkgs; } ./dotfiles/emacs.el)
+
+    # haskell
+    stack cabal2nix
+
+    # c
+    gcc gnumake
+
+    # scala
+    openjdk8 (sbt.override { jre = jre8; })
+
+    # sh
+    haskellPackages.ShellCheck
+
+    # python
+    python2 python3
+    python3Packages.virtualenv python3Packages.black
+
+    # rust
+    rustc cargo carnix
+
+    # prolog
+    swiProlog
+
+    # coq
+    coq
+
+    # nix
+    nix-repl nix-prefetch-scripts
   ];
 
   programs.git = {

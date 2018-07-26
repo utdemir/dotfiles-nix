@@ -14,7 +14,6 @@ in
     spark
     mysql
     mysql-workbench
-    python36Packages.black
     (kubectl.overrideAttrs (oldAttrs: {
       src = pkgs.fetchFromGitHub {
         owner = "kubernetes"; repo = "kubernetes";
