@@ -28,7 +28,7 @@ in
     gitAndTools.hub pv jq ripgrep tree autojump ncdu htop cloc
     units haskellPackages.lentil haskellPackages.pandoc curl
     wget hexedit docker_compose mtr nmap cmatrix awscli
-    pass-otp zbar
+    pass-otp zbar tig
 
     (import ./lib/mk-scripts.nix { inherit pkgs; } ./scripts)
 
