@@ -33,7 +33,19 @@ in
     (import ./lib/mk-scripts.nix { inherit pkgs; } ./scripts)
 
     # editors
-    neovim
+    (vim_configurable.customize {
+      name = "vi";
+      vimrcConfig = {
+        vam.knownPlugins = vimPlugins;
+        vam.pluginDictionaries = [
+          { names = [
+            "vim-addon-nix"
+            "molokai"
+          ];}
+        ];
+        customRC = (builtins.readFile ./dotfiles/vimrc);
+      };
+    })
     (import ./lib/mk-emacs.nix { inherit pkgs; } ./dotfiles/emacs.el)
 
     # haskell

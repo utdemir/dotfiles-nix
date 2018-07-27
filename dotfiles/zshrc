@@ -41,8 +41,6 @@ alias t3="tree -L 3"
 alias t4="tree -L 4" 
 alias t5="tree -L 5"
 
-alias vi="nvim"
-
 function hr() {
     printf '\n%.0s' {1..10}
     for _ in $(seq 1 3); do
