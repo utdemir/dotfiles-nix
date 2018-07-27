@@ -193,10 +193,12 @@
   :mode ("\\.go\\'" . go-mode))
 (use-package nix-mode
   :mode ("\\.nix\\'" . nix-mode))
+(use-package rust-mode
+  :mode ("\\.rs\\'" . rust-mode))
 (use-package yaml-mode
   :mode ("\\.yaml\\'" . yaml-mode))
 (use-package restclient
-  :mode ("\\.rest\\'" . yaml-mode))
+  :mode ("\\.rest\\'" . restclient-mode))
 
 (use-package org-present
   :no-require t
