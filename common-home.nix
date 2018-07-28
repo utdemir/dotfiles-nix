@@ -40,6 +40,7 @@ in
         vam.pluginDictionaries = [
           { names = [
             "vim-addon-nix"
+            "gitgutter"
             "molokai"
           ];}
         ];
