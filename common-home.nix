@@ -50,7 +50,7 @@ in
     (import ./lib/mk-emacs.nix { inherit pkgs; } ./dotfiles/emacs.el)
 
     # haskell
-    stack cabal2nix
+    stack cabal2nix haskellPackages.ghcid
 
     # c
     gcc gnumake
