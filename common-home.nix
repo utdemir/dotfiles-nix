@@ -6,7 +6,7 @@ in
 {
   home.packages = with pkgs; [
     # WM
-    i3 i3status i3lock feh dmenu rofi unclutter autorandr
+    i3 i3status i3lock dmenu rofi unclutter autorandr
     arandr compton maim networkmanagerapplet parcellite
     lxappearance xfontsel ubuntu_font_family source-code-pro
     pasystray pavucontrol xdotool kitty
@@ -16,7 +16,7 @@ in
     libreoffice dia gimp
     spotify smplayer mplayer audacity
 
-    qiv  zathura inotify-tools
+    sxiv zathura inotify-tools
     scrot xsel xclip peek
 
     # CLI
