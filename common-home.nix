@@ -39,7 +39,8 @@ in
         vam.knownPlugins = vimPlugins;
         vam.pluginDictionaries = [
           { names = [
-            "vim-addon-nix"
+            "vim-nix"
+            "vim-multiple-cursors"
             "gitgutter"
             "molokai"
           ];}
