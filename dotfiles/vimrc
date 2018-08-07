@@ -22,6 +22,7 @@ set magic
 set hlsearch
 set incsearch
 set ignorecase smartcase
+set clipboard=unnamedplus
 
 set cursorline
 set number
