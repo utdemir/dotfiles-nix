@@ -28,7 +28,7 @@ in
     gitAndTools.hub pv jq ripgrep tree autojump ncdu htop cloc
     units haskellPackages.lentil haskellPackages.pandoc curl
     wget hexedit docker_compose mtr nmap cmatrix awscli
-    pass-otp zbar tig sqlite fd dnsutils
+    pass-otp zbar tig sqlite fd dnsutils pwgen ltrace strace
 
     (import ./lib/mk-scripts.nix { inherit pkgs; } ./scripts)
 
@@ -51,6 +51,7 @@ in
       };
     })
     (import ./lib/mk-emacs.nix { inherit pkgs; } ./dotfiles/emacs.el)
+    kakoune
 
     # haskell
     stack cabal2nix haskellPackages.ghcid
