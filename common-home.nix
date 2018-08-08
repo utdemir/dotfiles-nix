@@ -43,6 +43,8 @@ in
             "vim-multiple-cursors"
             "gitgutter"
             "molokai"
+            "easymotion"
+            "undotree"
           ];}
         ];
         customRC = (builtins.readFile ./dotfiles/vimrc);
