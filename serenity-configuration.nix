@@ -13,8 +13,4 @@
   ];
 
   networking.hostName = "serenity";
-
-  services.kubernetes = {
-    roles = [ "master" "node" ];
-  };
 }
