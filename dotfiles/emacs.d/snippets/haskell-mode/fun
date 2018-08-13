@@ -1,6 +1,0 @@
-# -*- mode: snippet -*-
-# name: fun
-# key: fun
-# --
-${1:functionName} :: ${2:a}
-$1 = $0error "Not implemented: $1"

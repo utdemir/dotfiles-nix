@@ -11,7 +11,7 @@ in
     slack
     kt
     hadoop
-    spark
+    (spark.override { mesosSupport = false; RSupport = false; })
     mysql
     mysql-workbench
     (kubectl.overrideAttrs (oldAttrs: {

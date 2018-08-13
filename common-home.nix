@@ -33,25 +33,7 @@ in
     (import ./lib/mk-scripts.nix { inherit pkgs; } ./scripts)
 
     # editors
-    (vim_configurable.customize {
-      name = "vi";
-      vimrcConfig = {
-        vam.knownPlugins = vimPlugins;
-        vam.pluginDictionaries = [
-          { names = [
-            "vim-nix"
-            "vim-multiple-cursors"
-            "gitgutter"
-            "molokai"
-            "easymotion"
-            "undotree"
-          ];}
-        ];
-        customRC = (builtins.readFile ./dotfiles/vimrc);
-      };
-    })
-    (import ./lib/mk-emacs.nix { inherit pkgs; } ./dotfiles/emacs.el)
-    kakoune
+    neovim emacs kakoune
 
     # haskell
     stack cabal2nix haskellPackages.ghcid
@@ -79,7 +61,7 @@ in
     coq
 
     # nix
-    nix-repl nix-prefetch-scripts
+    nix-prefetch-scripts
   ];
 
   programs.git = {
@@ -119,10 +101,8 @@ in
     ./dotfiles/qutebrowser/bookmarks;
 
   home.file.".Xdefaults".source = ./dotfiles/Xdefaults;
+  home.file.".config/mimeapps.list".source = ./dotfiles/mimeapps.list;
   
   home.file.".zshrc".source = ./dotfiles/zshrc;
   home.file.".zsh_custom/utdemir.zsh-theme".source = ./dotfiles/zsh_custom/utdemir.zsh-theme;
-
-  home.file.".emacs.el".source = ./dotfiles/emacs.el;
-  home.file.".emacs.d/snippets".source = ./dotfiles/emacs.d/snippets;
 }
