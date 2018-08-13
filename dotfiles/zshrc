@@ -19,7 +19,7 @@ source $HOME/.nix-profile/etc/profile.d/autojump.sh
 
 source $ZSH/oh-my-zsh.sh
 
-export EDITOR='vi'
+export EDITOR='kak'
 export NIX_PATH=nixpkgs=$HOME/workspace/nixpkgs
 
 export PASSWORD_STORE_ENABLE_EXTENSIONS=true

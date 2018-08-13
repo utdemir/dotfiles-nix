@@ -42,7 +42,7 @@ in
     gcc gnumake
 
     # scala
-    openjdk8 (sbt.override { jre = jre8; })
+    openjdk8 (sbt.override { jre = jre8; }) scala
 
     # sh
     haskellPackages.ShellCheck
