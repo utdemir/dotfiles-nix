@@ -4,4 +4,10 @@ add-highlighter global/ show-matching
 add-highlighter global/ number-lines
 
 map global normal = <a-i>
+map global normal a '*%s<ret>' -docstring 'select all'
+
+hook global InsertChar k %{ try %{
+  exec -draft hH <a-k>jk<ret> d
+  exec <esc>
+}}
 
