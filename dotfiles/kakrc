@@ -1,3 +1,7 @@
+set-option global ui_options ncurses_status_on_top=true
+
 add-highlighter global/ show-matching
 add-highlighter global/ number-lines
+
+map global normal = <a-i>
 
