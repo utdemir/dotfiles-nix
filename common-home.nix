@@ -42,7 +42,8 @@ in
     gcc gnumake
 
     # scala
-    openjdk8 (sbt.override { jre = jre8; }) scala
+    openjdk8 sbt scala
+#    (callPackage ./packages/sbt-client.nix {})
 
     # sh
     haskellPackages.ShellCheck
@@ -89,6 +90,8 @@ in
   manual.manpages.enable = false;
 
   home.file.".stack/config.yaml".source = ./dotfiles/stack;
+
+  home.file.".config/kak/kakrc".source = ./dotfiles/kakrc;
   
   home.file.".config/i3/config".source = ./dotfiles/i3/config;
   home.file.".config/i3/autostart.sh".source = ./dotfiles/i3/autostart.sh;

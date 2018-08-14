@@ -1,0 +1,3 @@
+add-highlighter global/ show-matching
+add-highlighter global/ number-lines
+
