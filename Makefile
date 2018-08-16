@@ -21,3 +21,4 @@ system:
 home:
 	@echo "# Applying home configuration."
 	home-manager -f ./${HOSTNAME}-home.nix switch
+	rm -f ~/.zcompdump

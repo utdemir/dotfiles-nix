@@ -5,12 +5,26 @@ export NIX_PATH=nixpkgs=$HOME/workspace/nixpkgs
 export PASSWORD_STORE_ENABLE_EXTENSIONS=true
 export PASSWORD_STORE_EXTENSIONS_DIR=/home/utdemir/.nix-profile/lib/password-store/extensions
 
-# Prog
+# ZSH params
 REPORTTIME=3
 
+HISTSIZE=10000
+SAVEHIST=10000
+HISTFILE=~/.history
+APPEND_HISTORY=true
+
+setopt NO_FLOW_CONTROL
+setopt NO_CLOBBER
+
+# Completions
 export FPATH=$HOME/.nix-profile/share/zsh/site-functions:$FPATH
 autoload -Uz compinit
+if [[ ! -e $HOME/.zcompdump ]]; 
+then echo "! compinit" >&2; compinit; 
+else compinit -C;
+fi
 
+# Prompt
 autoload -U colors zsh/terminfo
 colors
 
@@ -33,9 +47,11 @@ setopt prompt_subst
 PS1='${return_code}%F{magenta}%n%f@%F{yellow}%m%f:%B%F{green}%~%f%b ${vcs_info_msg_0_}
 $ '
 
+# Tools
+
 source $HOME/.nix-profile/etc/profile.d/autojump.sh
 source $HOME/.nix-profile/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-source $HOME/.nix-profile/share/zsh/site-functions/zsh-navigation.tools-plugin.zsh
+source $HOME/.nix-profile/share/zsh/site-functions/zsh-navigation-tools.plugin.zsh
 
 # Utils
 
