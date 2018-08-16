@@ -20,7 +20,9 @@ in
     scrot xsel xclip peek
 
     # CLI
-    zsh oh-my-zsh
+    zsh zsh-syntax-highlighting nix-zsh-completions 
+    zsh-navigation-tools
+
     ranger bashmount imagemagick pdftk ncdu htop tree units
     ascii powertop ghostscript translate-shell nload siege
     asciinema zip unzip file dos2unix findutils coreutils
@@ -107,5 +109,4 @@ in
   home.file.".config/mimeapps.list".source = ./dotfiles/mimeapps.list;
   
   home.file.".zshrc".source = ./dotfiles/zshrc;
-  home.file.".zsh_custom/utdemir.zsh-theme".source = ./dotfiles/zsh_custom/utdemir.zsh-theme;
 }
