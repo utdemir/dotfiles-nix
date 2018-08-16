@@ -3,11 +3,27 @@ set-option global ui_options ncurses_status_on_top=true
 add-highlighter global/ show-matching
 add-highlighter global/ number-lines
 
-map global normal = <a-i>
-map global normal a '*%s<ret>' -docstring 'select all'
+# -   to select inner object
+# =   to select outer object
+# a-s to add a new cursor to the next occurence of the selection
+map global normal -- -     <a-i>
+map global normal -- =     <a-a>
+map global normal -- <a-s> '*N'
 
+# use system clipboard
+hook global NormalKey y|d|c %{ nop %sh{
+  printf %s "$kak_main_reg_dquote" | xsel --input --clipboard
+}}
+map global normal P '!xsel --output --clipboard<ret>'
+map global normal p '<a-!>xsel --output --clipboard<ret>'
+
+# jk to exit insert mode 
 hook global InsertChar k %{ try %{
   exec -draft hH <a-k>jk<ret> d
   exec <esc>
 }}
 
+# tab inserts spaces
+hook global InsertChar \t %{ exec -draft -itersel h@ }
+set global tabstop 4
+set global indentwidth 4   
