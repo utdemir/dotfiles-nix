@@ -57,6 +57,9 @@ source $HOME/.nix-profile/share/zsh/site-functions/zsh-navigation-tools.plugin.z
 
 alias ls="ls --color -F"
 alias ..="cd .."
+alias ...="cd ../.."
+alias ....="cd ../../.."
+alias .....="cd ../../../.."
 
 function trace() {
     echo "! $@"; $@
