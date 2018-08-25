@@ -21,7 +21,6 @@ in
 
     # CLI
     zsh zsh-syntax-highlighting nix-zsh-completions 
-    zsh-navigation-tools
 
     ranger bashmount imagemagick pdftk ncdu htop tree units
     ascii powertop ghostscript translate-shell nload siege
@@ -31,6 +30,7 @@ in
     units haskellPackages.lentil haskellPackages.pandoc curl
     wget hexedit docker_compose mtr nmap cmatrix awscli
     pass-otp zbar tig sqlite fd dnsutils pwgen ltrace strace
+    fzf
 
     (import ./lib/mk-scripts.nix { inherit pkgs; } ./scripts)
 

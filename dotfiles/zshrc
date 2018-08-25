@@ -51,7 +51,8 @@ $ '
 
 source $HOME/.nix-profile/etc/profile.d/autojump.sh
 source $HOME/.nix-profile/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-source $HOME/.nix-profile/share/zsh/site-functions/zsh-navigation-tools.plugin.zsh
+source $HOME/.nix-profile/share/fzf/completion.zsh
+source $HOME/.nix-profile/share/fzf/key-bindings.zsh
 
 # Utils
 
