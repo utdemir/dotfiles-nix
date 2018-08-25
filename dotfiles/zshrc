@@ -51,6 +51,8 @@ $ '
 
 source $HOME/.nix-profile/etc/profile.d/autojump.sh
 source $HOME/.nix-profile/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
+export FZF_DEFAULT_OPTS='--no-height'
 source $HOME/.nix-profile/share/fzf/completion.zsh
 source $HOME/.nix-profile/share/fzf/key-bindings.zsh
 
