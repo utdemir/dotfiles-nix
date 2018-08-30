@@ -9,7 +9,7 @@ in
     i3 i3status i3lock dmenu rofi unclutter autorandr
     arandr compton maim networkmanagerapplet parcellite
     lxappearance xfontsel ubuntu_font_family source-code-pro
-    pasystray pavucontrol xdotool kitty
+    pasystray pavucontrol xdotool kitty xautolock
 
     # Apps
     firefox qutebrowser chromium

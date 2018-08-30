@@ -8,7 +8,7 @@ bindsym $mod+backslash exec kitty --title floating
 for_window [class="kitty" title="floating"] floating enable
 
 bindsym $mod+Return exec kitty
-bindsym $mod+BackSpace exec i3lock --color '#332233'
+bindsym $mod+BackSpace exec xautolock -locknow
 
 bindsym $mod+Shift+q kill
 
