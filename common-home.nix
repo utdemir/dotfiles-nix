@@ -109,4 +109,7 @@ in
   home.file.".config/mimeapps.list".source = ./dotfiles/mimeapps.list;
   
   home.file.".zshrc".source = ./dotfiles/zshrc;
+
+  home.file.".config/fontconfig/fonts.conf".source = ./dotfiles/fonts.conf;
+  home.file.".local/share/fonts".source = ./dotfiles/fonts;
 }
