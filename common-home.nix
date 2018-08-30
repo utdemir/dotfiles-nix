@@ -105,7 +105,6 @@ in
   home.file.".config/qutebrowser/bookmarks/urls".source =
     ./dotfiles/qutebrowser/bookmarks;
 
-  home.file.".Xdefaults".source = ./dotfiles/Xdefaults;
   home.file.".config/mimeapps.list".source = ./dotfiles/mimeapps.list;
   
   home.file.".zshrc".source = ./dotfiles/zshrc;
