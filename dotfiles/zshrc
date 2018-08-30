@@ -16,9 +16,30 @@ APPEND_HISTORY=true
 setopt NO_FLOW_CONTROL
 setopt NO_CLOBBER
 
+# Keybindings
+bindkey "^[[3~" delete-char
+bindkey '^[[1;5C' forward-word
+bindkey '^[[1;5D' backward-word   
+
+autoload -U edit-command-line
+zle -N edit-command-line
+bindkey '\C-x\C-e' edit-command-line
+
+unsetopt flow_control
+
 # Completions
 export FPATH=$HOME/.nix-profile/share/zsh/site-functions:$FPATH
 autoload -Uz compinit
+
+setopt always_to_end
+setopt complete_in_word
+zmodload zsh/complist
+autoload -Uz compinit
+compinit
+
+zstyle ':completion:*' menu select
+zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}' 'm:{a-zA-Z}={A-Z}{a-z}' 'r:|[._-]=* r:|=*' 'l:|=* r:|=*'
+
 if [[ ! -e $HOME/.zcompdump ]]; 
 then echo "! compinit" >&2; compinit; 
 else compinit -C;
