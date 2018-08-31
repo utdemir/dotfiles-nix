@@ -11,6 +11,11 @@
   swapDevices = [
     { device = "/swapfile"; size = 2048; }
   ];
+ 
+  services.xserver = {
+    videoDrivers = [ "nvidia" ];
+    dpi = 100;
+  }
 
   networking.hostName = "serenity";
 }
