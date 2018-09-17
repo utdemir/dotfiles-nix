@@ -31,7 +31,7 @@ in
     units haskellPackages.lentil haskellPackages.pandoc curl
     wget hexedit docker_compose mtr nmap cmatrix awscli
     pass-otp zbar tig sqlite fd dnsutils pwgen ltrace strace
-    fzf
+    fzf termdown
 
     (import ./lib/mk-scripts.nix { inherit pkgs; } ./scripts)
 
