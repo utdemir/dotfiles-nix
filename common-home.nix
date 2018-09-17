@@ -9,7 +9,8 @@ in
     i3 i3status i3lock dmenu rofi unclutter autorandr
     arandr compton maim networkmanagerapplet parcellite
     lxappearance xfontsel ubuntu_font_family source-code-pro
-    pasystray pavucontrol xdotool kitty xautolock
+    pasystray pavucontrol xdotool kitty xautolock 
+    (haskell.lib.doJailbreak haskellPackages.arbtt)
 
     # Apps
     firefox qutebrowser chromium
@@ -110,5 +111,7 @@ in
   home.file.".zshrc".source = ./dotfiles/zshrc;
 
   home.file.".config/fontconfig/fonts.conf".source = ./dotfiles/fonts.conf;
-  home.file.".local/share/fonts".source = ./dotfiles/fonts;
+  home.file.".local/share/fonts".source = ./dotfiles/fonts; 
+
+  home.file.".arbtt/categorize.cfg".source = ./dotfiles/arbtt-categorize.cfg;
 }
