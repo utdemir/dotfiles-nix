@@ -39,6 +39,11 @@
     synaptics.enable = true;
   };
 
+  services.earlyoom = {
+    enable = true;
+    freeMemThreshold = 5;
+  };
+
   hardware.pulseaudio.enable = true;
   hardware.opengl.driSupport32Bit = true;
 
