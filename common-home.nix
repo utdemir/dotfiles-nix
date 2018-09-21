@@ -18,7 +18,7 @@ in
     spotify smplayer mplayer audacity
 
     sxiv zathura inotify-tools
-    scrot xsel xclip peek
+    scrot xsel xclip
 
     # CLI
     zsh zsh-syntax-highlighting nix-zsh-completions 
