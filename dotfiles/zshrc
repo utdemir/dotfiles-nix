@@ -107,3 +107,29 @@ function qr2pass() {
               zbarimg -q --raw /dev/stdin |
               pass otp append "$1"
 }
+
+# Sticky
+
+local sticked=""
+
+zle-line-init() {
+    BUFFER="$sticked$BUFFER"
+    zle end-of-line
+}
+zle -N zle-line-init
+
+function zle-set-sticky {
+    sticked="$BUFFER"
+    zle -M "Sticky: '$sticked'."
+}
+zle -N zle-set-sticky
+bindkey '^S' zle-set-sticky
+
+function accept-line {
+    if [[ -z "$BUFFER" ]] && [[ -n "$sticked" ]]; then
+        sticked=""
+        echo -n "\nRemoved sticky."
+    fi
+    zle .accept-line
+}
+zle -N accept-line
