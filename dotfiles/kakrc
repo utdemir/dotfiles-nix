@@ -17,7 +17,7 @@ hook global NormalKey y|d|c %{ nop %sh{
 map global normal P '!xsel --output --clipboard<ret>'
 map global normal p '<a-!>xsel --output --clipboard<ret>'
 
-# jk to exit insert mode 
+# jk to exit insert mode
 hook global InsertChar k %{ try %{
   exec -draft hH <a-k>jk<ret> d
   exec <esc>
@@ -26,4 +26,4 @@ hook global InsertChar k %{ try %{
 # tab inserts spaces
 hook global InsertChar \t %{ exec -draft -itersel h@ }
 set global tabstop 4
-set global indentwidth 4   
+set global indentwidth 4

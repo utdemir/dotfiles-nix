@@ -21,6 +21,7 @@ in
         sha256 = "0kdycfxvmanah9cpvkxs9blhhqgpxwf49bcf1hcy2fhkibgr33v4";
       };
     }))
+    kubetail
   ];
 
 }

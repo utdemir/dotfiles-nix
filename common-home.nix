@@ -16,8 +16,7 @@ in
     firefox qutebrowser chromium
     libreoffice dia gimp
     spotify smplayer mplayer audacity
-
-    sxiv zathura inotify-tools
+    zathura sxiv inotify-tools
     scrot xsel xclip
 
     # CLI
@@ -31,22 +30,22 @@ in
     units haskellPackages.lentil haskellPackages.pandoc curl
     wget hexedit docker_compose mtr nmap cmatrix awscli
     pass-otp zbar tig sqlite fd dnsutils pwgen ltrace strace
-    fzf termdown
+    fzf termdown miller s3fs ii multitail
 
     (import ./lib/mk-scripts.nix { inherit pkgs; } ./scripts)
+    exercism
 
     # editors
     neovim emacs kakoune
 
     # haskell
-    stack cabal2nix haskellPackages.ghcid
+    stack cabal2nix haskellPackages.ghcid 
 
     # c
     gcc gnumake
 
     # scala
     openjdk8 sbt scala
-#    (callPackage ./packages/sbt-client.nix {})
 
     # sh
     haskellPackages.ShellCheck
@@ -76,6 +75,10 @@ in
       signByDefault = true;
       key = "76CCC3C7A7398C1321F5438BF3F8629C3E0BF60B";
       gpgPath = "gpg";
+    };
+    aliases = {
+      co = "checkout";
+      st = "status -sb";
     };
   };
 
