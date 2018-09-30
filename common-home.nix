@@ -11,6 +11,7 @@ in
     lxappearance xfontsel ubuntu_font_family source-code-pro
     pasystray pavucontrol xdotool kitty xautolock 
     (haskell.lib.doJailbreak haskellPackages.arbtt)
+    xorg.xbacklight
 
     # Apps
     firefox qutebrowser chromium
