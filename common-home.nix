@@ -18,7 +18,7 @@ in
     libreoffice dia gimp
     spotify smplayer mplayer audacity
     zathura sxiv inotify-tools
-    scrot xsel xclip
+    scrot xsel xclip steam
 
     # CLI
     zsh zsh-syntax-highlighting nix-zsh-completions 
@@ -31,13 +31,13 @@ in
     units haskellPackages.lentil haskellPackages.pandoc curl
     wget hexedit docker_compose mtr nmap cmatrix awscli
     pass-otp zbar tig sqlite fd dnsutils pwgen ltrace strace
-    fzf termdown miller s3fs ii multitail
+    fzf termdown miller s3fs ii multitail gettext
 
     (import ./lib/mk-scripts.nix { inherit pkgs; } ./scripts)
     exercism
 
     # editors
-    neovim emacs kakoune
+    neovim emacs kakoune ed
 
     # haskell
     stack cabal2nix haskellPackages.ghcid 
