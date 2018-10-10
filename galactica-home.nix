@@ -1,6 +1,7 @@
 { ... }:
 
 let pkgs = import ./pkgs.nix;
+    oldPkgs = import ./old_pkgs.nix;
 in
 
 {
@@ -14,7 +15,7 @@ in
     (spark.override { mesosSupport = false; RSupport = false; })
     mysql
     mysql-workbench
-    (kubectl.overrideAttrs (oldAttrs: {
+    (oldPkgs.kubectl.overrideAttrs (oldAttrs: {
       src = pkgs.fetchFromGitHub {
         owner = "kubernetes"; repo = "kubernetes";
         rev = "release-1.5";

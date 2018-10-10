@@ -1,6 +1,7 @@
 {...}:
 
 let pkgs = import ./pkgs.nix;
+    oldPkgs = import ./old_pkgs.nix;
 in
 
 {
@@ -17,8 +18,8 @@ in
     firefox qutebrowser chromium
     libreoffice dia gimp
     spotify smplayer mplayer audacity
-    zathura sxiv inotify-tools
-    scrot xsel xclip steam
+    oldPkgs.zathura sxiv inotify-tools
+    scrot xsel xclip steam deluge
 
     # CLI
     zsh zsh-syntax-highlighting nix-zsh-completions 
@@ -31,7 +32,7 @@ in
     units haskellPackages.lentil haskellPackages.pandoc curl
     wget hexedit docker_compose mtr nmap cmatrix awscli
     pass-otp zbar tig sqlite fd dnsutils pwgen ltrace strace
-    fzf termdown miller s3fs ii multitail gettext
+    fzf termdown miller s3fs ii multitail gettext cpulimit
 
     (import ./lib/mk-scripts.nix { inherit pkgs; } ./scripts)
     exercism
@@ -41,6 +42,23 @@ in
 
     # haskell
     stack cabal2nix haskellPackages.ghcid 
+
+    # purescript
+    (haskell.packages.ghc843.override {
+      overrides = se: su: {
+        spdx = haskell.lib.doJailbreak su.spdx;
+        purescript = haskell.lib.overrideCabal su.purescript (s: {
+          preConfigure = "hpack";
+          executableHaskellDepends = s.executableHaskellDepends ++ [ se.hpack se.microlens-platform ];
+          src = pkgs.fetchFromGitHub {
+            owner = "purescript"; repo = "purescript";
+            rev = "a8e0911222f46411776978a13866eb097175162c";
+            sha256 = "0705b101kgcad4cq6xnmbjw6szb4j33ssjm6xag1n4w9477wdl08";
+          };
+        });
+      };
+    }).purescript
+    nodePackages.bower
 
     # c
     gcc gnumake
@@ -53,7 +71,7 @@ in
 
     # python
     python2 python3
-    python3Packages.virtualenv python3Packages.black
+    python3Packages.virtualenv pipenv python3Packages.black
 
     # rust
     rustc cargo carnix
