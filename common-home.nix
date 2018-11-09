@@ -12,7 +12,7 @@ in
     lxappearance xfontsel ubuntu_font_family source-code-pro
     pasystray pavucontrol xdotool kitty xautolock 
     (haskell.lib.doJailbreak haskellPackages.arbtt)
-    xorg.xbacklight
+    xorg.xbacklight dunst acpi libnotify xorg.xkill
 
     # Apps
     firefox qutebrowser chromium
@@ -136,4 +136,8 @@ in
   home.file.".local/share/fonts".source = ./dotfiles/fonts; 
 
   home.file.".arbtt/categorize.cfg".source = ./dotfiles/arbtt-categorize.cfg;
+
+  home.file.".config/dunst/dunstrc".source = ./dotfiles/dunstrc;
+
+  news.notify = "silent";
 }

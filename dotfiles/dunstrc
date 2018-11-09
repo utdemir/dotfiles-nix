@@ -1,0 +1,28 @@
+[global]
+follow=keyboard
+alignment=center
+stack_duplicates=false
+geometry=x0+0-120
+font = Fira Code 16
+
+[urgency_low]
+background = "#222222"
+foreground = "#888888"
+timeout = 10
+
+[urgency_normal]
+background = "#285577"
+foreground = "#ffffff"
+timeout = 10
+
+[urgency_critical]
+background = "#900000"
+foreground = "#ffffff"
+frame_color = "#ff0000"
+timeout = 0
+
+[shortcuts]
+close= ctrl+space
+
+[ignore]
+summary = "Home Manager"
