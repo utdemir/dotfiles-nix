@@ -47,7 +47,7 @@ in
 
     # haskell
     stack cabal2nix haskellPackages.ghcid 
-    haskellPackages.darcs
+    haskellPackages.darcs ghc
 
     # purescript
     (haskell.packages.ghc843.override {
