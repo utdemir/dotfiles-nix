@@ -16,10 +16,11 @@ in
 
     # Apps
     firefox qutebrowser chromium
-    libreoffice dia gimp
+    libreoffice dia gimp pencil vlc
     spotify smplayer mplayer audacity
-    oldPkgs.zathura sxiv inotify-tools
+    oldPkgs.zathura sxiv qiv inotify-tools
     scrot xsel xclip steam deluge
+    xorg.libxcb # required for steam
 
     # CLI
     zsh zsh-syntax-highlighting nix-zsh-completions 
@@ -29,19 +30,24 @@ in
     asciinema zip unzip file dos2unix findutils coreutils
     watch graphviz rsync parallel openssl entr gnupg keybase
     gitAndTools.hub gist pv jq ripgrep tree autojump ncdu htop cloc
-    units haskellPackages.lentil haskellPackages.pandoc curl
+    units haskellPackages.lentil haskellPackages.pandoc curl httpie
     wget hexedit docker_compose mtr nmap cmatrix awscli
     pass-otp zbar tig sqlite fd dnsutils pwgen ltrace strace
     fzf termdown miller s3fs ii multitail gettext cpulimit
+    haskellPackages.patat xpdf paperkey
 
     (import ./lib/mk-scripts.nix { inherit pkgs; } ./scripts)
     exercism
+
+    # photos
+    darktable rawtherapee dcraw 
 
     # editors
     neovim emacs kakoune ed
 
     # haskell
     stack cabal2nix haskellPackages.ghcid 
+    haskellPackages.darcs
 
     # purescript
     (haskell.packages.ghc843.override {
@@ -60,6 +66,9 @@ in
     }).purescript
     nodePackages.bower
 
+    # scheme
+    chicken
+
     # c
     gcc gnumake
 
@@ -70,8 +79,8 @@ in
     haskellPackages.ShellCheck
 
     # python
-    python2 python3
-    python3Packages.virtualenv pipenv python3Packages.black
+    python2 python37
+    python37Packages.virtualenv pipenv python3Packages.black
 
     # rust
     rustc cargo carnix
@@ -83,7 +92,7 @@ in
     coq
 
     # nix
-    nix-prefetch-scripts
+    nix-prefetch-scripts patchelf
   ];
 
   programs.git = {
