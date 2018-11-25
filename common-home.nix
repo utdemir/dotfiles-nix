@@ -148,5 +148,35 @@ in
 
   home.file.".config/dunst/dunstrc".source = ./dotfiles/dunstrc;
 
+
+  systemd.user.services.battery-notification = 
+    let p = pkgs.runCommand "battery-notification" { 
+      buildInputs = [ pkgs.makeWrapper ];
+    } ''
+      mkdir -p $out/bin
+      makeWrapper ${./scripts/battery-notification.sh} $out/bin/battery-notification.sh \
+        --prefix PATH : "${pkgs.acpi}/bin:${pkgs.libnotify}/bin:${pkgs.bash}/bin"
+    '';
+    in {
+      Unit = {
+        Description = "Sends a notification on low batery.";
+        PartOf = [ "graphical-session.target" ];
+      };
+      Service = {
+        Type = "oneshot";
+        ExecStart = "${p}/bin/battery-notification.sh";
+      };
+    };
+  systemd.user.timers.battery-notification = {
+    Timer = {
+      OnCalendar = "minutely";
+      Unit = "battery-notification.service";
+      Persistent = true;
+    };
+    Install = {
+      WantedBy = [ "timers.target" ]; 
+    };
+  };
+
   news.notify = "silent";
 }
