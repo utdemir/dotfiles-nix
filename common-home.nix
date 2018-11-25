@@ -28,13 +28,13 @@ in
     ranger bashmount imagemagick pdftk ncdu htop tree units
     ascii powertop ghostscript translate-shell nload siege
     asciinema zip unzip file dos2unix findutils coreutils
-    watch graphviz rsync parallel openssl entr gnupg keybase
+    watch graphviz rsync openssl entr gnupg keybase
     gitAndTools.hub gist pv jq ripgrep tree autojump ncdu htop cloc
     units haskellPackages.lentil haskellPackages.pandoc curl httpie
     wget hexedit docker_compose mtr nmap cmatrix awscli
     pass-otp zbar tig sqlite fd dnsutils pwgen ltrace strace
     fzf termdown miller s3fs ii multitail gettext cpulimit
-    haskellPackages.patat xpdf paperkey
+    haskellPackages.patat xpdf paperkey moreutils
 
     (import ./lib/mk-scripts.nix { inherit pkgs; } ./scripts)
     exercism
