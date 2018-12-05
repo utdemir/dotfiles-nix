@@ -27,7 +27,7 @@ in
 
     ranger bashmount imagemagick pdftk ncdu htop tree units
     ascii powertop ghostscript translate-shell nload siege
-    asciinema zip unzip file dos2unix findutils coreutils
+    asciinema zip unzip file dos2unix findutils
     watch graphviz rsync openssl entr gnupg keybase
     gitAndTools.hub gist pv jq ripgrep tree autojump ncdu htop cloc
     units haskellPackages.lentil haskellPackages.pandoc curl httpie
@@ -69,6 +69,9 @@ in
     # scheme
     chicken
 
+    # pony
+    ponyc
+
     # c
     gcc gnumake
 
@@ -87,6 +90,9 @@ in
 
     # prolog
     swiProlog
+
+    # factor
+    factor-lang
 
     # coq
     coq
