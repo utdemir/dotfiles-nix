@@ -114,6 +114,10 @@ in
       co = "checkout";
       st = "status -sb";
     };
+    extraConfig = ''
+        [url "git@github.com:"]
+        insteadOf = https://github.com/  
+    '';
   };
 
   services.gpg-agent.enable = true;
