@@ -19,7 +19,7 @@ in
     libreoffice dia gimp pencil vlc
     spotify smplayer mplayer audacity
     oldPkgs.zathura sxiv qiv inotify-tools
-    scrot xsel xclip oldPkgs.steam deluge 
+    scrot xsel xclip steam deluge
     xorg.libxcb # required for steam
 
     # CLI
@@ -50,7 +50,7 @@ in
     haskellPackages.darcs ghc
 
     # purescript
-    (haskell.packages.ghc844.override {
+    (haskell.packages.ghc843.override {
       overrides = se: su: {
         spdx = haskell.lib.doJailbreak su.spdx;
         purescript = haskell.lib.overrideCabal su.purescript (s: {
