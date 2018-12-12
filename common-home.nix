@@ -39,6 +39,8 @@ in
     (import ./lib/mk-scripts.nix { inherit pkgs; } ./scripts)
     exercism
 
+    nixops
+
     # photos
     darktable rawtherapee dcraw 
 
