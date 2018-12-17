@@ -19,7 +19,7 @@ in
     libreoffice dia gimp pencil vlc
     spotify smplayer mplayer audacity
     oldPkgs.zathura sxiv qiv inotify-tools
-    scrot xsel xclip steam deluge
+    scrot xsel xclip steam deluge pcmanfm
     xorg.libxcb # required for steam
 
     # CLI
