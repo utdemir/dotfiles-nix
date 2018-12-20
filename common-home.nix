@@ -15,10 +15,10 @@ in
     xorg.xbacklight dunst acpi libnotify xorg.xkill
 
     # Apps
-    firefox qutebrowser chromium
+    firefox oldPkgs.qutebrowser chromium
     libreoffice dia gimp pencil vlc
     spotify smplayer mplayer audacity
-    oldPkgs.zathura sxiv qiv inotify-tools
+    zathura sxiv qiv inotify-tools
     scrot xsel xclip steam deluge pcmanfm
     xorg.libxcb # required for steam
 
@@ -39,7 +39,7 @@ in
     (import ./lib/mk-scripts.nix { inherit pkgs; } ./scripts)
     exercism
 
-    nixops
+    oldPkgs.nixops
 
     # photos
     darktable rawtherapee dcraw 
@@ -52,7 +52,7 @@ in
     haskellPackages.darcs ghc
 
     # purescript
-    (haskell.packages.ghc843.override {
+    (haskell.packages.ghc844.override {
       overrides = se: su: {
         spdx = haskell.lib.doJailbreak su.spdx;
         purescript = haskell.lib.overrideCabal su.purescript (s: {
@@ -116,10 +116,10 @@ in
       co = "checkout";
       st = "status -sb";
     };
-    extraConfig = ''
-        [url "git@github.com:"]
-        insteadOf = https://github.com/  
-    '';
+#    extraConfig = ''
+#        [url "git@github.com:"]
+#        insteadOf = https://github.com/  
+#    '';
   };
 
   services.gpg-agent.enable = true;
