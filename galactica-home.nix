@@ -14,7 +14,6 @@ in
     hadoop
     (spark.override { mesosSupport = false; RSupport = false; })
     mysql
-    mysql-workbench
     (oldPkgs.kubectl.overrideAttrs (oldAttrs: {
       src = pkgs.fetchFromGitHub {
         owner = "kubernetes"; repo = "kubernetes";

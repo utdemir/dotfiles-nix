@@ -79,7 +79,7 @@ source $HOME/.nix-profile/share/fzf/key-bindings.zsh
 
 # Utils
 
-alias ls="ls --color -F"
+alias l="exa --long -snew --git"
 alias ..="cd .."
 alias ...="cd ../.."
 alias ....="cd ../../.."

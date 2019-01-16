@@ -11,7 +11,7 @@ in
     arandr compton maim networkmanagerapplet parcellite
     lxappearance xfontsel ubuntu_font_family source-code-pro
     pasystray pavucontrol xdotool kitty xautolock 
-    (haskell.lib.doJailbreak haskellPackages.arbtt)
+    (oldPkgs.haskell.lib.doJailbreak oldPkgs.haskellPackages.arbtt)
     xorg.xbacklight dunst acpi libnotify xorg.xkill
 
     # Apps
@@ -19,22 +19,22 @@ in
     libreoffice dia gimp pencil vlc
     spotify smplayer mplayer audacity
     zathura sxiv qiv inotify-tools
-    scrot xsel xclip steam deluge pcmanfm
+    scrot xsel xclip deluge pcmanfm
     xorg.libxcb # required for steam
 
     # CLI
-    zsh zsh-syntax-highlighting nix-zsh-completions 
+    zsh zsh-syntax-highlighting nix-zsh-completions sc-im
 
     ranger bashmount imagemagick pdftk ncdu htop tree units
     ascii powertop ghostscript translate-shell nload siege
     asciinema zip unzip file dos2unix findutils
     watch graphviz rsync openssl entr gnupg keybase
     gitAndTools.hub gist pv jq ripgrep tree autojump ncdu htop cloc
-    units haskellPackages.lentil haskellPackages.pandoc curl httpie
+    units haskellPackages.pandoc curl httpie
     wget hexedit docker_compose mtr nmap cmatrix awscli
     pass-otp zbar tig sqlite fd dnsutils pwgen ltrace strace
     fzf termdown miller s3fs ii multitail gettext cpulimit
-    haskellPackages.patat xpdf paperkey moreutils
+    xpdf paperkey moreutils fpp exa
 
     (import ./lib/mk-scripts.nix { inherit pkgs; } ./scripts)
     exercism
@@ -48,24 +48,23 @@ in
     neovim emacs kakoune ed
 
     # haskell
-    stack cabal2nix haskellPackages.ghcid 
-    haskellPackages.darcs ghc
+    stack cabal2nix haskellPackages.ghcid ghc
 
     # purescript
-    (haskell.packages.ghc844.override {
-      overrides = se: su: {
-        spdx = haskell.lib.doJailbreak su.spdx;
-        purescript = haskell.lib.overrideCabal su.purescript (s: {
-          preConfigure = "hpack";
-          executableHaskellDepends = s.executableHaskellDepends ++ [ se.hpack se.microlens-platform ];
-          src = pkgs.fetchFromGitHub {
-            owner = "purescript"; repo = "purescript";
-            rev = "a8e0911222f46411776978a13866eb097175162c";
-            sha256 = "0705b101kgcad4cq6xnmbjw6szb4j33ssjm6xag1n4w9477wdl08";
-          };
-        });
-      };
-    }).purescript
+#    (haskell.packages.ghc844.override {
+#      overrides = se: su: {
+#        spdx = haskell.lib.doJailbreak su.spdx;
+#        purescript = haskell.lib.overrideCabal su.purescript (s: {
+#          preConfigure = "hpack";
+#          executableHaskellDepends = s.executableHaskellDepends ++ [ se.hpack se.microlens-platform ];
+#          src = pkgs.fetchFromGitHub {
+#            owner = "purescript"; repo = "purescript";
+#            rev = "a8e0911222f46411776978a13866eb097175162c";
+#            sha256 = "0705b101kgcad4cq6xnmbjw6szb4j33ssjm6xag1n4w9477wdl08";
+#          };
+#        });
+#      };
+#    }).purescript
     nodePackages.bower
 
     # scheme
@@ -88,7 +87,7 @@ in
     python37Packages.virtualenv pipenv python3Packages.black
 
     # rust
-    rustc cargo carnix
+    rustc cargo carnix rustfmt
 
     # prolog
     swiProlog
@@ -160,9 +159,8 @@ in
 
   home.file.".config/dunst/dunstrc".source = ./dotfiles/dunstrc;
 
-
   systemd.user.services.battery-notification = 
-    let p = pkgs.runCommand "battery-notification" { 
+    let p = pkgs.runCommand "battery-notification" {
       buildInputs = [ pkgs.makeWrapper ];
     } ''
       mkdir -p $out/bin

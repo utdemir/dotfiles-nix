@@ -17,6 +17,9 @@ hook global NormalKey y|d|c %{ nop %sh{
 map global normal P '!xsel --output --clipboard<ret>'
 map global normal p '<a-!>xsel --output --clipboard<ret>'
 
+# auto save
+hook global NormalIdle .* write
+
 # jk to exit insert mode
 hook global InsertChar k %{ try %{
   exec -draft hH <a-k>jk<ret> d

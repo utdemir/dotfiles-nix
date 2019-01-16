@@ -16,6 +16,8 @@
     "fs.inotify.max_user_watches" = 2048000;
   };
 
+  boot.cleanTmpDir = true;
+
   services.openssh.enable = true;
   networking.firewall = {
     enable = true;
