@@ -9,7 +9,7 @@ in
     # WM
     i3 i3status i3lock dmenu rofi unclutter autorandr
     arandr compton maim networkmanagerapplet parcellite
-    lxappearance xfontsel ubuntu_font_family source-code-pro
+    lxappearance xfontsel 
     pasystray pavucontrol xdotool kitty xautolock 
     (oldPkgs.haskell.lib.doJailbreak oldPkgs.haskellPackages.arbtt)
     xorg.xbacklight dunst acpi libnotify xorg.xkill
@@ -21,6 +21,9 @@ in
     zathura sxiv qiv inotify-tools
     scrot xsel xclip deluge pcmanfm
     xorg.libxcb # required for steam
+
+    # Fonts
+    ubuntu_font_family source-code-pro
 
     # CLI
     zsh zsh-syntax-highlighting nix-zsh-completions sc-im
@@ -153,7 +156,6 @@ in
   home.file.".zshrc".source = ./dotfiles/zshrc;
 
   home.file.".config/fontconfig/fonts.conf".source = ./dotfiles/fonts.conf;
-  home.file.".local/share/fonts".source = ./dotfiles/fonts; 
 
   home.file.".arbtt/categorize.cfg".source = ./dotfiles/arbtt-categorize.cfg;
 
