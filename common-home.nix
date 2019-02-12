@@ -15,7 +15,7 @@ in
     xorg.xbacklight dunst acpi libnotify xorg.xkill
 
     # Apps
-    firefox oldPkgs.qutebrowser chromium
+    firefox qutebrowser chromium
     libreoffice dia gimp pencil vlc
     spotify smplayer mplayer audacity
     zathura sxiv qiv inotify-tools
@@ -28,7 +28,6 @@ in
 
     # CLI
     zsh zsh-syntax-highlighting nix-zsh-completions sc-im
-
     ranger bashmount imagemagick pdftk ncdu htop tree units
     ascii powertop ghostscript translate-shell nload siege
     asciinema zip unzip file dos2unix findutils
@@ -38,7 +37,7 @@ in
     wget hexedit docker_compose mtr nmap cmatrix awscli
     pass-otp zbar tig sqlite fd dnsutils pwgen ltrace strace
     fzf termdown miller s3fs ii multitail gettext cpulimit
-    xpdf paperkey moreutils fpp exa
+    xpdf paperkey moreutils fpp exa john rtv
 
     (import ./lib/mk-scripts.nix { inherit pkgs; } ./scripts)
     exercism
@@ -103,7 +102,7 @@ in
     coq
 
     # nix
-    nix-prefetch-scripts patchelf
+    nix-prefetch-scripts patchelf oldPkgs.cachix
   ];
 
   programs.git = {
