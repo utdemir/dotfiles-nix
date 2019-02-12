@@ -21,6 +21,7 @@ in
     zathura sxiv qiv inotify-tools
     scrot xsel xclip deluge pcmanfm
     xorg.libxcb # required for steam
+    qemu qemu_kvm
 
     # Fonts
     ubuntu_font_family source-code-pro

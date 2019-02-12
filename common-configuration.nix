@@ -24,6 +24,8 @@
     allowedTCPPorts = [ 22 ];
   };
 
+  boot.kernelModules = [ "kvm-intel" ];
+
   virtualisation.docker = {
     enable = true;
     liveRestore = false;
