@@ -32,7 +32,7 @@ in
     ascii powertop ghostscript translate-shell nload siege
     asciinema zip unzip file dos2unix findutils
     watch graphviz rsync openssl entr gnupg keybase
-    gitAndTools.hub gist pv jq ripgrep tree autojump ncdu htop cloc
+    gitAndTools.hub gist pv jq ripgrep tree autojump ncdu htop tokei
     units haskellPackages.pandoc curl httpie
     wget hexedit docker_compose mtr nmap cmatrix awscli
     pass-otp zbar tig sqlite fd dnsutils pwgen ltrace strace

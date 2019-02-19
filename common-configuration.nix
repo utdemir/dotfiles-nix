@@ -3,6 +3,17 @@
 {
   imports = [ ./patches/multi-glibc-locale-paths.nix ];
   nixpkgs.config.allowUnfree = true;
+  nix = {
+    binaryCaches = [
+      "https://cache.nixos.org/"
+      "https://utdemir.cachix.org"
+    ];
+    binaryCachePublicKeys = [
+      "utdemir.cachix.org-1:eiAZrUaF4HVt/hLQeIdsbfRUtVUyKV8WYE8XKwJCD+8="
+    ];
+    trustedUsers = [ "root" "utdemir" ];
+  }; 
+  
   networking.networkmanager.enable = true;
 
   time.timeZone = "Pacific/Auckland";
