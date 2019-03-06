@@ -38,7 +38,7 @@ in
     wget hexedit docker_compose mtr nmap cmatrix awscli
     pass-otp zbar tig sqlite fd dnsutils pwgen ltrace strace
     fzf termdown miller s3fs ii multitail gettext cpulimit
-    xpdf paperkey moreutils fpp exa john rtv
+    xpdf paperkey moreutils fpp exa john rtv gource ffmpeg
 
     (import ./lib/mk-scripts.nix { inherit pkgs; } ./scripts)
     exercism
