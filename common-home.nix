@@ -102,6 +102,18 @@ in
     # coq
     coq
 
+    (let jupyter = import (builtins.fetchGit {
+        url = https://github.com/tweag/jupyterWith;
+        rev = "10d64ee254050de69d0dc51c9c39fdadf1398c38";
+     }) {}; in
+     jupyter.jupyterlabWith { kernels = [
+      (jupyter.kernels.iHaskellWith { name = "haskell"; packages = p: with p; [ 
+        lens containers bytestring text pipes conduit split
+      ]; })
+      (jupyter.kernels.iPythonWith { name = "python"; packages = p: with p; [ numpy tqdm ]; })
+     ]; }
+    )
+
     # nix
     nix-prefetch-scripts patchelf oldPkgs.cachix
   ];
