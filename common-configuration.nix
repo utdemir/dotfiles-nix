@@ -53,7 +53,7 @@
       defaultUser = "utdemir";
       autoLogin = true;
     };
-
+    xkbOptions = "caps:escape";
     synaptics.enable = true;
   };
 
