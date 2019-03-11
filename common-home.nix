@@ -9,7 +9,7 @@ in
     # WM
     i3 i3status i3lock dmenu rofi unclutter autorandr
     arandr compton maim networkmanagerapplet parcellite
-    lxappearance xfontsel 
+    lxappearance xfontsel feh
     pasystray pavucontrol xdotool kitty xautolock 
     (oldPkgs.haskell.lib.doJailbreak oldPkgs.haskellPackages.arbtt)
     xorg.xbacklight dunst acpi libnotify xorg.xkill
@@ -156,7 +156,9 @@ in
   
   home.file.".config/i3/config".source = ./dotfiles/i3/config;
   home.file.".config/i3/autostart.sh".source = ./dotfiles/i3/autostart.sh;
+  home.file.".config/i3/wallpaper.png".source = ./dotfiles/i3/wallpaper.png;
   home.file.".config/i3status/config".source = ./dotfiles/i3/i3status;
+  home.file.".config/compton.conf".source = ./dotfiles/compton.conf;
 
   home.file.".config/kitty/kitty.conf".source = ./dotfiles/kitty.conf;
 

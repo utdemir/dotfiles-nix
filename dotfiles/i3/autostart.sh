@@ -1,6 +1,7 @@
-xsetroot -solid '#222255' &
+feh --bg-fill ~/.config/i3/wallpaper.png --no-xinerama &
+
 autorandr -c &
-compton &
+compton --config ~/.config/compton.conf &
 
 sleep 1
 unclutter &
