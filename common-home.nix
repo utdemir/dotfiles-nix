@@ -32,7 +32,7 @@ in
     ranger bashmount imagemagick pdftk ncdu htop tree units
     ascii powertop ghostscript translate-shell nload siege
     asciinema zip unzip file dos2unix findutils
-    watch graphviz rsync openssl entr gnupg keybase
+    watch graphviz rsync openssl entr gnupg keybase kbfs
     gitAndTools.hub gist pv jq ripgrep tree autojump ncdu htop tokei
     units haskellPackages.pandoc curl httpie
     wget hexedit docker_compose mtr nmap cmatrix awscli

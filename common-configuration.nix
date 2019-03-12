@@ -61,6 +61,8 @@
     enable = true;
     freeMemThreshold = 5;
   };
+  
+  services.ipfs.enable = true;
 
   services.clamav = {
     daemon.enable = true;
