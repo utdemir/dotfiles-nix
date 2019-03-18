@@ -12,7 +12,8 @@ in
     lxappearance xfontsel feh
     pasystray pavucontrol xdotool kitty xautolock 
     (oldPkgs.haskell.lib.doJailbreak oldPkgs.haskellPackages.arbtt)
-    xorg.xbacklight dunst acpi libnotify xorg.xkill
+    xorg.xbacklight dunst acpi libnotify xorg.xkill 
+    blueman
 
     # Apps
     firefox qutebrowser chromium
