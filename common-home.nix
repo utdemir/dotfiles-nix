@@ -22,7 +22,7 @@ in
     zathura sxiv qiv inotify-tools
     scrot xsel xclip deluge pcmanfm
     xorg.libxcb # required for steam
-    qemu qemu_kvm ghostwriter
+    qemu qemu_kvm ghostwriter pdfpc
     (hunspellWithDicts [ hunspellDicts.en-gb-ise ])
 
     # Fonts
@@ -40,6 +40,9 @@ in
     pass-otp zbar tig sqlite fd dnsutils pwgen ltrace strace
     fzf termdown miller s3fs ii multitail gettext cpulimit
     xpdf paperkey moreutils fpp exa john rtv gource ffmpeg
+    (texlive.combine {
+      inherit (texlive) scheme-small;
+    })
 
     (import ./lib/mk-scripts.nix { inherit pkgs; } ./scripts)
     exercism
