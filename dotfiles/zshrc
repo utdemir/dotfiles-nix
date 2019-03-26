@@ -63,9 +63,17 @@ precmd () {
     vcs_info
 }
 
+function nix_prompt() {
+  case $IN_NIX_SHELL in;
+    pure) st="[nix-sh(p)]";;
+    impure) st="[nix-sh(i)]";;
+    *) st="";;
+  esac
+  echo "%F{cyan}$st"
+}
 
 setopt prompt_subst
-PS1='${return_code}%F{magenta}%n%f@%F{yellow}%m%f:%B%F{green}%~%f%b ${vcs_info_msg_0_}
+PS1='${return_code}%F{magenta}%n%f@%F{yellow}%m%f:%B%F{green}%~%f%b ${vcs_info_msg_0_} $(nix_prompt) 
 $ '
 
 # Tools
