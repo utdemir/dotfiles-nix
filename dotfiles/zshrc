@@ -14,7 +14,6 @@ HISTFILE=~/.history
 APPEND_HISTORY=true
 
 setopt NO_FLOW_CONTROL
-setopt NO_CLOBBER
 
 # Keybindings
 bindkey "^[[3~" delete-char
