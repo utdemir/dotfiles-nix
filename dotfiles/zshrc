@@ -77,6 +77,8 @@ export FZF_DEFAULT_OPTS='--no-height'
 source $HOME/.nix-profile/share/fzf/completion.zsh
 source $HOME/.nix-profile/share/fzf/key-bindings.zsh
 
+eval "$(direnv hook zsh)"
+
 # Utils
 
 alias l="exa --long -snew --git"

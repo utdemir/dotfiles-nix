@@ -32,7 +32,7 @@ in
     zsh zsh-syntax-highlighting nix-zsh-completions sc-im
     ranger bashmount imagemagick pdftk ncdu htop tree units
     ascii powertop ghostscript translate-shell nload siege
-    asciinema zip unzip file dos2unix findutils
+    asciinema zip unzip file dos2unix findutils direnv
     watch graphviz rsync openssl entr gnupg keybase kbfs
     gitAndTools.hub gist pv jq ripgrep tree autojump ncdu htop tokei
     units haskellPackages.pandoc curl httpie
