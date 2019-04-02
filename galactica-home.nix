@@ -12,7 +12,11 @@ in
     slack
     kt
     hadoop
-    (spark.override { mesosSupport = false; RSupport = false; })
+    (spark.override { 
+      mesosSupport = false; 
+      RSupport = false; 
+      pythonPackages = python3Packages;
+    })
     mysql
     (oldPkgs.kubectl.overrideAttrs (oldAttrs: {
       src = pkgs.fetchFromGitHub {

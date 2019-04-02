@@ -11,7 +11,6 @@ in
     arandr compton maim networkmanagerapplet parcellite
     lxappearance xfontsel feh
     pasystray pavucontrol xdotool kitty xautolock 
-    (oldPkgs.haskell.lib.doJailbreak oldPkgs.haskellPackages.arbtt)
     xorg.xbacklight dunst acpi libnotify xorg.xkill xorg.xev
     blueman
 
@@ -47,8 +46,6 @@ in
     (import ./lib/mk-scripts.nix { inherit pkgs; } ./scripts)
     exercism
 
-    oldPkgs.nixops
-
     # photos
     darktable rawtherapee dcraw 
 
@@ -59,20 +56,7 @@ in
     stack cabal2nix haskellPackages.ghcid ghc
 
     # purescript
-#    (haskell.packages.ghc844.override {
-#      overrides = se: su: {
-#        spdx = haskell.lib.doJailbreak su.spdx;
-#        purescript = haskell.lib.overrideCabal su.purescript (s: {
-#          preConfigure = "hpack";
-#          executableHaskellDepends = s.executableHaskellDepends ++ [ se.hpack se.microlens-platform ];
-#          src = pkgs.fetchFromGitHub {
-#            owner = "purescript"; repo = "purescript";
-#            rev = "a8e0911222f46411776978a13866eb097175162c";
-#            sha256 = "0705b101kgcad4cq6xnmbjw6szb4j33ssjm6xag1n4w9477wdl08";
-#          };
-#        });
-#      };
-#    }).purescript
+    purescript
     nodePackages.bower
 
     # scheme
@@ -119,7 +103,8 @@ in
     )
 
     # nix
-    nix-prefetch-scripts patchelf oldPkgs.cachix
+    nix-prefetch-scripts patchelf haskellPackages.cachix
+    nix-top
   ];
 
   programs.git = {
@@ -175,8 +160,6 @@ in
   home.file.".zshrc".source = ./dotfiles/zshrc;
 
   home.file.".config/fontconfig/fonts.conf".source = ./dotfiles/fonts.conf;
-
-  home.file.".arbtt/categorize.cfg".source = ./dotfiles/arbtt-categorize.cfg;
 
   home.file.".config/dunst/dunstrc".source = ./dotfiles/dunstrc;
 

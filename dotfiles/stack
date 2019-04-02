@@ -6,4 +6,5 @@ templates:
     github-username: me@utdemir.com
 nix:
   enable: true
-                      
+  packages:
+    - glibcLocales
