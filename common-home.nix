@@ -39,6 +39,7 @@ in
     pass-otp zbar tig sqlite fd dnsutils pwgen ltrace strace
     fzf termdown miller s3fs ii multitail gettext cpulimit
     xpdf paperkey moreutils fpp exa john rtv gource ffmpeg
+    tcpdump iw weechat
     (texlive.combine {
       inherit (texlive) scheme-small;
     })
@@ -104,7 +105,7 @@ in
 
     # nix
     nix-prefetch-scripts patchelf haskellPackages.cachix
-    nix-top
+    nix-top nixops
   ];
 
   programs.git = {
