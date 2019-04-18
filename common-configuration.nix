@@ -71,6 +71,7 @@
 
   hardware.pulseaudio.enable = true;
   hardware.opengl.driSupport32Bit = true;
+  hardware.opengl.extraPackages = [ pkgs.intel-ocl ];
   hardware.bluetooth.enable = true;
 
   users.extraUsers.utdemir = {
