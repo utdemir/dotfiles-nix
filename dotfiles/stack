@@ -3,8 +3,4 @@ templates:
     author-email: me@utdemir.com
     author-name: Utku Demir
     copyright: Utku Demir
-    github-username: me@utdemir.com
-nix:
-  enable: true
-  packages:
-    - glibcLocales
+    github-username: utdemir
