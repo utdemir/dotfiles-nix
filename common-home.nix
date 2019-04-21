@@ -12,7 +12,7 @@ in
     lxappearance xfontsel feh
     pasystray pavucontrol xdotool kitty xautolock 
     xorg.xbacklight dunst acpi libnotify xorg.xkill xorg.xev
-    blueman
+    blueman redshift
 
     # Apps
     firefox qutebrowser chromium
@@ -48,7 +48,7 @@ in
     exercism
 
     # photos
-    darktable rawtherapee dcraw 
+    darktable rawtherapee dcraw libraw 
 
     # editors
     neovim emacs kakoune ed
