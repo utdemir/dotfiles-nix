@@ -80,7 +80,7 @@ in
     python37Packages.virtualenv pipenv python3Packages.black
 
     # rust
-    rustc cargo carnix rustfmt
+    rustc cargo carnix
 
     # prolog
     swiProlog
