@@ -20,7 +20,7 @@ in
     spotify smplayer mplayer audacity
     zathura sxiv qiv inotify-tools
     scrot xsel xclip deluge pcmanfm
-    xorg.libxcb # required for steam
+    steam xorg.libxcb # required for steam
     qemu qemu_kvm ghostwriter pdfpc
     (hunspellWithDicts [ hunspellDicts.en-gb-ise ])
 
