@@ -8,14 +8,14 @@ in
   home.packages = with pkgs; [
     # WM
     i3 i3status i3lock dmenu rofi unclutter autorandr
-    arandr compton maim networkmanagerapplet parcellite
+    arandr maim networkmanagerapplet parcellite
     lxappearance xfontsel feh
     pasystray pavucontrol xdotool kitty xautolock 
     xorg.xbacklight dunst acpi libnotify xorg.xkill xorg.xev
     blueman redshift
 
     # Apps
-    firefox qutebrowser chromium
+    firefox-bin qutebrowser chromium google-chrome
     libreoffice dia gimp pencil vlc
     spotify smplayer mplayer audacity
     zathura sxiv qiv inotify-tools
@@ -32,14 +32,14 @@ in
     ranger bashmount imagemagick pdftk ncdu htop tree units
     ascii powertop ghostscript translate-shell nload siege
     asciinema zip unzip file dos2unix findutils direnv
-    watch graphviz rsync openssl entr gnupg keybase kbfs
+    watch graphviz rsync openssl entr gnupg  kbfs
     gitAndTools.hub gist pv jq ripgrep tree autojump ncdu htop tokei
     units haskellPackages.pandoc curl httpie
     wget hexedit docker_compose mtr nmap cmatrix awscli
     pass-otp zbar tig sqlite fd dnsutils pwgen ltrace strace
     fzf termdown miller s3fs ii multitail gettext cpulimit
     xpdf paperkey moreutils fpp exa john rtv gource ffmpeg
-    tcpdump iw weechat
+    tcpdump iw weechat tmux socat
     (texlive.combine {
       inherit (texlive) scheme-small;
     })
@@ -77,7 +77,7 @@ in
 
     # python
     python2 python37
-    python37Packages.virtualenv pipenv python3Packages.black
+    python37Packages.virtualenv python3Packages.black
 
     # rust
     rustc cargo carnix
@@ -148,7 +148,6 @@ in
   home.file.".config/i3/autostart.sh".source = ./dotfiles/i3/autostart.sh;
   home.file.".config/i3/wallpaper.png".source = ./dotfiles/i3/wallpaper.png;
   home.file.".config/i3status/config".source = ./dotfiles/i3/i3status;
-  home.file.".config/compton.conf".source = ./dotfiles/compton.conf;
 
   home.file.".config/kitty/kitty.conf".source = ./dotfiles/kitty.conf;
 
