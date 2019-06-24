@@ -1,7 +1,16 @@
 { pkgs, ... }:
 
+let user = import ./user.nix;
+in 
 {
-  imports = [ ./patches/multi-glibc-locale-paths.nix ];
+  imports = [ /etc/nixos/hardware-configuration.nix
+              ./hardware.nix
+             
+              "${import ./home-manager.nix}/nixos"
+            ];
+ 
+  networking.hostName = user.hostname;
+
   nixpkgs.config.allowUnfree = true;
   nix = {
     binaryCaches = [
@@ -11,16 +20,14 @@
     binaryCachePublicKeys = [
       "utdemir.cachix.org-1:eiAZrUaF4HVt/hLQeIdsbfRUtVUyKV8WYE8XKwJCD+8="
     ];
-    trustedUsers = [ "root" "utdemir" ];
+    trustedUsers = [ "root" user.username ];
   }; 
   
   networking.networkmanager.enable = true;
 
   time.timeZone = "Pacific/Auckland";
 
-  environment.systemPackages = with pkgs; [
-    vim git home-manager
-  ];
+  environment.systemPackages = with pkgs; [ vim git ];
 
   boot.kernel.sysctl = {
     "vm.swappiness" = 0; 
@@ -35,12 +42,10 @@
     allowedTCPPorts = [ 22 ];
   };
 
-  boot.kernelModules = [ "kvm-intel" ];
-
   virtualisation.docker = {
     enable = true;
     liveRestore = false;
-    # autoPrune.enable = true;
+    autoPrune.enable = true;
   };
 
   services.logind.lidSwitch = "ignore";
@@ -50,17 +55,18 @@
     autorun = true;
     displayManager.slim = {
       enable = true;
-      defaultUser = "utdemir";
+      defaultUser = user.username;
       autoLogin = true;
     };
     xkbOptions = "caps:escape";
     synaptics.enable = true;
   };
 
-  services.earlyoom = {
-    enable = true;
-    freeMemThreshold = 5;
-  };
+  # FIXME: https://github.com/NixOS/nixpkgs/issues/63533
+  # services.earlyoom = {
+  #   enable = true;
+  #   freeMemThreshold = 5;
+  # };
   
   services.ipfs.enable = true;
 
@@ -72,15 +78,15 @@
   hardware.pulseaudio.enable = true;
   hardware.opengl.driSupport32Bit = true;
   hardware.opengl.extraPackages = [ pkgs.intel-ocl ];
-  hardware.bluetooth.enable = true;
 
-  users.extraUsers.utdemir = {
-    home = "/home/utdemir";
+  users.extraUsers.${user.username} = {
+    home = "/home/${user.username}";
     isNormalUser = true;
     uid = 1000;
     extraGroups = [ "wheel" "networkmanager" "docker" ];
     shell = "${pkgs.zsh}/bin/zsh";
   };
-
-  system.stateVersion = "17.09";
+  home-manager.users.${user.username} = args: import ./home.nix (args // { inherit pkgs user; });
+  
+  system.stateVersion = "19.09";
 }

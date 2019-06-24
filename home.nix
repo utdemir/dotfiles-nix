@@ -1,83 +1,78 @@
-{...}:
-
-let pkgs = import ./pkgs.nix;
-    oldPkgs = import ./old_pkgs.nix;
-in
-
+{ user, pkgs, ...}:
 {
   home.packages = with pkgs; [
     # WM
-    i3 i3status i3lock dmenu rofi unclutter autorandr
-    arandr maim networkmanagerapplet parcellite
-    lxappearance xfontsel feh
-    pasystray pavucontrol xdotool kitty xautolock 
-    xorg.xbacklight dunst acpi libnotify xorg.xkill xorg.xev
-    blueman redshift
+    i3 i3status i3lock dmenu rofi unclutter autorandr arandr maim
+    networkmanagerapplet parcellite lxappearance xfontsel feh pasystray
+    pavucontrol xdotool kitty xautolock xorg.xbacklight dunst acpi
+    libnotify xorg.xkill xorg.xev redshift
 
     # Apps
-    firefox-bin qutebrowser chromium google-chrome
-    libreoffice dia gimp pencil vlc
-    spotify smplayer mplayer audacity
-    zathura sxiv qiv inotify-tools
-    scrot xsel xclip deluge pcmanfm
-    steam xorg.libxcb # required for steam
-    qemu qemu_kvm ghostwriter pdfpc
+    firefox-bin qutebrowser chromium google-chrome libreoffice gimp
+    spotify smplayer zathura sxiv sweethome3d.application scrot xsel
+    xclip deluge pcmanfm tmate qemu qemu_kvm pdfpc asciiquarium
     (hunspellWithDicts [ hunspellDicts.en-gb-ise ])
 
+    # Games
+    steam xorg.libxcb # required for steam
+     
     # Fonts
     ubuntu_font_family source-code-pro
 
     # CLI
-    zsh zsh-syntax-highlighting nix-zsh-completions sc-im
-    ranger bashmount imagemagick pdftk ncdu htop tree units
-    ascii powertop ghostscript translate-shell nload siege
-    asciinema zip unzip file dos2unix findutils direnv
-    watch graphviz rsync openssl entr gnupg  kbfs
-    gitAndTools.hub gist pv jq ripgrep tree autojump ncdu htop tokei
-    units haskellPackages.pandoc curl httpie
-    wget hexedit docker_compose mtr nmap cmatrix awscli
-    pass-otp zbar tig sqlite fd dnsutils pwgen ltrace strace
-    fzf termdown miller s3fs ii multitail gettext cpulimit
-    xpdf paperkey moreutils fpp exa john rtv gource ffmpeg
-    tcpdump iw weechat tmux socat
+    zsh zsh-syntax-highlighting nix-zsh-completions ranger bashmount
+    imagemagick pdftk ncdu htop tree ascii powertop ghostscript nload
+    asciinema zip unzip file dos2unix findutils direnv watch graphviz
+    rsync openssl entr gnupg gitAndTools.hub gist pv jq yq  ripgrep tree
+    autojump ncdu htop tokei units pandoc curl wget hexedit docker_compose
+    mtr nmap cmatrix awscli pass-otp zbar tig sqlite fd dnsutils pwgen
+    ltrace strace fzf termdown s3fs multitail gettext cpulimit paperkey
+    moreutils fpp exa ffmpeg tcpdump iw weechat tmux
     (texlive.combine {
       inherit (texlive) scheme-small;
     })
 
     (import ./lib/mk-scripts.nix { inherit pkgs; } ./scripts)
-    exercism
-
+    
     # photos
-    darktable rawtherapee dcraw libraw 
+    dcraw libraw 
 
     # editors
-    neovim emacs kakoune ed
+    neovim kakoune
+    (import ./lib/mk-emacs.nix { inherit pkgs; } ./dotfiles/emacs.el )
 
     # haskell
-    stack cabal2nix haskellPackages.ghcid ghc
+    stack cabal2nix ghc haskellPackages.ghcid
+   
+    # agda
+    haskellPackages.Agda
 
     # purescript
     purescript
     nodePackages.bower
 
+    # nodejs
+    nodejs
+
     # scheme
     chicken
-
-    # pony
-    ponyc
 
     # c
     gcc gnumake
 
-    # scala
-    openjdk8 sbt scala
-
+    # java/scala
+    openjdk8 sbt scala hadoop
+    (spark.override { 
+      mesosSupport = false; 
+      RSupport = false; 
+      pythonPackages = python3Packages;
+    })
+    
     # sh
     haskellPackages.ShellCheck
 
     # python
-    python2 python37
-    python37Packages.virtualenv python3Packages.black
+    python2 python37 python37Packages.virtualenv python3Packages.black
 
     # rust
     rustc cargo carnix
@@ -91,41 +86,27 @@ in
     # coq
     coq
 
-    (let jupyter = import (builtins.fetchGit {
-        url = https://github.com/tweag/jupyterWith;
-        rev = "10d64ee254050de69d0dc51c9c39fdadf1398c38";
-     }) {}; in
-     jupyter.jupyterlabWith { kernels = [
-      (jupyter.kernels.iHaskellWith { name = "haskell"; packages = p: with p; [ 
-        lens containers bytestring text pipes conduit split
-      ]; })
-      (jupyter.kernels.iPythonWith { name = "python"; packages = p: with p; [ numpy tqdm ]; })
-     ]; }
-    )
-
     # nix
-    nix-prefetch-scripts patchelf haskellPackages.cachix
-    nix-top nixops
+    nix-prefetch-scripts patchelf haskellPackages.cachix nixops nix-top
   ];
 
   programs.git = {
     enable = true;
-    userName = "Utku Demir";
-    userEmail = "me@utdemir.com";
-    signing = {
-      signByDefault = true;
-      key = "76CCC3C7A7398C1321F5438BF3F8629C3E0BF60B";
-      gpgPath = "gpg";
-    };
+    userName = user.name;
+    userEmail = user.email;
     aliases = {
       co = "checkout";
       st = "status -sb";
     };
-#    extraConfig = ''
-#        [url "git@github.com:"]
-#        insteadOf = https://github.com/  
-#    '';
-  };
+    extraConfig = ''
+        [url "git@github.com:"]
+        insteadOf = https://github.com/  
+    '';
+  } // (if user.gpgKey != ""
+        then { signing = { signByDefault = true;
+                           key = user.gpgKey;
+                           gpgPath = "gpg"; }; }
+        else {});
 
   services.gpg-agent.enable = true;
 
@@ -139,8 +120,6 @@ in
 
   services.keybase.enable = true;
   manual.manpages.enable = false;
-
-  home.file.".stack/config.yaml".source = ./dotfiles/stack;
 
   home.file.".config/kak/kakrc".source = ./dotfiles/kakrc;
   
@@ -157,7 +136,10 @@ in
 
   home.file.".config/mimeapps.list".source = ./dotfiles/mimeapps.list;
   
-  home.file.".zshrc".source = ./dotfiles/zshrc;
+  home.file.".zshrc".text = ''
+    export NIX_PATH=nixpkgs=${pkgs.path}
+    source ${./dotfiles/zshrc}
+  '';
 
   home.file.".config/fontconfig/fonts.conf".source = ./dotfiles/fonts.conf;
 
