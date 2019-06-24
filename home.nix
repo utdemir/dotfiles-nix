@@ -9,8 +9,8 @@
 
     # Apps
     firefox-bin qutebrowser chromium google-chrome libreoffice gimp
-    spotify smplayer zathura sxiv sweethome3d.application scrot xsel
-    xclip deluge pcmanfm tmate qemu qemu_kvm pdfpc asciiquarium
+    spotify smplayer mplayer zathura sxiv sweethome3d.application scrot
+    xsel xclip deluge pcmanfm tmate qemu qemu_kvm pdfpc asciiquarium
     (hunspellWithDicts [ hunspellDicts.en-gb-ise ])
 
     # Games
