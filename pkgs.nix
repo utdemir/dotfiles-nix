@@ -1,7 +1,7 @@
 let
 nixpkgs = builtins.fetchGit {
   url = "https://github.com/NixOS/nixpkgs";
-  rev = "852d81d6077df5e642bf41825ac7cb5c799a13b9";
+  rev = "a2075a2c314ccb3df6522dd957bb4e237446dc49";
 };
 in
 import nixpkgs { config.allowUnfree = true; }
