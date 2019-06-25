@@ -11,6 +11,7 @@
     firefox-bin qutebrowser chromium google-chrome libreoffice gimp
     spotify smplayer mplayer zathura sxiv sweethome3d.application scrot
     xsel xclip deluge pcmanfm tmate qemu qemu_kvm pdfpc asciiquarium
+    zoom-us
     (hunspellWithDicts [ hunspellDicts.en-gb-ise ])
 
     # Games
