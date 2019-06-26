@@ -24,11 +24,12 @@
     zsh zsh-syntax-highlighting nix-zsh-completions ranger bashmount
     imagemagick pdftk ncdu htop tree ascii powertop ghostscript nload
     asciinema zip unzip file dos2unix findutils direnv watch graphviz
-    rsync openssl entr gnupg gitAndTools.hub gist pv jq yq  ripgrep tree
-    autojump ncdu htop tokei units pandoc curl wget hexedit docker_compose
-    mtr nmap cmatrix awscli pass-otp zbar tig sqlite fd dnsutils pwgen
-    ltrace strace fzf termdown s3fs multitail gettext cpulimit paperkey
-    moreutils fpp exa ffmpeg tcpdump iw weechat tmux up
+    rsync openssl entr gnupg gitAndTools.hub gist pv jq yq  ripgrep
+    tree autojump ncdu htop tokei units pandoc curl wget hexedit
+    docker_compose mtr nmap cmatrix awscli pass-otp zbar tig sqlite fd
+    dnsutils pwgen ltrace strace fzf termdown s3fs multitail gettext
+    cpulimit paperkey moreutils fpp exa ffmpeg tcpdump iw weechat tmux
+    up pythonPackages.subliminal
     (texlive.combine {
       inherit (texlive) scheme-small;
     })
