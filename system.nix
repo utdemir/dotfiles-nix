@@ -1,15 +1,8 @@
-{ pkgs, ... }:
+{ pkgs, ciEnabled ? false, ... }:
 
 let user = import ./user.nix;
 in 
 {
-  imports = [ /etc/nixos/hardware-configuration.nix
-              ./hardware.nix
-              "${import ./home-manager.nix}/nixos"
-            ] ++ (if (builtins.pathExists ./custom.nix)
-                  then [ ./custom.nix ]
-                  else []);
- 
   networking.hostName = user.hostname;
 
   nixpkgs.config.allowUnfree = true;
