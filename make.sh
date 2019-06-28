@@ -48,9 +48,9 @@ case "$mode" in
         ;;
     "update")
         pkgs_rev="$(trace git ls-remote https://github.com/nixos/nixpkgs | grep 'refs/heads/master' | cut -f 1)"
-        trace sed -ri "s/(rev.*\").*(\")/\1$pkgs_rev\2/g" "$DIR/pkgs.nix"
+        trace sed -ri "6,10s/(rev.*\").*(\")/\1$pkgs_rev\2/g" "$DIR/versions.nix"
         hm_rev="$(trace git ls-remote https://github.com/rycee/home-manager | grep 'refs/heads/master' | cut -f 1)"
-        trace sed -ri "s/(rev.*\").*(\")/\1$hm_rev\2/g" "$DIR/home-manager.nix"
+        trace sed -ri "1,5s/(rev.*\").*(\")/\1$hm_rev\2/g" "$DIR/versions.nix"
         trace "$0" build
         ;;
     "info")

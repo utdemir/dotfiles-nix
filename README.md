@@ -6,6 +6,7 @@
 * Keyboard and command line oriented
 * i3, kakoune, qutebrowser and tons of shell utilities
 * (Mostly) hardware agnostic
+* Bleeding-edge
 
 ## Installation
 
