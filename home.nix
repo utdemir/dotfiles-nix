@@ -146,7 +146,11 @@
   home.file.".config/fontconfig/fonts.conf".source = ./dotfiles/fonts.conf;
 
   home.file.".config/dunst/dunstrc".source = ./dotfiles/dunstrc;
-
+  home.file.".config/autorandr/postswitch" = {
+    source = ./dotfiles/autorandr-postswitch;
+    executable = true;
+  };
+  
   systemd.user.services.battery-notification = 
     let p = pkgs.runCommand "battery-notification" {
       buildInputs = [ pkgs.makeWrapper ];
