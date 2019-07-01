@@ -119,13 +119,6 @@ function qr2pass() {
               pass otp append "$1"
 }
 
-function scratch() {
-    base="$HOME/scratch"
-    fname="$base/$(date "+%Y-%m-%dT%H:%M:%S-$RANDOM")"
-    mkdir -p "$base"
-    trace "$EDITOR" "$fname"
-}
-
 # Sticky
 
 local zle_sticked=""
