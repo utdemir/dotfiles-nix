@@ -29,7 +29,7 @@
     docker_compose mtr nmap cmatrix awscli pass-otp zbar tig sqlite fd
     dnsutils pwgen ltrace strace fzf termdown s3fs multitail gettext
     cpulimit paperkey moreutils fpp exa ffmpeg tcpdump iw weechat tmux
-    up pythonPackages.subliminal
+    up pythonPackages.subliminal pythonPackages.glances
     (texlive.combine {
       inherit (texlive) scheme-small;
     })
