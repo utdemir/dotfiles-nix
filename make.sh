@@ -70,11 +70,11 @@ case "$mode" in
           p="$(readlink "$i")"
           if [[ -e "$p" ]]; then
             s="$(du -sch $(nix-store -qR "$p") | tail -n 1 | grep -Po "^[^\t]*")"
-            roots="$roots\n$s $p"
+            roots="$roots$s $p\n"
           fi
         done
         if [[ -n "$roots" ]];
-        then echo "$roots"
+        then echo -e "$roots" | sort -hr
         else echo "None."
         fi
 
