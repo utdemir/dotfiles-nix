@@ -6,6 +6,7 @@ floating_modifier $mod
 
 bindsym $mod+backslash exec kitty --title floating scratch
 for_window [class="kitty" title="floating"] floating enable
+floating_maximum_size 800 x 400
 
 bindsym $mod+Return exec kitty
 bindsym $mod+BackSpace exec xautolock -locknow

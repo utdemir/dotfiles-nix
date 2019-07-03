@@ -115,9 +115,6 @@
   xsession = {
     enable = true;
     windowManager.command = "${pkgs.i3}/bin/i3";
-    profileExtra = ''
-    export SBT_OPTS="-Xms512M -Xmx1024M -Xss2M -XX:MaxMetaspaceSize=1024M"
-    '';
   };
 
   services.keybase.enable = true;
@@ -138,10 +135,14 @@
 
   home.file.".config/mimeapps.list".source = ./dotfiles/mimeapps.list;
   
-  home.file.".zshrc".text = ''
-    export NIX_PATH=nixpkgs=${pkgs.path}
-    source ${./dotfiles/zshrc}
-  '';
+  home.file.".zshrc".source = ./dotfiles/zshrc;
+  home.file.".profile" = {
+    text = ''
+      export NIX_PATH=nixpkgs=${pkgs.path}
+      source ${./dotfiles/profile}
+    '';
+    executable = true;
+  };
 
   home.file.".config/fontconfig/fonts.conf".source = ./dotfiles/fonts.conf;
 

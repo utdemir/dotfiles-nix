@@ -1,5 +1,4 @@
 # Env
-export EDITOR="kak"
 export TERM=xterm
 
 export PASSWORD_STORE_ENABLE_EXTENSIONS=true
