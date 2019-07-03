@@ -89,5 +89,4 @@ case "$mode" in
         ;;
     *)
         invalid_syntax
-        ;;
 esac
