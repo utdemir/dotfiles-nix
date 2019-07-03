@@ -60,8 +60,8 @@ case "$mode" in
         echo "$drv"
         echo
 
-        echo "> Derivation size: "
-        du -shc $(nix-store -qR "$drv") | tail -n 1 | grep -Po "^[^\t]*"
+        echo "> Biggest dependencies:"
+        du -shc $(nix-store -qR "$drv") | sort -hr | head -n 21
         echo
 
         echo "> Auto GC roots:"

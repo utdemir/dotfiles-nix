@@ -44,11 +44,9 @@
     (import ./lib/mk-emacs.nix { inherit pkgs; } ./dotfiles/emacs.el )
 
     # haskell
-    stack cabal2nix ghc haskellPackages.ghcid
+    stack cabal2nix ghc 
+    (haskell.lib.justStaticExecutables haskellPackages.ghcid)
    
-    # agda
-    haskellPackages.Agda
-
     # purescript
     purescript
     nodePackages.bower
@@ -71,7 +69,7 @@
     })
     
     # sh
-    haskellPackages.ShellCheck
+    shellcheck
 
     # python
     python2 python37 python37Packages.virtualenv python3Packages.black
@@ -89,7 +87,8 @@
     coq
 
     # nix
-    nix-prefetch-scripts patchelf haskellPackages.cachix nixops nix-top
+    nix-prefetch-scripts patchelf nixops nix-top
+    (haskell.lib.justStaticExecutables haskellPackages.cachix)
   ];
 
   programs.git = {
