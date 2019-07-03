@@ -61,7 +61,7 @@ case "$mode" in
         echo
 
         echo "> Biggest dependencies:"
-        du -shc $(nix-store -qR "$drv") | sort -hr | head -n 21
+        du -shc $(nix-store -qR "$drv") | sort -hr | head -n 21 || true
         echo
 
         echo "> Auto GC roots:"
