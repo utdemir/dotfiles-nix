@@ -4,7 +4,7 @@ font pango:monospace 8
 
 floating_modifier $mod
 
-bindsym $mod+backslash exec kitty --title floating
+bindsym $mod+backslash exec kitty --title floating scratch
 for_window [class="kitty" title="floating"] floating enable
 
 bindsym $mod+Return exec kitty
