@@ -47,10 +47,24 @@ case "$mode" in
         NIXOS_INSTALL_BOOTLOADER=1 trace sudo --preserve-env=NIXOS_INSTALL_BOOTLOADER "$drv/bin/switch-to-configuration" switch
         ;;
     "update")
-        pkgs_rev="$(trace git ls-remote https://github.com/nixos/nixpkgs | grep 'refs/heads/master' | cut -f 1)"
-        trace sed -ri "6,10s/(rev.*\").*(\")/\1$pkgs_rev\2/g" "$DIR/versions.nix"
-        hm_rev="$(trace git ls-remote https://github.com/rycee/home-manager | grep 'refs/heads/master' | cut -f 1)"
-        trace sed -ri "1,5s/(rev.*\").*(\")/\1$hm_rev\2/g" "$DIR/versions.nix"
+        repos="$(cat versions.nix | grep url | grep -Po '".*"' | tr -d '"')"
+        for repo in $repos; do
+            short="$(basename "$repo")"
+            curr_rev="$(cat versions.nix | grep "$repo" -A 1 | grep 'rev =' | grep -Po '".*"' | tr -d '"')"
+            new_rev="$(git ls-remote "$repo" | grep 'refs/heads/master' | cut -f 1)"
+            if [[ "$curr_rev" = "$new_rev" ]]; then
+                echo "$short is up to date."
+            else
+                echo "$short - New commits found:"
+                if [[ "$repo" =~ https://github.com/* ]]; then
+                    echo "$repo/compare/$curr_rev...$new_rev"
+                else
+                    echo "$repo: $curr_rev...$new_rev"
+                fi
+                
+                sed "s/$curr_rev/$new_rev/" -i ./versions.nix
+            fi
+        done
         trace "$0" build
         ;;
     "info")
@@ -77,7 +91,6 @@ case "$mode" in
         then echo -e "$roots" | sort -hr
         else echo "None."
         fi
-
         ;;
     "cleanup")
         nix-collect-garbage --delete-older-than 30d
