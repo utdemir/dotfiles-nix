@@ -16,7 +16,7 @@
 
     # Games
     steam xorg.libxcb # required for steam
-    openarena dwarf-fortress teeworlds
+    openarena dwarf-fortress teeworlds frotz
      
     # Fonts
     ubuntu_font_family source-code-pro
