@@ -218,6 +218,32 @@ I will consider switching when they are merged.
 
 ---
 
+### Password Manager: pass
+
+I use [password-store](https://www.passwordstore.org/) to manage my
+passwords and OTP's, and use its git integration to sync them to a
+private Git repository.
+
+Checkout its documentation for the usage, I don't have any special
+configuration for it. However, there are a few helpers:
+
+* `super+p` keybinds open a menu with your passwords, and you can
+choose to copy either the password or the OTP token (if available)
+to your clipboard.
+* There is a `qr2pass` script on your `$PATH` which will take a screenshot
+of your screen containing a barcode for an OTP and adds it to the given
+password file; so you can use it to generate OTP tokens.
+
+---
+
+### Other tools
+
+I also use tons of other tools for various purposes.
+
+Checkout [./home.nix]() to see them all.
+
+---
+
 ### FAQ
 
 1. Opening {images,pdfs,videos,documents}
