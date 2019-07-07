@@ -1,10 +1,10 @@
 {
   home-manager = builtins.fetchGit {
     url = "https://github.com/rycee/home-manager";
-    rev = "95382060ebaa19ec49a861921216b1db8460b314";
+    rev = "c3520bfa52b30f984e73e9616abe4d11ab56de36";
   };
   nixpkgs = builtins.fetchGit {
     url = "https://github.com/NixOS/nixpkgs";
-    rev = "cc631b7277d340cd2100ce5de6727d6bb4591395";
+    rev = "dc0dbaf0bd8ad9a04011ee734709b4f3e2ce15f0";
   };
 }
