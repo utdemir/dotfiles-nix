@@ -11,10 +11,11 @@
 ## Installation
 
 * Install NixOS as usual.
+* (Optional) Install cachix: `$(nix-build -A cachix https://cachix.org/api/v1/install)/bin/cachix use utdemir`
 * Fork and clone this repository.
 * Update `user.nix` with your information.
 * Update `hardware.nix` based on your hardware.
-* Run `./make.sh switch` and wait for a few hours.
+* Run `./make.sh switch`.
 
 **Warning**: The installed system is configured to use a
 binary cache(`https://utdemir.cachix.org`) populated
