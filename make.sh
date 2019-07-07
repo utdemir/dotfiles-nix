@@ -47,10 +47,10 @@ case "$mode" in
         NIXOS_INSTALL_BOOTLOADER=1 trace sudo --preserve-env=NIXOS_INSTALL_BOOTLOADER "$drv/bin/switch-to-configuration" switch
         ;;
     "update")
-        repos="$(cat versions.nix | grep url | grep -Po '".*"' | tr -d '"')"
+        repos="$(cat "$DIR/versions.nix" | grep url | grep -Po '".*"' | tr -d '"')"
         for repo in $repos; do
             short="$(basename "$repo")"
-            curr_rev="$(cat versions.nix | grep "$repo" -A 1 | grep 'rev =' | grep -Po '".*"' | tr -d '"')"
+            curr_rev="$(cat "$DIR/versions.nix" | grep "$repo" -A 1 | grep 'rev =' | grep -Po '".*"' | tr -d '"')"
             new_rev="$(git ls-remote "$repo" | grep 'refs/heads/master' | cut -f 1)"
             if [[ "$curr_rev" = "$new_rev" ]]; then
                 echo "$short is up to date."
@@ -62,7 +62,7 @@ case "$mode" in
                     echo "$repo: $curr_rev...$new_rev"
                 fi
                 
-                sed "s/$curr_rev/$new_rev/" -i ./versions.nix
+                sed "s/$curr_rev/$new_rev/" -i "$DIR/versions.nix"
             fi
         done
         trace "$0" build
@@ -93,7 +93,7 @@ case "$mode" in
         fi
         ;;
     "cleanup")
-        nix-collect-garbage --delete-older-than 30d
+        nix-collect-garbage --delete-older-than 7d
         nix optimise-store
         ;;
     "help")

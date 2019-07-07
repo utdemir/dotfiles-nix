@@ -68,6 +68,22 @@ publish malicious binaries to that server without you knowing.  So,
 remove the parts referring to `utdemir.cachix.org` from `nix.binaryCaches`
 field on `configuration.nix` if you do not trust me.
 
+## Maintenance
+
+There is a `make.sh` on the repository responsible for common maintenance 
+tasks. 
+
+* `./make.sh build`: Builds the system configuration. Does **not** make any
+modifications to your system. Useful to see if your changes evaluate without
+problems.
+* `./make.sh switch`: Builds the system configuration, adds it to the boot 
+menu and activates it.
+* `./make.sh update`: Updates the `nixpkgs` and `home-manager` revisions, and
+builds the system. Run this every few days for an up-to-date system. It also
+prints out the GitHub urls of the changes.
+* `./make.sh cleanup`: Garbage collects unused derivations, and deletes the
+generations older than a week. Run this to get some disk space.
+
 ## Docs
 
 Below some tips for the tools I'm using, and my rationale for using them.
@@ -211,9 +227,9 @@ I will consider switching when they are merged.
    * `smplayer` for videos
    * `soffice` for office documents
 
-2. Installing a software
+2. Installing an application
 
-   Add a line to [./home.nix]().
+   Add a line to [./home.nix](). Do not use `nix-env`.
 
 3. External monitors
 
@@ -223,7 +239,7 @@ I will consider switching when they are merged.
      * `srandrd` is running at background to load matching saved profile
      via `autoradr` whenever the display configuration changes.
 
-4. Software development?
+4. Software development
 
    I don't use an IDE and I was never able to configure Vim or Emacs to
    work reliably and uniformly on different programming languages and
@@ -257,9 +273,15 @@ I will consider switching when they are merged.
        * `fd | entr -c nix-build --show-trace`
        * `echo slides.md | entr -c pandoc -t beamer slides.md -o slides.pdf`
 
-5. Autostarting applications?
+5. Autostarting applications
 
    * If it is a simple command running as your user, put a line to
    [dotfiles/i3/autostart.sh]().
    * If it is a system daemon, put it to `system.nix`; either using an
    available NixOS module or as a custom `systemd` service.
+
+6. Something else
+
+   If you have a problem, probably I had faced it before. Just 
+   [open an issue](https://github.com/utdemir/dotfiles/issues) and I will
+   get back to you.
