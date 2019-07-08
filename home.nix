@@ -162,7 +162,7 @@
     '';
     in {
       Unit = {
-        Description = "Sends a notification on low batery.";
+        Description = "Sends a notification on low battery.";
         PartOf = [ "graphical-session.target" ];
       };
       Service = {
