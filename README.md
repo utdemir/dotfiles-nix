@@ -88,7 +88,7 @@ generations older than a week. Run this to get some disk space.
 
 Below some tips for the tools I'm using, and my rationale for using them.
 They are not comprehensive, so consult their own documentation to use them
-effectiely.
+effectively.
 
 ---
 
@@ -133,7 +133,7 @@ applications with tabs/panes/frames/buffers etc.
   * `Super+shift+q`: quit focused application
   * `Super+<arrow>`: focus on windows
   * `Super+shift+<arrow>`: move windows
-  * `Super+backspace`: Lock screem
+  * `Super+backspace`: Lock screen
   * `Super+f`: Toggle full-screen
 
 ---
@@ -199,10 +199,10 @@ window open which runs/typechecks the project continuously.
 
 I use [qutebrowser](https://qutebrowser.org/) as my web browser. It is
 a keyboard-oriented minimal web browser using QtWebEngine (WebKit). The
-only customisations I make makes it use separate windows as tabs and
+only customisation I make makes it use separate windows as tabs and
 makes it use `kakoune` as editor.
 
-Actually, I would prefer to use Firefox with some addons & customisations
+Actually, I would prefer to use Firefox with some addons & customisation
 to make it keyboard-oriented & disabling tabs. However currently there
 is no easy way to configure Firefox easily & install addons without using
 the GUI. There are some ongoing work adding this functionality to nixpkgs,
@@ -227,7 +227,7 @@ private Git repository.
 Checkout its documentation for the usage, I don't have any special
 configuration for it. However, there are a few helpers:
 
-* `super+p` keybinds open a menu with your passwords, and you can
+* `super+p` keybinding open a menu with your passwords, and you can
 choose to copy either the password or the OTP token (if available)
 to your clipboard.
 * There is a `qr2pass` script on your `$PATH` which will take a screenshot
@@ -263,7 +263,7 @@ Checkout [./home.nix]() to see them all.
    * If you have a setup you frequently use, use
    [autorandr](https://github.com/wertarbyte/autorandr) to save it.
      * `srandrd` is running at background to load matching saved profile
-     via `autoradr` whenever the display configuration changes.
+     via `autorandr` whenever the display configuration changes.
 
 4. Software development
 
@@ -287,7 +287,7 @@ Checkout [./home.nix]() to see them all.
      ```
  
    * I use the `ranger` window for browsing the other files or using `rg` to
-   search for definitions, or for any auxillary things I do using a terminal.
+   search for definitions, or for any auxiliary things I do using a terminal.
    * On bottom-right, I figure out a way to have the compilation output available.
    Here are some examples:
  
