@@ -89,7 +89,7 @@
 
     # nix
     nix-prefetch-scripts patchelf nixops nix-top
-    # (callPackage (import ./nix/sources.nix).niv {}).niv
+    (import (import ./nix/sources.nix).niv {}).niv
     (haskell.lib.justStaticExecutables haskellPackages.cachix)
   ];
 

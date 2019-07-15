@@ -11,12 +11,12 @@ function trace() {
 function usage() {
 cat << EOF
 Usage:
-  $0 build
-  $0 switch
-  $0 update
-  $0 info
-  $0 cleanup
-  $0 help
+  ./make.sh build
+  ./make.sh switch
+  ./make.sh update
+  ./make.sh info
+  ./make.sh cleanup
+  ./make.sh help
 EOF
 }
 
@@ -26,7 +26,7 @@ function invalid_syntax() {
     return 1
 }
 
-DIR="$(cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd)"
+cd "$( dirname "${BASH_SOURCE[0]}" )"
 
 [[ $# -lt 1 ]] && invalid_syntax
 
@@ -36,39 +36,22 @@ shift
 case "$mode" in
     "build")
         tmp="$(mktemp -u)"
-        trace nix build --no-link -f "$DIR/nix/default.nix" system -o "$tmp/result" $*
+        trace nix build --no-link -f "./nix/default.nix" system -o "$tmp/result" $*
         trap "rm '$tmp/result'" EXIT
         drv="$(readlink "$tmp/result")"
         echo "$drv"
         ;;
     "switch")
-        drv="$(trace "$0" build)"
+        drv="$(trace ./make.sh build)"
         trace sudo nix-env -p /nix/var/nix/profiles/system --set "$drv"
         NIXOS_INSTALL_BOOTLOADER=1 trace sudo --preserve-env=NIXOS_INSTALL_BOOTLOADER "$drv/bin/switch-to-configuration" switch
         ;;
     "update")
-        repos="$(cat "$DIR/versions.nix" | grep url | grep -Po '".*"' | tr -d '"')"
-        for repo in $repos; do
-            short="$(basename "$repo")"
-            curr_rev="$(cat "$DIR/versions.nix" | grep "$repo" -A 1 | grep 'rev =' | grep -Po '".*"' | tr -d '"')"
-            new_rev="$(git ls-remote "$repo" | grep 'refs/heads/master' | cut -f 1)"
-            if [[ "$curr_rev" = "$new_rev" ]]; then
-                echo "$short is up to date."
-            else
-                echo "$short - New commits found:"
-                if [[ "$repo" =~ https://github.com/* ]]; then
-                    echo "$repo/compare/$curr_rev...$new_rev"
-                else
-                    echo "$repo: $curr_rev...$new_rev"
-                fi
-                
-                sed "s/$curr_rev/$new_rev/" -i "$DIR/versions.nix"
-            fi
-        done
-        trace "$0" build
+        trace niv update
+        trace ./make.sh build
         ;;
     "info")
-        drv="$(trace "$0" build)"
+        drv="$(trace "./make.sh" build)"
 
         echo "> Derivation:"
         echo "$drv"
