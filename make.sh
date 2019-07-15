@@ -76,8 +76,8 @@ case "$mode" in
         fi
         ;;
     "cleanup")
-        nix-collect-garbage --delete-older-than 7d
-        nix optimise-store
+        trace sudo nix-collect-garbage --delete-older-than 7d
+        trace sudo nix optimise-store
         ;;
     "help")
         [[ $# -gt 0 ]] && invalid_syntax
