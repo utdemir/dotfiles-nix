@@ -1,4 +1,4 @@
-{ pkgs, ciEnabled ? false, ... }:
+{ pkgs, ... }:
 
 let user = import ./user.nix;
 in 
