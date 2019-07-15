@@ -5,7 +5,7 @@
     i3 i3status i3lock dmenu rofi unclutter autorandr arandr maim
     networkmanagerapplet parcellite lxappearance xfontsel feh pasystray
     pavucontrol xdotool kitty xautolock xorg.xbacklight dunst acpi
-    libnotify xorg.xkill xorg.xev redshift
+    libnotify xorg.xkill xorg.xev redshift srandrd
 
     # Apps
     firefox-bin qutebrowser chromium google-chrome libreoffice gimp
