@@ -42,7 +42,6 @@
 
     # editors
     neovim kakoune
-    (import ./nix/mk-emacs.nix { inherit pkgs; } ./dotfiles/emacs.el )
 
     # haskell
     stack cabal2nix ghc 
