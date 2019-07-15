@@ -35,14 +35,14 @@
       inherit (texlive) scheme-small;
     })
 
-    (import ./lib/mk-scripts.nix { inherit pkgs; } ./scripts)
+    (import ./nix/mk-scripts.nix { inherit pkgs; } ./scripts)
     
     # photos
     dcraw libraw 
 
     # editors
     neovim kakoune
-    (import ./lib/mk-emacs.nix { inherit pkgs; } ./dotfiles/emacs.el )
+    (import ./nix/mk-emacs.nix { inherit pkgs; } ./dotfiles/emacs.el )
 
     # haskell
     stack cabal2nix ghc 
@@ -89,6 +89,7 @@
 
     # nix
     nix-prefetch-scripts patchelf nixops nix-top
+    # (callPackage (import ./nix/sources.nix).niv {}).niv
     (haskell.lib.justStaticExecutables haskellPackages.cachix)
   ];
 

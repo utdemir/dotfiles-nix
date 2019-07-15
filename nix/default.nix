@@ -1,9 +1,6 @@
 { ci ? false }:
 
-let 
-versions = import ../versions.nix;
-in 
-import "${versions.nixpkgs}/nixos" {
+import "${(import ./sources.nix).nixpkgs}/nixos" {
   configuration = if ci
                     then ./ci-configuration.nix
                     else ./configuration.nix;

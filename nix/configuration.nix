@@ -4,4 +4,6 @@
                 "${import ./home-manager.nix}/nixos"
                 /etc/nixos/hardware-configuration.nix
               ];
+              
+    nixpkgs.config.allowBroken = true;
 }

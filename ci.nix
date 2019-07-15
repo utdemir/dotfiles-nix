@@ -1,1 +1,1 @@
-import ./lib { ci = true; }
+import ./nix { ci = true; }
