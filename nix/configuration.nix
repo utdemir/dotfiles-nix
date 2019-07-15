@@ -1,7 +1,7 @@
 {
     require = [ ../system.nix
                 ../hardware.nix
-                "${import ./home-manager.nix}/nixos"
+                "${(import ./sources.nix).home-manager}/nixos"
                 /etc/nixos/hardware-configuration.nix
               ];
               
