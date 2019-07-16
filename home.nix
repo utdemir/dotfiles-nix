@@ -117,7 +117,6 @@
     windowManager.command = "${pkgs.i3}/bin/i3";
   };
 
-  services.keybase.enable = true;
   manual.manpages.enable = false;
 
   home.file.".config/kak/kakrc".source = ./dotfiles/kakrc;
