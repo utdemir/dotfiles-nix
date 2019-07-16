@@ -88,7 +88,7 @@
 
     # nix
     nix-prefetch-scripts patchelf nixops nix-top
-    (import (import ./nix/sources.nix).niv {}).niv
+    (haskell.lib.justStaticExecutables (import (import ./nix/sources.nix).niv {}).niv)
     (haskell.lib.justStaticExecutables haskellPackages.cachix)
   ];
 
