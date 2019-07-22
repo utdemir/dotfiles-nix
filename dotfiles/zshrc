@@ -4,6 +4,8 @@ export TERM=xterm
 export PASSWORD_STORE_ENABLE_EXTENSIONS=true
 export PASSWORD_STORE_EXTENSIONS_DIR=$HOME/.nix-profile/lib/password-store/extensions
 
+export DICTIONARY=en_GB-ise
+
 # ZSH params
 REPORTTIME=3
 
@@ -75,9 +77,6 @@ PS1='${return_code}%F{magenta}%n%f@%F{yellow}%m%f:%B%F{green}%~%f%b ${vcs_info_m
 $ '
 
 # Tools
-
-source $HOME/.nix-profile/etc/profile.d/autojump.sh
-source $HOME/.nix-profile/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 export FZF_DEFAULT_OPTS='--no-height'
 source $HOME/.nix-profile/share/fzf/completion.zsh

@@ -2,7 +2,7 @@
 {
   home.packages = with pkgs; [
     # WM
-    i3 i3status i3lock dmenu rofi unclutter autorandr arandr maim
+    i3 i3status i3lock rofi unclutter autorandr arandr maim
     networkmanagerapplet parcellite lxappearance xfontsel feh pasystray
     pavucontrol xdotool kitty xautolock xorg.xbacklight dunst acpi
     libnotify xorg.xkill xorg.xev redshift srandrd
@@ -25,7 +25,7 @@
     zsh zsh-syntax-highlighting nix-zsh-completions ranger bashmount
     imagemagick pdftk ncdu htop tree ascii powertop ghostscript nload
     asciinema zip unzip file dos2unix findutils direnv watch graphviz
-    rsync openssl entr gnupg gitAndTools.hub gist pv jq yq  ripgrep
+    rsync openssl entr gnupg gitAndTools.hub gist pv jq yq ripgrep
     tree autojump ncdu htop tokei units pandoc curl wget hexedit
     docker_compose mtr nmap cmatrix awscli pass-otp zbar tig sqlite fd
     dnsutils pwgen ltrace strace fzf termdown s3fs multitail gettext
@@ -37,54 +37,23 @@
 
     (import ./nix/mk-scripts.nix { inherit pkgs; } ./scripts)
     
-    # photos
-    dcraw libraw 
-
     # editors
-    neovim kakoune
+    kakoune
 
     # haskell
     stack cabal2nix ghc 
     (haskell.lib.justStaticExecutables haskellPackages.ghcid)
    
-    # purescript
-    purescript
-    nodePackages.bower
-
-    # nodejs
-    nodejs
-
-    # scheme
-    chicken
-
-    # c
-    gcc gnumake
-
     # java/scala
-    openjdk8 sbt scala hadoop
+    openjdk8 scala hadoop
     (spark.override { 
       mesosSupport = false; 
       RSupport = false; 
       pythonPackages = python3Packages;
     })
     
-    # sh
-    shellcheck
-
     # python
-    python2 python37 python37Packages.virtualenv python3Packages.black
-
-    # rust
-    rustc cargo carnix
-
-    # prolog
-    swiProlog
-
-    # factor
-    factor-lang
-
-    # coq
-    coq
+    python37
 
     # nix
     nix-prefetch-scripts patchelf nixops nix-top
@@ -134,7 +103,14 @@
 
   home.file.".config/mimeapps.list".source = ./dotfiles/mimeapps.list;
   
-  home.file.".zshrc".source = ./dotfiles/zshrc;
+  home.file.".zshrc".text = ''
+    ${pkgs.any-nix-shell}/bin/any-nix-shell zsh | source /dev/stdin
+    source ${pkgs.autojump}/etc/profile.d/autojump.sh
+    source ${pkgs.zsh-syntax-highlighting}/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
+    source ${./dotfiles/zshrc}
+  '';
+  
   home.file.".profile" = {
     text = ''
       export NIX_PATH=nixpkgs=${pkgs.path}
