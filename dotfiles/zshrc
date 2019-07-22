@@ -65,9 +65,8 @@ precmd () {
 
 function nix_prompt() {
   case $IN_NIX_SHELL in;
-    pure) st="[nix-sh(p)]";;
-    impure) st="[nix-sh(i)]";;
-    *) st="";;
+    "") st="";;
+    *) st="[nix-shell($IN_NIX_SHELL)]";;
   esac
   echo "%F{cyan}$st"
 }

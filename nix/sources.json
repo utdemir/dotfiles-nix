@@ -11,6 +11,18 @@
         "url": "https://github.com/rycee/home-manager/archive/7d68c46feb845c572ef335f824062f90fdebf655.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
+    "lorri": {
+        "branch": "master",
+        "description": "Your project's nix-env",
+        "homepage": "",
+        "owner": "target",
+        "repo": "lorri",
+        "rev": "d3e452ebc2b24ab86aec18af44c8217b2e469b2a",
+        "sha256": "07yf3gl9sixh7acxayq4q8h7z4q8a66412z0r49sr69yxb7b4q89",
+        "type": "tarball",
+        "url": "https://github.com/target/lorri/archive/d3e452ebc2b24ab86aec18af44c8217b2e469b2a.tar.gz",
+        "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
+    },
     "niv": {
         "branch": "master",
         "description": "Easy dependency management for Nix projects",

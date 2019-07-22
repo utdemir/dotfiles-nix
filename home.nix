@@ -1,4 +1,8 @@
 { user, pkgs, ...}:
+let
+sources = import ./nix/sources.nix;
+lorri = (import sources.lorri { inherit pkgs; });
+in
 {
   home.packages = with pkgs; [
     # WM
@@ -56,8 +60,8 @@
     python37
 
     # nix
-    nix-prefetch-scripts patchelf nixops nix-top
-    (haskell.lib.justStaticExecutables (import (import ./nix/sources.nix).niv {}).niv)
+    nix-prefetch-scripts patchelf nixops nix-top lorri
+    (haskell.lib.justStaticExecutables (import sources.niv {}).niv)
     (haskell.lib.justStaticExecutables haskellPackages.cachix)
   ];
 
@@ -125,6 +129,42 @@
   home.file.".config/autorandr/postswitch" = {
     source = ./dotfiles/autorandr-postswitch;
     executable = true;
+  };
+  
+  systemd.user.sockets.lorri = {
+    Unit = {
+      Description = "lorri build daemon";
+    };
+
+    Socket = {
+      ListenStream = "%t/lorri/daemon.socket";
+    };
+
+    Install = {
+      WantedBy = [ "sockets.target" ];
+    };
+  };
+  systemd.user.services.lorri = {
+    Unit = {
+      Description = "lorri build daemon";
+      Documentation = "https://github.com/target/lorri";
+      ConditionUser = "!@system";
+      Requires = "lorri.socket";
+      Wants = "lorri.socket";
+      RefuseManualStart = true;
+    };
+
+    Service = {
+      ExecStart = "${lorri}/bin/lorri daemon";
+      PrivateTmp = true;
+      ProtectSystem = "strict";
+      WorkingDirectory = "%h";
+      Restart = "on-failure";
+      Environment = ''
+        PATH=${pkgs.nix}/bin
+        RUST_BACKTRACE=1
+      '';
+    };
   };
   
   systemd.user.services.battery-notification = 
