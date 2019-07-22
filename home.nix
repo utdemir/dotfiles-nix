@@ -150,7 +150,7 @@ in
       Documentation = "https://github.com/target/lorri";
       ConditionUser = "!@system";
       Requires = "lorri.socket";
-      Wants = "lorri.socket";
+      After = "lorri.socket";
       RefuseManualStart = true;
     };
 
@@ -160,10 +160,7 @@ in
       ProtectSystem = "strict";
       WorkingDirectory = "%h";
       Restart = "on-failure";
-      Environment = ''
-        PATH=${pkgs.nix}/bin
-        RUST_BACKTRACE=1
-      '';
+      Environment = "PATH=${pkgs.nix}/bin RUST_BACKTRACE=1";
     };
   };
   
