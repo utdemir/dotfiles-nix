@@ -20,7 +20,7 @@ in
 
     # Games
     steam xorg.libxcb # required for steam
-    openarena dwarf-fortress teeworlds frotz
+    openarena teeworlds frotz
      
     # Fonts
     ubuntu_font_family source-code-pro
