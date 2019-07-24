@@ -5,7 +5,19 @@ in
 {
   networking.hostName = user.hostname;
 
-  nixpkgs.config.allowUnfree = true;
+  nixpkgs.config = {
+    allowUnfreePredicate = pkg: builtins.elem
+      (builtins.parseDrvName pkg.name).name 
+      [ "firefox-bin" "firefox-release-bin-unwrapped"
+        "google-chrome"
+        "spotify"
+        "slack"
+        "steam" "steam-original" "steam-runtime"
+        "zoom-us"
+        "intel-ocl"
+      ];
+  };
+  
   nix = {
     binaryCaches = [
       "https://cache.nixos.org/"
