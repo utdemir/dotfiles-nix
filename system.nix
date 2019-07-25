@@ -27,6 +27,11 @@ in
       "utdemir.cachix.org-1:eiAZrUaF4HVt/hLQeIdsbfRUtVUyKV8WYE8XKwJCD+8="
     ];
     trustedUsers = [ "root" user.username ];
+    autoOptimiseStore = true;
+    maxJobs = 2;
+    nixPath = [
+      "nixpkgs=${pkgs.path}"
+    ];
   }; 
   
   networking.networkmanager.enable = true;

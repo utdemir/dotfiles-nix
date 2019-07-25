@@ -36,7 +36,7 @@ shift
 case "$mode" in
     "build")
         tmp="$(mktemp -u)"
-        trace nix build --no-link -f "./nix/default.nix" system -o "$tmp/result" $*
+        trace nix build --no-link -f "./nix/default.nix" system -o "$tmp/result" --keep-going $*
         trap "rm '$tmp/result'" EXIT
         drv="$(readlink "$tmp/result")"
         echo "$drv"
