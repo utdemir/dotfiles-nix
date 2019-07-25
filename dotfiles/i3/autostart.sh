@@ -1,3 +1,4 @@
+# wallpaper credits to https://www.reddit.com/user/Craftinguy/
 feh --bg-fill ~/.config/i3/wallpaper.png --no-xinerama &
 
 autorandr --change --default single &
