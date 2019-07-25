@@ -46,6 +46,12 @@ case "$mode" in
         trace sudo nix-env -p /nix/var/nix/profiles/system --set "$drv"
         NIXOS_INSTALL_BOOTLOADER=1 trace sudo --preserve-env=NIXOS_INSTALL_BOOTLOADER "$drv/bin/switch-to-configuration" switch
         ;;
+    "switch_remote")
+        ip="$1"
+        drv=$(./make.sh build)
+        trace nix-copy-closure --to "root@$ip" "$drv"
+        trace ssh "root@$ip" -c "NIXOS_INSTALL_BOOTLOADER=1 sudo --preserve-env=NIXOS_INSTALL_BOOTLOADER $drv/bin/switch-to-configuration switch"
+        ;;
     "update")
         trace niv update
         trace ./make.sh build
