@@ -18,10 +18,6 @@ in
     zoom-us slack
     (hunspellWithDicts [ hunspellDicts.en-gb-ise ])
 
-    # Games
-    steam xorg.libxcb # required for steam
-    openarena teeworlds frotz
-     
     # Fonts
     ubuntu_font_family source-code-pro
 
