@@ -156,7 +156,7 @@ in
       ProtectSystem = "strict";
       WorkingDirectory = "%h";
       Restart = "on-failure";
-      Environment = "PATH=${pkgs.nix}/bin RUST_BACKTRACE=1";
+      Environment = "PATH=${pkgs.nix}/bin:${pkgs.git}/bin RUST_BACKTRACE=1";
     };
   };
   
