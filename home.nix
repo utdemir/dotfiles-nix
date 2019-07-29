@@ -38,7 +38,7 @@ in
     (import ./nix/mk-scripts.nix { inherit pkgs; } ./scripts)
     
     # editors
-    kakoune
+    kakoune emacs neovim
 
     # haskell
     stack cabal2nix ghc 
