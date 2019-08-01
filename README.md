@@ -21,8 +21,6 @@ with similar tastes.
 * Bleeding-edge
     * Closely follows `nixpkgs` and `home-manager` HEAD
 * (Almost) Free as in freedom
-    * Explicitly allow non-free packages in 'system.nix' (look for
-      'allowUnfreePredicate')
 
 ## Motivation
 
