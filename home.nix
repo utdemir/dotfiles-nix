@@ -66,7 +66,10 @@ in
     };
     extraConfig = ''
         [url "git@github.com:"]
-        insteadOf = https://github.com/  
+        insteadOf = https://github.com/
+
+        [hub]
+        protocol = git
     '';
   } // (if user.gpgKey != ""
         then { signing = { signByDefault = true;
