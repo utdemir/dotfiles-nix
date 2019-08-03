@@ -28,3 +28,7 @@ set global indentwidth 4
 # always indent as much as the previous one
 set global disabled_hooks .*-indent
 hook global InsertChar \n %{ execute-keys -draft \; K <a-&> }
+
+# remove trailing spaces
+hook global BufWritePre .* %{ try %{ execute-keys -draft \%s\h+$<ret>d } }
+

@@ -6,11 +6,11 @@ in
 
 {
   imports = [
-    "${sources.nixos-hardware}/lenovo/thinkpad" 
-    "${sources.nixos-hardware}/common/cpu/intel" 
-    "${sources.nixos-hardware}/common/pc/laptop/ssd" 
-    "${sources.nixos-hardware}/common/pc/laptop/acpi_call.nix" 
-    "${sources.nixos-hardware}/common/pc/laptop/cpu-throttling-bug.nix" 
+    "${sources.nixos-hardware}/lenovo/thinkpad"
+    "${sources.nixos-hardware}/common/cpu/intel"
+    "${sources.nixos-hardware}/common/pc/laptop/ssd"
+    "${sources.nixos-hardware}/common/pc/laptop/acpi_call.nix"
+    "${sources.nixos-hardware}/common/pc/laptop/cpu-throttling-bug.nix"
   ];
 
   boot.loader.systemd-boot.enable = true;

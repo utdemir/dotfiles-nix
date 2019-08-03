@@ -1,13 +1,13 @@
 { pkgs, ... }:
 
 let user = import ./user.nix;
-in 
+in
 {
   networking.hostName = user.hostname;
 
   nixpkgs.config = {
     allowUnfreePredicate = pkg: builtins.elem
-      (builtins.parseDrvName pkg.name).name 
+      (builtins.parseDrvName pkg.name).name
       [ "firefox-bin" "firefox-release-bin-unwrapped"
         "google-chrome"
         "spotify"
@@ -17,7 +17,7 @@ in
         "intel-ocl"
       ];
   };
-  
+
   nix = {
     binaryCaches = [
       "https://cache.nixos.org/"
@@ -32,8 +32,8 @@ in
     nixPath = [
       "nixpkgs=${pkgs.path}"
     ];
-  }; 
-  
+  };
+
   networking.networkmanager.enable = true;
 
   time.timeZone = "Pacific/Auckland";
@@ -41,7 +41,7 @@ in
   environment.systemPackages = with pkgs; [ vim git ];
 
   boot.kernel.sysctl = {
-    "vm.swappiness" = 0; 
+    "vm.swappiness" = 0;
     "fs.inotify.max_user_watches" = 2048000;
   };
 
@@ -77,7 +77,7 @@ in
   #   enable = true;
   #   freeMemThreshold = 5;
   # };
-  
+
   services.clamav = {
     daemon.enable = true;
     updater.enable = true;
@@ -95,6 +95,6 @@ in
     shell = "${pkgs.zsh}/bin/zsh";
   };
   home-manager.users.${user.username} = args: import ./home.nix (args // { inherit pkgs user; });
-  
+
   system.stateVersion = "19.09";
 }

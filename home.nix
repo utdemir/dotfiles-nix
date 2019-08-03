@@ -36,17 +36,17 @@ in
     })
 
     (import ./nix/mk-scripts.nix { inherit pkgs; } ./scripts)
-    
+
     # editors
     kakoune emacs neovim
 
     # haskell
-    stack cabal2nix ghc 
+    stack cabal2nix ghc
     (haskell.lib.justStaticExecutables haskellPackages.ghcid)
-   
+
     # java/scala
     openjdk8 scala
-    
+
     # python
     python37
 
@@ -80,7 +80,7 @@ in
   services.gpg-agent = {
     enable = true;
     enableSshSupport = true;
-    sshKeys = 
+    sshKeys =
       if user.gpgSshKeygrip != ""
       then [ user.gpgSshKeygrip ]
       else [];
@@ -94,7 +94,7 @@ in
   manual.manpages.enable = false;
 
   home.file.".config/kak/kakrc".source = ./dotfiles/kakrc;
-  
+
   home.file.".config/i3/config".source = ./dotfiles/i3/config;
   home.file.".config/i3/autostart.sh".source = ./dotfiles/i3/autostart.sh;
   home.file.".config/i3/wallpaper.png".source = ./dotfiles/i3/wallpaper.png;
@@ -107,7 +107,7 @@ in
     ./dotfiles/qutebrowser/bookmarks;
 
   home.file.".config/mimeapps.list".source = ./dotfiles/mimeapps.list;
-  
+
   home.file.".zshrc".text = ''
     ${pkgs.any-nix-shell}/bin/any-nix-shell zsh | source /dev/stdin
     source ${pkgs.autojump}/etc/profile.d/autojump.sh
@@ -115,7 +115,7 @@ in
 
     source ${./dotfiles/zshrc}
   '';
-  
+
   home.file.".profile" = {
     text = ''
       export NIX_PATH=nixpkgs=${pkgs.path}
@@ -132,7 +132,7 @@ in
     source = ./dotfiles/autorandr-postswitch;
     executable = true;
   };
-  
+
   systemd.user.sockets.lorri = {
     Unit = {
       Description = "lorri build daemon";
@@ -165,8 +165,8 @@ in
       Environment = "PATH=${pkgs.nix}/bin:${pkgs.git}/bin RUST_BACKTRACE=1";
     };
   };
-  
-  systemd.user.services.battery-notification = 
+
+  systemd.user.services.battery-notification =
     let p = pkgs.runCommand "battery-notification" {
       buildInputs = [ pkgs.makeWrapper ];
     } ''
@@ -191,7 +191,7 @@ in
       Persistent = true;
     };
     Install = {
-      WantedBy = [ "timers.target" ]; 
+      WantedBy = [ "timers.target" ];
     };
   };
 
