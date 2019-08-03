@@ -1,21 +1,15 @@
 { config, pkgs, ... }:
 
 {
-  boot.loader.grub.enable = true;
-  boot.loader.grub.version = 2;
-  boot.loader.grub.device = "/dev/sda";
+  boot.loader.systemd-boot.enable = true;
+  boot.loader.efi.canTouchEfiVariables = true;
 
   hardware.cpu.intel.updateMicrocode = true;
   boot.kernelModules = [ "kvm-intel" ];
 
   swapDevices = [
-    { device = "/swapfile"; size = 2048; }
+    { device = "/swapfile"; size = 4096; }
   ];
-
-  services.xserver = {
-    videoDrivers = [ "nvidia" ];
-    dpi = 100;
-  };
 
   services.printing = {
     enable = true;
