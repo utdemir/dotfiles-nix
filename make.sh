@@ -36,7 +36,7 @@ shift
 case "$mode" in
     "build")
         tmp="$(mktemp -u)"
-        trace nix build --no-link -f "./nix/default.nix" system -o "$tmp/result" --keep-going $*
+        trace nix build --no-link -f "./nix/default.nix" system -o "$tmp/result" --keep-going $* >&2
         trap "rm '$tmp/result'" EXIT
         drv="$(readlink "$tmp/result")"
         echo "$drv"
@@ -48,7 +48,7 @@ case "$mode" in
         ;;
     "switch_remote")
         ip="$1"
-        drv=$(./make.sh build)
+        drv="$(./make.sh build)"
         trace nix-copy-closure --to "root@$ip" "$drv"
         trace ssh "root@$ip" -c "NIXOS_INSTALL_BOOTLOADER=1 sudo --preserve-env=NIXOS_INSTALL_BOOTLOADER $drv/bin/switch-to-configuration switch"
         ;;

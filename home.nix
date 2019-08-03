@@ -45,12 +45,7 @@ in
     (haskell.lib.justStaticExecutables haskellPackages.ghcid)
    
     # java/scala
-    openjdk8 scala hadoop
-    (spark.override { 
-      mesosSupport = false; 
-      RSupport = false; 
-      pythonPackages = python3Packages;
-    })
+    openjdk8 scala
     
     # python
     python37
@@ -79,7 +74,14 @@ in
                            gpgPath = "gpg"; }; }
         else {});
 
-  services.gpg-agent.enable = true;
+  services.gpg-agent = {
+    enable = true;
+    enableSshSupport = true;
+    sshKeys = 
+      if user.gpgSshKeygrip != ""
+      then [ user.gpgSshKeygrip ]
+      else [];
+  };
 
   xsession = {
     enable = true;
@@ -114,6 +116,7 @@ in
   home.file.".profile" = {
     text = ''
       export NIX_PATH=nixpkgs=${pkgs.path}
+      source "$HOME/.nix-profile/etc/profile.d/hm-session-vars.sh"
       source ${./dotfiles/profile}
     '';
     executable = true;

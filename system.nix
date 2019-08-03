@@ -70,7 +70,6 @@ in
       autoLogin = true;
     };
     xkbOptions = "caps:escape";
-    synaptics.enable = true;
   };
 
   # FIXME: https://github.com/NixOS/nixpkgs/issues/63533

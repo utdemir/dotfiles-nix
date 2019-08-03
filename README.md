@@ -17,7 +17,7 @@ with similar tastes.
     * Less than 500 lines of code describe the whole system.
 * (Mostly) hardware agnostic
     * Minimal hardware-related configuration.
-    * Tested on Thinkpad T430, T470 and X1.
+    * Tested on Thinkpad T4xx and X1.
 * Bleeding-edge
     * Closely follows `nixpkgs` and `home-manager` HEAD
 * (Almost) Free as in freedom
