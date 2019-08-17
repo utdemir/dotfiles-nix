@@ -18,11 +18,9 @@ def drv_deps(path):
       f"( builtins.map builtins.parseDrvName {ret} )"
     ])
 
-    ret = {
-        i["name"]: strip_multiple_outputs(i["version"])
-        for i in json.loads(ret)
-    }
-
+    ret = [(i["name"], i["version"]) for i in json.loads(ret)]
+    ret.sort()
+    ret = dict(ret)
     return ret
 
 def strip_multiple_outputs(s):
@@ -38,7 +36,7 @@ new = drv_deps(new)
 diff = [
     { "name": i, "old": old.get(i), "new": new.get(i) }
     for i in set(it.chain(old.keys(), new.keys()))
-    if old.get(i) != new.get(i)
+    if old.get(i) != new.get(i) and old.get(i) != "" and new.get(i) != ""
 ]
 
 diff.sort(key=lambda i: i["name"])

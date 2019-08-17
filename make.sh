@@ -13,7 +13,7 @@ cat << EOF
 Usage:
   ./make.sh build
   ./make.sh switch
-  ./make.sh upgrade
+  ./make.sh update
   ./make.sh info
   ./make.sh cleanup
   ./make.sh help
@@ -47,9 +47,10 @@ case "$mode" in
         trace sudo nix-env -p /nix/var/nix/profiles/system --set "$drv"
         NIXOS_INSTALL_BOOTLOADER=1 trace sudo --preserve-env=NIXOS_INSTALL_BOOTLOADER "$drv/bin/switch-to-configuration" switch
         ;;
-    "upgrade")
+    "update")
         trace niv update
-        drv="$(./make.sh switch)"
+        drv="$(./make.sh build)"
+        nix-shell -p python3 --run "./nix/diff /var/run/current-system '$drv' >&2"
         ;;
     "info")
         drv="$(trace "./make.sh" build)"
