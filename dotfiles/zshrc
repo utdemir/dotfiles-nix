@@ -19,7 +19,7 @@ setopt NO_FLOW_CONTROL
 # Keybindings
 bindkey "^[[3~" delete-char
 bindkey '^[[1;5C' forward-word
-bindkey '^[[1;5D' backward-word   
+bindkey '^[[1;5D' backward-word
 
 autoload -U edit-command-line
 zle -N edit-command-line
@@ -40,8 +40,8 @@ compinit
 zstyle ':completion:*' menu select
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}' 'm:{a-zA-Z}={A-Z}{a-z}' 'r:|[._-]=* r:|=*' 'l:|=* r:|=*'
 
-if [[ ! -e $HOME/.zcompdump ]]; 
-then echo "! compinit" >&2; compinit; 
+if [[ ! -e $HOME/.zcompdump ]];
+then echo "! compinit" >&2; compinit;
 else compinit -C;
 fi
 
@@ -188,7 +188,7 @@ function _awsGetSourceProfile() {
     local result
     local currProfile
     while read line; do
-        if [[ $line == "[profile $profileName]"* ]]; then 
+        if [[ $line == "[profile $profileName]"* ]]; then
           trmLine=$(echo $line | xargs)
           currProfile=${trmLine:9:-1}
         elif [[ $currProfile == $profileName && $line == "source_profile"* ]]; then
