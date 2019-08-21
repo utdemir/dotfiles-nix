@@ -19,6 +19,11 @@ in
   hardware.cpu.intel.updateMicrocode = true;
   boot.kernelModules = [ "kvm-intel" ];
 
+  powerManagement = {
+    enable = true;
+    cpuFreqGovernor = "powersave";
+  };
+
   services.xserver.videoDrivers = [ "intel" ];
 
   swapDevices = [
