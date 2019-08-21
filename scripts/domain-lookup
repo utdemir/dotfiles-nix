@@ -1,0 +1,23 @@
+#!/usr/bin/env bash
+
+GREEN='\e[1;32m'
+RED='\e[1;31m'
+RESET='\e[0m'
+
+function check-dns() {
+  ! nslookup $1 8.8.8.8 > /dev/null
+}
+
+function check-whois() {
+  sleep 1
+  res="$(whois $1 | head -n 1)"
+  echo $res | grep -E '(NOT.FOUND|No match)' > /dev/null
+}
+
+for i in $@; do
+  echo -n "$i "
+  if check-dns "$i" && check-whois "$i";
+  then echo -e "${GREEN}YES$RESET"
+  else echo -e "${RED}NO$RESET"
+  fi
+done
