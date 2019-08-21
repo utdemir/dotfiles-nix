@@ -20,8 +20,16 @@ in
   boot.kernelModules = [ "kvm-intel" ];
 
   services.tlp.extraConfig = ''
+    # powersave enables intel's p-state driver
     CPU_SCALING_GOVERNOR_ON_AC=performance
     CPU_SCALING_GOVERNOR_ON_BAT=powersave
+
+    # https://linrunner.de/en/tlp/docs/tlp-faq.html#battery
+    # use "tlp fullcharge" to override temporarily
+    START_CHARGE_THRESH_BAT0=85
+    STOP_CHARGE_THRESH_BAT0=90
+    START_CHARGE_THRESH_BAT1=85
+    STOP_CHARGE_THRESH_BAT1=90
   '';
 
   services.xserver.videoDrivers = [ "intel" ];
