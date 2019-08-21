@@ -19,10 +19,10 @@ in
   hardware.cpu.intel.updateMicrocode = true;
   boot.kernelModules = [ "kvm-intel" ];
 
-  powerManagement = {
-    enable = true;
-    cpuFreqGovernor = "powersave";
-  };
+  services.tlp.extraConfig = ''
+    CPU_SCALING_GOVERNOR_ON_AC=performance
+    CPU_SCALING_GOVERNOR_ON_BAT=powersave
+  '';
 
   services.xserver.videoDrivers = [ "intel" ];
 
