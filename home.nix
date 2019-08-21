@@ -16,6 +16,8 @@ in
     spotify smplayer mplayer zathura sxiv sweethome3d.application scrot
     xsel xclip deluge pcmanfm tmate qemu qemu_kvm pdfpc asciiquarium
     zoom-us slack meld bazel
+    xorg.libxcb # required for steam
+    steam xorg.libxcb # required for steam
     (hunspellWithDicts [ hunspellDicts.en-gb-ise ])
 
     # Fonts
