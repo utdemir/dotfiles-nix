@@ -46,13 +46,14 @@ flag, or simply by disabling the relevant keybindings.
 ## Installation
 
 * Install NixOS as usual.
-* (Optional) Install cachix: 
+* (Optional) Install cachix:
 
 ```
 $(nix-build -A cachix https://cachix.org/api/v1/install)/bin/cachix use utdemir
 ```
 
 * Fork and clone this repository.
+* Run: `cp home-private.nix{.example,}; cp system-private.nix{.example,}`
 * Update `user.nix` with your personal information.
 * Update `hardware.nix` based on your hardware.
 * Run:
@@ -74,13 +75,13 @@ field on `configuration.nix` if you do not trust me.
 
 ## Maintenance
 
-There is a `make.sh` on the repository responsible for common maintenance 
-tasks. 
+There is a `make.sh` on the repository responsible for common maintenance
+tasks.
 
 * `./make.sh build`: Builds the system configuration. Does **not** make any
 modifications to your system. Useful to see if your changes evaluate without
 problems.
-* `./make.sh switch`: Builds the system configuration, adds it to the boot 
+* `./make.sh switch`: Builds the system configuration, adds it to the boot
 menu and activates it.
 * `./make.sh update`: Updates the `nixpkgs` and `home-manager` revisions, and
 builds the system. Run this every few days for an up-to-date system. It also
@@ -110,7 +111,7 @@ The way I use Nix/NixOS slightly differs from the common usage:
 my dotfiles. This gives me a fully-reproducible and programmable system.
 * I don't use channels and `NIX_PATH`. I understand the rationale behind
 them, but I think they make things less obviously deterministic (action
-at a distance).  So I prefer to always pin `nixpkgs` and don't use 
+at a distance).  So I prefer to always pin `nixpkgs` and don't use
 `< ... >` syntax at all.
 * I follow the `master` branch of `nixpkgs`. The main reason is that
 I like to have the latest & greatest packages on my system. I found it
@@ -185,7 +186,7 @@ settle on using [kakoune](https://github.com/mawww/kakoune). I think
 it's the only usable editor adhering to the UNIX philosophy.
 
 Surprisingly, I only have about 30 lines of configuration for it, they
-just add a few keybindings, make it always use the system clipboard, 
+just add a few keybindings, make it always use the system clipboard,
 and change a few visuals.
 
 Even if I am a software developer using multiple programming ecosystems
@@ -274,12 +275,12 @@ Checkout [./home.nix]() to see them all.
    I don't use an IDE and I was never able to configure Vim or Emacs to
    work reliably and uniformly on different programming languages and
    build systems. So, here is the setup I use:
- 
+
    * I open three terminal windows (a big one on the left, two small ones
    on the right.
    * I execute the editor on the left, `ranger` on the top-right and make
    the compilation output available on the bottom-right. It looks like this:
- 
+
      ```
      +--------+--------+
      |        | ranger |
@@ -289,12 +290,12 @@ Checkout [./home.nix]() to see them all.
      |        |        |
      +--------+--------+
      ```
- 
+
    * I use the `ranger` window for browsing the other files or using `rg` to
    search for definitions, or for any auxiliary things I do using a terminal.
    * On bottom-right, I figure out a way to have the compilation output available.
    Here are some examples:
- 
+
      * **Haskell**: Use [ghcid](https://github.com/ndmitchell/ghcid).
      * **Scala**: Use `~ compile` command on `sbt`.
      * Interpreted languages: Use [entr](http://eradman.com/entrproject/)
@@ -312,6 +313,6 @@ Checkout [./home.nix]() to see them all.
 
 6. Something else
 
-   If you have a problem, probably I had faced it before. Just 
+   If you have a problem, probably I had faced it before. Just
    [open an issue](https://github.com/utdemir/dotfiles/issues) and I will
    get back to you.

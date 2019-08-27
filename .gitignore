@@ -1,3 +1,5 @@
+/system-private.nix
+/home-private.nix
 result
 result-*
 *.qcow2

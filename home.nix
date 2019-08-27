@@ -4,6 +4,8 @@ sources = import ./nix/sources.nix;
 lorri = (import sources.lorri { inherit pkgs; });
 in
 {
+  imports = [ ./home-private.nix ];
+
   home.packages = with pkgs; [
     # WM
     i3 i3status i3lock rofi unclutter autorandr arandr maim
