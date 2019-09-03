@@ -8,34 +8,35 @@ in
 
   home.packages = with pkgs; [
     # WM
-    i3 i3status i3lock rofi unclutter autorandr arandr maim
-    networkmanagerapplet parcellite lxappearance xfontsel feh pasystray
-    pavucontrol xdotool kitty xautolock xorg.xbacklight dunst acpi
-    libnotify xorg.xkill xorg.xev redshift srandrd xnee
+    acpi arandr autorandr dunst feh i3 i3lock i3status kitty libnotify
+    lxappearance maim networkmanagerapplet parcellite pasystray
+    pavucontrol redshift rofi srandrd unclutter xautolock xdotool xfontsel
+    xnee xorg.xbacklight xorg.xev xorg.xkill
 
     # Apps
-    firefox-bin qutebrowser chromium google-chrome libreoffice gimp
-    spotify smplayer mplayer zathura sxiv sweethome3d.application scrot
-    xsel xclip deluge pcmanfm tmate qemu qemu_kvm pdfpc asciiquarium
-    zoom-us slack meld bazel
-    xorg.libxcb # required for steam
+    asciiquarium bazel chromium deluge firefox-bin gimp google-chrome
+    libreoffice meld mplayer pcmanfm pdfpc qemu qemu_kvm qutebrowser scrot
+    slack smplayer sweethome3d.application sxiv tmate xclip xsel zathura
+
+    # services
+    awscli circleci-cli google-cloud-sdk gist gitAndTools.hub slack spotify
+    whois zoom-us
     steam xorg.libxcb # required for steam
-    (hunspellWithDicts [ hunspellDicts.en-gb-ise ])
 
     # Fonts
     ubuntu_font_family source-code-pro
 
     # CLI
-    zsh zsh-syntax-highlighting nix-zsh-completions ranger bashmount
-    imagemagick pdftk ncdu htop tree ascii powertop ghostscript nload
-    asciinema zip unzip file dos2unix findutils direnv watch graphviz
-    rsync openssl entr gnupg gitAndTools.hub gist pv jq yq ripgrep
-    tree autojump ncdu htop tokei units pandoc curl wget hexedit
-    docker_compose mtr nmap cmatrix awscli pass-otp zbar tig sqlite fd
-    dnsutils pwgen ltrace strace fzf termdown s3fs multitail gettext
-    cpulimit paperkey moreutils fpp exa ffmpeg tcpdump iw weechat tmux
-    up pythonPackages.subliminal pythonPackages.glances whois lynx mpv
-    powerstat cpufrequtils
+    ascii asciinema autojump bashmount cmatrix cpufrequtils cpulimit
+    curl direnv dnsutils docker_compose dos2unix entr exa fd ffmpeg file
+    findutils fpp fzf gettext ghostscript gnupg graphviz hexedit htop
+    htop imagemagick iw jq ltrace lynx moreutils mpv mtr multitail
+    ncdu nix-zsh-completions nload nmap openssl pandoc paperkey
+    pass-otp pdftk powerstat powertop pv pwgen pythonPackages.glances
+    pythonPackages.subliminal ranger ripgrep rsync s3fs sqlite strace
+    tcpdump termdown tig tmux tokei tree tree units unzip up watch
+    weechat wget yq zbar zip zsh zsh-syntax-highlighting
+    (hunspellWithDicts [ hunspellDicts.en-gb-ise ])
     (texlive.combine {
       inherit (texlive) scheme-small;
     })
