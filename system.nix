@@ -1,21 +1,30 @@
 { pkgs, ... }:
 
-let user = import ./user.nix;
+let
+  user = import ./user.nix;
+  getName = drv:
+    if builtins.hasAttr "pname" drv
+    then drv.pname
+    else if builtins.hasAttr "name" drv
+    then (builtins.parseDrvName drv.name).name
+    else throw "Cannot figure out name of: ${drv}";
 in
 {
   networking.hostName = user.hostname;
 
   nixpkgs.config = {
-    allowUnfreePredicate = pkg: builtins.elem
-      (builtins.parseDrvName pkg.name).name
-      [ "firefox-bin" "firefox-release-bin-unwrapped"
-        "google-chrome"
-        "spotify"
-        "slack"
-        "steam" "steam-original" "steam-runtime"
-        "zoom-us"
-        "intel-ocl"
-      ];
+    allowUnfreePredicate = pkg:
+      builtins.elem
+        (getName pkg)
+        [ "firefox-bin"
+          "firefox-release-bin-unwrapped"
+          "google-chrome"
+          "spotify"
+          "slack"
+          "steam" "steam-original" "steam-runtime"
+          "zoom-us"
+          "intel-ocl"
+        ];
   };
 
   nix = {
