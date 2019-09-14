@@ -21,7 +21,6 @@ in
           "google-chrome"
           "spotify"
           "slack"
-          "steam" "steam-original" "steam-runtime"
           "zoom-us"
           "intel-ocl"
         ];
