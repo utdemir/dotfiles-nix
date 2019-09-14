@@ -75,7 +75,7 @@ in
     };
     extraConfig = {
         url = {
-          "ssh://git@github.com" = { insteadOf = https://github.com/; };
+          "ssh://git@github.com/" = { insteadOf = https://github.com/; };
         };
         hub = {
           protocol = "git";
