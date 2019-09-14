@@ -73,13 +73,14 @@ in
       co = "checkout";
       st = "status -sb";
     };
-    extraConfig = ''
-        [url "git@github.com:"]
-        insteadOf = https://github.com/
-
-        [hub]
-        protocol = git
-    '';
+    extraConfig = {
+        url = {
+          "ssh://git@github.com" = { insteadOf = https://github.com/; };
+        };
+        hub = {
+          protocol = "git";
+        };
+    };
   } // (if user.gpgKey != ""
         then { signing = { signByDefault = true;
                            key = user.gpgKey;
