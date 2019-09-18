@@ -1,16 +1,4 @@
 {
-    "hercules-ci-agent": {
-        "branch": "stable",
-        "description": "https://hercules-ci.com build agent",
-        "homepage": "",
-        "owner": "hercules-ci",
-        "repo": "hercules-ci-agent",
-        "rev": "23b190e751d24f86dc9e5d44346cfe8bd401ed42",
-        "sha256": "0r85dgfh9xkb8hsvvxfz6gjafabfnm4pnqfv5x05drh9sg4sjiax",
-        "type": "tarball",
-        "url": "https://github.com/hercules-ci/hercules-ci-agent/archive/23b190e751d24f86dc9e5d44346cfe8bd401ed42.tar.gz",
-        "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
-    },
     "home-manager": {
         "branch": "master",
         "description": "Manage a user environment using Nix",
