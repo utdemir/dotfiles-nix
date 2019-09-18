@@ -33,7 +33,7 @@ in
     pass-otp pdftk powerstat powertop pv pwgen pythonPackages.glances
     pythonPackages.subliminal ranger ripgrep rsync s3fs sqlite strace
     tcpdump termdown tig tmux tokei tree tree units unzip up watch
-    weechat wget yq zbar zip zsh zsh-syntax-highlighting
+    weechat wget yq zbar zip zsh zsh-syntax-highlighting rclone
     (hunspellWithDicts [ hunspellDicts.en-gb-ise ])
     (texlive.combine {
       inherit (texlive) scheme-small;
