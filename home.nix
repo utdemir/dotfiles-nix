@@ -3,7 +3,8 @@ let
 sources = import ./nix/sources.nix;
 in
 {
-  imports = [ ./home-private.nix ];
+  imports =
+    builtins.filter builtins.pathExists [ ./home-private.nix ];
 
   home.packages = with pkgs; [
     # WM

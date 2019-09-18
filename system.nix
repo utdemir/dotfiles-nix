@@ -10,6 +10,9 @@ let
     else throw "Cannot figure out name of: ${drv}";
 in
 {
+  imports =
+    builtins.filter builtins.pathExists [ ./home-private.nix ];
+
   networking.hostName = user.hostname;
 
   nixpkgs.config = {
