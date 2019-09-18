@@ -1,1 +1,1 @@
-(import ./nix).system
+(import ./.).system
