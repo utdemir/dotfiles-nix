@@ -1,7 +1,7 @@
 {
     require = [ ../system.nix
                 ../hardware.nix
-                ../../home-manager/nixos
+                "${import ./home-manager.nix}/nixos"
               ];
 
     nixpkgs.config.allowBroken = true;
