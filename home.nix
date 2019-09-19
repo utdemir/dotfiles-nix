@@ -43,12 +43,14 @@ in
     (import ./nix/mk-scripts.nix { inherit pkgs; } ./scripts)
 
     # editors
-    emacs neovim
+    neovim
     (kakoune.override {
       configure = {
         plugins = [ (callPackage ./packages/kakoune-surround.nix {}) ];
       };
     })
+    (import ./nix/mk-emacs.nix { inherit pkgs; } ./dotfiles/emacs.el)
+
     # haskell
     stack cabal2nix ghc
     (haskell.lib.justStaticExecutables haskellPackages.ghcid)
