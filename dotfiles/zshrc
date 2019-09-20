@@ -46,34 +46,7 @@ else compinit -C;
 fi
 
 # Prompt
-autoload -U colors zsh/terminfo
-colors
-
-autoload -Uz vcs_info
-
-zstyle ':vcs_info:*' enable git
-zstyle ':vcs_info:*' check-for-changes true
-zstyle ':vcs_info:*' unstagedstr !
-precmd () {
-    if [[ -z $(git ls-files --other --exclude-standard 2> /dev/null) ]] {
-        zstyle ':vcs_info:*' formats '%F{cyan}[%b%c%u%f%F{cyan}]%f'
-    } else {
-        zstyle ':vcs_info:*' formats '%F{cyan}[%b%c%u%f%F{red}●%f%F{cyan}]%f'
-    }
-    vcs_info
-}
-
-function nix_prompt() {
-  case $IN_NIX_SHELL in;
-    "") st="";;
-    *) st="[nix-shell($IN_NIX_SHELL)]";;
-  esac
-  echo "%F{cyan}$st"
-}
-
-setopt prompt_subst
-PS1='%F{red}%(?..[%?] )%F{magenta}%n%f@%F{yellow}%m%f:%B%F{green}%~%f%b ${vcs_info_msg_0_} $(nix_prompt)
-$ '
+eval "$(starship init zsh)"
 
 # Tools
 

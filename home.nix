@@ -35,6 +35,7 @@ in
     pythonPackages.subliminal ranger ripgrep rsync s3fs sqlite strace
     tcpdump termdown tig tmux tokei tree tree units unzip up watch
     weechat wget yq zbar zip zsh zsh-syntax-highlighting rclone
+    starship
     (hunspellWithDicts [ hunspellDicts.en-gb-ise ])
     (texlive.combine {
       inherit (texlive) scheme-small;
@@ -119,6 +120,8 @@ in
     ./dotfiles/qutebrowser/bookmarks;
 
   home.file.".config/mimeapps.list".source = ./dotfiles/mimeapps.list;
+
+  home.file.".config/starship.toml".source = ./dotfiles/starship.toml;
 
   home.file.".zshrc".text = ''
     ${pkgs.any-nix-shell}/bin/any-nix-shell zsh | source /dev/stdin

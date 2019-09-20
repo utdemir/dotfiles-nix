@@ -1,0 +1,16 @@
+add_newline = false
+prompt_order = [
+    "username",
+    "hostname",
+    "directory",
+    "git_branch",
+    "git_state",
+    "git_status",
+    "package",
+    "nix_shell",
+    "cmd_duration",
+    "line_break",
+    "jobs",
+    "time",
+    "character",
+]
