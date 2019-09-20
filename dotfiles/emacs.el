@@ -67,6 +67,11 @@
 (setq custom-safe-themes t)
 (setq default-frame-alist '((font . "Source Code Pro-10")))
 
+(use-package evil
+  :config
+  (evil-mode 1)
+)
+
 (winner-mode 1)
 (windmove-default-keybindings)
 
@@ -152,7 +157,7 @@
 
 (use-package git-link
   :defer 2)
-  
+
 (use-package scala-mode
   :mode
   ("\\.sc\\'" . scala-mode))
