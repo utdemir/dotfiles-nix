@@ -36,7 +36,7 @@ in
     pythonPackages.subliminal ranger ripgrep rsync s3fs sqlite strace
     tcpdump termdown tig tmux tokei tree tree units unzip up watch
     weechat wget yq zbar zip zsh zsh-syntax-highlighting rclone
-    starship
+    starship cookiecutter
     (hunspellWithDicts [ hunspellDicts.en-gb-ise ])
     (texlive.combine {
       inherit (texlive) scheme-small;
