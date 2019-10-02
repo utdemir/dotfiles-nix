@@ -129,6 +129,9 @@ in
     source ${pkgs.zsh-syntax-highlighting}/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
     source ${./dotfiles/zshrc}
+
+    source ${sources.h}/h.sh
+    h_init_zsh
   '';
 
   home.file.".profile" = {

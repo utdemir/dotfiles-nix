@@ -1,4 +1,16 @@
 {
+    "h": {
+        "branch": "master",
+        "description": null,
+        "homepage": "",
+        "owner": "utdemir",
+        "repo": "h",
+        "rev": "de3146517793f3710195cb26290fa7e865008c57",
+        "sha256": "1j89y85gpysf58gj6j0rc4jbzl5lkywwxvdajasci8h62kpz49gl",
+        "type": "tarball",
+        "url": "https://github.com/utdemir/h/archive/de3146517793f3710195cb26290fa7e865008c57.tar.gz",
+        "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
+    },
     "home-manager": {
         "branch": "master",
         "description": "Manage a user environment using Nix",
