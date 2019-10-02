@@ -157,7 +157,7 @@ in
     } ''
       mkdir -p $out/bin
       makeWrapper ${./scripts/battery-notification.sh} $out/bin/battery-notification.sh \
-        --prefix PATH : "${pkgs.acpi}/bin:${pkgs.libnotify}/bin:${pkgs.bash}/bin"
+        --prefix PATH : "${pkgs.acpi}/bin:${pkgs.libnotify}/bin:${pkgs.bash}/bin:${pkgs.gnugrep}/bin"
     '';
     in {
       Unit = {
