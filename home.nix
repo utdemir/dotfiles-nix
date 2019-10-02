@@ -27,7 +27,7 @@ in
     ubuntu_font_family source-code-pro
 
     # CLI
-    ascii asciinema autojump bashmount cmatrix cpufrequtils cpulimit
+    ascii asciinema bashmount cmatrix cpufrequtils cpulimit
     curl direnv dnsutils docker_compose dos2unix entr exa fd ffmpeg file
     findutils fpp fzf gettext ghostscript gnupg graphviz hexedit htop
     htop imagemagick iw jq ltrace lynx moreutils mpv mtr multitail
@@ -126,7 +126,6 @@ in
 
   home.file.".zshrc".text = ''
     ${pkgs.any-nix-shell}/bin/any-nix-shell zsh | source /dev/stdin
-    source ${pkgs.autojump}/etc/profile.d/autojump.sh
     source ${pkgs.zsh-syntax-highlighting}/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
     source ${./dotfiles/zshrc}
