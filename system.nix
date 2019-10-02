@@ -35,7 +35,7 @@ in
       "https://utdemir.cachix.org"
     ];
     binaryCachePublicKeys = [
-      "utdemir.cachix.org-1:eiAZrUaF4HVt/hLQeIdsbfRUtVUyKV8WYE8XKwJCD+8="
+      "utdemir.cachix.org-1:mDgucWXufo3UuSymLuQumqOq1bNeclnnIEkD4fFMhsw="
     ];
     trustedUsers = [ "root" user.username ];
     autoOptimiseStore = true;
