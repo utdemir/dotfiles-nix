@@ -11,7 +11,7 @@ let
 in
 {
   imports =
-    builtins.filter builtins.pathExists [ ./home-private.nix ];
+    builtins.filter builtins.pathExists [ ./system-private.nix ];
 
   networking.hostName = user.hostname;
 
