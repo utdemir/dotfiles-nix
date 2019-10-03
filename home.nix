@@ -15,7 +15,7 @@ in
 
     # Apps
     asciiquarium bazel chromium deluge firefox-bin gimp google-chrome
-    libreoffice meld mplayer pcmanfm pdfpc qemu qemu_kvm qutebrowser scrot
+    libreoffice meld mplayer pcmanfm qemu qemu_kvm qutebrowser scrot
     slack smplayer sweethome3d.application sxiv tmate xclip xsel zathura
     claws-mail
 
