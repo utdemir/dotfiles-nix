@@ -15,7 +15,7 @@ in
 
     # Apps
     asciiquarium bazel chromium deluge firefox-bin gimp google-chrome
-    libreoffice meld mplayer pcmanfm pdfpc qemu qemu_kvm qutebrowser scrot
+    libreoffice meld mplayer pcmanfm qemu qemu_kvm qutebrowser scrot
     slack smplayer sweethome3d.application sxiv tmate xclip xsel zathura
     claws-mail
 
@@ -65,8 +65,7 @@ in
 
     # nix
     nix-prefetch-scripts patchelf nixops nix-top
-    (haskell.lib.justStaticExecutables (import sources.niv {}).niv)
-    (haskell.lib.justStaticExecutables haskellPackages.cachix)
+    niv cachix
   ];
 
   programs.git = {
@@ -157,7 +156,7 @@ in
     } ''
       mkdir -p $out/bin
       makeWrapper ${./scripts/battery-notification.sh} $out/bin/battery-notification.sh \
-        --prefix PATH : "${pkgs.acpi}/bin:${pkgs.libnotify}/bin:${pkgs.bash}/bin"
+        --prefix PATH : "${pkgs.acpi}/bin:${pkgs.libnotify}/bin:${pkgs.bash}/bin:${pkgs.gnugrep}/bin"
     '';
     in {
       Unit = {
