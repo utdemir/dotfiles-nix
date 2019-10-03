@@ -65,8 +65,7 @@ in
 
     # nix
     nix-prefetch-scripts patchelf nixops nix-top
-    (haskell.lib.justStaticExecutables (import sources.niv {}).niv)
-    (haskell.lib.justStaticExecutables haskellPackages.cachix)
+    niv cachix
   ];
 
   programs.git = {

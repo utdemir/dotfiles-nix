@@ -17,22 +17,10 @@
         "homepage": "",
         "owner": "rycee",
         "repo": "home-manager",
-        "rev": "3d546e0d01996268e717b13e727bd53f6b14fb1a",
-        "sha256": "0hv443gfgw4b7a06jnk427jjrfhij47vhrwgxbmiwa99ypnfgm8y",
+        "rev": "8bddc1adab0f7a51476f819fa2197353e8e1d136",
+        "sha256": "0dskw1vm21vz86wwdw573wmn210pn21k9fscm978cj7ps0l4bsfk",
         "type": "tarball",
-        "url": "https://github.com/rycee/home-manager/archive/3d546e0d01996268e717b13e727bd53f6b14fb1a.tar.gz",
-        "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
-    },
-    "niv": {
-        "branch": "master",
-        "description": "Easy dependency management for Nix projects",
-        "homepage": "https://github.com/nmattia/niv",
-        "owner": "nmattia",
-        "repo": "niv",
-        "rev": "1dd094156b249586b66c16200ecfd365c7428dc0",
-        "sha256": "1b2vjnn8iac5iiqszjc2v1s1ygh0yri998c0k3s4x4kn0dsqik21",
-        "type": "tarball",
-        "url": "https://github.com/nmattia/niv/archive/1dd094156b249586b66c16200ecfd365c7428dc0.tar.gz",
+        "url": "https://github.com/rycee/home-manager/archive/8bddc1adab0f7a51476f819fa2197353e8e1d136.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
     "nixos-hardware": {
@@ -53,10 +41,10 @@
         "homepage": null,
         "owner": "nixos",
         "repo": "nixpkgs",
-        "rev": "8d440b5e591947308f96de43e0b3b5c9d4133d91",
-        "sha256": "0x5lk3czd85ns039ibs4xf3h355bgdj77nvnww2f34skcpvpd4w4",
+        "rev": "355425b7cb71118ad706905098eaeb70820e92dd",
+        "sha256": "0hky66z5zbbxq29wv7kzypa95vxbnvqi1iql8i99qxjr8z4xxlxg",
         "type": "tarball",
-        "url": "https://github.com/nixos/nixpkgs/archive/8d440b5e591947308f96de43e0b3b5c9d4133d91.tar.gz",
+        "url": "https://github.com/nixos/nixpkgs/archive/355425b7cb71118ad706905098eaeb70820e92dd.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     }
 }
