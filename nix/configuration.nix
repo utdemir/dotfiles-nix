@@ -1,7 +1,9 @@
+let sources = import ./sources.nix
+in
 {
     require = [ ../system.nix
                 ../hardware.nix
-                "${import ./home-manager.nix}/nixos"
+                "${sources.home-manager}/nixos"
                 /etc/nixos/hardware-configuration.nix
               ];
 
