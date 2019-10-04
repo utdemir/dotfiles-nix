@@ -1,5 +1,7 @@
 # Configuration for my workstation
 
+[![CI Status](https://github.com/utdemir/dotfiles/workflows/ci/badge.svg)](https://github.com/utdemir/dotfiles/actions)
+
 This repository can reproduce the entirety of my system; including
 services, applications and configurations. It should contain everything
 necessary for an usable OS without any further configuration.
