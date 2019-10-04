@@ -1,4 +1,4 @@
-let sources = import ./sources.nix
+let sources = import ./sources.nix;
 in
 {
     require = [ ../system.nix
