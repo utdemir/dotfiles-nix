@@ -61,7 +61,7 @@ in
     openjdk8 scala
 
     # python
-    python37
+    python37 python37Packages.virtualenv
 
     # nix
     nix-prefetch-scripts patchelf nixops nix-top
