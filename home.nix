@@ -101,7 +101,7 @@ in
 
   xsession = {
     enable = true;
-    windowManager.command = "${pkgs.i3}/bin/i3";
+    windowManager.command = "i3";
   };
 
   manual.manpages.enable = false;
