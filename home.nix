@@ -116,8 +116,6 @@ in
   home.file.".config/kitty/kitty.conf".source = ./dotfiles/kitty.conf;
 
   home.file.".config/qutebrowser/config.py".source = ./dotfiles/qutebrowser/config.py;
-  home.file.".config/qutebrowser/bookmarks/urls".source =
-    ./dotfiles/qutebrowser/bookmarks;
 
   home.file.".config/mimeapps.list".source = ./dotfiles/mimeapps.list;
 
