@@ -51,6 +51,7 @@ in
 
   environment.systemPackages = with pkgs; [ vim git ];
 
+  boot.kernelPackages = pkgs.linuxPackages_latest;
   boot.kernel.sysctl = {
     "vm.swappiness" = 0;
     "fs.inotify.max_user_watches" = 2048000;
