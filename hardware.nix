@@ -8,9 +8,9 @@ in
   imports = [
     "${sources.nixos-hardware}/lenovo/thinkpad"
     "${sources.nixos-hardware}/common/cpu/intel"
+    "${sources.nixos-hardware}/common/cpu/intel/kaby-lake"
     "${sources.nixos-hardware}/common/pc/laptop/ssd"
     "${sources.nixos-hardware}/common/pc/laptop/acpi_call.nix"
-    "${sources.nixos-hardware}/common/pc/laptop/cpu-throttling-bug.nix"
   ];
 
   boot.loader.systemd-boot.enable = true;
@@ -31,7 +31,7 @@ in
     START_CHARGE_THRESH_BAT1=85
     STOP_CHARGE_THRESH_BAT1=90
   '';
-
+  services.throttled.enable = true;
   services.xserver.videoDrivers = [ "intel" ];
   services.xserver.libinput = {
     enable = true;
