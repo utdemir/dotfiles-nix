@@ -33,6 +33,9 @@ in
   '';
 
   services.xserver.videoDrivers = [ "intel" ];
+  services.xserver.libinput = {
+    enable = true;
+  };
 
   swapDevices = [
     { device = "/swapfile"; size = 4096; }
