@@ -32,7 +32,7 @@ in
     findutils fpp fzf gettext ghostscript gnupg graphviz hexedit htop
     htop imagemagick iw jq ltrace lynx moreutils mpv mtr multitail
     ncdu nix-zsh-completions nload nmap openssl pandoc paperkey
-    pass-otp pdftk powerstat powertop pv pwgen pythonPackages.glances
+    pass-otp pdftk powerstat powertop pv pwgen
     pythonPackages.subliminal ranger ripgrep rsync s3fs sqlite strace
     tcpdump termdown tig tmux tokei tree tree units unzip up watch
     weechat wget yq zbar zip zsh zsh-syntax-highlighting rclone
@@ -64,7 +64,7 @@ in
     python37 python37Packages.virtualenv
 
     # nix
-    nix-prefetch-scripts patchelf nixops nix-top
+    nix-prefetch-scripts patchelf nix-top
     niv cachix
   ];
 
