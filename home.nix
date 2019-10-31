@@ -97,6 +97,9 @@ in
       if user.gpgSshKeygrip != ""
       then [ user.gpgSshKeygrip ]
       else [];
+    extraConfig = ''
+      pinentry-program ${pkgs.pinentry}/bin/pinentry
+    '';
   };
 
   xsession = {
