@@ -98,7 +98,7 @@ in
       then [ user.gpgSshKeygrip ]
       else [];
     extraConfig = ''
-      pinentry-program ${pkgs.pinentry}/bin/pinentry
+      pinentry-program ${pkgs.pinentry-gtk2}/bin/pinentry
     '';
   };
 
