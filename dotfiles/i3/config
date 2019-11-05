@@ -117,7 +117,7 @@ bindsym $mod+r mode "resize"
 focus_follows_mouse no
 
 bar {
-        status_command i3status
+        status_command i3blocks
         mode hide
         hidden_state hide
         modifier $mod

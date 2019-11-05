@@ -8,7 +8,7 @@ in
 
   home.packages = with pkgs; [
     # WM
-    acpi arandr autorandr dunst feh i3 i3lock i3status kitty libnotify
+    acpi arandr autorandr dunst feh i3 i3lock i3blocks kitty libnotify
     lxappearance maim networkmanagerapplet parcellite pasystray
     pavucontrol redshift rofi srandrd unclutter xautolock xdotool xfontsel
     xnee xorg.xbacklight xorg.xev xorg.xkill
@@ -114,7 +114,7 @@ in
   home.file.".config/i3/config".source = ./dotfiles/i3/config;
   home.file.".config/i3/autostart.sh".source = ./dotfiles/i3/autostart.sh;
   home.file.".config/i3/wallpaper.png".source = ./dotfiles/i3/wallpaper.png;
-  home.file.".config/i3status/config".source = ./dotfiles/i3/i3status;
+  home.file.".config/i3blocks/config".source = ./dotfiles/i3/i3blocks;
 
   home.file.".config/kitty/kitty.conf".source = ./dotfiles/kitty.conf;
 
