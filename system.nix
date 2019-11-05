@@ -45,6 +45,7 @@ in
     ];
   };
 
+  networking.dhcpcd.enable = false;
   networking.networkmanager.enable = true;
 
   time.timeZone = "Pacific/Auckland";
