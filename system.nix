@@ -59,6 +59,7 @@ in
   };
 
   boot.cleanTmpDir = true;
+  services.fwupd.enable = true;
 
   services.openssh.enable = true;
   networking.firewall = {
