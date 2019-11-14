@@ -16,8 +16,7 @@ in
     # Apps
     asciiquarium bazel chromium deluge firefox-bin gimp google-chrome
     libreoffice meld mplayer pcmanfm qemu qemu_kvm qutebrowser scrot
-    slack smplayer sweethome3d.application sxiv tmate xclip xsel zathura
-    claws-mail inkscape macchanger
+    sxiv tmate xclip xsel zathura claws-mail inkscape macchanger
 
     # services
     awscli circleci-cli google-cloud-sdk gist gitAndTools.hub slack spotify
@@ -27,16 +26,15 @@ in
     ubuntu_font_family source-code-pro
 
     # CLI
-    ascii asciinema bashmount cmatrix cpufrequtils cpulimit
-    curl direnv dnsutils docker_compose dos2unix entr exa fd ffmpeg file
+    ascii asciinema bashmount cmatrix cpufrequtils cpulimit curl
+    direnv dnsutils docker_compose dos2unix entr exa fd ffmpeg file
     findutils fpp fzf gettext ghostscript gnupg graphviz hexedit htop
-    htop imagemagick iw jq ltrace lynx moreutils mpv mtr multitail
-    ncdu nix-zsh-completions nload nmap openssl pandoc paperkey
-    pass-otp pdftk powerstat powertop pv pwgen
-    pythonPackages.subliminal ranger ripgrep rsync s3fs sqlite strace
-    tcpdump termdown tig tmux tokei tree tree units unzip up watch
-    weechat wget yq zbar zip zsh zsh-syntax-highlighting rclone
-    starship cookiecutter
+    htop imagemagick iw jq ltrace lynx moreutils mpv mtr multitail ncdu
+    nix-zsh-completions nload nmap openssl pandoc paperkey pass-otp pdftk
+    powerstat powertop pv pwgen pythonPackages.subliminal ranger ripgrep
+    rsync sqlite strace tcpdump termdown tig tmux tokei tree tree units
+    unzip up watch weechat wget yq zbar zip zsh zsh-syntax-highlighting
+    rclone starship cookiecutter
     (hunspellWithDicts [ hunspellDicts.en-gb-ise ])
     (texlive.combine {
       inherit (texlive) scheme-small;
@@ -51,7 +49,6 @@ in
         plugins = [ (callPackage ./packages/kakoune-surround.nix {}) ];
       };
     })
-    (import ./nix/mk-emacs.nix { inherit pkgs; } ./dotfiles/emacs.el)
 
     # haskell
     stack cabal2nix ghc
@@ -64,8 +61,7 @@ in
     python37 python37Packages.virtualenv
 
     # nix
-    nix-prefetch-scripts patchelf nix-top
-    niv cachix
+    nix-prefetch-scripts patchelf nix-top niv cachix
   ];
 
   programs.git = {
