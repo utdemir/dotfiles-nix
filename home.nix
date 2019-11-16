@@ -16,7 +16,7 @@ in
     # Apps
     asciiquarium bazel chromium deluge firefox-bin gimp google-chrome
     libreoffice meld mplayer pcmanfm qemu qemu_kvm qutebrowser scrot
-    sxiv tmate xclip xsel zathura claws-mail inkscape macchanger
+    sxiv tmate xclip xsel zathura claws-mail inkscape macchanger gthumb
 
     # services
     awscli circleci-cli google-cloud-sdk gist gitAndTools.hub slack spotify
