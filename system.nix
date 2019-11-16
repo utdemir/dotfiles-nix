@@ -92,11 +92,6 @@ in
   #   freeMemThreshold = 5;
   # };
 
-  services.clamav = {
-    daemon.enable = true;
-    updater.enable = true;
-  };
-
   hardware.pulseaudio.enable = true;
   hardware.opengl.driSupport32Bit = true;
   hardware.opengl.extraPackages = [ pkgs.intel-ocl ];
