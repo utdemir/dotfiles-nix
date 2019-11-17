@@ -78,10 +78,14 @@ in
   services.xserver = {
     enable = true;
     autorun = true;
-    displayManager.slim = {
+    desktopManager.xterm.enable = true;
+    displayManager.lightdm = {
       enable = true;
-      defaultUser = user.username;
-      autoLogin = true;
+      greeter.enable = false;
+      autoLogin = {
+        enable = true;
+        user = "utdemir";
+      };
     };
     xkbOptions = "caps:escape";
   };
