@@ -67,6 +67,11 @@ in
     allowedTCPPorts = [ 22 ];
   };
 
+  services.tor = {
+    enable = true;
+    client.enable = true;
+  };
+
   virtualisation.docker = {
     enable = true;
     liveRestore = false;
