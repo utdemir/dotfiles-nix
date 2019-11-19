@@ -17,10 +17,10 @@
         "homepage": "",
         "owner": "rycee",
         "repo": "home-manager",
-        "rev": "595150be86639cd1e41c9eba1cf02dc503d10c23",
-        "sha256": "17szfl77qfig1bs98ak3akmqf76mcq221rp70pkd91mi8b3sndrm",
+        "rev": "286dd9b3088298e5a4625b517f8e72b1c62e4f74",
+        "sha256": "0p3ba287h9a7mpj8chdgvz5qryc15qxdis3fdmv9jvl0hwsr738d",
         "type": "tarball",
-        "url": "https://github.com/rycee/home-manager/archive/595150be86639cd1e41c9eba1cf02dc503d10c23.tar.gz",
+        "url": "https://github.com/rycee/home-manager/archive/286dd9b3088298e5a4625b517f8e72b1c62e4f74.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
     "nixos-hardware": {
@@ -41,10 +41,10 @@
         "homepage": null,
         "owner": "nixos",
         "repo": "nixpkgs",
-        "rev": "d5053d12eb23377bcc860f8cb3bfa65c4507772d",
-        "sha256": "1afbaa370gaph64w7ws1h7kqhifqmr72xpa74bkjbbfggyyc4i58",
+        "rev": "4a45f935d3968f521a600d112596aceab33afbe3",
+        "sha256": "1pbbcx435dk6glhsy1p51v1m240fv9nd59l5z15qv3w6va0psihh",
         "type": "tarball",
-        "url": "https://github.com/nixos/nixpkgs/archive/d5053d12eb23377bcc860f8cb3bfa65c4507772d.tar.gz",
+        "url": "https://github.com/nixos/nixpkgs/archive/4a45f935d3968f521a600d112596aceab33afbe3.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     }
 }
