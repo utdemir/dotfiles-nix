@@ -95,6 +95,8 @@ in
     xkbOptions = "caps:escape";
   };
 
+  services.lorri.enable = true;
+
   services.earlyoom = {
     enable = true;
     freeMemThreshold = 5;

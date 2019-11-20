@@ -45,9 +45,6 @@ then echo "! compinit" >&2; compinit;
 else compinit -C;
 fi
 
-# Prompt
-eval "$(starship init zsh)"
-
 # Tools
 
 export FZF_DEFAULT_OPTS='--no-height'
@@ -55,6 +52,9 @@ source $HOME/.nix-profile/share/fzf/completion.zsh
 source $HOME/.nix-profile/share/fzf/key-bindings.zsh
 
 eval "$(direnv hook zsh)"
+
+# Prompt
+eval "$(starship init zsh)"
 
 # Utils
 
