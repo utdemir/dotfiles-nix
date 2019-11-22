@@ -72,6 +72,13 @@ in
     client.enable = true;
   };
 
+  services.ipfs = {
+    enable = true;
+    autoMount = true;
+    localDiscovery = false;
+    gatewayAddress = "/ip4/127.0.0.1/tcp/8090";
+  };
+
   virtualisation.docker = {
     enable = true;
     liveRestore = false;
