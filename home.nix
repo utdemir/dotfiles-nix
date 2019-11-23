@@ -20,7 +20,7 @@ in
 
     # services
     awscli circleci-cli google-cloud-sdk gist gitAndTools.hub slack spotify
-    whois zoom-us
+    whois zoom-us zulip
 
     # Fonts
     ubuntu_font_family source-code-pro
