@@ -43,6 +43,7 @@ in
     nixPath = [
       "nixpkgs=${pkgs.path}"
     ];
+    daemonNiceLevel = 19;
   };
 
   networking.dhcpcd.enable = false;
