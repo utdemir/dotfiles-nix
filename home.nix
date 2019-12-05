@@ -34,7 +34,7 @@ in
     powerstat powertop pv pwgen pythonPackages.subliminal ranger ripgrep
     rsync sqlite strace tcpdump termdown tig tmux tokei tree tree units
     unzip up watch weechat wget yq zbar zip zsh zsh-syntax-highlighting
-    rclone starship cookiecutter
+    rclone starship cookiecutter git-lfs
     (hunspellWithDicts [ hunspellDicts.en-gb-ise ])
     (texlive.combine {
       inherit (texlive) scheme-small;
@@ -73,12 +73,18 @@ in
       st = "status -sb";
     };
     extraConfig = {
-        url = {
-          "ssh://git@github.com/" = { insteadOf = https://github.com/; };
-        };
-        hub = {
-          protocol = "git";
-        };
+      "filter \"lfs\"" = {
+        process = "git-lfs filter-process";
+        required = true;
+        clean = "git-lfs clean -- %f";
+        smudge = "git-lfs smudge -- %f";
+      };
+      url = {
+        "ssh://git@github.com/" = { insteadOf = https://github.com/; };
+      };
+      hub = {
+        protocol = "git";
+      };
     };
   } // (if user.gpgKey != ""
         then { signing = { signByDefault = true;
