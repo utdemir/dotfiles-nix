@@ -120,6 +120,7 @@ focus_follows_mouse no
 
 bar {
         status_command i3blocks
+        position top
         mode hide
         hidden_state hide
         modifier $mod
