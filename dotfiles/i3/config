@@ -15,9 +15,9 @@ bindsym $mod+BackSpace exec xautolock -locknow
 
 bindsym $mod+Shift+q kill
 
-bindsym $mod+d exec rofi -show run -theme DarkBlue
-bindsym $mod+p exec rofi-pass -theme DarkBlue
-bindsym $mod+s exec rofi -show window -theme DarkBlue
+bindsym $mod+d exec rofi -show run
+bindsym $mod+p exec rofi-pass
+bindsym $mod+s exec rofi -show window
 
 bindsym XF86AudioRaiseVolume exec --no-startup-id pactl -- set-sink-volume @DEFAULT_SINK@ +5% #increase sound volume
 bindsym XF86AudioLowerVolume exec --no-startup-id pactl -- set-sink-volume @DEFAULT_SINK@ -5% #decrease sound volume

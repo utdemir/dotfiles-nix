@@ -120,6 +120,8 @@ in
 
   home.file.".config/kitty/kitty.conf".source = ./dotfiles/kitty.conf;
 
+  home.file.".config/rofi/config".source = ./dotfiles/rofi;
+
   home.file.".config/qutebrowser/config.py".source = ./dotfiles/qutebrowser/config.py;
 
   home.file.".config/mimeapps.list".source = ./dotfiles/mimeapps.list;
