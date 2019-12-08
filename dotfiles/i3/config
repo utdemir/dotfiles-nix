@@ -17,7 +17,7 @@ bindsym $mod+Shift+q kill
 
 bindsym $mod+d exec rofi -show run -theme DarkBlue
 bindsym $mod+p exec rofi-pass -theme DarkBlue
-bindsym $mod+s exec sh -c 'q=$(rofi -theme DarkBlue -dmenu -p "ddg" -l 0) && qutebrowser "https://duckduckgo.com/?q=$q"'
+bindsym $mod+s exec rofi -show window -theme DarkBlue
 
 bindsym XF86AudioRaiseVolume exec --no-startup-id pactl -- set-sink-volume @DEFAULT_SINK@ +5% #increase sound volume
 bindsym XF86AudioLowerVolume exec --no-startup-id pactl -- set-sink-volume @DEFAULT_SINK@ -5% #decrease sound volume
