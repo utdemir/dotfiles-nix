@@ -14,8 +14,8 @@ map global normal -- -     <a-i>
 map global normal -- =     <a-a>
 map global normal -- <a-s> '*N'
 map global normal -- (     ':surround<ret>'
-map global normal -- )     ':change-surround<ret>'
-map global normal -- *     ':delete-surround<ret>'
+map global normal -- )     ':delete-surround<ret>'
+map global normal -- *     ':change-surround<ret>'
 
 # use system clipboard
 hook global NormalKey y|d|c %{ nop %sh{
