@@ -146,7 +146,7 @@ in
 
 };
 
-  manual.manpages.enable = false;
+  manual.manpages.enable = true;
 
   home.file.".config/kak/kakrc".source = ./dotfiles/kakrc;
 
