@@ -13,7 +13,7 @@ with similar tastes.
 ## Features
 
 * Keyboard and command line oriented
-    * i3, kakoune, qutebrowser and lots of shell utilities
+    * i3, kakoune, keyboard-optimised firefox and lots of shell utilities
 * Lightweight, fast, simple
     * No bloated DE's or "fully-featured" applications.
     * Less than 500 lines of code describe the whole system.
@@ -202,26 +202,16 @@ window open which runs/typechecks the project continuously.
 
 ---
 
-### Web Browser: qutebrowser
+### Web Browser: firefox
 
-I use [qutebrowser](https://qutebrowser.org/) as my web browser. It is
-a keyboard-oriented minimal web browser using QtWebEngine (WebKit). The
-only customisation I make makes it use separate windows as tabs and
-makes it use `kakoune` as editor.
+I used to use [qutebrowser](https://qutebrowser.org/) for a long time,
+since it is a simple keyboard-oriented minimal web browser.
 
-Actually, I would prefer to use Firefox with some addons & customisation
-to make it keyboard-oriented & disabling tabs. However currently there
-is no easy way to configure Firefox easily & install addons without using
-the GUI. There are some ongoing work adding this functionality to nixpkgs,
-I will consider switching when they are merged.
+I recently migrated to Firefox, because I wanted to support a different
+browser engine, and qutebrowser was lacking some privacy features supported
+by Firefox addons.
 
-* Configuration: [dotfiles/qutebrowser/config.py]()
-* Keybindings:
-  * `ctrl+v`: passthrough mode (send keystrokes directly to the website)
-  * `shift+esc`: disable passthrough mode
-  * `o`: open a website
-  * `f`: add hints to the links
-  * `F`: add hints to the links (open in new window)
+I might go back to qutebrowser if Firefox starts to feel bloated.
 
 ---
 

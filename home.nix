@@ -15,7 +15,7 @@ in
 
     # Apps
     asciiquarium bazel chromium deluge gimp google-chrome
-    libreoffice meld mplayer pcmanfm qemu qemu_kvm qutebrowser scrot
+    libreoffice meld mplayer pcmanfm qemu qemu_kvm scrot
     sxiv tmate xclip xsel zathura claws-mail inkscape macchanger gthumb
     pkgs.nur.repos.rycee.firefox-addons-generator
 
@@ -153,8 +153,6 @@ in
   home.file.".config/kitty/kitty.conf".source = ./dotfiles/kitty.conf;
 
   home.file.".config/rofi/config".source = ./dotfiles/rofi;
-
-  home.file.".config/qutebrowser/config.py".source = ./dotfiles/qutebrowser.py;
 
   home.file.".config/mimeapps.list".source = ./dotfiles/mimeapps.list;
 
