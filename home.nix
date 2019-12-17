@@ -14,9 +14,10 @@ in
     xnee xorg.xbacklight xorg.xev xorg.xkill
 
     # Apps
-    asciiquarium bazel chromium deluge firefox-bin gimp google-chrome
+    asciiquarium bazel chromium deluge gimp google-chrome
     libreoffice meld mplayer pcmanfm qemu qemu_kvm qutebrowser scrot
     sxiv tmate xclip xsel zathura claws-mail inkscape macchanger gthumb
+    pkgs.nur.repos.rycee.firefox-addons-generator
 
     # services
     awscli circleci-cli google-cloud-sdk gist gitAndTools.hub slack spotify
@@ -108,6 +109,37 @@ in
     enable = true;
     windowManager.command = "i3";
   };
+
+  programs.firefox = {
+    enable = true;
+
+    extensions = builtins.attrValues (import ./nix/firefox-addons.nix {
+      buildFirefoxXpiAddon = pkgs.nur.repos.rycee.firefox-addons.buildFirefoxXpiAddon;
+      fetchurl = pkgs.fetchurl; stdenv = pkgs.stdenv;
+    });
+
+    profiles = {
+      default = {
+        id = 0;
+        isDefault = true;
+        settings = {
+          "browser.startup.homepage" = "about:blank";
+          "browser.link.open_newwindow" = 2;
+          "browser.shell.checkDefaultBrowser" = false;
+          "signon.rememberSignons" = false;
+          "toolkit.legacyUserProfileCustomizations.stylesheets" = true;
+        };
+        userChrome = ''
+          #TabsToolbar {
+            visibility: collapse !important;
+            margin-bottom: 21px !important;
+          }
+        '';
+      };
+    };
+
+
+};
 
   manual.manpages.enable = false;
 

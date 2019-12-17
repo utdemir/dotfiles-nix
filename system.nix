@@ -1,6 +1,7 @@
 { pkgs, ... }:
 
 let
+  sources = import ./nix/sources.nix;
   user = import ./user.nix;
   getName = drv:
     if builtins.hasAttr "pname" drv
@@ -27,6 +28,9 @@ in
           "zoom-us"
           "intel-ocl"
         ];
+    packageOverrides = pkgs: {
+      nur = import sources.NUR { inherit pkgs; };
+    };
   };
 
   nix = {
