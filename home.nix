@@ -33,7 +33,7 @@ in
     htop imagemagick iw jq ltrace lynx moreutils mpv mtr multitail ncdu
     nix-zsh-completions nload nmap openssl pandoc paperkey pass-otp pdftk
     powerstat powertop pv pwgen pythonPackages.subliminal ranger ripgrep
-    rsync sqlite strace tcpdump termdown tig tmux tokei tree tree units
+    rsync sqlite strace tcpdump tig tmux tokei tree tree units
     unzip up watch weechat wget yq zbar zip zsh zsh-syntax-highlighting
     rclone starship cookiecutter git-lfs
     (hunspellWithDicts [ hunspellDicts.en-gb-ise ])
