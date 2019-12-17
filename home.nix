@@ -129,6 +129,7 @@ in
           "browser.shell.checkDefaultBrowser" = false;
           "signon.rememberSignons" = false;
           "toolkit.legacyUserProfileCustomizations.stylesheets" = true;
+          "browser.fullscreen.autohide" = false;
         };
         userChrome = ''
           #TabsToolbar {
@@ -139,6 +140,14 @@ in
           #library-button { display: none; }
           #sidebar-button { display: none; }
           #fxa-toolbar-menu-button { display: none; }
+          #pocket-button-box { display: none; }
+          #star-button-box { display: none; }
+          #back-button { display: none; }
+          #forward-button { display: none; }
+          #stop-reload-button { display: none; }
+          #home-button { display: none; }
+          #customizableui-special-spring1 { display: none; }
+          #customizableui-special-spring2 { display: none; }
         '';
       };
     };

@@ -26,6 +26,19 @@
         platforms = platforms.all;
         };
       };
+    "matte-black-red" = buildFirefoxXpiAddon {
+      pname = "matte-black-red";
+      version = "2019.12.4";
+      addonId = "{a7589411-c5f6-41cf-8bdc-f66527d9d930}";
+      url = "https://addons.mozilla.org/firefox/downloads/file/3462016/matte_black_red-2019.12.4-an+fx.xpi?src=";
+      sha256 = "06830f1f82265826d86666932eec0fe996c6cf8443305bd6302f372708866fb4";
+      meta = with stdenv.lib;
+      {
+        homepage = "https://elijahlopez.herokuapp.com/";
+        description = "A modern dark / Matte Black theme with a red accent color.\nIf this theme does not work for the latest Firefox Version, please send me an email.\nOther accents available (request if not available).\nNOTE: ONLY WORKS ON FIREFOX DESKTOP.";
+        platforms = platforms.all;
+        };
+      };
     "privacy-badger17" = buildFirefoxXpiAddon {
       pname = "privacy-badger17";
       version = "2019.11.18";
@@ -36,6 +49,20 @@
       {
         homepage = "https://www.eff.org/privacybadger";
         description = "Automatically learns to block invisible trackers.";
+        license = licenses.gpl3;
+        platforms = platforms.all;
+        };
+      };
+    "ublock-origin" = buildFirefoxXpiAddon {
+      pname = "ublock-origin";
+      version = "1.24.2";
+      addonId = "uBlock0@raymondhill.net";
+      url = "https://addons.mozilla.org/firefox/downloads/file/3452970/ublock_origin-1.24.2-an+fx.xpi?src=";
+      sha256 = "bea5a60d423ffd1c1a860ad34a249b4f12c9711f525022f54325c51c52e4524e";
+      meta = with stdenv.lib;
+      {
+        homepage = "https://github.com/gorhill/uBlock#ublock-origin";
+        description = "Finally, an efficient blocker. Easy on CPU and memory.";
         license = licenses.gpl3;
         platforms = platforms.all;
         };
