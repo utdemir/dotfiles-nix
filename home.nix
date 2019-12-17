@@ -142,9 +142,7 @@ in
         '';
       };
     };
-
-
-};
+  };
 
   manual.manpages.enable = true;
 
