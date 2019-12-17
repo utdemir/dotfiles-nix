@@ -123,6 +123,7 @@ in
         id = 0;
         isDefault = true;
         settings = {
+          "browser.aboutConfig.showWarning" = false;
           "browser.startup.homepage" = "about:blank";
           "browser.link.open_newwindow" = 2;
           "browser.shell.checkDefaultBrowser" = false;
@@ -134,6 +135,10 @@ in
             visibility: collapse !important;
             margin-bottom: 21px !important;
           }
+
+          #library-button { display: none; }
+          #sidebar-button { display: none; }
+          #fxa-toolbar-menu-button { display: none; }
         '';
       };
     };
