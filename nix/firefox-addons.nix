@@ -67,16 +67,16 @@
         platforms = platforms.all;
         };
       };
-    "vim-vixen" = buildFirefoxXpiAddon {
-      pname = "vim-vixen";
-      version = "0.25";
-      addonId = "vim-vixen@i-beam.org";
-      url = "https://addons.mozilla.org/firefox/downloads/file/3421772/vim_vixen-0.25-an+fx.xpi?src=";
-      sha256 = "1cc97e83d7fe90572b6e5344bc73ff022840cd90f029c69f6bf4d2eb5d6a436c";
+    "vimium-ff" = buildFirefoxXpiAddon {
+      pname = "vimium-ff";
+      version = "1.64.6";
+      addonId = "{d7742d87-e61d-4b78-b8a1-b469842139fa}";
+      url = "https://addons.mozilla.org/firefox/downloads/file/2985278/vimium_ff-1.64.6-fx.xpi?src=";
+      sha256 = "7044bd3983e541faf2e56c117048fdc281c4c52e4196472fc4f9e4af42c5e1da";
       meta = with stdenv.lib;
       {
-        homepage = "https://github.com/ueokande/vim-vixen";
-        description = "Accelerates your web browsing with Vim power!!";
+        homepage = "https://github.com/philc/vimium";
+        description = "The Hacker's Browser. Vimium provides keyboard shortcuts for navigation and control in the spirit of Vim.\n\nThis is a port of the popular Chrome extension to Firefox.\n\nMost stuff works, but the port to Firefox remains a work in progress.";
         license = licenses.mit;
         platforms = platforms.all;
         };
