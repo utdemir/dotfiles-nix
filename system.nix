@@ -78,9 +78,9 @@ in
 
   services.ipfs = {
     enable = true;
-    autoMount = true;
     localDiscovery = false;
-    gatewayAddress = "/ip4/127.0.0.1/tcp/8090";
+    gatewayAddress = "/ip4/127.0.0.1/tcp/8080";
+    enableGC = true;
   };
 
   virtualisation.docker = {
