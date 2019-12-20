@@ -129,3 +129,9 @@ zle-upify() {
 zle -N zle-upify
 
 bindkey '^U' zle-upify
+
+# Overrides
+
+if [[ -f "$HOME/.zshrc.local" ]]; then
+  source "$HOME/.zshrc.local"
+fi
