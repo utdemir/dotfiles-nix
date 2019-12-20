@@ -21,7 +21,8 @@ in
 
     # services
     awscli circleci-cli google-cloud-sdk gist gitAndTools.hub slack spotify
-    whois zoom-us zulip kubectl
+    whois zoom-us zulip kubectl steam
+    xorg.libxcb # required for steam
 
     # Fonts
     ubuntu_font_family source-code-pro

@@ -27,6 +27,9 @@ in
           "slack"
           "zoom-us"
           "intel-ocl"
+          "steam"
+          "steam-original"
+          "steam-runtime"
         ];
     packageOverrides = pkgs: {
       nur = import sources.NUR { inherit pkgs; };
