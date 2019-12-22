@@ -141,7 +141,6 @@ in
           #library-button { display: none; }
           #sidebar-button { display: none; }
           #fxa-toolbar-menu-button { display: none; }
-          #pocket-button-box { display: none; }
           #star-button-box { display: none; }
           #back-button { display: none; }
           #forward-button { display: none; }
