@@ -141,8 +141,6 @@ in
           #library-button { display: none; }
           #sidebar-button { display: none; }
           #fxa-toolbar-menu-button { display: none; }
-          #back-button { display: none; }
-          #forward-button { display: none; }
           #stop-reload-button { display: none; }
           #home-button { display: none; }
           #customizableui-special-spring1 { display: none; }
