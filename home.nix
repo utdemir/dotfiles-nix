@@ -53,7 +53,10 @@ in
     })
 
     # haskell
-    stack cabal2nix ghc
+    stack cabal2nix
+    (haskellPackages.ghcWithPackages (p: with p; [
+      aeson cassava lens
+    ]))
     (haskell.lib.justStaticExecutables haskellPackages.ghcid)
 
     # java/scala
