@@ -66,7 +66,13 @@ in
     python37 python37Packages.virtualenv
 
     # nix
-    nix-prefetch-scripts patchelf nix-top niv cachix
+    nix-prefetch-scripts patchelf nix-top niv
+    (haskell.lib.justStaticExecutables
+      (pkgs.haskellPackages.override {
+        overrides = se: su: {
+          servant-auth-server = haskell.lib.doJailbreak su.servant-auth-server;
+        };
+      }).cachix)
   ];
 
   programs.git = {
