@@ -10,16 +10,12 @@
 (global-font-lock-mode 1)
 (show-paren-mode 1)
 (scroll-bar-mode -1)
-;; (setq window-divider-default-places 't)
-;; (window-divider-mode)
-;; (setq window-divider-default-right-width 5)
-;; (setq window-divider-default-bottom-width 5)
 
 (global-display-line-numbers-mode t)
 
-(use-package doom-themes
-  :config
-  (load-theme 'doom-molokai t))
+(use-package color-theme-sanityinc-tomorrow
+  :init
+  (color-theme-sanityinc-tomorrow-eighties))
 
 (use-package git-gutter-fringe
   :defer 2
@@ -57,7 +53,7 @@
                       0)))) ; don't include minibuffer
   )
 
-;; NAVIGATION
+;; EDITING
 
 (setq-default indent-tabs-mode nil)
 (setq tab-width 2)
@@ -67,15 +63,8 @@
 (setq custom-safe-themes t)
 (setq default-frame-alist '((font . "Source Code Pro-10")))
 
-(use-package evil
-  :config
-  (evil-mode 1)
-)
-
 (winner-mode 1)
 (windmove-default-keybindings)
-
-(use-package esup)
 
 (use-package exec-path-from-shell
   :defer 1
@@ -105,7 +94,6 @@
   :bind
   ("M-x" . counsel-M-x))
 
-
 (use-package counsel-projectile
   :config
   (counsel-projectile-mode)
@@ -125,9 +113,6 @@
   (setq highlight-symbol-idle-delay 0.5)
   :config
   (highlight-symbol-mode))
-
-(use-package iedit
-  )
 
 (use-package company
   :defer 2
@@ -158,6 +143,20 @@
 (use-package git-link
   :defer 2)
 
+;; LANGUAGES
+
+(use-package direnv
+  :config
+  (direnv-mode))
+
+(use-package lsp-mode
+  :commands lsp
+  :config
+  (setq lsp-enable-snippet 'f)
+  :hook
+  (sh-mode . lsp)
+  (rust-mode . lsp))
+
 (use-package scala-mode
   :mode
   ("\\.sc\\'" . scala-mode))
@@ -166,7 +165,6 @@
   :mode
   (("\\.csv\\'" . csv-mode)
    ("\\.tsv\\'" . csv-mode)))
-
 
 (use-package sbt-mode
   :after (scala-mode)
@@ -192,12 +190,6 @@
 
 (use-package haskell-mode
   :init
-  (setq haskell-process-wrapper-function
-        (lambda (argv) (
-                        append (list "nix-shell" "-I" "." "--command")
-                               (list (mapconcat 'identity argv " "))
-                               )))
-  ; workaround: https://github.com/haskell/haskell-mode/issues/1553
   (setq haskell-process-type 'cabal-new-repl)
   (setq haskell-process-args-ghci
         '("-ferror-spans" "-fshow-loaded-modules"))
@@ -231,7 +223,6 @@
   (dumb-jump-mode))
 
 ;; Custom
-
 (defun yank-to-x-clipboard ()
   (interactive)
   (if (region-active-p)

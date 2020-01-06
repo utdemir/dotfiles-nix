@@ -1,6 +1,6 @@
 { user, pkgs, ...}:
 let
-sources = import ./nix/sources.nix;
+  sources = import ./nix/sources.nix;
 in
 {
   imports =
@@ -51,6 +51,10 @@ in
         plugins = [ (callPackage ./packages/kakoune-surround.nix {}) ];
       };
     })
+    (import sources.emacs-with-config { inherit pkgs; } ./dotfiles/emacs.el)
+
+    # bash
+    nodePackages.bash-language-server
 
     # haskell
     stack cabal2nix

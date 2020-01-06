@@ -11,6 +11,18 @@
         "url": "https://github.com/nix-community/NUR/archive/7bfd0117b359d0f72d086ff7e1f0ba3aeaf8d91e.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
+    "emacs-with-config": {
+        "branch": "master",
+        "description": "A Nix function for customizing Emacs",
+        "homepage": "",
+        "owner": "utdemir",
+        "repo": "emacs-with-config",
+        "rev": "9eea08adce1df58eb1a1ba3d2f698f2cf2c52a44",
+        "sha256": "1x3yp11x44v72wx9cxwajsmrpa1zbsbppj7acc1gkifwmg80z18a",
+        "type": "tarball",
+        "url": "https://github.com/utdemir/emacs-with-config/archive/9eea08adce1df58eb1a1ba3d2f698f2cf2c52a44.tar.gz",
+        "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
+    },
     "h": {
         "branch": "master",
         "description": null,
