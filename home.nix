@@ -96,6 +96,9 @@ in
       hub = {
         protocol = "git";
       };
+      advice = {
+        detachedHead = false;
+      };
     };
   } // (if user.gpgKey != ""
         then { signing = { signByDefault = true;
