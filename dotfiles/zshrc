@@ -58,6 +58,10 @@ eval "$(starship init zsh)"
 
 # Utils
 
+function spwn() {
+  ( nohup "$@" & ) && exit
+}
+
 alias l="exa --long -snew --git"
 alias ..="cd .."
 alias ...="cd ../.."
