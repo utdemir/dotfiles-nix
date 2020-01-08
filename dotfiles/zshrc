@@ -71,7 +71,8 @@ alias .....="cd ../../../.."
 alias r="ranger"
 
 function trace() {
-    echo "! $@"; $@
+    echo "! $@" >&2
+    "$@"
 }
 
 function tmp() {
