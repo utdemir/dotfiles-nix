@@ -143,6 +143,14 @@
 (use-package git-link
   :defer 2)
 
+;; INTEGRATIONS
+
+; This package is not actually disabled, this is just to
+; introduce a dependency to the package while not loading
+; it via use-package.
+(use-package emacs-libvterm
+  :disabled)
+
 ;; LANGUAGES
 
 (use-package direnv
