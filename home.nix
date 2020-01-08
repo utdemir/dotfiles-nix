@@ -46,11 +46,6 @@ in
 
     # editors
     neovim
-    (kakoune.override {
-      configure = {
-        plugins = [ (callPackage ./packages/kakoune-surround.nix {}) ];
-      };
-    })
     (import sources.emacs-with-config { inherit pkgs; } ./dotfiles/emacs.el)
 
     # bash
@@ -167,8 +162,6 @@ in
   };
 
   manual.manpages.enable = true;
-
-  home.file.".config/kak/kakrc".source = ./dotfiles/kakrc;
 
   home.file.".config/i3/config".source = ./dotfiles/i3/config;
   home.file.".config/i3/autostart.sh".source = ./dotfiles/i3/autostart.sh;
