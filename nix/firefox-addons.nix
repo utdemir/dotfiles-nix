@@ -41,10 +41,10 @@
       };
     "matte-black-red" = buildFirefoxXpiAddon {
       pname = "matte-black-red";
-      version = "2019.12.4";
+      version = "2019.12.27";
       addonId = "{a7589411-c5f6-41cf-8bdc-f66527d9d930}";
-      url = "https://addons.mozilla.org/firefox/downloads/file/3462016/matte_black_red-2019.12.4-an+fx.xpi?src=";
-      sha256 = "06830f1f82265826d86666932eec0fe996c6cf8443305bd6302f372708866fb4";
+      url = "https://addons.mozilla.org/firefox/downloads/file/3475706/matte_black_red-2019.12.27-an+fx.xpi?src=";
+      sha256 = "e125a666a909baf8be2b21bae976b4d5233198ba4c0d61bc2f80dff8b946a71d";
       meta = with stdenv.lib;
       {
         homepage = "https://elijahlopez.herokuapp.com/";
