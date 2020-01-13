@@ -1,0 +1,40 @@
+set-option global ui_options ncurses_status_on_top=false
+
+add-highlighter global/ show-matching
+add-highlighter global/ number-lines
+add-highlighter global/ wrap
+set-option global scrolloff 5,0
+
+add-highlighter global/ regex \b(TODO|FIXME|NOTE)\b 0:default+rb
+
+# -   to select inner object
+# =   to select outer object
+# a-s to add a new cursor to the next occurence of the selection
+map global normal -- -     <a-i>
+map global normal -- =     <a-a>
+map global normal -- <a-s> '*N'
+map global normal -- (     ':surround<ret>'
+map global normal -- )     ':delete-surround<ret>'
+map global normal -- *     ':change-surround<ret>'
+
+# use system clipboard
+hook global NormalKey y|d|c %{ nop %sh{
+  printf %s "$kak_main_reg_dquote" | xsel --input --clipboard
+}}
+map global normal P '!xsel --output --clipboard<ret>'
+map global normal p '<a-!>xsel --output --clipboard<ret>'
+
+# case insensitive search
+map global normal / /(?i)
+
+# tab inserts spaces
+hook global InsertChar \t %{ exec -draft -itersel h@ }
+set global tabstop 4
+set global indentwidth 4
+
+# always indent as much as the previous one
+set global disabled_hooks .*-indent
+hook global InsertChar \n %{ execute-keys -draft \; K <a-&> }
+
+# remove trailing spaces
+hook global BufWritePre .* %{ try %{ execute-keys -draft \%s\h+$<ret>d } }

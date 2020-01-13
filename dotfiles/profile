@@ -1,5 +1,5 @@
 #!/usr/bin/env sh
 
-export EDITOR="emacs"
+export EDITOR="kak"
 export SBT_OPTS="-Xms512M -Xmx1024M -Xss2M -XX:MaxMetaspaceSize=1024M"
 export PATH="$HOME/bin:$PATH"
