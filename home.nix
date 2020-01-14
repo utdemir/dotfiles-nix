@@ -51,6 +51,7 @@ in
         plugins = [ (callPackage ./packages/kakoune-surround.nix {}) ];
       };
     })
+    kak-lsp
     (import sources.emacs-with-config { inherit pkgs; } ./dotfiles/emacs.el)
 
     # bash
