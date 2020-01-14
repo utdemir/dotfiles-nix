@@ -52,7 +52,6 @@ in
       };
     })
     kak-lsp
-    (import sources.emacs-with-config { inherit pkgs; } ./dotfiles/emacs.el)
 
     # bash
     nodePackages.bash-language-server
