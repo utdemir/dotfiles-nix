@@ -25,7 +25,13 @@ in
     xorg.libxcb # required for steam
 
     # Fonts
-    ubuntu_font_family source-code-pro
+    (pkgs.iosevka.override {
+      privateBuildPlan = {
+        family = "Iosevka utdemir";
+        design = [ "slab" "term" ];
+      };
+      set = "utdemir";
+    })
 
     # CLI
     ascii asciinema bashmount cmatrix cpufrequtils cpulimit curl
