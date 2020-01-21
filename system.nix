@@ -52,13 +52,8 @@ in
     ];
     daemonNiceLevel = 19;
     gc.automatic = true;
+    optimise.automatic = true;
   };
-
-  systemd.services.nix-optimise-store =
-    { description = "nix-store-optimise";
-      script = "exec ${config.nix.package.out}/bin/nix-store --optimise";
-      startAt = "04:15";
-    };
 
   networking.dhcpcd.enable = false;
   networking.networkmanager.enable = true;
