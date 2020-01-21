@@ -51,6 +51,9 @@ export FZF_DEFAULT_OPTS='--no-height'
 source $HOME/.nix-profile/share/fzf/completion.zsh
 source $HOME/.nix-profile/share/fzf/key-bindings.zsh
 
+autoload _br
+autoload _broot
+
 eval "$(direnv hook zsh)"
 
 # Prompt

@@ -34,7 +34,7 @@ in
     })
 
     # CLI
-    ascii asciinema bashmount cmatrix cpufrequtils cpulimit curl
+    ascii asciinema broot bashmount cmatrix cpufrequtils cpulimit curl
     direnv dnsutils docker_compose dos2unix entr exa fd ffmpeg file
     findutils fpp fzf gettext ghostscript gnupg graphviz hexedit htop
     htop imagemagick iw jq ltrace lynx moreutils mpv mtr multitail ncdu
