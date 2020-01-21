@@ -14,7 +14,7 @@ in
     xnee xorg.xbacklight xorg.xev xorg.xkill
 
     # Apps
-    asciiquarium bazel chromium deluge gimp google-chrome
+    asciiquarium bazel chromium deluge gimp
     libreoffice meld mplayer pcmanfm qemu qemu_kvm scrot
     sxiv tmate xclip xsel zathura claws-mail inkscape macchanger gthumb
     pkgs.nur.repos.rycee.firefox-addons-generator
