@@ -42,7 +42,7 @@ in
     powerstat powertop pv pwgen pythonPackages.subliminal ranger ripgrep
     rsync sqlite strace tcpdump tig tmux tokei tree tree units
     unzip up watch weechat wget yq zbar zip zsh zsh-syntax-highlighting
-    rclone starship cookiecutter git-lfs bandwhich
+    rclone starship cookiecutter git-lfs bandwhich csvkit
     (hunspellWithDicts [ hunspellDicts.en-gb-ise ])
     (texlive.combine {
       inherit (texlive) scheme-small;
