@@ -105,7 +105,7 @@ in
       greeter.enable = false;
       autoLogin = {
         enable = true;
-        user = "utdemir";
+        user = user.username;
       };
     };
     xkbOptions = "caps:escape";
