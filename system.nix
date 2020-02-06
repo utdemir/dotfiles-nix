@@ -88,6 +88,7 @@ in
     enableGC = true;
     extraConfig = {
       Swarm.ConnMgr.HighWater = 40;
+      Swarm.EnableAutoRelay = true;
     };
   };
 
