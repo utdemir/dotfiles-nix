@@ -62,6 +62,8 @@ in
 
   environment.systemPackages = with pkgs; [ vim git ];
 
+  # 5.x kernels have issues with intel gpus
+  boot.kernelPackages = pkgs.linuxPackages_4_19;
   boot.kernel.sysctl = {
     "vm.swappiness" = 0;
     "fs.inotify.max_user_watches" = 2048000;
