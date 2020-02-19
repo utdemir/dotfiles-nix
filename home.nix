@@ -51,7 +51,7 @@ in
     (import ./nix/mk-scripts.nix { inherit pkgs; } ./scripts)
 
     # editors
-    neovim
+    vim
     (kakoune.override {
       configure = {
         plugins = [ (callPackage ./packages/kakoune-surround.nix {}) ];

@@ -82,10 +82,10 @@
       };
     "vimium-ff" = buildFirefoxXpiAddon {
       pname = "vimium-ff";
-      version = "1.64.6";
+      version = "1.65.1";
       addonId = "{d7742d87-e61d-4b78-b8a1-b469842139fa}";
-      url = "https://addons.mozilla.org/firefox/downloads/file/2985278/vimium_ff-1.64.6-fx.xpi?src=";
-      sha256 = "7044bd3983e541faf2e56c117048fdc281c4c52e4196472fc4f9e4af42c5e1da";
+      url = "https://addons.mozilla.org/firefox/downloads/file/3502765/vimium_ff-1.65.1-fx.xpi?src=";
+      sha256 = "10afafcdb0e4ec64b8ccc96f9142a664807efc66fdafe83e2692fd7c7750b87c";
       meta = with stdenv.lib;
       {
         homepage = "https://github.com/philc/vimium";
