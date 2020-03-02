@@ -124,9 +124,15 @@ in
     freeMemThreshold = 5;
   };
 
-  hardware.pulseaudio.enable = true;
+  hardware.pulseaudio = {
+    enable = true;
+    package = pkgs.pulseaudioFull;
+  };
   hardware.opengl.driSupport32Bit = true;
   hardware.opengl.extraPackages = [ pkgs.intel-ocl ];
+
+  hardware.bluetooth.enable = true;
+  services.blueman.enable = true;
 
   users.extraUsers.${user.username} = {
     home = "/home/${user.username}";
