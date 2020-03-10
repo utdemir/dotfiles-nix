@@ -36,7 +36,7 @@ shift
 case "$mode" in
     "build")
         tmp="$(mktemp -u)"
-        trace nix build --no-link -f "./nix/default.nix" system -o "$tmp/result" --keep-going $* >&2
+        trace nix build --no-link -f "./nix/default.nix" -o "$tmp/result" --keep-going $* >&2
         trap "rm '$tmp/result'" EXIT
         drv="$(readlink "$tmp/result")"
         nix-shell -p python3 --run "./nix/diff /var/run/current-system '$drv' >&2"
@@ -81,6 +81,10 @@ case "$mode" in
     "cleanup")
         trace sudo nix-collect-garbage --delete-older-than 7d
         trace sudo nix optimise-store
+        ;;
+    "ci")
+        export NIX_PATH=nixpkgs="$(nix eval --raw '(import nix/sources.nix).nixpkgs.outPath')"
+        trace nix-build nix/ci.nix --keep-going
         ;;
     "help")
         [[ $# -gt 0 ]] && invalid_syntax
