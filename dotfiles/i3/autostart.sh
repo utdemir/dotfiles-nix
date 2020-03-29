@@ -1,7 +1,7 @@
 feh --bg-fill ~/.config/i3/wallpaper.png --no-xinerama &
 
-autorandr --change --default single &
-srandrd autorandr --change --default single &
+autorandr --change --default small &
+srandrd autorandr --change --default small &
 
 sleep 1
 unclutter &
