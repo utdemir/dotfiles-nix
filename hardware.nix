@@ -19,18 +19,37 @@ in
   hardware.cpu.intel.updateMicrocode = true;
   boot.kernelModules = [ "kvm-intel" ];
 
+  programs.ssh.extraConfig = ''
+    Host beta.nixbuild.net nxb-*
+      StrictHostKeyChecking no
+      UserKnownHostsFile /dev/null
+      PubkeyAcceptedKeyTypes ssh-ed25519
+      IdentityFile /root/.ssh/nixbuild
+
+    Host nxb-4
+      HostName beta.nixbuild.net
+      SetEnv CPU=4
+
+    Host nxb-16
+      HostName beta.nixbuild.net
+      SetEnv CPU=16
+  '';
+
   nix = {
-    buildMachines = [ {
-      hostName = "utdemir.com";
-      sshUser = "build";
-      sshKey = "/root/.ssh/id_rsa";
-      system = "x86_64-linux";
-      maxJobs = 4;
-      speedFactor = 1;
-      supportedFeatures = [ "nixos-test" "benchmark" "big-parallel" "kvm" ];
-      mandatoryFeatures = [ ];
-    }] ;
     distributedBuilds = true;
+    buildMachines = [
+      { hostName = "nxb-4";
+        system = "x86_64-linux";
+        maxJobs = 100;
+        supportedFeatures = [ "benchmark" ];
+      }
+      { hostName = "nxb-16";
+        system = "x86_64-linux";
+        maxJobs = 100;
+        supportedFeatures = [ "benchmark" ];
+        mandatoryFeatures = [ "big-parallel" ];
+      }
+    ];
     extraOptions = ''
       builders-use-substitutes = true
     '';

@@ -46,7 +46,6 @@ in
     ];
     trustedUsers = [ "root" user.username ];
     autoOptimiseStore = true;
-    maxJobs = 2;
     nixPath = [
       "nixpkgs=${pkgs.path}"
     ];
