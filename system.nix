@@ -20,9 +20,7 @@ in
     allowUnfreePredicate = pkg:
       builtins.elem
         (getName pkg)
-        [ "firefox-bin"
-          "firefox-release-bin-unwrapped"
-          "google-chrome"
+        [ "google-chrome"
           "spotify"
           "slack"
           "zoom-us"

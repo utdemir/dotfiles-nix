@@ -17,7 +17,6 @@ in
     asciiquarium bazel chromium deluge gimp qutebrowser
     libreoffice meld mplayer pcmanfm qemu qemu_kvm scrot
     sxiv tmate xclip xsel zathura claws-mail inkscape macchanger gthumb
-    pkgs.nur.repos.rycee.firefox-addons-generator
 
     # services
     awscli circleci-cli google-cloud-sdk gist gitAndTools.hub slack spotify
@@ -132,45 +131,6 @@ in
   xsession = {
     enable = true;
     windowManager.command = "i3";
-  };
-
-  programs.firefox = {
-    enable = true;
-
-    extensions = builtins.attrValues (import ./nix/firefox-addons.nix {
-      buildFirefoxXpiAddon = pkgs.nur.repos.rycee.firefox-addons.buildFirefoxXpiAddon;
-      fetchurl = pkgs.fetchurl; stdenv = pkgs.stdenv;
-    });
-
-    profiles = {
-      default = {
-        id = 0;
-        isDefault = true;
-        settings = {
-          "browser.aboutConfig.showWarning" = false;
-          "browser.startup.homepage" = "about:blank";
-          "browser.link.open_newwindow" = 2;
-          "browser.shell.checkDefaultBrowser" = false;
-          "signon.rememberSignons" = false;
-          "toolkit.legacyUserProfileCustomizations.stylesheets" = true;
-          "browser.fullscreen.autohide" = false;
-        };
-        userChrome = ''
-          #TabsToolbar {
-            visibility: collapse !important;
-            margin-bottom: 21px !important;
-          }
-
-          #library-button { display: none; }
-          #sidebar-button { display: none; }
-          #fxa-toolbar-menu-button { display: none; }
-          #stop-reload-button { display: none; }
-          #home-button { display: none; }
-          #customizableui-special-spring1 { display: none; }
-          #customizableui-special-spring2 { display: none; }
-        '';
-      };
-    };
   };
 
   manual.manpages.enable = true;

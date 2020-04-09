@@ -48,7 +48,6 @@ case "$mode" in
         NIXOS_INSTALL_BOOTLOADER=1 trace sudo --preserve-env=NIXOS_INSTALL_BOOTLOADER "$drv/bin/switch-to-configuration" switch
         ;;
     "update")
-        trace nixpkgs-firefox-addons firefox-addons.json nix/firefox-addons.nix || true
         trace niv update
         drv="$(./make.sh build)"
         nix-shell -p python3 --run "./nix/diff /var/run/current-system '$drv' >&2"
