@@ -1,5 +1,5 @@
 # Env
-export TERM=xterm
+export TERM=xterm-256color
 
 export PASSWORD_STORE_ENABLE_EXTENSIONS=true
 export PASSWORD_STORE_EXTENSIONS_DIR=$HOME/.nix-profile/lib/password-store/extensions
