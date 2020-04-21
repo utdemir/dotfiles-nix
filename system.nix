@@ -36,11 +36,12 @@ in
 
   nix = {
     binaryCaches = [
-      "https://cache.nixos.org/"
       "https://utdemir.cachix.org"
+      "https://hs-nix-template.cachix.org"
     ];
     binaryCachePublicKeys = [
       "utdemir.cachix.org-1:mDgucWXufo3UuSymLuQumqOq1bNeclnnIEkD4fFMhsw="
+      "hs-nix-template.cachix.org-1:/YbjZCrYAw7d9ayLayk7ZhBdTEkR10ZFmFuOq6ZJo4c="
     ];
     trustedUsers = [ "root" user.username ];
     autoOptimiseStore = true;
