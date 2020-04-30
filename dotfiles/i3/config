@@ -4,7 +4,7 @@ font pango:monospace 8
 
 floating_modifier $mod
 
-bindsym $mod+backslash exec kitty --title floating sc
+bindsym $mod+backslash exec kitty --title floating diary
 for_window [class="kitty" title="floating"] floating enable
 for_window [class="pinentry"] sticky enable
 
