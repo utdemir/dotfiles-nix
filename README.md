@@ -269,8 +269,6 @@ Checkout [./home.nix]() to see them all.
    * You can use `arandr` to interactively configure monitors.
    * If you have a setup you frequently use, use
    [autorandr](https://github.com/wertarbyte/autorandr) to save it.
-     * `srandrd` is running at background to load matching saved profile
-     via `autorandr` whenever the display configuration changes.
 
 4. Software development
 
