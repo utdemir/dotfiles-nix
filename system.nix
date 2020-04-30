@@ -28,6 +28,7 @@ in
           "steam"
           "steam-original"
           "steam-runtime"
+          "skypeforlinux"
         ];
     packageOverrides = pkgs: {
       nur = import sources.NUR { inherit pkgs; };
