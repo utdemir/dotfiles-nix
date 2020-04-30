@@ -48,7 +48,13 @@ in
       inherit (texlive) scheme-small;
     })
 
-    (import ./nix/mk-scripts.nix { inherit pkgs; } ./scripts)
+    (callPackage ./nix/mk-scripts.nix {} {
+      path = ./scripts;
+      postBuild = ''
+        wrapProgram "$out/bin/ergo" \
+          --prefix PATH ":" "${yad}/bin"
+      '';
+    })
 
     # editors
     vim

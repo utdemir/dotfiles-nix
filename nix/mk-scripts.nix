@@ -1,7 +1,13 @@
-{ pkgs }: path:
+{ runCommand, makeWrapper }:
 
-pkgs.runCommand "scripts" { src = path; } ''
+{ path, postBuild ? "" }:
+
+runCommand "scripts" {
+  buildInputs = [ makeWrapper ];
+  preferLocalBuild = true;
+} ''
   mkdir -p $out/bin
-  cp $src/* $out/bin
+  cp -v ${path}/* $out/bin
   chmod +x $out/bin/*
+  ${postBuild}
 ''
