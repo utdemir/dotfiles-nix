@@ -30,9 +30,6 @@ in
           "steam-runtime"
           "skypeforlinux"
         ];
-    packageOverrides = pkgs: {
-      nur = import sources.NUR { inherit pkgs; };
-    };
   };
 
   nix = {
