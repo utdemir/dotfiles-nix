@@ -11,7 +11,7 @@ in
     acpi arandr autorandr dunst feh i3 i3lock i3blocks kitty libnotify
     lxappearance maim networkmanagerapplet parcellite pasystray
     pavucontrol redshift rofi unclutter xautolock xdotool xfontsel
-    xnee xorg.xbacklight xorg.xev xorg.xkill
+    xnee xorg.xbacklight xorg.xev xorg.xkill keynav
 
     # Apps
     asciiquarium bazel chromium deluge gimp qutebrowser
