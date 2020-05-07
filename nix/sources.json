@@ -17,10 +17,10 @@
         "homepage": "",
         "owner": "rycee",
         "repo": "home-manager",
-        "rev": "8b82f52e75e7127bf240293b3eef483aabffb405",
-        "sha256": "0xzwz1lbfiyysyrszw35nd5nwxks2mdyzi4lg4apjliqhdznjgrg",
+        "rev": "cba7b6ee6e056421f862b008b45f1ff9cc2e7252",
+        "sha256": "1q7diljdkj0q7d7k79rghx3yp683p6q8dg43h8h1bklzrywxir8a",
         "type": "tarball",
-        "url": "https://github.com/rycee/home-manager/archive/8b82f52e75e7127bf240293b3eef483aabffb405.tar.gz",
+        "url": "https://github.com/rycee/home-manager/archive/cba7b6ee6e056421f862b008b45f1ff9cc2e7252.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
     "nixos-hardware": {
