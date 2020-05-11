@@ -19,8 +19,8 @@ in
     sxiv tmate xclip xsel zathura claws-mail inkscape macchanger gthumb
 
     # services
-    awscli circleci-cli google-cloud-sdk gist gitAndTools.hub slack spotify
-    whois zoom-us skype zulip kubectl steam
+    awscli google-cloud-sdk gist gitAndTools.hub slack spotify
+    whois zoom-us skype kubectl steam
     xorg.libxcb # required for steam
     ssb-patchwork
 
@@ -34,13 +34,13 @@ in
     })
 
     # CLI
-    ascii asciinema broot bashmount cmatrix cpufrequtils cpulimit curl
-    direnv dnsutils docker_compose dos2unix entr exa fd ffmpeg file
-    findutils fpp fzf gettext ghostscript gnupg graphviz hexedit htop
-    htop imagemagick iw jq ltrace lynx moreutils mpv mtr multitail ncdu
+    ascii asciinema bashmount cmatrix cpufrequtils cpulimit curl
+    direnv dnsutils docker_compose dos2unix entr fd ffmpeg file
+    findutils fzf gettext ghostscript gnupg graphviz hexedit htop
+    htop imagemagick iw jq ltrace moreutils mpv mtr multitail ncdu
     nix-zsh-completions nload nmap openssl pandoc paperkey pass-otp pdftk
-    powerstat powertop pv pwgen pythonPackages.subliminal ranger ripgrep
-    rsync sqlite strace tcpdump tig tmux tokei tree tree units
+    powerstat powertop pv pwgen ranger ripgrep
+    rsync sqlite strace tcpdump tig tmux tokei tree units
     unzip up watch weechat wget yq zbar zip zsh zsh-syntax-highlighting
     rclone starship cookiecutter git-lfs bandwhich csvkit sshfs
     (hunspellWithDicts [ hunspellDicts.en-gb-ise ])
@@ -68,11 +68,12 @@ in
     })
 
     # haskell
-    stack cabal2nix
+    stack haskellPackages.cabal-install
     (haskellPackages.ghcWithPackages (p: with p; [
       aeson cassava lens
     ]))
     (haskell.lib.justStaticExecutables haskellPackages.ghcid)
+    (haskell.lib.justStaticExecutables haskellPackages.ormolu)
 
     # java/scala
     openjdk8 scala

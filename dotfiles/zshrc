@@ -65,7 +65,7 @@ function spwn() {
   ( nohup "$@" & ) && exit
 }
 
-alias l="exa --long -snew --git"
+alias l="ls -l"
 alias ..="cd .."
 alias ...="cd ../.."
 alias ....="cd ../../.."
