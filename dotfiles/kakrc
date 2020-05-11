@@ -7,6 +7,10 @@ set-option global scrolloff 5,0
 
 add-highlighter global/ regex \b(TODO|FIXME|NOTE)\b 0:default+rb
 
+# rainbow delimiters
+hook global NormalIdle .* %{ rainbow }
+hook global InsertIdle .* %{ rainbow }
+
 # -   to select inner object
 # =   to select outer object
 # a-s to add a new cursor to the next occurence of the selection

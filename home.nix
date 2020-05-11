@@ -60,7 +60,10 @@ in
     vim
     (kakoune.override {
       configure = {
-        plugins = [ (callPackage ./packages/kakoune-surround.nix {}) ];
+        plugins = [
+          (callPackage ./packages/kakoune-surround.nix {})
+          (callPackage ./packages/kakoune-rainbow.nix {})
+        ];
       };
     })
     kak-lsp
