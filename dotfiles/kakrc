@@ -42,14 +42,3 @@ hook global InsertChar \n %{ execute-keys -draft \; K <a-&> }
 
 # remove trailing spaces
 hook global BufWritePre .* %{ try %{ execute-keys -draft \%s\h+$<ret>d } }
-
-# lsp
-eval %sh{kak-lsp --kakoune -s $kak_session}
-hook global WinSetOption filetype=(rust,terraform) %{
-    lsp-enable-window
-}
-
-# formatting
-hook global WinSetOption filetype=(rust,terraform) %{
-    hook window BufWritePre .* lsp-formatting-sync
-}

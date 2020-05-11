@@ -66,10 +66,6 @@ in
         ];
       };
     })
-    kak-lsp
-
-    # bash
-    nodePackages.bash-language-server
 
     # haskell
     stack cabal2nix
