@@ -53,7 +53,7 @@ case "$mode" in
         nix-shell -p python3 --run "./nix/diff /var/run/current-system '$drv' >&2"
         ;;
     "info")
-        drv="$(trace "./make.sh" build)"
+        drv="$(realpath /var/run/current-system)"
 
         echo "> Derivation:"
         echo "$drv"
