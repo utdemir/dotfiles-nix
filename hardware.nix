@@ -1,9 +1,7 @@
 { config, pkgs, ... }:
-
 let
-sources = import ./nix/sources.nix;
+  sources = import ./nix/sources.nix;
 in
-
 {
   imports = [
     "${sources.nixos-hardware}/lenovo/thinkpad"
@@ -38,12 +36,14 @@ in
   nix = {
     distributedBuilds = true;
     buildMachines = [
-      { hostName = "nxb-4";
+      {
+        hostName = "nxb-4";
         system = "x86_64-linux";
         maxJobs = 100;
         supportedFeatures = [ "benchmark" ];
       }
-      { hostName = "nxb-16";
+      {
+        hostName = "nxb-16";
         system = "x86_64-linux";
         maxJobs = 100;
         supportedFeatures = [ "benchmark" ];

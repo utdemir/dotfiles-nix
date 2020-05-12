@@ -1,4 +1,4 @@
-{ user, pkgs, ...}:
+{ user, pkgs, ... }:
 let
   sources = import ./nix/sources.nix;
 in
@@ -8,19 +8,70 @@ in
 
   home.packages = with pkgs; [
     # WM
-    acpi arandr autorandr dunst feh i3 i3lock i3blocks kitty libnotify
-    lxappearance maim networkmanagerapplet parcellite pasystray
-    pavucontrol redshift rofi unclutter xautolock xdotool xfontsel
-    xnee xorg.xbacklight xorg.xev xorg.xkill keynav
+    acpi
+    arandr
+    autorandr
+    dunst
+    feh
+    i3
+    i3lock
+    i3blocks
+    kitty
+    libnotify
+    lxappearance
+    maim
+    networkmanagerapplet
+    parcellite
+    pasystray
+    pavucontrol
+    redshift
+    rofi
+    unclutter
+    xautolock
+    xdotool
+    xfontsel
+    xnee
+    xorg.xbacklight
+    xorg.xev
+    xorg.xkill
+    keynav
 
     # Apps
-    asciiquarium bazel chromium deluge gimp qutebrowser
-    libreoffice meld mplayer pcmanfm qemu qemu_kvm scrot
-    sxiv tmate xclip xsel zathura claws-mail inkscape macchanger gthumb
+    asciiquarium
+    bazel
+    chromium
+    deluge
+    gimp
+    qutebrowser
+    libreoffice
+    meld
+    mplayer
+    pcmanfm
+    qemu
+    qemu_kvm
+    scrot
+    sxiv
+    tmate
+    xclip
+    xsel
+    zathura
+    claws-mail
+    inkscape
+    macchanger
+    gthumb
 
     # services
-    awscli google-cloud-sdk gist gitAndTools.hub slack spotify
-    whois zoom-us skype kubectl steam
+    awscli
+    google-cloud-sdk
+    gist
+    gitAndTools.hub
+    slack
+    spotify
+    whois
+    zoom-us
+    skype
+    kubectl
+    steam
     xorg.libxcb # required for steam
     ssb-patchwork
 
@@ -34,61 +85,137 @@ in
     })
 
     # CLI
-    ascii asciinema bashmount cmatrix cpufrequtils cpulimit curl
-    direnv dnsutils docker_compose dos2unix entr fd ffmpeg file
-    findutils fzf gettext ghostscript gnupg graphviz hexedit htop
-    htop imagemagick iw jq ltrace moreutils mpv mtr multitail ncdu
-    nix-zsh-completions nload nmap openssl pandoc paperkey pass-otp pdftk
-    powerstat powertop pv pwgen ranger ripgrep
-    rsync sqlite strace tcpdump tig tmux tokei tree units
-    unzip up watch weechat wget yq zbar zip zsh zsh-syntax-highlighting
-    rclone starship cookiecutter git-lfs bandwhich csvkit sshfs
+    ascii
+    asciinema
+    bashmount
+    cmatrix
+    cpufrequtils
+    cpulimit
+    curl
+    direnv
+    dnsutils
+    docker_compose
+    dos2unix
+    entr
+    fd
+    ffmpeg
+    file
+    findutils
+    fzf
+    gettext
+    ghostscript
+    gnupg
+    graphviz
+    hexedit
+    htop
+    htop
+    imagemagick
+    iw
+    jq
+    ltrace
+    moreutils
+    mpv
+    mtr
+    multitail
+    ncdu
+    nix-zsh-completions
+    nload
+    nmap
+    openssl
+    pandoc
+    paperkey
+    pass-otp
+    pdftk
+    powerstat
+    powertop
+    pv
+    pwgen
+    ranger
+    ripgrep
+    rsync
+    sqlite
+    strace
+    tcpdump
+    tig
+    tmux
+    tokei
+    tree
+    units
+    unzip
+    up
+    watch
+    weechat
+    wget
+    yq
+    zbar
+    zip
+    zsh
+    zsh-syntax-highlighting
+    rclone
+    starship
+    cookiecutter
+    git-lfs
+    bandwhich
+    csvkit
+    sshfs
     (hunspellWithDicts [ hunspellDicts.en-gb-ise ])
     (texlive.combine {
       inherit (texlive) scheme-small;
     })
 
-    (callPackage ./nix/mk-scripts.nix {} {
+    (callPackage ./nix/mk-scripts.nix
+      { } {
       path = ./scripts;
       postBuild = ''
         wrapProgram "$out/bin/ergo" \
           --prefix PATH ":" "${yad}/bin"
       '';
-    })
+    }
+    )
 
     # editors
     vim
     (kakoune.override {
       configure = {
         plugins = [
-          (callPackage ./packages/kakoune-surround.nix {})
-          (callPackage ./packages/kakoune-rainbow.nix {})
+          (callPackage ./packages/kakoune-surround.nix { })
+          (callPackage ./packages/kakoune-rainbow.nix { })
         ];
       };
     })
 
     # haskell
-    stack haskellPackages.cabal-install
+    stack
+    haskellPackages.cabal-install
     (haskellPackages.ghcWithPackages (p: with p; [
-      aeson cassava lens
+      aeson
+      cassava
+      lens
     ]))
     (haskell.lib.justStaticExecutables haskellPackages.ghcid)
     (haskell.lib.justStaticExecutables haskellPackages.ormolu)
 
     # java/scala
-    openjdk8 scala
+    openjdk8
+    scala
 
     # python
-    python37 python37Packages.virtualenv
+    python37
+    python37Packages.virtualenv
 
     # nix
-    nix-prefetch patchelf nix-top niv
-    (haskell.lib.justStaticExecutables
-      (pkgs.haskellPackages.override {
-        overrides = se: su: {
-          servant-auth-server = haskell.lib.doJailbreak su.servant-auth-server;
-        };
-      }).cachix)
+    nix-prefetch
+    patchelf
+    nix-top
+    niv
+    nixpkgs-fmt
+    (
+      haskell.lib.justStaticExecutables
+        (pkgs.haskellPackages.override {
+          overrides = se: su: {
+            servant-auth-server = haskell.lib.doJailbreak su.servant-auth-server;
+          };
+        }).cachix)
   ];
 
   programs.git = {
@@ -116,11 +243,17 @@ in
         detachedHead = false;
       };
     };
-  } // (if user.gpgKey != ""
-        then { signing = { signByDefault = true;
-                           key = user.gpgKey;
-                           gpgPath = "gpg"; }; }
-        else {});
+  } // (
+    if user.gpgKey != ""
+    then {
+      signing = {
+        signByDefault = true;
+        key = user.gpgKey;
+        gpgPath = "gpg";
+      };
+    }
+    else { }
+  );
 
   services.syncthing.enable = true;
 
@@ -130,7 +263,7 @@ in
     sshKeys =
       if user.gpgSshKeygrip != ""
       then [ user.gpgSshKeygrip ]
-      else [];
+      else [ ];
     extraConfig = ''
       pinentry-program ${pkgs.pinentry-gtk2}/bin/pinentry
     '';
@@ -188,14 +321,16 @@ in
   };
 
   systemd.user.services.battery-notification =
-    let p = pkgs.runCommand "battery-notification" {
-      buildInputs = [ pkgs.makeWrapper ];
-    } ''
+    let p = pkgs.runCommand "battery-notification"
+      {
+        buildInputs = [ pkgs.makeWrapper ];
+      } ''
       mkdir -p $out/bin
       makeWrapper ${./scripts/battery-notification.sh} $out/bin/battery-notification.sh \
         --prefix PATH : "${pkgs.acpi}/bin:${pkgs.libnotify}/bin:${pkgs.bash}/bin:${pkgs.gnugrep}/bin"
     '';
-    in {
+    in
+    {
       Unit = {
         Description = "Sends a notification on low battery.";
         PartOf = [ "graphical-session.target" ];

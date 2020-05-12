@@ -1,5 +1,4 @@
 { config, pkgs, ... }:
-
 let
   sources = import ./nix/sources.nix;
   user = import ./user.nix;
@@ -20,7 +19,8 @@ in
     allowUnfreePredicate = pkg:
       builtins.elem
         (getName pkg)
-        [ "google-chrome"
+        [
+          "google-chrome"
           "spotify"
           "slack"
           "zoom-us"

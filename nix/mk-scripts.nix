@@ -2,7 +2,8 @@
 
 { path, postBuild ? "" }:
 
-runCommand "scripts" {
+runCommand "scripts"
+{
   buildInputs = [ makeWrapper ];
   preferLocalBuild = true;
 } ''
