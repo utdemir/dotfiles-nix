@@ -82,7 +82,7 @@ in
     python37 python37Packages.virtualenv
 
     # nix
-    nix-prefetch-scripts patchelf nix-top niv
+    nix-prefetch patchelf nix-top niv
     (haskell.lib.justStaticExecutables
       (pkgs.haskellPackages.override {
         overrides = se: su: {
