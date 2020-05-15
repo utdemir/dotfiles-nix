@@ -1,16 +1,4 @@
 {
-    "h": {
-        "branch": "master",
-        "description": null,
-        "homepage": "",
-        "owner": "utdemir",
-        "repo": "h",
-        "rev": "de3146517793f3710195cb26290fa7e865008c57",
-        "sha256": "1j89y85gpysf58gj6j0rc4jbzl5lkywwxvdajasci8h62kpz49gl",
-        "type": "tarball",
-        "url": "https://github.com/utdemir/h/archive/de3146517793f3710195cb26290fa7e865008c57.tar.gz",
-        "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
-    },
     "home-manager": {
         "branch": "master",
         "description": "Manage a user environment using Nix",
@@ -29,10 +17,10 @@
         "homepage": "",
         "owner": "nixos",
         "repo": "nixos-hardware",
-        "rev": "8e8e65ba45e8374fcb6258f9606910a77b68dbe0",
-        "sha256": "00hp73cxn7cxba69wx64ydqr8bfx3lc1f3js9fiw5nz9yv8j4xk8",
+        "rev": "a36f34322235f447f297f091252046e3d2f471d8",
+        "sha256": "0sakjp3zlyls7fyjirrp788v7i1gir9fpkwg590lhpi18xxsr7ni",
         "type": "tarball",
-        "url": "https://github.com/nixos/nixos-hardware/archive/8e8e65ba45e8374fcb6258f9606910a77b68dbe0.tar.gz",
+        "url": "https://github.com/nixos/nixos-hardware/archive/a36f34322235f447f297f091252046e3d2f471d8.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
     "nixpkgs": {
@@ -41,10 +29,10 @@
         "homepage": null,
         "owner": "nixos",
         "repo": "nixpkgs",
-        "rev": "6bcb1dec8ea16f20e6404631668cf69e76424eef",
-        "sha256": "04x750byjr397d3mfwkl09b2cz7z71fcykhvn8ypxrck8w7kdi1h",
+        "rev": "d0ef94bfd80a376528a3e06a8946f0e1300596c0",
+        "sha256": "0gnr8i47kggz56d6djw5cp5cfi1xs6lx9am5rbnxwfijd9adfcb3",
         "type": "tarball",
-        "url": "https://github.com/nixos/nixpkgs/archive/6bcb1dec8ea16f20e6404631668cf69e76424eef.tar.gz",
+        "url": "https://github.com/nixos/nixpkgs/archive/d0ef94bfd80a376528a3e06a8946f0e1300596c0.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     }
 }

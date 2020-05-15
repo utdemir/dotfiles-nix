@@ -296,11 +296,7 @@ in
   home.file.".zshrc".text = ''
     ${pkgs.any-nix-shell}/bin/any-nix-shell zsh | source /dev/stdin
     source ${pkgs.zsh-syntax-highlighting}/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-
     source ${./dotfiles/zshrc}
-
-    source ${sources.h}/h.sh
-    h_init_zsh
   '';
 
   home.file.".profile" = {
