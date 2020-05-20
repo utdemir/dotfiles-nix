@@ -1,6 +1,6 @@
 #!/usr/bin/env sh
 
-base="$HOME/scratch"
-fname="$base/$(date "+%Y%m%dT%H:M%S-$RANDOM")"
+base="$HOME/notes/scratch"
+fname="$base/$(date "+%Y-%m-%dT%H:M:%S-$RANDOM")"
 mkdir -p "$base"
 "$EDITOR" "$fname"
