@@ -293,6 +293,9 @@ in
 
   home.file.".config/starship.toml".source = ./dotfiles/starship.toml;
 
+  home.file.".config/ranger/rc.conf".source = ./dotfiles/ranger/rc.conf;
+  home.file.".config/ranger/rifle.conf".source = ./dotfiles/ranger/rifle.conf;
+
   home.file.".zshrc".text = ''
     ${pkgs.any-nix-shell}/bin/any-nix-shell zsh | source /dev/stdin
     source ${pkgs.zsh-syntax-highlighting}/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
