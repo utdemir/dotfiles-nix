@@ -100,7 +100,8 @@ in
     entr
     (
       pkgs.haskell.lib.justStaticExecutables
-        pkgs.haskellPackages.steeloverseer)
+        pkgs.haskellPackages.steeloverseer
+    )
     fd
     ffmpeg
     file
@@ -176,6 +177,14 @@ in
             --prefix PATH ":" "${yad}/bin"
         '';
       }
+    )
+
+    (
+      runCommand "rifle-open"
+        { } ''
+        mkdir -p $out/bin/
+        ln -s ${ranger}/bin/rifle $out/bin/xdg-open
+      ''
     )
 
     # editors
