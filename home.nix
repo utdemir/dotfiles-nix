@@ -104,6 +104,7 @@ in
     file
     findutils
     fzf
+    broot
     gettext
     ghostscript
     gnupg
