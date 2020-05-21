@@ -1,0 +1,15 @@
+(assoc
+  #:pattern "image/.*"
+  #:program "sxiv %f")
+
+(assoc
+  #:pattern "text/.*"
+  #:program "kak %f")
+
+(assoc
+  #:pattern "application/pdf"
+  #:program "zathura %f")
+
+(assoc
+  #:pattern "^https?://.*"
+  #:program "qutebrowser %f")

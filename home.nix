@@ -178,14 +178,7 @@ in
         '';
       }
     )
-
-    (
-      runCommand "rifle-open"
-        { } ''
-        mkdir -p $out/bin/
-        ln -s ${ranger}/bin/rifle $out/bin/xdg-open
-      ''
-    )
+    (callPackage ./packages/jaro.nix { xdgRedirect = true; })
 
     # editors
     vim
@@ -292,6 +285,7 @@ in
   manual.manpages.enable = true;
 
   home.file.".config/kak/kakrc".source = ./dotfiles/kakrc;
+  home.file.".config/associations".source = ./dotfiles/associations;
 
   home.file.".config/i3/config".source = ./dotfiles/i3/config;
   home.file.".config/i3/autostart.sh".source = ./dotfiles/i3/autostart.sh;
