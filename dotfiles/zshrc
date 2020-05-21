@@ -56,9 +56,6 @@ autoload _broot
 
 eval "$(direnv hook zsh)"
 
-# Prompt
-eval "$(starship init zsh)"
-
 # Utils
 
 function spwn() {
