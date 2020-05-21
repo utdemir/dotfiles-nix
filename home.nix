@@ -74,6 +74,7 @@ in
     steam
     xorg.libxcb # required for steam
     ssb-patchwork
+    riot-desktop
 
     # Fonts
     (pkgs.iosevka.override {
