@@ -97,6 +97,8 @@ in
     docker_compose
     dos2unix
     entr
+    (pkgs.haskell.lib.justStaticExecutables
+      pkgs.haskellPackages.steeloverseer)
     fd
     ffmpeg
     file
