@@ -98,8 +98,9 @@ in
     docker_compose
     dos2unix
     entr
-    (pkgs.haskell.lib.justStaticExecutables
-      pkgs.haskellPackages.steeloverseer)
+    (
+      pkgs.haskell.lib.justStaticExecutables
+        pkgs.haskellPackages.steeloverseer)
     fd
     ffmpeg
     file
@@ -166,14 +167,15 @@ in
       inherit (texlive) scheme-small;
     })
 
-    (callPackage ./nix/mk-scripts.nix
-      { } {
-      path = ./scripts;
-      postBuild = ''
-        wrapProgram "$out/bin/ergo" \
-          --prefix PATH ":" "${yad}/bin"
-      '';
-    }
+    (
+      callPackage ./nix/mk-scripts.nix
+        { } {
+        path = ./scripts;
+        postBuild = ''
+          wrapProgram "$out/bin/ergo" \
+            --prefix PATH ":" "${yad}/bin"
+        '';
+      }
     )
 
     # editors
@@ -218,7 +220,8 @@ in
           overrides = se: su: {
             servant-auth-server = haskell.lib.doJailbreak su.servant-auth-server;
           };
-        }).cachix)
+        }).cachix
+    )
   ];
 
   programs.git = {
