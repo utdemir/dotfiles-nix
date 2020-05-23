@@ -298,8 +298,6 @@ in
 
   home.file.".config/qutebrowser/config.py".source = ./dotfiles/qutebrowser.py;
 
-  home.file.".config/mimeapps.list".source = ./dotfiles/mimeapps.list;
-
   home.file.".config/ranger/rc.conf".source = ./dotfiles/ranger/rc.conf;
   home.file.".config/ranger/rifle.conf".source = ./dotfiles/ranger/rifle.conf;
 
