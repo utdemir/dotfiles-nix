@@ -13,5 +13,3 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           branch_prefix: 'update/'
-          message_prefix: 'Changes:'
-
