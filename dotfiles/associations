@@ -11,5 +11,9 @@
   #:program "zathura %f")
 
 (assoc
+  #:pattern "video/.*"
+  #:program "mpv %f")
+
+(assoc
   #:pattern "^https?://.*"
   #:program "qutebrowser %f")
