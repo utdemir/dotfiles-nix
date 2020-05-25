@@ -1,0 +1,4 @@
+[[verbs]]
+invocation = "open"
+key = "enter"
+execution = "jaro {file}"
