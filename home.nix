@@ -1,6 +1,7 @@
 { user, pkgs, ... }:
 let
   sources = import ./nix/sources.nix;
+  jaro = pkgs.callPackage ./packages/jaro.nix { xdgRedirect = true; };
 in
 {
   imports =
@@ -178,7 +179,11 @@ in
         '';
       }
     )
-    (callPackage ./packages/jaro.nix { xdgRedirect = true; })
+    jaro
+    (runCommand "jaro-xdg-open" {} ''
+      mkdir -p $out/bin
+      ln -s ${jaro}/bin/jaro $out/bin/xdg-open
+    '')
 
     # editors
     vim
