@@ -310,6 +310,7 @@ in
 
   home.file.".config/ranger/rc.conf".source = ./dotfiles/ranger/rc.conf;
   home.file.".config/ranger/rifle.conf".source = ./dotfiles/ranger/rifle.conf;
+  home.file.".config/ranger/commands.py".source = ./dotfiles/ranger/commands.py;
 
   home.file.".config/broot/conf.toml".source = ./dotfiles/broot.toml;
 
