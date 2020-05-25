@@ -165,7 +165,11 @@ in
     bandwhich
     csvkit
     sshfs
-    (hunspellWithDicts [ hunspellDicts.en-gb-ise ])
+    aspell
+    aspellDicts.en
+    aspellDicts.en-computers
+    aspellDicts.en-science
+
     (texlive.combine {
       inherit (texlive) scheme-small;
     })
