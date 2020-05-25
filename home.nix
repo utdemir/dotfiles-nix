@@ -114,6 +114,7 @@ in
     gnupg
     graphviz
     hexedit
+    hexyl
     htop
     htop
     imagemagick
