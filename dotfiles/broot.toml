@@ -2,3 +2,4 @@
 invocation = "open"
 key = "enter"
 execution = "jaro {file}"
+leave_broot = false
