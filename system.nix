@@ -92,6 +92,11 @@ in
 
   services.logind.lidSwitch = "ignore";
 
+  services.locate = {
+    enable = true;
+    interval = "hourly";
+  };
+
   services.xserver = {
     enable = true;
     autorun = true;
