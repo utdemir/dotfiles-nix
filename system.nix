@@ -1,7 +1,6 @@
 { config, pkgs, ... }:
 let
   sources = import ./nix/sources.nix;
-  user = import ./user.nix;
   getName = drv:
     if builtins.hasAttr "pname" drv
     then drv.pname
@@ -11,9 +10,11 @@ let
 in
 {
   imports =
-    builtins.filter builtins.pathExists [ ./system-private.nix ];
+    (builtins.filter builtins.pathExists [ ./system-private.nix ]) ++ [
+      ./user.nix
+    ];
 
-  networking.hostName = user.hostname;
+  networking.hostName = config.dotfiles.hostname;
 
   nixpkgs.config = {
     allowUnfreePredicate = pkg:
@@ -41,7 +42,7 @@ in
       "utdemir.cachix.org-1:mDgucWXufo3UuSymLuQumqOq1bNeclnnIEkD4fFMhsw="
       "hs-nix-template.cachix.org-1:/YbjZCrYAw7d9ayLayk7ZhBdTEkR10ZFmFuOq6ZJo4c="
     ];
-    trustedUsers = [ "root" user.username ];
+    trustedUsers = [ "root" config.dotfiles.username ];
     autoOptimiseStore = true;
     nixPath = [
       "nixpkgs=${pkgs.path}"
@@ -97,7 +98,7 @@ in
       greeter.enable = false;
       autoLogin = {
         enable = true;
-        user = user.username;
+        user = config.dotfiles.username;
       };
     };
     xkbOptions = "caps:escape";
@@ -120,14 +121,15 @@ in
   hardware.bluetooth.enable = true;
   services.blueman.enable = true;
 
-  users.extraUsers.${user.username} = {
-    home = "/home/${user.username}";
+  users.extraUsers.${config.dotfiles.username} = {
+    home = "/home/${config.dotfiles.username}";
     isNormalUser = true;
     uid = 1000;
     extraGroups = [ "wheel" "networkmanager" "docker" ];
     shell = "${pkgs.zsh}/bin/zsh";
   };
-  home-manager.users.${user.username} = args: import ./home.nix (args // { inherit pkgs user; });
+
+  home-manager.users.${config.dotfiles.username} = args: import ./home.nix (args // { inherit pkgs;  });
 
   system.stateVersion = "19.09";
 }
