@@ -16,21 +16,24 @@ in
 
   networking.hostName = config.dotfiles.hostname;
 
-  nixpkgs.config = {
-    allowUnfreePredicate = pkg:
-      builtins.elem
-        (getName pkg)
-        [
-          "google-chrome"
-          "spotify"
-          "slack"
-          "zoom-us"
-          "intel-ocl"
-          "steam"
-          "steam-original"
-          "steam-runtime"
-          "skypeforlinux"
-        ];
+  nixpkgs = {
+    config = {
+      allowUnfreePredicate = pkg:
+        builtins.elem
+          (getName pkg)
+          [
+            "google-chrome"
+            "spotify"
+            "slack"
+            "zoom-us"
+            "intel-ocl"
+            "steam"
+            "steam-original"
+            "steam-runtime"
+            "skypeforlinux"
+          ];
+    };
+    overlays = [ (import ./overlay.nix) ];
   };
 
   nix = {

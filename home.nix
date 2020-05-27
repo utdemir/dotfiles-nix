@@ -1,7 +1,6 @@
 { config, pkgs, ... }:
 let
   sources = import ./nix/sources.nix;
-  jaro = pkgs.callPackage ./packages/jaro.nix { xdgRedirect = true; };
 in
 {
   imports =
@@ -169,10 +168,7 @@ in
     vim
     (kakoune.override {
       configure = {
-        plugins = [
-          (callPackage ./packages/kakoune-surround.nix { })
-          (callPackage ./packages/kakoune-rainbow.nix { })
-        ];
+        plugins = [ kakoune-surround kakoune-rainbow ];
       };
     })
 
@@ -241,8 +237,6 @@ in
     '';
     executable = true;
   };
-
-
 
   news.notify = "silent";
 
