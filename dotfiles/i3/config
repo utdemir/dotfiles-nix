@@ -6,6 +6,9 @@ floating_modifier $mod
 
 bindsym $mod+backslash exec kitty --title floating -- ranger --cmd "shell sc" ~/notes/scratch
 for_window [class="kitty" title="floating"] floating enable
+for_window [class="kitty" title="floating"] resize set 800 400
+for_window [class="kitty" title="floating"] move position center
+
 for_window [class="pinentry"] sticky enable
 
 bindsym $mod+Return exec kitty
