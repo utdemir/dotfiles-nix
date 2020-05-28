@@ -17,3 +17,7 @@
 (assoc
   #:pattern "^https?://.*"
   #:program "qutebrowser %f")
+
+(assoc
+  #:pattern "^zoommtg://.*"
+  #:program "zoom-us %f")
