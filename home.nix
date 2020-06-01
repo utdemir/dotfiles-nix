@@ -41,6 +41,9 @@ in
     macchanger
     gthumb
 
+    # games
+    widelands
+
     # services
     awscli
     google-cloud-sdk
