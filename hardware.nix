@@ -18,7 +18,7 @@ in
   boot.kernelModules = [ "kvm-intel" ];
 
   programs.ssh.extraConfig = ''
-    Host beta.nixbuild.net nxb-*
+    Host beta.nixbuild.net
       StrictHostKeyChecking no
       UserKnownHostsFile /dev/null
       PubkeyAcceptedKeyTypes ssh-ed25519
@@ -26,31 +26,16 @@ in
       ControlMaster auto
       ControlPersist yes
       ControlPath ~/.ssh/socket-%r@%h:%p
-
-    Host nxb-4
-      HostName beta.nixbuild.net
-      SetEnv CPU=4
-
-    Host nxb-16
-      HostName beta.nixbuild.net
-      SetEnv CPU=16
   '';
 
   nix = {
     distributedBuilds = true;
     buildMachines = [
       {
-        hostName = "nxb-4";
+        hostName = "beta.nixbuild.net";
         system = "x86_64-linux";
         maxJobs = 100;
-        supportedFeatures = [ "benchmark" ];
-      }
-      {
-        hostName = "nxb-16";
-        system = "x86_64-linux";
-        maxJobs = 100;
-        supportedFeatures = [ "benchmark" ];
-        mandatoryFeatures = [ "big-parallel" ];
+        supportedFeatures = [ "benchmark" "big-parallel" ];
       }
     ];
     extraOptions = ''
