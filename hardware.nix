@@ -23,9 +23,6 @@ in
       UserKnownHostsFile /dev/null
       PubkeyAcceptedKeyTypes ssh-ed25519
       IdentityFile /root/.ssh/nixbuild
-      ControlMaster auto
-      ControlPersist yes
-      ControlPath ~/.ssh/socket-%r@%h:%p
   '';
 
   nix = {
