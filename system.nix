@@ -66,7 +66,7 @@ in
   boot.kernelPackages = pkgs.linuxPackages_5_6;
 
   boot.kernel.sysctl = {
-    "vm.swappiness" = 0;
+    "vm.swappiness" = 100; # https://chrisdown.name/2018/01/02/in-defence-of-swap.html
     "fs.inotify.max_user_watches" = 2048000;
   };
 
