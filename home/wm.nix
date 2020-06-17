@@ -35,7 +35,7 @@
 
     home.file.".config/i3/config".source = ../dotfiles/i3/config;
     home.file.".config/i3/autostart.sh".source = ../dotfiles/i3/autostart.sh;
-    home.file.".config/i3/wallpaper.png".source = ../dotfiles/i3/wallpaper.png;
+    home.file.".config/i3/wallpaper.jpg".source = ../dotfiles/i3/wallpaper.jpg;
     home.file.".config/i3blocks/config".source = ../dotfiles/i3/i3blocks;
     home.file.".config/rofi/config".source = ../dotfiles/rofi;
     home.file.".config/fontconfig/fonts.conf".source = ../dotfiles/fonts.conf;

@@ -1,4 +1,7 @@
-feh --bg-fill ~/.config/i3/wallpaper.png --no-xinerama &
+# Wallpaper:
+#   By JJ Harrison (https://www.jjharrison.com.au/)
+#   - Own work, CC BY-SA 4.0, https://commons.wikimedia.org/w/index.php?curid=90332278
+feh --bg-fill ~/.config/i3/wallpaper.jpg --no-xinerama &
 
 autorandr --change --default small &
 
