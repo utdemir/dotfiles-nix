@@ -6,6 +6,7 @@ feh --bg-fill ~/.config/i3/wallpaper.jpg --no-xinerama &
 autorandr --change --default small &
 
 sleep 1
+picom &
 ergo &
 keynav &
 unclutter &

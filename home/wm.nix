@@ -27,6 +27,7 @@
       parcellite
       pasystray
       pavucontrol
+      picom
       redshift
       libnotify
       lxappearance
@@ -44,6 +45,17 @@
       source = ../dotfiles/autorandr-postswitch;
       executable = true;
     };
+
+    home.file.".config/picom.conf".text = ''
+      opacity-rule = [
+        "90:class_g = 'kitty' && focused",
+        "70:class_g = 'kitty' && !focused"
+      ];
+      shadow = true;
+
+      backend = "glx";
+      unredir-if-possible = true;
+    '';
 
     systemd.user.services.battery-notification =
       let p = pkgs.runCommand "battery-notification"
