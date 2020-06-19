@@ -45,7 +45,7 @@ in
     home.file.".config/i3/autostart.sh" = {
       executable = true;
       text = ''
-        feh --bg-fill "$${wallpaper}" --no-xinerama &
+        feh --bg-fill "${wallpaper}" --no-xinerama &
 
         autorandr --change --default small &
 
