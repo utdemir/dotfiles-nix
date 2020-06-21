@@ -40,6 +40,7 @@ case "$mode" in
         trap "rm '$tmp/result'" EXIT
         drv="$(readlink "$tmp/result")"
         nix-shell -p python3 --run "./nix/diff /var/run/current-system '$drv' >&2"
+        echo "Drv: $drv" >&2
         echo "$drv"
         ;;
     "switch")
