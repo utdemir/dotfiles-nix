@@ -20,7 +20,6 @@ in
 
     # Apps
     asciiquarium
-    bazel
     chromium
     deluge
     gimp
