@@ -51,7 +51,6 @@ case "$mode" in
     "update")
         trace niv update
         drv="$(./make.sh build)"
-        nix-shell -p python3 --run "./nix/diff /var/run/current-system '$drv' >&2"
         ;;
     "info")
         drv="$(realpath /var/run/current-system)"
