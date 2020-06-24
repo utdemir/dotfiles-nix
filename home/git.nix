@@ -16,6 +16,9 @@
         st = "status -sb";
       };
       extraConfig = {
+        "pull" = {
+          ff = "only";
+        };
         "filter \"lfs\"" = {
           process = "git-lfs filter-process";
           required = true;
