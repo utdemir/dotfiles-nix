@@ -17,10 +17,10 @@
         "homepage": "",
         "owner": "nixos",
         "repo": "nixos-hardware",
-        "rev": "a78b8b647692919fe871f5726b7b5e01dd725a88",
-        "sha256": "0lcfj18wbi4a7nv6fc1pvq28m210laviy00d4dngklrppihykj40",
+        "rev": "841caf7d201f3fd3c270d52396e1f077e85329ef",
+        "sha256": "1md109bngq7jckn6gbdfjkqhssbszccsajkvs7fjvjjh6gy15jgw",
         "type": "tarball",
-        "url": "https://github.com/nixos/nixos-hardware/archive/a78b8b647692919fe871f5726b7b5e01dd725a88.tar.gz",
+        "url": "https://github.com/nixos/nixos-hardware/archive/841caf7d201f3fd3c270d52396e1f077e85329ef.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
     "nixpkgs": {
