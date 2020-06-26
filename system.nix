@@ -33,7 +33,10 @@ in
             "skypeforlinux"
           ];
     };
-    overlays = [ (import ./overlay.nix) ];
+    overlays = [
+      (import sources.emacs-overlay)
+      (import ./overlay.nix)
+    ];
   };
 
   nix = {
