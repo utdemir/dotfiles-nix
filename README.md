@@ -223,7 +223,8 @@ I will consider switching when they are merged.
   * `o`: open a website
   * `f`: add hints to the links
   * `F`: add hints to the links (open in new window)
-
+  * `tsh`: toggle javascript for the current host for current session
+  * `tSh`: toggle javascript for the current host permanently
 ---
 
 ### Password Manager: pass
@@ -258,7 +259,7 @@ Checkout [./home.nix]() to see them all.
 
    * `sxiv` for images
    * `zathura` for pdfs
-   * `smplayer` for videos
+   * `mpv` for videos
    * `soffice` for office documents
 
 2. Installing an application
