@@ -16,7 +16,8 @@ with similar tastes.
     * i3, kakoune, qutebrowser and lots of shell utilities
 * Lightweight, fast, simple
     * No bloated DE's or "fully-featured" applications.
-    * Less than 500 lines of code describe the whole system.
+    * JavaScript disabled by default.
+    * Single codebase describing the whole system.
 * (Mostly) hardware agnostic
     * Minimal hardware-related configuration.
     * Tested on Thinkpad T4xx and X1.

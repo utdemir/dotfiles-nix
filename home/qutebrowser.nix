@@ -12,6 +12,9 @@
       c.downloads.location.directory = "~/downloads"
       c.content.pdfjs = True
       c.editor.command = ["kitty", "kak", "{}"]
+      c.content.javascript.enabled = False
+
+      config.load_autoconfig()
     '';
   };
 }
