@@ -8,6 +8,7 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - uses: cachix/install-nix-action@v8
+    - run: sudo rm -rf /opt /usr/local || true
     - uses: cachix/cachix-action@v5
       with:
         name: utdemir
