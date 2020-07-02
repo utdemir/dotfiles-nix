@@ -1,6 +1,6 @@
 # Configuration for my workstation
 
-[![CI Status](https://github.com/utdemir/dotfiles/workflows/ci/badge.svg)](https://github.com/utdemir/dotfiles/actions)
+[![CI Status](https://github.com/utdemir/dotfiles/workflows/nix-build/badge.svg)](https://github.com/utdemir/dotfiles/actions)
 
 This repository can reproduce the entirety of my system; including
 services, applications and configurations. It should contain everything
