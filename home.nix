@@ -11,7 +11,6 @@ in
       ./home/qutebrowser.nix
       ./home/kitty.nix
       ./home/shell.nix
-      ./home/emacs.nix
     ];
 
   home.packages = with pkgs; [
