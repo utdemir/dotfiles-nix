@@ -208,7 +208,9 @@ window open which runs/typechecks the project continuously.
 I use [qutebrowser](https://qutebrowser.org/) as my web browser. It is
 a keyboard-oriented minimal web browser using QtWebEngine (WebKit). The
 only customisation I make makes it use separate windows as tabs and
-makes it use `kakoune` as editor.
+makes it use `kakoune` as editor. Also, **javascript is disabled by
+default**, see the keybindings to disable it per-host basis (or just
+modify the configuration).
 
 Actually, I would prefer to use Firefox with some addons & customisation
 to make it keyboard-oriented & disabling tabs. However currently there
