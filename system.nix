@@ -31,6 +31,7 @@ in
             "steam-original"
             "steam-runtime"
             "skypeforlinux"
+            "faac" # required for zoom
           ];
     };
     overlays = [
@@ -104,12 +105,14 @@ in
     enable = true;
     autorun = true;
     desktopManager.xterm.enable = true;
-    displayManager.lightdm = {
-      enable = true;
-      greeter.enable = false;
+    displayManager = {
       autoLogin = {
         enable = true;
         user = config.dotfiles.username;
+      };
+      lightdm = {
+        enable = true;
+        greeter.enable = false;
       };
     };
     xkbOptions = "caps:escape";
