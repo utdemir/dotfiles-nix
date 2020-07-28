@@ -7,7 +7,7 @@
     home.file.".config/kitty/kitty.conf".text = ''
       scrollback_lines 100000
 
-      font_family Iosevka utdemir Medium
+      font_family Hack
       font_size 14
 
       clear_all_shortcuts yes

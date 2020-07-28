@@ -56,13 +56,7 @@ in
     riot-desktop
 
     # Fonts
-    (pkgs.iosevka.override {
-      privateBuildPlan = {
-        family = "Iosevka utdemir";
-        design = [ "slab" "term" ];
-      };
-      set = "utdemir";
-    })
+    hack-font
 
     # CLI
     ascii
