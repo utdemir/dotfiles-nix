@@ -27,7 +27,6 @@ in
             "slack"
             "zoom-us"
             "intel-ocl"
-            "skypeforlinux"
             "faac" # required for zoom
           ];
     };

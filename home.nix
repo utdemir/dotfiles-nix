@@ -48,7 +48,6 @@ in
     spotify
     whois
     zoom-us
-    skype
     kubectl
     ssb-patchwork
     element-desktop
