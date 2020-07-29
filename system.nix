@@ -27,9 +27,6 @@ in
             "slack"
             "zoom-us"
             "intel-ocl"
-            "steam"
-            "steam-original"
-            "steam-runtime"
             "skypeforlinux"
             "faac" # required for zoom
           ];

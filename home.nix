@@ -50,8 +50,6 @@ in
     zoom-us
     skype
     kubectl
-    steam
-    xorg.libxcb # required for steam
     ssb-patchwork
     element-desktop
 
