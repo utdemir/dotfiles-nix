@@ -24,6 +24,7 @@
       HISTFILE=~/.history
       APPEND_HISTORY=true
 
+      setopt AUTO_CD
       setopt NO_FLOW_CONTROL
 
       # Keybindings
