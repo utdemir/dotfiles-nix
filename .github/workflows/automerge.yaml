@@ -27,3 +27,4 @@ jobs:
           GITHUB_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
           MERGE_METHOD: rebase
           MERGE_FORKS: false
+          UPDATE_METHOD: rebase
