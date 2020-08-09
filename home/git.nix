@@ -15,6 +15,9 @@
         co = "checkout";
         st = "status -sb";
       };
+      delta = {
+        enable = true;
+      };
       extraConfig = {
         "pull" = {
           ff = "only";
