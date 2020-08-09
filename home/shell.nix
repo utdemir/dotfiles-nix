@@ -1,5 +1,9 @@
 { config, pkgs, ... }:
 
+let
+sources = import ../nix/sources.nix;
+in
+
 {
   config = {
     home.packages = with pkgs; [ pkgs.zsh pkgs.nix-zsh-completions ];
@@ -7,8 +11,7 @@
     home.file.".zshrc".text = ''
       ${pkgs.any-nix-shell}/bin/any-nix-shell zsh | source /dev/stdin
       source ${pkgs.zsh-syntax-highlighting}/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-      source ${../static/p10k.zsh}
-      source ${pkgs.zsh-powerlevel10k}/share/zsh-powerlevel10k/powerlevel10k.zsh-theme
+      source ${sources.agkozak-zsh-prompt}/agkozak-zsh-prompt.plugin.zsh
 
       # Env
       export TERM=xterm-256color

@@ -1,4 +1,16 @@
 {
+    "agkozak-zsh-prompt": {
+        "branch": "master",
+        "description": "A fast, asynchronous ZSH prompt with color ASCII indicators of Git, exit, SSH, virtual environment, and vi mode status. Framework-agnostic and customizable.",
+        "homepage": "",
+        "owner": "agkozak",
+        "repo": "agkozak-zsh-prompt",
+        "rev": "880ab698199c45120c295da5eb13381a658f40b4",
+        "sha256": "0avpkh0pp56hi7zqk8fx4580v2w5gaxkdk856ywcd8khwnm6fdpj",
+        "type": "tarball",
+        "url": "https://github.com/agkozak/agkozak-zsh-prompt/archive/880ab698199c45120c295da5eb13381a658f40b4.tar.gz",
+        "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
+    },
     "emacs-overlay": {
         "branch": "master",
         "description": "Bleeding edge emacs overlay [maintainer=@adisbladis] ",
