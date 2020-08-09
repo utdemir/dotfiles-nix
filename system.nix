@@ -31,7 +31,6 @@ in
           ];
     };
     overlays = [
-      (import sources.emacs-overlay)
       (import ./overlay.nix)
     ];
   };

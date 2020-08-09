@@ -11,18 +11,6 @@
         "url": "https://github.com/agkozak/agkozak-zsh-prompt/archive/880ab698199c45120c295da5eb13381a658f40b4.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
-    "emacs-overlay": {
-        "branch": "master",
-        "description": "Bleeding edge emacs overlay [maintainer=@adisbladis] ",
-        "homepage": "",
-        "owner": "nix-community",
-        "repo": "emacs-overlay",
-        "rev": "ad65277bb18292ad7acf97b234622b7c1009fb7c",
-        "sha256": "16bc6ikz5jlbvjxy1dx0zj04cf5xyfpa7bf7cwwba403pki9pxyj",
-        "type": "tarball",
-        "url": "https://github.com/nix-community/emacs-overlay/archive/ad65277bb18292ad7acf97b234622b7c1009fb7c.tar.gz",
-        "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
-    },
     "home-manager": {
         "branch": "master",
         "description": "Manage a user environment using Nix",
