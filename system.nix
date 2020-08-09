@@ -57,6 +57,10 @@ in
 
   networking.dhcpcd.enable = false;
   networking.networkmanager.enable = true;
+  services.avahi = {
+    enable = true;
+    nssmdns = true;
+  };
 
   time.timeZone = "Pacific/Auckland";
 
