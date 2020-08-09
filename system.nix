@@ -62,8 +62,8 @@ in
 
   environment.systemPackages = with pkgs; [ vim git ];
 
-  # Linux 5.6 solve some issues with Intel GPUs
-  boot.kernelPackages = pkgs.linuxPackages_5_6;
+  # Linux>5.6 solve some issues with Intel GPUs
+  boot.kernelPackages = pkgs.linuxPackages_latest;
 
   boot.kernel.sysctl = {
     "vm.swappiness" = 100; # https://chrisdown.name/2018/01/02/in-defence-of-swap.html
