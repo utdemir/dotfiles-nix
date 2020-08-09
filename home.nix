@@ -173,10 +173,6 @@ in
     (haskell.lib.justStaticExecutables haskellPackages.ghcid)
     (haskell.lib.justStaticExecutables haskellPackages.ormolu)
 
-    # java/scala
-    openjdk8
-    scala
-
     # python
     python37
     python37Packages.virtualenv
