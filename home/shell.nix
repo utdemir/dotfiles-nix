@@ -11,7 +11,6 @@ in
     home.file.".zshrc".text = ''
       ${pkgs.any-nix-shell}/bin/any-nix-shell zsh | source /dev/stdin
       source ${pkgs.zsh-syntax-highlighting}/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-      source ${sources.agkozak-zsh-prompt}/agkozak-zsh-prompt.plugin.zsh
 
       # Env
       export TERM=xterm-256color
@@ -58,6 +57,30 @@ in
       then echo "! compinit" >&2; compinit;
       else compinit -C;
       fi
+
+      # Prompt
+      autoload -U add-zsh-hook
+      add-zsh-hook precmd pre_prompt
+      function pre_prompt() {
+        psvar[11]=${"$\{IN_NIX_SHELL:+\"nix-shell[$IN_NIX_SHELL]\"}"}
+      }
+
+      # Exit status
+      AGKOZAK_CUSTOM_PROMPT='%(?..%B%F{red}(%?%)%f%b )'
+      # Command execution time
+      AGKOZAK_CUSTOM_PROMPT+='%(9V.%9v .)'
+      # Username and hostname
+      AGKOZAK_CUSTOM_PROMPT+='%(!.%S%B.%B%F{green})%n%1v%(!.%b%s.%f%b) '
+      # Path
+      AGKOZAK_CUSTOM_PROMPT+=$'%B%F{blue}%2v%f%b\n'
+      # Nix-shell
+      AGKOZAK_CUSTOM_PROMPT+="%11v"
+      # Prompt character
+      AGKOZAK_CUSTOM_PROMPT+='%(4V.:.%#) '
+      # Git status
+      AGKOZAK_CUSTOM_RPROMPT='%(3V.%F{yellow}%3v%f.)'
+
+      source ${sources.agkozak-zsh-prompt}/agkozak-zsh-prompt.plugin.zsh
 
       # Tools
 
