@@ -161,6 +161,12 @@ in
       };
     })
 
+    # bazel
+    bazel
+
+    # closure
+    leiningen
+
     # haskell
     stack
     haskellPackages.cabal-install
