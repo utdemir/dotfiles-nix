@@ -127,7 +127,6 @@ in
     rclone
     cookiecutter
     bandwhich
-    csvkit
     sshfs
     aspell
     aspellDicts.en
