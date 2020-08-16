@@ -186,6 +186,7 @@ in
     nix-prefetch
     patchelf
     nix-top
+    nix-tree
     niv
     nixpkgs-fmt
     (
