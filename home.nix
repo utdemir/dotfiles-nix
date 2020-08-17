@@ -230,7 +230,7 @@ in
     executable = true;
   };
 
-  news.notify = "silent";
+  news.display = "silent";
 
   # Force home-manager to use pinned nixpkgs
   _module.args.pkgs = pkgs.lib.mkForce pkgs;
