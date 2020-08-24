@@ -99,7 +99,6 @@ in
     openssl
     pandoc
     paperkey
-    pass-otp
     pdftk
     powerstat
     powertop
@@ -152,6 +151,16 @@ in
       mkdir -p $out/bin
       ln -s ${jaro}/bin/jaro $out/bin/xdg-open
     '')
+
+    # password-store
+    (pass.withExtensions (ext: [
+      ext.pass-otp
+      (runCommand "pass-rotate" {} ''
+        install -vDm ugo=x \
+          ${./scripts/pass-rotate} \
+          $out/lib/password-store/extensions/rotate.bash
+      '')
+    ]))
 
     # editors
     vim

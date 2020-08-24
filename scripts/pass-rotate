@@ -1,0 +1,28 @@
+#!/usr/bin/env bash
+
+# Save this script as $PASSWORD_STORE_EXTENSIONS_DIR/rotate.bash to use.
+
+set -o errexit
+set -o nounset
+set -o pipefail
+
+cd "$PREFIX"
+
+oldest="$(
+  find . -name '*.gpg' \
+    -exec stat -c '%Y {}' {} \; \
+    | sort | head -n 1
+)"
+
+timestamp="$(echo "$oldest" | cut -d ' ' -f 1)"
+secret="$(echo "$oldest" | cut -d ' ' -f 2- | sed -e 's/\.gpg$//' -e 's|^\./||g' )"
+
+now="$(date +%s)"
+let "seconds_diff = $now - $timestamp"
+let "date_diff = $seconds_diff / 60 / 60 / 24"
+
+bold=$(tput bold)
+normal=$(tput sgr0)
+
+echo "Secret:            $bold$secret$normal"
+echo "Last modification: $bold$date_diff$normal days ago."

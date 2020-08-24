@@ -244,6 +244,8 @@ to your clipboard.
 * There is a `qr2pass` script on your `$PATH` which will take a screenshot
 of your screen containing a barcode for an OTP and adds it to the given
 password file; so you can use it to generate OTP tokens.
+* There is an additional `pass rotate` command which shows you the oldest
+password you have.
 
 ---
 
