@@ -1,7 +1,7 @@
 name: Automated niv-managed dependency updates
 on:
   schedule:
-    - cron:  '0 0 * * 4'
+    - cron:  '0 0 * * 1,4'
 jobs:
   niv-updater:
     name: 'Create PRs for niv-managed dependencies'
