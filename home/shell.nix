@@ -99,6 +99,7 @@ in
       alias .....="cd ../../../.."
 
       alias r="ranger"
+      alias icat="kitty +kitten icat"
 
       function trace() {
           echo "! $@" >&2
