@@ -1,12 +1,10 @@
 { config, pkgs, ... }:
-
 let
   # Wallpaper:
   #   By JJ Harrison (https://www.jjharrison.com.au/)
   #   - Own work, CC BY-SA 4.0, https://commons.wikimedia.org/w/index.php?curid=90332278
   wallpaper = ../static/wallpaper.jpg;
 in
-
 {
   config = {
     xsession = {

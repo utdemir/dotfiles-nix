@@ -1,17 +1,16 @@
 { config, pkgs, ... }:
-let
-  sources = import ./nix/sources.nix;
-in
 {
   imports =
-    ( builtins.filter builtins.pathExists [ ./home-private.nix ] ) ++ [
-      ./user.nix
+    (builtins.filter builtins.pathExists [ ./home-private.nix ]) ++ [
+      ./nix/dotfiles.nix
       ./home/wm.nix
       ./home/git.nix
       ./home/qutebrowser.nix
       ./home/kitty.nix
       ./home/shell.nix
     ];
+
+  dotfiles = import ./user.nix;
 
   home.packages = with pkgs; [
     # WM
@@ -35,7 +34,6 @@ in
     xclip
     xsel
     zathura
-    claws-mail
     inkscape
     macchanger
     gthumb
@@ -138,16 +136,17 @@ in
 
     (
       callPackage ./nix/mk-scripts.nix
-        { } {
-        path = ./scripts;
-        postBuild = ''
-          wrapProgram "$out/bin/ergo" \
-            --prefix PATH ":" "${yad}/bin"
-        '';
-      }
+        { }
+        {
+          path = ./scripts;
+          postBuild = ''
+            wrapProgram "$out/bin/ergo" \
+              --prefix PATH ":" "${yad}/bin"
+          '';
+        }
     )
     jaro
-    (runCommand "jaro-xdg-open" {} ''
+    (runCommand "jaro-xdg-open" { } ''
       mkdir -p $out/bin
       ln -s ${jaro}/bin/jaro $out/bin/xdg-open
     '')
@@ -155,7 +154,7 @@ in
     # password-store
     (pass.withExtensions (ext: [
       ext.pass-otp
-      (runCommand "pass-rotate" {} ''
+      (runCommand "pass-rotate" { } ''
         install -vDm ugo=x \
           ${./scripts/pass-rotate} \
           $out/lib/password-store/extensions/rotate.bash

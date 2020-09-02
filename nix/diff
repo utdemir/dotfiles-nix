@@ -14,7 +14,7 @@ def drv_deps(path):
     ret = "[" + " ".join('"' + i[44:].decode().strip() + '"' for i in deps) + "]"
 
     ret = check_output([
-      "nix", "eval", "--json",
+      "nix", "eval", "--json", "--expr",
       f"( builtins.map builtins.parseDrvName {ret} )"
     ])
 

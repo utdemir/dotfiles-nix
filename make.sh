@@ -35,22 +35,16 @@ shift
 
 case "$mode" in
     "build")
-        tmp="$(mktemp -u)"
-        trace nix build --no-link -f "./nix/default.nix" -o "$tmp/result" --keep-going "$@" >&2
-        trap "rm '$tmp/result'" EXIT
-        drv="$(readlink "$tmp/result")"
-        nix-shell -p python3 --run "./nix/diff /var/run/current-system '$drv' >&2"
-        echo "Drv: $drv" >&2
-        echo "$drv"
+        trace nixos-rebuild build --flake . "${@}"
+        echo "Drv: " "$(readlink ./result)"
+        nix-shell -p python3 --run "./nix/diff /var/run/current-system result >&2"
         ;;
     "switch")
-        drv="$(trace ./make.sh build)"
-        trace sudo nix-env -p /nix/var/nix/profiles/system --set "$drv"
-        NIXOS_INSTALL_BOOTLOADER=1 trace sudo --preserve-env=NIXOS_INSTALL_BOOTLOADER "$drv/bin/switch-to-configuration" switch
+        trace sudo nixos-rebuild switch --flake . "${@}"
         ;;
     "update")
-        trace niv update
-        drv="$(./make.sh build)"
+        trace nix flake update
+        "$0" build
         ;;
     "info")
         drv="$(realpath /var/run/current-system)"
@@ -80,10 +74,6 @@ case "$mode" in
     "cleanup")
         trace sudo nix-collect-garbage --delete-older-than 7d
         trace sudo nix optimise-store
-        ;;
-    "ci")
-        export NIX_PATH=nixpkgs="$(nix eval --raw '(import nix/sources.nix).nixpkgs.outPath')"
-        trace nix-build nix/ci.nix --keep-going
         ;;
     "help")
         [[ $# -gt 0 ]] && invalid_syntax

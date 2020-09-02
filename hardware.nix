@@ -1,21 +1,9 @@
 { config, pkgs, ... }:
-let
-  sources = import ./nix/sources.nix;
-in
 {
-  imports = [
-    "${sources.nixos-hardware}/lenovo/thinkpad"
-    "${sources.nixos-hardware}/common/cpu/intel"
-    "${sources.nixos-hardware}/common/cpu/intel/kaby-lake"
-    "${sources.nixos-hardware}/common/pc/laptop/ssd"
-    "${sources.nixos-hardware}/common/pc/laptop/acpi_call.nix"
-  ];
-
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
   hardware.cpu.intel.updateMicrocode = true;
-  boot.kernelModules = [ "kvm-intel" ];
 
   programs.ssh.extraConfig = ''
     Host beta.nixbuild.net
@@ -35,11 +23,9 @@ in
         supportedFeatures = [ "benchmark" "big-parallel" ];
       }
     ];
-    extraOptions = ''
-      builders-use-substitutes = true
-    '';
   };
 
+  services.fstrim.enable = true;
   services.tlp.settings = {
     # powersave enables intel's p-state driver
     CPU_SCALING_GOVERNOR_ON_AC = "performance";
@@ -67,4 +53,28 @@ in
     drivers = [ pkgs.gutenprint pkgs.gutenprintBin ];
     browsing = true;
   };
+
+  # hardware-configuration
+  # Use output of nixos-generate-config to create this:
+
+  hardware.enableRedistributableFirmware = true;
+
+  boot.initrd.availableKernelModules = [ "xhci_pci" "nvme" "usb_storage" "sd_mod" ];
+  boot.initrd.kernelModules = [ ];
+  boot.kernelModules = [ "kvm-intel" ];
+  boot.extraModulePackages = [ ];
+
+  fileSystems."/" =
+    {
+      device = "/dev/disk/by-uuid/269e98d4-74ee-4dda-a829-dba9e61b2d1b";
+      fsType = "ext4";
+    };
+
+  boot.initrd.luks.devices."nixos-root".device = "/dev/disk/by-uuid/6d3b2738-fddb-49f5-bd38-311d8229666d";
+
+  fileSystems."/boot" =
+    {
+      device = "/dev/disk/by-uuid/65BA-3108";
+      fsType = "vfat";
+    };
 }

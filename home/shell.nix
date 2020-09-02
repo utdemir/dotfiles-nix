@@ -1,9 +1,5 @@
 { config, pkgs, ... }:
 
-let
-sources = import ../nix/sources.nix;
-in
-
 {
   config = {
     home.packages = with pkgs; [ pkgs.zsh pkgs.nix-zsh-completions ];
@@ -80,7 +76,7 @@ in
       # Git status
       AGKOZAK_CUSTOM_RPROMPT='%(3V.%F{yellow}%3v%f.)'
 
-      source ${sources.agkozak-zsh-prompt}/agkozak-zsh-prompt.plugin.zsh
+      source ${pkgs.agkozak-zsh-prompt}/agkozak-zsh-prompt.plugin.zsh
 
       # Tools
 

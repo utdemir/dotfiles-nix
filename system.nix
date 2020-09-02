@@ -1,6 +1,5 @@
 { config, pkgs, ... }:
 let
-  sources = import ./nix/sources.nix;
   getName = drv:
     if builtins.hasAttr "pname" drv
     then drv.pname
@@ -11,9 +10,10 @@ in
 {
   imports =
     (builtins.filter builtins.pathExists [ ./system-private.nix ]) ++ [
-      ./user.nix
+      ./nix/dotfiles.nix
     ];
 
+  dotfiles = import ./user.nix;
   networking.hostName = config.dotfiles.hostname;
 
   nixpkgs = {
@@ -36,6 +36,8 @@ in
   };
 
   nix = {
+    package = pkgs.nixUnstable;
+
     binaryCaches = [
       "https://utdemir.cachix.org"
       "https://hs-nix-template.cachix.org"
@@ -49,9 +51,14 @@ in
     nixPath = [
       "nixpkgs=${pkgs.path}"
     ];
+
     daemonNiceLevel = 19;
     gc.automatic = true;
     optimise.automatic = true;
+    extraOptions = ''
+      builders-use-substitutes = true
+      experimental-features = flakes nix-command
+    '';
   };
 
   networking.dhcpcd.enable = false;
@@ -145,7 +152,7 @@ in
     shell = "${pkgs.zsh}/bin/zsh";
   };
 
-  home-manager.users.${config.dotfiles.username} = args: import ./home.nix (args // { inherit pkgs;  });
+  home-manager.users.${config.dotfiles.username} = args: import ./home.nix (args // { inherit pkgs; });
 
-  system.stateVersion = "19.09";
+  system.stateVersion = "20.09";
 }
