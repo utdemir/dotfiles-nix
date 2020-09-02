@@ -58,7 +58,7 @@ $(nix-build -A cachix https://cachix.org/api/v1/install)/bin/cachix use utdemir
 * Fork and clone this repository.
 * Run: `cp home-private.nix{.example,}; cp system-private.nix{.example,}`
 * Update `user.nix` with your personal information.
-* Update `hardware.nix` based on your hardware.
+* (IMPORTANT) Update `hardware.nix` based on your hardware.
 * Run:
 
 ```
