@@ -36,8 +36,9 @@ shift
 case "$mode" in
     "build")
         trace nixos-rebuild build --flake . "${@}"
-        echo "Drv: " "$(readlink ./result)"
-        nix-shell -p python3 --run "./nix/diff /var/run/current-system result >&2"
+        drv="$(readlink ./result)"
+        echo "Drv: $drv"
+        trace nix diff-closures /var/run/current-system/ "$drv" || true
         ;;
     "switch")
         trace sudo nixos-rebuild switch --flake . "${@}"
