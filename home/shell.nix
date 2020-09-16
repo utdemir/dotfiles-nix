@@ -2,11 +2,13 @@
 
 {
   config = {
-    home.packages = with pkgs; [ pkgs.zsh pkgs.nix-zsh-completions ];
+    home.packages = with pkgs; [ pkgs.zsh pkgs.nix-zsh-completions pkgs.zoxide ];
 
     home.file.".zshrc".text = ''
       ${pkgs.any-nix-shell}/bin/any-nix-shell zsh | source /dev/stdin
       source ${pkgs.zsh-syntax-highlighting}/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
+      eval "$(zoxide init zsh)"
 
       # Env
       export TERM=xterm-256color
