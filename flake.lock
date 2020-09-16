@@ -9,13 +9,13 @@
       "locked": {
         "lastModified": 1600023128,
         "narHash": "sha256-oSkMOe0rQ90bC5pfNSl85ren05cmk9Z9xrzrf5rVbr0=",
-        "owner": "rycee",
+        "owner": "nix-community",
         "repo": "home-manager",
         "rev": "472ca211cac604efdf621337067a237be9df389e",
         "type": "github"
       },
       "original": {
-        "owner": "rycee",
+        "owner": "nix-community",
         "ref": "master",
         "repo": "home-manager",
         "type": "github"

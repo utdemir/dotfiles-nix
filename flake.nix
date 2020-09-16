@@ -1,9 +1,9 @@
 {
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-unstable";
-    nixos-hardware.url = "github:/nixos/nixos-hardware/master";
+    nixos-hardware.url = "github:nixos/nixos-hardware/master";
     home-manager = {
-      url = "github:rycee/home-manager/master";
+      url = "github:nix-community/home-manager/master";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
