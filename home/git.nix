@@ -5,6 +5,7 @@
     home.packages = with pkgs; [
       git-lfs
       gitAndTools.hub
+      gitAndTools.gh
     ];
 
     programs.git = {
