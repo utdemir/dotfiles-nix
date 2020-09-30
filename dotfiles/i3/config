@@ -14,6 +14,7 @@ for_window [class="pinentry"] sticky enable
 bindsym $mod+Return exec kitty
 bindsym $mod+BackSpace exec xautolock -locknow
 
+bindsym $mod+q kill
 bindsym $mod+Shift+q kill
 
 bindsym $mod+d exec rofi -show run
