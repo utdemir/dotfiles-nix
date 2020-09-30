@@ -86,6 +86,7 @@
     imagemagick
     iw
     jq
+    (haskell.lib.justStaticExecutables haskellPackages.krank)
     ltrace
     moreutils
     mpv
