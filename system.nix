@@ -24,6 +24,7 @@ in
           [
             "google-chrome"
             "spotify"
+            "spotify-unwrapped"
             "slack"
             "zoom-us"
             "intel-ocl"

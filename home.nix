@@ -86,7 +86,13 @@
     imagemagick
     iw
     jq
-    (haskell.lib.justStaticExecutables haskellPackages.krank)
+    (let hp = haskellPackages.override {
+       overrides = se: su: {
+         PyF = haskell.lib.dontCheck su.PyF;
+       };
+     };
+     in haskell.lib.justStaticExecutables hp.krank
+    )
     ltrace
     moreutils
     mpv
