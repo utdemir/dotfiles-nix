@@ -8,6 +8,7 @@
       ./home/qutebrowser.nix
       ./home/kitty.nix
       ./home/shell.nix
+      ./home/vscode.nix
     ];
 
   dotfiles = import ./user.nix;
