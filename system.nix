@@ -8,8 +8,8 @@ let
     else throw "Cannot figure out name of: ${drv}";
 in
 {
-  imports =
-    (builtins.filter builtins.pathExists [ ./system-private.nix ]) ++ [
+  imports = [
+      ./system-private.nix
       ./nix/dotfiles.nix
     ];
 

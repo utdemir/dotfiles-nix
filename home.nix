@@ -1,14 +1,14 @@
 { config, pkgs, ... }:
 {
-  imports =
-    (builtins.filter builtins.pathExists [ ./home-private.nix ]) ++ [
-      ./nix/dotfiles.nix
-      ./home/wm.nix
-      ./home/git.nix
-      ./home/qutebrowser.nix
-      ./home/kitty.nix
-      ./home/shell.nix
-    ];
+  imports = [
+    ./home-private.nix
+    ./nix/dotfiles.nix
+    ./home/wm.nix
+    ./home/git.nix
+    ./home/qutebrowser.nix
+    ./home/kitty.nix
+    ./home/shell.nix
+  ];
 
   dotfiles = import ./user.nix;
 
