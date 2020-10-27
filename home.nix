@@ -207,6 +207,15 @@
     )
   ];
 
+  programs.emacs = {
+    enable = true;
+    package = pkgs.emacsGcc;
+    extraPackages = (epkgs: [
+      epkgs.vterm
+      epkgs.use-package
+    ]);
+  };
+
   services.syncthing.enable = true;
 
   services.gpg-agent = {
