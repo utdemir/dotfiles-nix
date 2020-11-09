@@ -47,7 +47,6 @@
     whois
     zoom-us
     kubectl
-    ssb-patchwork
     element-desktop
 
     # Fonts
@@ -168,9 +167,6 @@
         plugins = [ kakoune-surround kakoune-rainbow ];
       };
     })
-
-    # bazel
-    bazel
 
     # closure
     leiningen
