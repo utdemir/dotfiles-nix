@@ -23,6 +23,9 @@
         "pull" = {
           ff = "only";
         };
+        "commit" = {
+          verbose = "true";
+        };
         "filter \"lfs\"" = {
           process = "git-lfs filter-process";
           required = true;
