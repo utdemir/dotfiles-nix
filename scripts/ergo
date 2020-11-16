@@ -23,8 +23,8 @@ while true; do
     yad \
       --info --title "ergo" \
       --timeout-indicator bottom --center --on-top --sticky --no-buttons --no-escape \
-      --text='<span font="32">Flop your arms and strech.</span>' --text-align "center" \
-      --timeout="$STRETCH_DURATION_SECONDS"
+      --text="<span font='32'>Strech for $STRETCH_DURATION_SECONDS seconds.</span>" \
+      --text-align "center" --timeout="$STRETCH_DURATION_SECONDS"
   else
     echo "Resting for $REST_DURATION_MINUTES minutes."
     yad \
