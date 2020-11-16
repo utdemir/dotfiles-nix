@@ -202,14 +202,7 @@
     nix-tree
     niv
     nixpkgs-fmt
-    (
-      haskell.lib.justStaticExecutables
-        (pkgs.haskellPackages.override {
-          overrides = se: su: {
-            servant-auth-server = haskell.lib.doJailbreak su.servant-auth-server;
-          };
-        }).cachix
-    )
+    cachix
   ];
 
   programs.emacs = {
