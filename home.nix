@@ -48,6 +48,7 @@
     zoom-us
     kubectl
     element-desktop
+    netlify-cli
 
     # Fonts
     hack-font
