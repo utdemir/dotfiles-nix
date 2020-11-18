@@ -20,6 +20,9 @@
         enable = true;
       };
       extraConfig = {
+        init = {
+          defaultBranch = "main";
+        };
         "pull" = {
           ff = "only";
         };
