@@ -32,7 +32,6 @@ in
       parcellite
       pasystray
       pavucontrol
-      picom
       redshift
       libnotify
       lxappearance
@@ -48,7 +47,6 @@ in
         autorandr --change --default small &
 
         sleep 1
-        picom &
         ergo &
         keynav &
         unclutter &
@@ -72,16 +70,6 @@ in
       '';
       executable = true;
     };
-
-    home.file.".config/picom.conf".text = ''
-      backend = "glx";
-      unredir-if-possible = true;
-
-      opacity-rule = [
-        "90:class_g = 'kitty' && focused",
-        "70:class_g = 'kitty' && !focused"
-      ];
-    '';
 
     systemd.user.services.battery-notification =
       let p = pkgs.runCommand "battery-notification"
