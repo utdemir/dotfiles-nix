@@ -39,7 +39,6 @@
     gthumb
 
     # services
-    awscli
     google-cloud-sdk
     gist
     slack
