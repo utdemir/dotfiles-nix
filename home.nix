@@ -46,6 +46,8 @@
     whois
     zoom-us
     kubectl
+    steam
+    xorg.libxcb # required for steam
     element-desktop
     netlify-cli
 

@@ -30,6 +30,9 @@ in
             "slack"
             "zoom-us"
             "intel-ocl"
+            "steam"
+            "steam-original"
+            "steam-runtime"
             "faac" # required for zoom
           ];
     };
