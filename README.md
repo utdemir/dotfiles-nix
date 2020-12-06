@@ -49,16 +49,19 @@ flag, or simply by disabling the relevant keybindings.
 ## Installation
 
 * Install NixOS as usual.
-* (Optional) Install cachix:
+* Ensure that you are using a Nix version with `flake` support, and set
+  a hostname to your computer:
 
-```
-$(nix-build -A cachix https://cachix.org/api/v1/install)/bin/cachix use utdemir
-```
+  ```
+  nix.package = pkgs.nixFlakes;
+  networking.hostName = "mycomputer";
+  ```
 
 * Fork and clone this repository.
-* Run: `cp home-private.nix{.example,}; cp system-private.nix{.example,}`
-* Update `user.nix` with your personal information.
+* Update `user.nix` with your personal information, including the hostname
+  set above.
 * (IMPORTANT) Update `hardware.nix` based on your hardware.
+  * Hint: Use your `/etc/nixos/hardware-configuration.nix` as a reference.
 * Run:
 
 ```
