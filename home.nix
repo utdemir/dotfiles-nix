@@ -91,7 +91,7 @@
       haskell.lib.justStaticExecutables
         (pkgs.haskellPackages.override {
           overrides = se: su: {
-            optparse-applicative = se.optparse-applicative_0_16_0_0;
+            optparse-applicative = se.optparse-applicative_0_16_1_0;
             lentil = pkgs.haskell.lib.unmarkBroken su.lentil;
           };
         }).lentil
