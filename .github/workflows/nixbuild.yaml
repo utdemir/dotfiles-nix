@@ -9,4 +9,4 @@ jobs:
       - uses: nixbuild/nixbuild-action@v3
         with:
           nixbuild_ssh_key: ${{ secrets.nixbuild_ssh_key }}
-      - run: nix-build nix/ci.nix --max-jobs 100
+      - run: nix-build nix/ci.nix --max-jobs 4
