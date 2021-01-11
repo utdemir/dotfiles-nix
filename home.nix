@@ -37,6 +37,7 @@
     inkscape
     macchanger
     gthumb
+    radicle-upstream
 
     # services
     google-cloud-sdk
@@ -50,6 +51,7 @@
     xorg.libxcb # required for steam
     element-desktop
     netlify-cli
+    signal-desktop
 
     # Fonts
     hack-font
