@@ -28,7 +28,7 @@ in
             "spotify"
             "spotify-unwrapped"
             "slack"
-            "zoom-us"
+            "zoom"
             "intel-ocl"
             "steam"
             "steam-original"
@@ -63,7 +63,7 @@ in
     optimise.automatic = true;
     extraOptions = ''
       builders-use-substitutes = true
-      experimental-features = flakes nix-command
+      experimental-features = flakes nix-command ca-references
     '';
   };
 
