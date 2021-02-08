@@ -79,7 +79,7 @@ in
         } ''
         mkdir -p $out/bin
         makeWrapper ${../scripts/battery-notification.sh} $out/bin/battery-notification.sh \
-          --prefix PATH : "${pkgs.acpi}/bin:${pkgs.libnotify}/bin:${pkgs.bash}/bin:${pkgs.gnugrep}/bin"
+          --prefix PATH : "${pkgs.acpi}/bin:${pkgs.libnotify}/bin:${pkgs.bash}/bin:${pkgs.gnugrep}/bin:${pkgs.coreutils}/bin:${pkgs.gawk}/bin"
       '';
       in
       {

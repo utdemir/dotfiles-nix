@@ -14,7 +14,6 @@
       export TERM=xterm-256color
 
       export PASSWORD_STORE_ENABLE_EXTENSIONS=true
-      export PASSWORD_STORE_EXTENSIONS_DIR=$HOME/.nix-profile/lib/password-store/extensions
 
       # ZSH params
       REPORTTIME=3
@@ -39,7 +38,6 @@
       unsetopt flow_control
 
       # Completions
-      export FPATH=$HOME/.nix-profile/share/zsh/site-functions:$FPATH
       autoload -Uz compinit
 
       setopt always_to_end
@@ -83,8 +81,8 @@
       # Tools
 
       export FZF_DEFAULT_OPTS='--no-height'
-      source $HOME/.nix-profile/share/fzf/completion.zsh
-      source $HOME/.nix-profile/share/fzf/key-bindings.zsh
+      source $(fzf-share)/completion.zsh
+      source $(fzf-share)/key-bindings.zsh
 
       eval "$(direnv hook zsh)"
 
