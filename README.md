@@ -134,7 +134,7 @@ its jobs well.
 `i3` is my *only* window manager. So; I do not use terminal-multiplexers,
 applications with tabs/panes/frames/buffers etc.
 
-* Configuration: [dotfiles/i3]()
+* Configuration: [home/wm.nix]()
 * Keybindings:
   * Holding `Super` shows the status bar & system tray.
   * `Super+enter`: open terminal
@@ -149,18 +149,15 @@ applications with tabs/panes/frames/buffers etc.
 
 ---
 
-### Shell: zsh
+### Shell: fish
 
-I use `zsh`. I have some amount of customisation, but nothing unusual. There
-is not a huge plus of using `zsh`, probably `bash` would also just do fine.
+I use `fish`. I have some amount of customisation, but nothing unusual. Comes
+with a handful of useful plugins.
 
-* Configuration: [dotfiles/zshrc]()
+* Configuration: [home/shell.nix]()
 * Keybindings:
-  * `Ctrl+t`: Uses `fzf` to get a prompt containing a list of files below $PWD.
-  * `Ctrl+s`: Marks the current line as "sticky", so it'll be automatically
-  appended to the following command prompts. Useful for repeatedly using
-  the same tool (`git`, `kubectl` eg.).
-  * `r`: Opens `ranger`
+  * `Ctrl+r`: Uses `fzf` to do a history search.
+  * `r`: Opens `ranger`.
   * `tmp`: cd's to a temporary directory.
 
 ---
