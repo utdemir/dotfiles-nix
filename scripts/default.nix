@@ -1,6 +1,6 @@
 { runCommand, stdenv, lib, resholve, coreutils, yad, bash, gawk,
   libnotify, ranger, dnsutils, whois, gnugrep, pv, findutils, gnused,
-  ncurses, pass, rofi }:
+  ncurses, pass, rofi, maim, zbar }:
 
 let
 # TODO delete after https://github.com/abathur/resholve/issues/24
@@ -25,7 +25,7 @@ stdenv.mkDerivation {
       set -x
       resholve $i \
          --interpreter ${bash}/bin/bash \
-         --path "${lib.makeBinPath [ coreutils yad gawk libnotify dnsutils whois gnugrep pv findutils gnused ncurses pass_ rofi ]}" \
+         --path "${lib.makeBinPath [ coreutils yad gawk libnotify dnsutils whois gnugrep pv findutils gnused ncurses pass_ rofi maim zbar ]}" \
          --keep '$EDITOR' \
          --overwrite
       set +x

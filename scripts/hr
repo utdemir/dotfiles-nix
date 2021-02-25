@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+
+printf "%10s" '' | tr ' ' '\n'
+for _ in $(seq 1 3); do
+  printf "%$(tput cols)s" '' | tr ' ' '='
+done
+printf "%10s" '' | tr ' ' '\n'
