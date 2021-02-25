@@ -25,7 +25,9 @@ stdenv.mkDerivation {
       set -x
       resholve $i \
          --interpreter ${bash}/bin/bash \
-         --path "${lib.makeBinPath [ coreutils yad gawk libnotify dnsutils whois gnugrep pv findutils gnused ncurses pass_ rofi maim zbar ]}" \
+         --path "${lib.makeBinPath [ coreutils yad gawk libnotify dnsutils whois
+                                     gnugrep pv findutils gnused ncurses pass_ rofi
+                                     maim zbar ]}" \
          --keep '$EDITOR' \
          --overwrite
       set +x
