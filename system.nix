@@ -9,9 +9,9 @@ let
 in
 {
   imports = [
-      ./system-private.nix
-      ./nix/dotfiles.nix
-    ];
+    ./system-private.nix
+    ./nix/dotfiles.nix
+  ];
 
   dotfiles = import ./user.nix;
   networking.hostName = config.dotfiles.hostname;
@@ -20,6 +20,7 @@ in
 
   nixpkgs = {
     config = {
+      allowBroken = true;
       allowUnfreePredicate = pkg:
         builtins.elem
           (getName pkg)
@@ -66,6 +67,8 @@ in
       experimental-features = flakes nix-command ca-references
     '';
   };
+
+  programs.command-not-found.enable = false;
 
   networking.dhcpcd.enable = false;
   networking.networkmanager.enable = true;
@@ -155,7 +158,7 @@ in
     isNormalUser = true;
     uid = 1000;
     extraGroups = [ "wheel" "networkmanager" "docker" ];
-    shell = "${pkgs.zsh}/bin/zsh";
+    shell = "${pkgs.fish}/bin/fish";
   };
 
   home-manager = {

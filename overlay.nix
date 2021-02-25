@@ -1,5 +1,7 @@
 self: super:
 {
+  sources = import ./nix/sources.nix;
+
   jaro = self.callPackage ./nix/packages/jaro.nix { xdgRedirect = true; };
   agkozak-zsh-prompt = self.callPackage ./nix/packages/agkozak-zsh-prompt.nix { };
 

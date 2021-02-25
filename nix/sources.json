@@ -1,0 +1,50 @@
+{
+    "fishPlugins.done": {
+        "branch": "master",
+        "description": "A fish-shell package to automatically receive notifications when long processes finish.",
+        "homepage": "",
+        "owner": "franciscolourenco",
+        "repo": "done",
+        "rev": "f7886fdc26cd849ddf21fb05d516548914dd060a",
+        "sha256": "1i7k59kjik41b7mww6d1qbi66vswplmvjdscinyf60irbrsbc5bv",
+        "type": "tarball",
+        "url": "https://github.com/franciscolourenco/done/archive/f7886fdc26cd849ddf21fb05d516548914dd060a.tar.gz",
+        "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
+    },
+    "fishPlugins.fzf.fish": {
+        "branch": "main",
+        "description": "Augment your fish command line with fzf key bindings.",
+        "homepage": "",
+        "owner": "PatrickF1",
+        "repo": "fzf.fish",
+        "rev": "2aaf2dd3c0fd5fb1aade4c62a3c3623f279ddf38",
+        "sha256": "1rd0r7b3bdnw9adxjblcjxjnjf5yfdw6fa3mx51lpb0bzq06wy9g",
+        "type": "tarball",
+        "url": "https://github.com/PatrickF1/fzf.fish/archive/2aaf2dd3c0fd5fb1aade4c62a3c3623f279ddf38.tar.gz",
+        "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
+    },
+    "fishPlugins.pure": {
+        "branch": "master",
+        "description": "Pretty, minimal, and fast prompt for Fish from Zsh.",
+        "homepage": "",
+        "owner": "pure-fish",
+        "repo": "pure",
+        "rev": "49e10fd01135c7c2fee7293888bfd45d5fff7dd9",
+        "sha256": "1w25g5v7w48ayv33rlz7vbwnzj2zrw2l40r60ndp55i52mh50j42",
+        "type": "tarball",
+        "url": "https://github.com/pure-fish/pure/archive/49e10fd01135c7c2fee7293888bfd45d5fff7dd9.tar.gz",
+        "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
+    },
+    "pure": {
+        "branch": "master",
+        "description": "Pretty, minimal, and fast prompt for Fish from Zsh.",
+        "homepage": "",
+        "owner": "pure-fish",
+        "repo": "pure",
+        "rev": "49e10fd01135c7c2fee7293888bfd45d5fff7dd9",
+        "sha256": "1w25g5v7w48ayv33rlz7vbwnzj2zrw2l40r60ndp55i52mh50j42",
+        "type": "tarball",
+        "url": "https://github.com/pure-fish/pure/archive/49e10fd01135c7c2fee7293888bfd45d5fff7dd9.tar.gz",
+        "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
+    }
+}
