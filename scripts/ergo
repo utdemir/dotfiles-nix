@@ -6,11 +6,6 @@ STRETCH_INTERVAL_MINUTES=10
 REST_RECURRENCE=6
 REST_DURATION_MINUTES=10
 
-if ! command -v yad >/dev/null 2>&1; then
-  echo "This script requires a 'yad' executable on PATH. Exiting." 2>&1
-  exit 1
-fi
-
 rest_remaining=$REST_RECURRENCE
 while true; do
   wait_secs="$(( STRETCH_INTERVAL_MINUTES * 60 - STRETCH_DURATION_SECONDS ))"

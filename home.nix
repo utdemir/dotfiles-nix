@@ -13,6 +13,8 @@
   dotfiles = import ./user.nix;
 
   home.packages = with pkgs; [
+    (callPackage ./scripts {})
+
     # WM
     acpi
     maim
@@ -146,17 +148,6 @@
       inherit (texlive) scheme-small;
     })
 
-    (
-      callPackage ./nix/mk-scripts.nix
-        { }
-        {
-          path = ./scripts;
-          postBuild = ''
-            wrapProgram "$out/bin/ergo" \
-              --prefix PATH ":" "${yad}/bin"
-          '';
-        }
-    )
     jaro
     (runCommand "jaro-xdg-open" { } ''
       mkdir -p $out/bin
