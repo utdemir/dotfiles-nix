@@ -18,7 +18,6 @@ stdenv.mkDerivation {
   installPhase = ''
     mkdir -p $out/bin
     cp * $out/bin
-
   '';
   fixupPhase = ''
     for i in $out/bin/*; do
