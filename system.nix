@@ -80,6 +80,7 @@ in
   time.timeZone = "Pacific/Auckland";
 
   environment.systemPackages = with pkgs; [ vim git ];
+  environment.pathsToLink = [ "/share/fish" ];
 
   # Linux>5.6 solve some issues with Intel GPUs
   boot.kernelPackages = pkgs.linuxPackages_latest;
