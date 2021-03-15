@@ -52,7 +52,6 @@
     steam
     xorg.libxcb # required for steam
     element-desktop
-    netlify-cli
     signal-desktop
 
     # Fonts
@@ -68,7 +67,6 @@
     curl
     direnv
     dnsutils
-    docker_compose
     dos2unix
     entr
     (
