@@ -151,9 +151,9 @@ in
 
   hardware.bluetooth.enable = true;
   services.blueman.enable = true;
+  programs.dconf.enable = true;
 
   documentation.nixos.enable = false;
-
 
   users.extraUsers.${config.dotfiles.username} = {
     home = "/home/${config.dotfiles.username}";
