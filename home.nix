@@ -194,6 +194,11 @@
     cachix
   ];
 
+  programs.direnv = {
+    enable = true;
+    enableNixDirenvIntegration = true;
+  };
+
   services.gpg-agent = {
     enable = true;
     enableSshSupport = true;

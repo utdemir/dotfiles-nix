@@ -65,6 +65,8 @@ in
     extraOptions = ''
       builders-use-substitutes = true
       experimental-features = flakes nix-command ca-references
+      keep-outputs = true
+      keep-derivations = true
     '';
   };
 
@@ -134,8 +136,6 @@ in
     };
     xkbOptions = "caps:escape";
   };
-
-  services.lorri.enable = true;
 
   services.earlyoom = {
     enable = true;
