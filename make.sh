@@ -44,7 +44,6 @@ case "$mode" in
         trace sudo nixos-rebuild switch --flake . "${@}"
         ;;
     "update")
-        trace niv update
         trace nix flake update
         "$0" build
         ;;

@@ -23,8 +23,8 @@
          set -e fish_greeting
       '';
       plugins = [
-        { name = "fish-pure"; src = pkgs.sources."fishPlugins.pure"; }
-        { name = "done"; src = pkgs.sources."fishPlugins.done"; }
+        { name = "fish-pure"; src = pkgs.dotfiles-inputs.fishPlugins-pure; }
+        { name = "done"; src = pkgs.dotfiles-inputs.fishPlugins-done; }
       ];
     };
   };

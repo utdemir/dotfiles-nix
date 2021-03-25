@@ -20,6 +20,8 @@
       map ctrl+shift+p kitten hints --type path --program -
       map ctrl+shift+h kitten hints --type hash --program -
 
+      map ctrl+shift+. kitten unicode_input
+
       map ctrl+shift+equal change_font_size all +2.0
       map ctrl+shift+minus change_font_size all -2.0
       map ctrl+shift+0 change_font_size all 0

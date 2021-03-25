@@ -8,6 +8,7 @@
     ./home/qutebrowser.nix
     ./home/kitty.nix
     ./home/shell.nix
+    ./home/kak.nix
   ];
 
   dotfiles = import ./user.nix;
@@ -164,11 +165,6 @@
 
     # editors
     vim
-    (kakoune.override {
-      configure = {
-        plugins = [ kakoune-surround kakoune-rainbow ];
-      };
-    })
 
     # closure
     leiningen
@@ -211,8 +207,6 @@
   };
 
   manual.manpages.enable = true;
-
-  home.file.".config/kak/kakrc".source = ./dotfiles/kakrc;
 
   home.file.".config/ranger/rc.conf".source = ./dotfiles/ranger/rc.conf;
   home.file.".config/ranger/rifle.conf".source = ./dotfiles/ranger/rifle.conf;
