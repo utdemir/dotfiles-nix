@@ -19,6 +19,9 @@
       delta = {
         enable = true;
       };
+      ignores = [
+        ".direnv"
+      ];
       extraConfig = {
         init = {
           defaultBranch = "main";
