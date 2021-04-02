@@ -39,11 +39,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1616815633,
-        "narHash": "sha256-U9DO04sb+8Qy13EJckxOJIxT2Vlc/8i089XkfBnXH0M=",
+        "lastModified": 1617220862,
+        "narHash": "sha256-nLka+S6Vww8hTF3ZkzK/BezvgAo1Z433/L6TR1SiXyM=",
         "owner": "nix-community",
         "repo": "home-manager",
-        "rev": "7b30fc99227e6c7c331a01a9fb87599e4cd8cee1",
+        "rev": "ad04237d5142f53dcba258942b78e2d2bbf210c8",
         "type": "github"
       },
       "original": {
@@ -72,11 +72,11 @@
     "kakounePlugins-lsp": {
       "flake": false,
       "locked": {
-        "lastModified": 1616325339,
-        "narHash": "sha256-TB7Nw6oEa31hG6d8eDrEKtS0b/hvqegVM1ZURWPTj88=",
+        "lastModified": 1617301843,
+        "narHash": "sha256-FERVsba/vhUEJfjw0xTu0ZOJEuhatBt1muxUMuZ8PCg=",
         "owner": "kak-lsp",
         "repo": "kak-lsp",
-        "rev": "ef9379ceceeb590b8fc8c4ff373b0d94be76066e",
+        "rev": "bb5d8c9f5f83b4088c33fbb0bc396533268f7df0",
         "type": "github"
       },
       "original": {
