@@ -80,6 +80,11 @@ in
       filetypes = ["ocaml"]
       roots  = ["dune-project"]
       command = "ocamllsp"
+
+      [language.rust]
+      filetypes = ["rust"]
+      roots  = ["cargo.toml"]
+      command = "rls"
     '';
   };
 }
