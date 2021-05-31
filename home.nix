@@ -90,6 +90,7 @@
     imagemagick
     iw
     jq
+    yq
     (haskell.lib.justStaticExecutables pkgs.haskellPackages.lentil)
     ltrace
     moreutils
@@ -114,6 +115,7 @@
     strace
     tcpdump
     tig
+    gitui
     tmux
     tokei
     tree
