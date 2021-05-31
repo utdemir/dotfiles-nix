@@ -67,6 +67,8 @@ in
       set global lsp_hover_max_lines 3
       lsp-enable
       lsp-auto-hover-enable
+
+      set-option global lsp_server_configuration haskell.hlintOn=false
     '';
 
     home.file.".config/kak-lsp/kak-lsp.toml".text = ''
