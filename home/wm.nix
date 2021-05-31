@@ -14,7 +14,7 @@ in
 
     home.packages = with pkgs; [
       i3
-      i3lock-fancy
+      betterlockscreen
       i3blocks
       arandr
       autorandr
@@ -54,7 +54,7 @@ in
         nm-applet &
         parcellite &
         pasystray &
-        xautolock -locker "i3lock-fancy"  -time 5 -detectsleep &
+        xautolock -locker "betterlockscreen --lock"  -time 5 -detectsleep &
         redshift -l -36.84853:174.76349 & # auckland, nz
       '';
     };
