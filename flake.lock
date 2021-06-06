@@ -117,6 +117,25 @@
         "type": "github"
       }
     },
+    "naersk": {
+      "inputs": {
+        "nixpkgs": "nixpkgs"
+      },
+      "locked": {
+        "lastModified": 1619312121,
+        "narHash": "sha256-Zx1rTlonsp54lVlnIg38HV3bYx6GdIoKS1SgDnV+YBY=",
+        "owner": "yusdacra",
+        "repo": "naersk",
+        "rev": "07d0b56bdbd353a705f26b799e3a125c7be0f8c3",
+        "type": "github"
+      },
+      "original": {
+        "owner": "yusdacra",
+        "ref": "feat/cargolock-git-deps",
+        "repo": "naersk",
+        "type": "github"
+      }
+    },
     "nixos-hardware": {
       "locked": {
         "lastModified": 1622405422,
@@ -134,6 +153,20 @@
       }
     },
     "nixpkgs": {
+      "locked": {
+        "lastModified": 1622582826,
+        "narHash": "sha256-Rp0Ze1V+x+5aSRcv4eI9IuNGADwTNPZBBvnXAxcbh9Y=",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "b6e6f1dddd165f149f89865dd5f14722298f1521",
+        "type": "github"
+      },
+      "original": {
+        "id": "nixpkgs",
+        "type": "indirect"
+      }
+    },
+    "nixpkgs_2": {
       "locked": {
         "lastModified": 1622059058,
         "narHash": "sha256-t1/ZMtyxClVSfcV4Pt5C1YpkeJ/UwFF3oitLD7Ch/UA=",
@@ -158,8 +191,9 @@
         "kakounePlugins-lsp": "kakounePlugins-lsp",
         "kakounePlugins-rainbow": "kakounePlugins-rainbow",
         "kakounePlugins-surround": "kakounePlugins-surround",
+        "naersk": "naersk",
         "nixos-hardware": "nixos-hardware",
-        "nixpkgs": "nixpkgs"
+        "nixpkgs": "nixpkgs_2"
       }
     }
   },

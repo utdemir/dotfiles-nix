@@ -1,6 +1,25 @@
 { config, pkgs, ... }:
 
 let
+
+kak-tree-src = pkgs.fetchgit {
+  url = "https://github.com/ul/kak-tree";
+  rev  = "863924d21c7bba970b33faab84ff12136ff4ad1a";
+  sha256 = "sha256-Ii5OOvV456m07iGwzkYAIqbZ2I80c/463vqjSC0WWFs=";
+  fetchSubmodules = true;
+};
+
+kak-tree-bin = pkgs.naersk.buildPackage {
+  src = kak-tree-src;
+  gitSubmodules = true;
+  cargoBuildOptions = s: s ++ ["--features" "'rust javascript python haskell ruby bash'"];
+};
+
+kak-tree-plugin = pkgs.kakouneUtils.buildKakounePlugin {
+  name = "kak-tree";
+  src = kak-tree-src;
+};
+
 mkPlugin = name:
   let src = pkgs.dotfiles-inputs."kakounePlugins-${name}";
    in pkgs.kakouneUtils.buildKakounePlugin {
@@ -17,10 +36,12 @@ in
             (mkPlugin "surround")
             (mkPlugin "rainbow")
             (mkPlugin "kakboard")
+            kak-tree-plugin
           ];
         };
       })
       pkgs.kak-lsp
+      kak-tree-bin
     ];
 
     home.file.".config/kak/kakrc".text = ''

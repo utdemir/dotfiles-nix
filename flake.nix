@@ -2,6 +2,7 @@
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-unstable";
     nixos-hardware.url = "github:nixos/nixos-hardware/master";
+    naersk.url = "github:yusdacra/naersk/feat/cargolock-git-deps";
     home-manager = {
       url = "github:nix-community/home-manager/master";
       inputs.nixpkgs.follows = "nixpkgs";
