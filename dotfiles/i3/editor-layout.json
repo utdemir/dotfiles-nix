@@ -1,0 +1,67 @@
+{
+    "border": "pixel",
+    "current_border_width": 1,
+    "floating": "auto_off",
+    "geometry": {
+       "height": 538,
+       "width": 190,
+       "x": 0,
+       "y": 0
+    },
+    "marks": [],
+    "name": "terminal-left",
+    "percent": 0.5,
+    "swallows": [
+       { "class": "^kitty-left$" }
+    ],
+    "type": "con"
+}
+
+{
+    // splitv split container with 2 children
+    "border": "pixel",
+    "floating": "auto_off",
+    "layout": "splitv",
+    "marks": [],
+    "percent": 0.5,
+    "type": "con",
+    "nodes": [
+        {
+            "border": "pixel",
+            "current_border_width": 1,
+            "floating": "auto_off",
+            "geometry": {
+               "height": 538,
+               "width": 190,
+               "x": 0,
+               "y": 0
+            },
+            "marks": [],
+            "name": "terminal-top",
+            "percent": 0.5,
+            "swallows": [
+               { "class": "^kitty-top$" }
+            ],
+            "type": "con"
+        },
+        {
+            "border": "pixel",
+            "current_border_width": 1,
+            "floating": "auto_off",
+            "geometry": {
+               "height": 538,
+               "width": 190,
+               "x": 0,
+               "y": 0
+            },
+            "marks": [],
+            "name": "kitty-bottom",
+            "percent": 0.5,
+            "swallows": [
+               { "class": "^kitty-bottom$" }
+            ],
+            "type": "con"
+        }
+    ]
+}
+

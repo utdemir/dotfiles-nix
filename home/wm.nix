@@ -4,6 +4,16 @@ let
   #   By JJ Harrison (https://www.jjharrison.com.au/)
   #   - Own work, CC BY-SA 4.0, https://commons.wikimedia.org/w/index.php?curid=90332278
   wallpaper = ../static/wallpaper.jpg;
+
+  loadEditorLayout =
+    pkgs.runCommand "i3-load-editor-layout" { buildInputs = [ pkgs.makeWrapper ]; } ''
+      set -x
+      mkdir -p "$out/bin"
+      makeWrapper \
+        "${../dotfiles/i3/load-editor-layout.sh}" \
+        "$out/bin/i3-load-editor-layout" \
+        --set EDITOR_LAYOUT_JSON "${../dotfiles/i3/editor-layout.json}"
+    '';
 in
 {
   config = {
@@ -36,6 +46,7 @@ in
       libnotify
       lxappearance
       playerctl
+      loadEditorLayout
     ];
     home.file.".config/associations".source = ../dotfiles/associations;
     home.file.".config/i3/config".source = ../dotfiles/i3/config;

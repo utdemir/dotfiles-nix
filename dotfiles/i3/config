@@ -19,7 +19,7 @@ bindsym $mod+Shift+q kill
 
 bindsym $mod+d exec rofi -show run
 bindsym $mod+p exec rofi-pass
-bindsym $mod+s exec rofi -show window
+bindsym $mod+s exec i3-load-editor-layout
 
 bindsym XF86AudioRaiseVolume exec --no-startup-id pactl -- set-sink-volume @DEFAULT_SINK@ +5% #increase sound volume
 bindsym XF86AudioLowerVolume exec --no-startup-id pactl -- set-sink-volume @DEFAULT_SINK@ -5% #decrease sound volume
