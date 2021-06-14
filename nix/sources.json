@@ -1,0 +1,122 @@
+{
+    "fishPlugins-done": {
+        "branch": "master",
+        "description": "A fish-shell package to automatically receive notifications when long processes finish.",
+        "homepage": "",
+        "owner": "franciscolourenco",
+        "repo": "done",
+        "rev": "37117c3d8ed6b820f6dc647418a274ebd1281832",
+        "sha256": "1k95w2plb4jchqn0n84ickfkp3gan8k1l5xdcv1hkfgcvka0f9vi",
+        "type": "tarball",
+        "url": "https://github.com/franciscolourenco/done/archive/37117c3d8ed6b820f6dc647418a274ebd1281832.tar.gz",
+        "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
+    },
+    "fishPlugins-pure": {
+        "branch": "master",
+        "description": "Pretty, minimal, and fast prompt for Fish from Zsh.fish theme prompt fish-theme fish-prompt ",
+        "homepage": "",
+        "owner": "pure-fish",
+        "repo": "pure",
+        "rev": "c0df5cb4726aa6831c0473556066a4cbf48fc79e",
+        "sha256": "1ki7b6b7nrb8fzhcslkvg6a9i5fi2da6bv9fm693yvhfhccf863b",
+        "type": "tarball",
+        "url": "https://github.com/pure-fish/pure/archive/c0df5cb4726aa6831c0473556066a4cbf48fc79e.tar.gz",
+        "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
+    },
+    "home-manager": {
+        "branch": "master",
+        "description": "Manage a user environment using Nix  [maintainer=@rycee] ",
+        "homepage": "https://nix-community.github.io/home-manager/",
+        "owner": "nix-community",
+        "repo": "home-manager",
+        "rev": "25bf3d79531ce45fd36866205bf07a24bb3be2b9",
+        "sha256": "1m99cpbgq9b029d2ppd0n74jcd1gj4xvq3i2dablzkiq70yvjjq2",
+        "type": "tarball",
+        "url": "https://github.com/nix-community/home-manager/archive/25bf3d79531ce45fd36866205bf07a24bb3be2b9.tar.gz",
+        "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
+    },
+    "kakounePlugins-kakboard": {
+        "branch": "master",
+        "description": "Clipboard integration for Kakoune",
+        "homepage": null,
+        "owner": "lePerdu",
+        "repo": "kakboard",
+        "rev": "2f13f5cd99591b76ad5cba230815b80138825120",
+        "sha256": "1kvnbsv20y09rlnyar87qr0h26i16qsq801krswvxcwhid7ijlvd",
+        "type": "tarball",
+        "url": "https://github.com/lePerdu/kakboard/archive/2f13f5cd99591b76ad5cba230815b80138825120.tar.gz",
+        "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
+    },
+    "kakounePlugins-lsp": {
+        "branch": "master",
+        "description": "Kakoune Language Server Protocol Client",
+        "homepage": null,
+        "owner": "kak-lsp",
+        "repo": "kak-lsp",
+        "rev": "23c5f3c450c1e42856c7ff15af4234d566ee5b11",
+        "sha256": "15nij24qpzyanh7h5jqpgvyvv29k1hcxiz84qbz4p7hxnkq2v8xz",
+        "type": "tarball",
+        "url": "https://github.com/kak-lsp/kak-lsp/archive/23c5f3c450c1e42856c7ff15af4234d566ee5b11.tar.gz",
+        "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
+    },
+    "kakounePlugins-rainbow": {
+        "branch": "master",
+        "description": "Highlight parentheses in kakoune",
+        "homepage": null,
+        "owner": "JJK96",
+        "repo": "kakoune-rainbow",
+        "rev": "63097fbf478217f8b5aa4f85eaa26c95d7c5243e",
+        "sha256": "1hx79mxrajnkxk2f1q38zydgjhf5fb3kwmwvrmjv861rqqpbm49f",
+        "type": "tarball",
+        "url": "https://github.com/JJK96/kakoune-rainbow/archive/63097fbf478217f8b5aa4f85eaa26c95d7c5243e.tar.gz",
+        "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
+    },
+    "kakounePlugins-surround": {
+        "branch": "master",
+        "description": "Surround selection, Change/Delete surrounder",
+        "homepage": null,
+        "owner": "h-youhei",
+        "repo": "kakoune-surround",
+        "rev": "efe74c6f434d1e30eff70d4b0d737f55bf6c5022",
+        "sha256": "09fd7qhlsazf4bcl3z7xh9z0fklw69c5j32hminphihq74qrry6h",
+        "type": "tarball",
+        "url": "https://github.com/h-youhei/kakoune-surround/archive/efe74c6f434d1e30eff70d4b0d737f55bf6c5022.tar.gz",
+        "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
+    },
+    "naersk": {
+        "branch": "feat/cargolock-git-deps",
+        "description": "Build rust crates in Nix. No configuration, no code generation, no IFD. Sandbox friendly.",
+        "homepage": "",
+        "owner": "yusdacra",
+        "repo": "naersk",
+        "rev": "f411315a2954bd60bdcba2bc0cff7f4b0012a12a",
+        "sha256": "0vkypp67y4zg369yw5pmqa8rrdws9sayccnn6wnknavgb9z92g32",
+        "type": "tarball",
+        "url": "https://github.com/yusdacra/naersk/archive/f411315a2954bd60bdcba2bc0cff7f4b0012a12a.tar.gz",
+        "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
+    },
+    "nixos-hardware": {
+        "branch": "master",
+        "description": "A collection of NixOS modules covering hardware quirks.",
+        "homepage": "",
+        "owner": "nixos",
+        "repo": "nixos-hardware",
+        "rev": "7305b276c90cfd3ad0a2452101a49c0b52c784c0",
+        "sha256": "084ib3002xnx5k0y1yj1s07n1m4xgy5zmx7pcmshy4b4a8vqa3rj",
+        "type": "tarball",
+        "url": "https://github.com/nixos/nixos-hardware/archive/7305b276c90cfd3ad0a2452101a49c0b52c784c0.tar.gz",
+        "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
+    },
+    "nixpkgs": {
+        "branch": "nixpkgs-unstable",
+        "description": "Nix Packages collection",
+        "homepage": "",
+        "owner": "nixos",
+        "repo": "nixpkgs",
+        "rev": "51bb9f3e9ab6161a3bf7746e20b955712cef618b",
+        "sha256": "1bqla14c80ani27c7901rnl37kiiqrvyixs6ifvm48p5y6xbv1p7",
+        "type": "tarball",
+        "url": "https://github.com/nixos/nixpkgs/archive/51bb9f3e9ab6161a3bf7746e20b955712cef618b.tar.gz",
+        "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
+    }
+}

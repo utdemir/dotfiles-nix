@@ -14,5 +14,6 @@ i3-msg "append_layout $EDITOR_LAYOUT_JSON"
 
 kitty --directory "$dir" --detach --class kitty-top &
 kitty --directory "$dir" --detach --class kitty-bottom &
+kitty --directory "$dir" --detach --class kitty-left &
 wait
-kitty --directory "$dir" --detach --class kitty-left
+i3-msg '[class="kitty-left"] focus'

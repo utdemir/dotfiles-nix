@@ -43,8 +43,6 @@ in
   };
 
   nix = {
-    package = pkgs.nixUnstable;
-
     binaryCaches = [
       "https://utdemir.cachix.org"
       "https://hs-nix-template.cachix.org"
@@ -64,7 +62,7 @@ in
     optimise.automatic = true;
     extraOptions = ''
       builders-use-substitutes = true
-      experimental-features = flakes nix-command ca-references
+      experimental-features = nix-command
       keep-outputs = true
       keep-derivations = true
     '';

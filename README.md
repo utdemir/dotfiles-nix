@@ -47,14 +47,6 @@ flag, or simply by disabling the relevant keybindings.
 ## Installation
 
 * Install NixOS as usual.
-* Ensure that you are using a Nix version with `flake` support, and set
-  a hostname to your computer:
-
-  ```
-  nix.package = pkgs.nixFlakes;
-  networking.hostName = "mycomputer";
-  ```
-
 * Fork and clone this repository.
 * Update `user.nix` with your personal information, including the hostname
   set above.

@@ -35,17 +35,22 @@ shift
 
 case "$mode" in
     "build")
-        trace nixos-rebuild build --flake . "${@}"
-        drv="$(readlink ./result)"
-        echo "Drv: $drv"
-        trace nix store diff-closures /var/run/current-system/ "$drv" || true
+        tmp="$(mktemp -u)"
+        trace nix build --no-link -f "./nix/default.nix" -o "$tmp/result" --keep-going "$@" >&2
+        trap "rm '$tmp/result'" EXIT
+        drv="$(readlink "$tmp/result")"
+        echo "Drv: $drv" >&2
+        echo "$drv"
         ;;
     "switch")
-        trace sudo nixos-rebuild switch --flake . "${@}"
+        drv="$(trace ./make.sh build)"
+        trace sudo nix-env -p /nix/var/nix/profiles/system --set "$drv"
+        NIXOS_INSTALL_BOOTLOADER=1 trace sudo --preserve-env=NIXOS_INSTALL_BOOTLOADER "$drv/bin/switch-to-configuration" switch
         ;;
     "update")
-        trace nix flake update
-        "$0" build
+        trace niv update
+        drv="$(./make.sh build)"
+        trace nix store diff-closures /var/run/current-system/ "$drv" || true
         ;;
     "info")
         drv="$(realpath /var/run/current-system)"

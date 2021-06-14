@@ -7,6 +7,7 @@
     ./home/git.nix
     ./home/qutebrowser.nix
     ./home/kitty.nix
+    ./home-private.nix
     ./home/shell.nix
     ./home/kak.nix
   ];
@@ -54,6 +55,8 @@
     xorg.libxcb # required for steam
     element-desktop
     signal-desktop
+    ssb-patchwork
+    awscli2
 
     # Fonts
     hack-font
