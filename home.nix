@@ -1,4 +1,16 @@
 { config, pkgs, ... }:
+
+let
+myPass =
+  pkgs.pass.withExtensions (ext: [
+    ext.pass-otp
+    (pkgs.runCommand "pass-rotate" { } ''
+      install -vDm ugo=x \
+        ${./scripts/pass-rotate} \
+        $out/lib/password-store/extensions/rotate.bash
+    '')
+  ]);
+in
 {
   imports = [
     ./home-private.nix
@@ -15,7 +27,7 @@
   dotfiles = import ./user.nix;
 
   home.packages = with pkgs; [
-    (callPackage ./scripts {})
+    (callPackage ./scripts { pass = myPass; })
 
     # WM
     acpi
@@ -151,14 +163,8 @@
     '')
 
     # password-store
-    (pass.withExtensions (ext: [
-      ext.pass-otp
-      (runCommand "pass-rotate" { } ''
-        install -vDm ugo=x \
-          ${./scripts/pass-rotate} \
-          $out/lib/password-store/extensions/rotate.bash
-      '')
-    ]))
+    myPass
+
 
     # editors
     vim
