@@ -62,7 +62,6 @@ in
     optimise.automatic = true;
     extraOptions = ''
       builders-use-substitutes = true
-      experimental-features = nix-command
       keep-outputs = true
       keep-derivations = true
     '';
