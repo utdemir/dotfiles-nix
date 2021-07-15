@@ -50,7 +50,7 @@ case "$mode" in
     "update")
         trace niv update
         drv="$(./make.sh build)"
-        trace nix store diff-closures /var/run/current-system/ "$drv" || true
+        # trace nix store diff-closures /var/run/current-system/ "$drv" || true
         ;;
     "info")
         drv="$(realpath /var/run/current-system)"
