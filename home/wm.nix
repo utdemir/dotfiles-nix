@@ -65,7 +65,10 @@ in
         nm-applet &
         parcellite &
         pasystray &
-        xautolock -locker "betterlockscreen --lock"  -time 5 -detectsleep &
+        xautolock \
+          -detectsleep \
+          -time 5 -locker "betterlockscreen --lock" \
+          -notify 10 -notifier 'notify-send -t 10000 "Screen lock oncoming."' &
         redshift -l -36.84853:174.76349 & # auckland, nz
       '';
     };
