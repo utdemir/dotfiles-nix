@@ -1,4 +1,4 @@
-# Configuration for my workstation and servers
+# Configuration of my workstation and servers
 
 This repository forms my home network; including services, applications
 and configurations for my workstations (one desktop and one laptop), and
