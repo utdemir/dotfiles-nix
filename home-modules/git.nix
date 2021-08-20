@@ -1,7 +1,12 @@
-{ config, pkgs, ... }:
+{ config, lib, pkgs, ... }:
 
+with lib;
 {
-  config = {
+  options = {
+    dotfiles.git.enabled = mkEnableOption "git";
+  };
+
+  config = mkIf config.dotfiles.git.enabled {
     home.packages = with pkgs; [
       git-lfs
       gitAndTools.hub
@@ -10,8 +15,8 @@
 
     programs.git = {
       enable = true;
-      userName = config.dotfiles.name;
-      userEmail = config.dotfiles.email;
+      userName = config.dotfiles.params.fullname;
+      userEmail = config.dotfiles.params.email;
       aliases = {
         co = "checkout";
         st = "status -sb";
@@ -20,6 +25,7 @@
         enable = true;
       };
       ignores = [
+        ".envrc"
         ".direnv"
       ];
       extraConfig = {
@@ -48,16 +54,11 @@
           detachedHead = false;
         };
       };
-    } // (
-      if config.dotfiles.gpgKey != ""
-      then {
-        signing = {
-          signByDefault = true;
-          key = config.dotfiles.gpgKey;
-          gpgPath = "gpg";
-        };
-      }
-      else { }
-    );
+      signing = {
+        signByDefault = true;
+        key = config.dotfiles.params.gpgKey;
+        gpgPath = "gpg";
+      };
+    };
   };
 }

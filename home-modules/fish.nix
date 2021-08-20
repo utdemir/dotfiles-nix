@@ -1,7 +1,11 @@
-{ config, pkgs, ... }:
+{ config, lib, pkgs, ... }:
 
+with lib;
 {
-  config = {
+  options = {
+    dotfiles.fish.enabled = mkEnableOption "fish";
+  };
+  config = mkIf config.dotfiles.fish.enabled {
     home.packages = [ pkgs.zoxide pkgs.any-nix-shell ];
 
     programs.fish = {
@@ -17,14 +21,14 @@
         r = "ranger";
       };
       shellInit = ''
-         zoxide init fish | source
-         any-nix-shell fish --info-right | source
+        zoxide init fish | source
+        any-nix-shell fish --info-right | source
 
-         set -e fish_greeting
+        set -e fish_greeting
       '';
       plugins = [
-        { name = "fish-pure"; src = pkgs.dotfiles-inputs.fishPlugins-pure; }
-        { name = "done"; src = pkgs.dotfiles-inputs.fishPlugins-done; }
+        { name = "fish-pure"; src = pkgs.dotfiles-sources.fishPlugins-pure; }
+        { name = "done"; src = pkgs.dotfiles-sources.fishPlugins-done; }
       ];
     };
   };

@@ -1,6 +1,10 @@
-{ config, pkgs, ... }:
+{ config, lib, pkgs, ... }:
 
+with lib;
 {
+  options = {
+    dotfiles.qutebrowser.enabled = mkEnableOption "qutebrowser";
+  };
   config = {
     home.packages = [ pkgs.qutebrowser ];
 

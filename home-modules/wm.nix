@@ -1,4 +1,6 @@
-{ config, pkgs, ... }:
+{ config, lib, pkgs, ... }:
+
+with lib;
 let
   # Wallpaper:
   #   By JJ Harrison (https://www.jjharrison.com.au/)
@@ -16,7 +18,10 @@ let
     '';
 in
 {
-  config = {
+  options = {
+    dotfiles.wm.enabled = mkEnableOption "wm";
+  };
+  config = mkIf config.dotfiles.wm.enabled {
     xsession = {
       enable = true;
       windowManager.command = "i3";
@@ -26,8 +31,6 @@ in
       i3
       betterlockscreen
       i3blocks
-      arandr
-      autorandr
       dunst
       feh
       rofi
@@ -47,6 +50,7 @@ in
       lxappearance
       playerctl
       loadEditorLayout
+      kitty
     ];
     home.file.".config/associations".source = ../dotfiles/associations;
     home.file.".config/i3/config".source = ../dotfiles/i3/config;
@@ -55,8 +59,6 @@ in
       executable = true;
       text = ''
         feh --bg-fill "${wallpaper}" --no-xinerama &
-
-        autorandr --change --default small &
 
         sleep 1
         ergo &
@@ -67,46 +69,38 @@ in
         pasystray &
         xautolock \
           -detectsleep \
-          -time 5 -locker "betterlockscreen --lock" \
+          -time 30 -locker "betterlockscreen --lock" \
           -notify 10 -notifier 'notify-send -t 10000 "Screen lock oncoming."' &
         redshift -l -36.84853:174.76349 & # auckland, nz
       '';
     };
 
+    home.file.".config/kitty/kitty.conf".text = ''
+      scrollback_lines 100000
+
+      font_family Hack
+      font_size 14
+
+      clear_all_shortcuts yes
+
+      map ctrl+shift+c copy_to_clipboard
+      map ctrl+shift+v paste_from_clipboard
+      map ctrl+shift+l show_scrollback
+
+      map ctrl+shift+u kitten hints
+      map ctrl+shift+p kitten hints --type path --program -
+      map ctrl+shift+h kitten hints --type hash --program -
+
+      map ctrl+shift+. kitten unicode_input
+
+      map ctrl+shift+equal change_font_size all +2.0
+      map ctrl+shift+minus change_font_size all -2.0
+      map ctrl+shift+0 change_font_size all 0
+    '';
+
     home.file.".config/i3blocks/config".source = ../dotfiles/i3/i3blocks;
     home.file.".config/rofi/config".source = ../dotfiles/rofi;
     home.file.".config/fontconfig/fonts.conf".source = ../dotfiles/fonts.conf;
     home.file.".config/dunst/dunstrc".source = ../dotfiles/dunstrc;
-
-    home.file.".config/autorandr/postswitch" = {
-      text = ''
-        #!/usr/bin/env sh
-        feh --bg-fill ${wallpaper} --no-xinerama
-      '';
-      executable = true;
-    };
-
-    systemd.user.services.battery-notification = {
-      Unit = {
-        Description = "Sends a notification on low battery.";
-        PartOf = [ "graphical-session.target" ];
-      };
-      Service = {
-        Type = "oneshot";
-        ExecStart = "${pkgs.callPackage ../scripts {}}/bin/battery-notification.sh";
-      };
-    };
-
-    systemd.user.timers.battery-notification = {
-      Timer = {
-        OnCalendar = "minutely";
-        Unit = "battery-notification.service";
-        Persistent = true;
-      };
-      Install = {
-        WantedBy = [ "timers.target" ];
-      };
-    };
-
   };
 }

@@ -1,13 +1,32 @@
-{ runCommand, stdenv, lib, resholve, coreutils, yad, bash, gawk,
-  libnotify, ranger, dnsutils, whois, gnugrep, pv, findutils, gnused,
-  ncurses, pass, rofi, maim, zbar }:
+{ runCommand
+, stdenv
+, lib
+, resholve
+, coreutils
+, yad
+, bash
+, gawk
+, libnotify
+, ranger
+, dnsutils
+, whois
+, gnugrep
+, pv
+, findutils
+, gnused
+, ncurses
+, pass
+, rofi
+, maim
+, zbar
+}:
 
 let
-# TODO delete after https://github.com/abathur/resholve/issues/24
-pass_ = runCommand "pass-hack" {} ''
-  mkdir -p $out/bin/
-  ln -s ${pass}/bin/pass $out/bin/pass_
-'';
+  # TODO delete after https://github.com/abathur/resholve/issues/24
+  pass_ = runCommand "pass-hack" { } ''
+    mkdir -p $out/bin/
+    ln -s ${pass}/bin/pass $out/bin/pass_
+  '';
 in
 
 stdenv.mkDerivation {
