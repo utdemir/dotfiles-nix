@@ -48,6 +48,7 @@
   # SYSTEM #
   ##########
 
+  dotfiles.syncthing.syncthingId = "3X33LT5-75LHZCH-7UA4B7V-SPK65YR-RKXN2AL-TQHGENF-HHGS4B4-BSNLOAR";
   dotfiles.x11.enabled = true;
 
   networking.networkmanager.enable = true;

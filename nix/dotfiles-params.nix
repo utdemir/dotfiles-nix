@@ -9,6 +9,8 @@ with lib;
     gpgKey = mkOption { type = types.str; };
     gpgSshKeygrip = mkOption { type = types.str; };
     sshKey = mkOption { type = types.str; };
+    machines = mkOption { type = types.attrsOf types.str; };
+    ip = mkOption { type = types.str; };
   };
   config = { };
 }

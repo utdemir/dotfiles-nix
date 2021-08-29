@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, pkgs, nodes, ... }:
 
 with pkgs.lib;
 
@@ -13,6 +13,7 @@ in
 {
   imports = [
     ./system-modules/x11.nix
+    ./system-modules/syncthing.nix
     ./nix/dotfiles-params.nix
   ];
 
@@ -45,12 +46,22 @@ in
       enable = true;
       permitRootLogin = "yes";
     };
+    dotfiles.syncthing.enabled = true;
 
     networking.firewall = {
       enable = true;
       trustedInterfaces = [ config.services.tailscale.interfaceName ];
       allowedUDPPorts = [ config.services.tailscale.port ];
     };
+
+    networking.hosts =
+      with pkgs.lib;
+        pipe
+          nodes
+          [ (mapAttrs (_k: v: v.config))
+            (filterAttrs (_k: v: v.networking.hostName != config.networking.hostName))
+            (mapAttrs' (_k: v: nameValuePair v.dotfiles.params.ip [ v.networking.hostName ]))
+          ];
 
     nixpkgs = {
       config = {
@@ -120,7 +131,8 @@ in
       uid = 1000;
       extraGroups = [ "wheel" ]
         ++ pkgs.lib.optional config.virtualisation.docker.enable "docker"
-        ++ pkgs.lib.optional config.networking.networkmanager.enable "networkmanager";
+        ++ pkgs.lib.optional config.networking.networkmanager.enable "networkmanager"
+        ++ pkgs.lib.optional config.dotfiles.syncthing.enabled config.services.syncthing.group;
       shell = "${pkgs.fish}/bin/fish";
       openssh.authorizedKeys.keys = [
         config.dotfiles.params.sshKey

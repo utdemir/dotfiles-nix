@@ -36,6 +36,8 @@
   # SYSTEM #
   ##########
 
+  dotfiles.syncthing.syncthingId = "46V6AW5-KMWX2OE-IDQJGMV-PTIBFW3-SN4LA74-VQC7MIJ-NYKZEKT-LUGCTQL";
+
   networking.networkmanager.enable = true;
   system.fsPackages = [ pkgs.btrfs-progs ];
 

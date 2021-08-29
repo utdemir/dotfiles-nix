@@ -1,6 +1,7 @@
 { config, pkgs, ... }:
 
 {
+
   ############
   # HARDWARE #
   ############
@@ -41,7 +42,9 @@
   # SYSTEM #
   ##########
 
+  dotfiles.syncthing.syncthingId = "SH4KL6W-REKPKEQ-J4NEO4S-ORZHPTY-JJ6OKGR-VQ53IOV-CGH7KV6-LSZ6RQN";
   dotfiles.x11.enabled = false;
+
   # network
   networking = {
     enableIPv6 = false;
