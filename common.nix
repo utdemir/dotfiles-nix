@@ -46,7 +46,16 @@ in
       enable = true;
       permitRootLogin = "yes";
     };
-    dotfiles.syncthing.enabled = true;
+
+    dotfiles.syncthing = {
+      enabled = true;
+      extraDevices = {
+        "utdemir-phone" = {
+          id = "JPN3MV6-UPOQPTL-ME3DWNI-TIV5ZUV-U5JPJ5E-LFAZP2W-6UVFTWR-B4KAVAM";
+          addresses = [ "tcp://100.117.118.54:22000" ];
+        };
+      };
+    };
 
     networking.firewall = {
       enable = true;

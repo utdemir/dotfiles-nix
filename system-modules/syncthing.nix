@@ -6,6 +6,15 @@ with lib;
   options = {
     dotfiles.syncthing.enabled = mkEnableOption "syncthing";
     dotfiles.syncthing.syncthingId = mkOption { type = types.str; };
+    dotfiles.syncthing.extraDevices = mkOption {
+      type = types.attrsOf (types.submodule (_: {
+        options = {
+          id = mkOption { type = types.str; };
+          addresses = mkOption { type = types.listOf types.str; };
+        };
+      }));
+    };
+
   };
 
   config = mkIf config.dotfiles.syncthing.enabled {
@@ -24,7 +33,8 @@ with lib;
                 { id = v.dotfiles.syncthing.syncthingId;
                   addresses = [ "tcp://${v.dotfiles.params.ip}:22000" ];
                 }))
-            ];
+            ]
+          // config.dotfiles.syncthing.extraDevices;
 
       overrideFolders = true;
       folders = {
@@ -38,7 +48,7 @@ with lib;
                    (filterAttrs (_k: v: v.networking.hostName != config.networking.hostName))
                    (mapAttrs (_k: v: v.networking.hostName))
                    attrValues
-                 ];
+                 ] ++ attrNames config.dotfiles.syncthing.extraDevices;
              };
       };
 
