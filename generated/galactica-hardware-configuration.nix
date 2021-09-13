@@ -5,7 +5,8 @@
 
 {
   imports =
-    [ <nixpkgs/nixos/modules/installer/scan/not-detected.nix>
+    [
+      <nixpkgs/nixos/modules/installer/scan/not-detected.nix>
     ];
 
   boot.initrd.availableKernelModules = [ "ehci_pci" "ahci" "xhci_pci" "usb_storage" "sd_mod" "sr_mod" "sdhci_pci" ];
@@ -13,14 +14,16 @@
   boot.extraModulePackages = [ ];
 
   fileSystems."/" =
-    { device = "/dev/disk/by-uuid/4fda9bcc-b98c-415a-99bb-89e94675858b";
+    {
+      device = "/dev/disk/by-uuid/4fda9bcc-b98c-415a-99bb-89e94675858b";
       fsType = "ext4";
     };
 
   boot.initrd.luks.devices."serenity-enc".device = "/dev/disk/by-uuid/5eff54ab-ff36-4e43-a158-0cd54234b7c0";
 
   fileSystems."/boot" =
-    { device = "/dev/disk/by-uuid/B86C-154C";
+    {
+      device = "/dev/disk/by-uuid/B86C-154C";
       fsType = "vfat";
     };
 

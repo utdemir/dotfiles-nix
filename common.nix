@@ -12,12 +12,12 @@ let
 in
 {
   imports = [
+    ./nix/dotfiles-params.nix
     ./system-modules/x11.nix
     ./system-modules/syncthing.nix
-    ./nix/dotfiles-params.nix
   ];
 
-  options = {};
+  options = { };
 
   config = {
 
@@ -65,12 +65,13 @@ in
 
     networking.hosts =
       with pkgs.lib;
-        pipe
-          nodes
-          [ (mapAttrs (_k: v: v.config))
-            (filterAttrs (_k: v: v.networking.hostName != config.networking.hostName))
-            (mapAttrs' (_k: v: nameValuePair v.dotfiles.params.ip [ v.networking.hostName ]))
-          ];
+      pipe
+        nodes
+        [
+          (mapAttrs (_k: v: v.config))
+          (filterAttrs (_k: v: v.networking.hostName != config.networking.hostName))
+          (mapAttrs' (_k: v: nameValuePair v.dotfiles.params.ip [ v.networking.hostName ]))
+        ];
 
     nixpkgs = {
       config = {
@@ -97,13 +98,7 @@ in
 
     time.timeZone = "Pacific/Auckland";
     environment.systemPackages = with pkgs;
-      [
-        screen
-        neovim
-        git
-        curl
-        wget
-      ];
+      [ tmux neovim git curl wget ];
 
     environment.pathsToLink = [ "/share/fish" ];
     programs.command-not-found.enable = false;

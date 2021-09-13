@@ -2,65 +2,70 @@
 
 {
   imports = [
+    ./generated/marvin-hardware-configuration.nix
+    ./common.nix
   ];
 
-  ############
-  # HARDWARE #
-  ############
+  config = {
 
-  boot.loader.systemd-boot.enable = true;
-  boot.loader.efi.canTouchEfiVariables = true;
+    ############
+    # HARDWARE #
+    ############
 
-  hardware.cpu.amd.updateMicrocode = true;
+    boot.loader.systemd-boot.enable = true;
+    boot.loader.efi.canTouchEfiVariables = true;
 
-  services.fstrim.enable = true;
+    hardware.cpu.amd.updateMicrocode = true;
 
-  services.xserver.videoDrivers = [ "nvidia" ];
-  hardware.nvidia = {
-    modesetting.enable = true;
-  };
+    services.fstrim.enable = true;
 
-  services.printing = {
-    enable = true;
-    drivers = [ pkgs.gutenprint pkgs.gutenprintBin ];
-    browsing = true;
-  };
+    services.xserver.videoDrivers = [ "nvidia" ];
+    hardware.nvidia = {
+      modesetting.enable = true;
+    };
 
-  hardware.bluetooth.enable = true;
-  services.blueman.enable = true;
+    services.printing = {
+      enable = true;
+      drivers = [ pkgs.gutenprint pkgs.gutenprintBin ];
+      browsing = true;
+    };
 
-  environment.systemPackages = [ pkgs.chrysalis ];
-  services.udev.packages = [ pkgs.chrysalis ];
+    hardware.bluetooth.enable = true;
+    services.blueman.enable = true;
 
-  ##########
-  # SYSTEM #
-  ##########
+    environment.systemPackages = [ pkgs.chrysalis ];
+    services.udev.packages = [ pkgs.chrysalis ];
 
-  dotfiles.syncthing.syncthingId = "46V6AW5-KMWX2OE-IDQJGMV-PTIBFW3-SN4LA74-VQC7MIJ-NYKZEKT-LUGCTQL";
+    ##########
+    # SYSTEM #
+    ##########
 
-  networking.networkmanager.enable = true;
-  system.fsPackages = [ pkgs.btrfs-progs ];
+    dotfiles.syncthing.syncthingId = "46V6AW5-KMWX2OE-IDQJGMV-PTIBFW3-SN4LA74-VQC7MIJ-NYKZEKT-LUGCTQL";
 
-  virtualisation.docker = {
-    enable = true;
-    liveRestore = false;
-    autoPrune.enable = true;
-  };
+    networking.networkmanager.enable = true;
+    system.fsPackages = [ pkgs.btrfs-progs ];
 
-  dotfiles.x11.enabled = true;
+    virtualisation.docker = {
+      enable = true;
+      liveRestore = false;
+      autoPrune.enable = true;
+    };
 
-  ########
-  # HOME #
-  ########
+    dotfiles.x11.enabled = true;
 
-  home-manager.users."${config.dotfiles.params.username}" = {
-    dotfiles = {
-      wm.enabled = true;
-      qutebrowser.enabled = true;
-      kak.enabled = true;
-      git.enabled = true;
-      fish.enabled = true;
-      workstation.enabled = true;
+    ########
+    # HOME #
+    ########
+
+    home-manager.users."${config.dotfiles.params.username}" = {
+      dotfiles = {
+        wm.enabled = true;
+        qutebrowser.enabled = true;
+        kak.enabled = true;
+        git.enabled = true;
+        fish.enabled = true;
+        workstation.enabled = true;
+      };
     };
   };
 }

@@ -18,38 +18,43 @@ with lib;
   };
 
   config = mkIf config.dotfiles.syncthing.enabled {
-     services.syncthing = {
+    services.syncthing = {
       enable = true;
       user = config.dotfiles.params.username;
       configDir = "/home/${config.dotfiles.params.username}/.config/syncthing";
       overrideDevices = true;
       devices =
         with pkgs.lib;
-          pipe
-            nodes
-            [ (mapAttrs (_k: v: v.config))
-              (filterAttrs (_k: v: v.networking.hostName != config.networking.hostName))
-              (mapAttrs (_k: v:
-                { id = v.dotfiles.syncthing.syncthingId;
-                  addresses = [ "tcp://${v.dotfiles.params.ip}:22000" ];
-                }))
-            ]
-          // config.dotfiles.syncthing.extraDevices;
+        pipe
+          nodes
+          [
+            (mapAttrs (_k: v: v.config))
+            (filterAttrs (_k: v: v.networking.hostName != config.networking.hostName))
+            (filterAttrs (_k: v: v.dotfiles.syncthing.enabled == true))
+            (mapAttrs (_k: v:
+              {
+                id = v.dotfiles.syncthing.syncthingId;
+                addresses = [ "tcp://${v.dotfiles.params.ip}:22000" ];
+              }))
+          ]
+        // config.dotfiles.syncthing.extraDevices;
 
       overrideFolders = true;
       folders = {
         "/home/${config.dotfiles.params.username}/sync" = {
-           id = "homesync";
-           devices =
-             with pkgs.lib;
-               pipe
-                 nodes
-                 [ (mapAttrs (_k: v: v.config))
-                   (filterAttrs (_k: v: v.networking.hostName != config.networking.hostName))
-                   (mapAttrs (_k: v: v.networking.hostName))
-                   attrValues
-                 ] ++ attrNames config.dotfiles.syncthing.extraDevices;
-             };
+          id = "homesync";
+          devices =
+            with pkgs.lib;
+            pipe
+              nodes
+              [
+                (mapAttrs (_k: v: v.config))
+                (filterAttrs (_k: v: v.networking.hostName != config.networking.hostName))
+                (filterAttrs (_k: v: v.dotfiles.syncthing.enabled == true))
+                (mapAttrs (_k: v: v.networking.hostName))
+                attrValues
+              ] ++ attrNames config.dotfiles.syncthing.extraDevices;
+        };
       };
 
       extraOptions = {
