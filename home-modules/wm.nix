@@ -99,7 +99,7 @@ in
     '';
 
     home.file.".config/i3blocks/config".source = ../dotfiles/i3/i3blocks;
-    home.file.".config/rofi/config".source = ../dotfiles/rofi;
+    home.file.".config/rofi/config.rasi".source = ../dotfiles/rofi.rasi;
     home.file.".config/fontconfig/fonts.conf".source = ../dotfiles/fonts.conf;
     home.file.".config/dunst/dunstrc".source = ../dotfiles/dunstrc;
   };
