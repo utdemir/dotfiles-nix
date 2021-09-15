@@ -1,13 +1,41 @@
 let
   sources = import ./nix/sources.nix;
-  pkgs = import sources.nixpkgs { };
+
+  getName = drv:
+    if builtins.hasAttr "pname" drv
+    then drv.pname
+    else if builtins.hasAttr "name" drv
+    then (builtins.parseDrvName drv.name).name
+    else throw "Cannot figure out name of: ${drv}";
+
+  pkgs = import sources.nixpkgs {
+    config = {
+      allowBroken = true;
+      allowUnfreePredicate = pkg:
+        builtins.elem
+          (getName pkg)
+          [
+            "google-chrome"
+            "spotify"
+            "spotify-unwrapped"
+            "slack"
+            "zoom"
+            "intel-ocl"
+            "steam"
+            "steam-original"
+            "steam-runtime"
+            "faac" # required for zoom
+            "nvidia-x11"
+            "nvidia-settings"
+          ];
+    };
+  };
 
   machines = [
     { hostname = "marvin"; ip = "100.93.35.37"; }
     { hostname = "serenity"; ip = "100.120.224.51"; }
     { hostname = "galactica"; ip = "100.124.248.14"; }
     { hostname = "satellite"; ip = "100.74.139.49"; }
-
   ];
 in
 {

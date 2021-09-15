@@ -2,14 +2,6 @@
 
 with pkgs.lib;
 
-let
-  getName = drv:
-    if builtins.hasAttr "pname" drv
-    then drv.pname
-    else if builtins.hasAttr "name" drv
-    then (builtins.parseDrvName drv.name).name
-    else throw "Cannot figure out name of: ${drv}";
-in
 {
   imports = [
     ./nix/dotfiles-params.nix
@@ -72,29 +64,6 @@ in
           (filterAttrs (_k: v: v.networking.hostName != config.networking.hostName))
           (mapAttrs' (_k: v: nameValuePair v.dotfiles.params.ip [ v.networking.hostName ]))
         ];
-
-    nixpkgs = {
-      config = {
-        allowBroken = true;
-        allowUnfreePredicate = pkg:
-          builtins.elem
-            (getName pkg)
-            [
-              "google-chrome"
-              "spotify"
-              "spotify-unwrapped"
-              "slack"
-              "zoom"
-              "intel-ocl"
-              "steam"
-              "steam-original"
-              "steam-runtime"
-              "faac" # required for zoom
-              "nvidia-x11"
-              "nvidia-settings"
-            ];
-      };
-    };
 
     time.timeZone = "Pacific/Auckland";
     environment.systemPackages = with pkgs;
