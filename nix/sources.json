@@ -118,5 +118,17 @@
         "type": "tarball",
         "url": "https://github.com/nixos/nixpkgs/archive/b72ad04a8a324697d3fb92e19cd840379a902813.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
+    },
+    "pocket-add": {
+        "branch": "main",
+        "description": "Shell script to add an URL to Pocket",
+        "homepage": "",
+        "owner": "utdemir",
+        "repo": "pocket-add",
+        "rev": "e4439c2298a66084e91fa419e82184f45d6cce57",
+        "sha256": "1ilhip2gn0h739ld1lyj81ppq2qpw69ljayniz97bv5s1f8pwyff",
+        "type": "tarball",
+        "url": "https://github.com/utdemir/pocket-add/archive/e4439c2298a66084e91fa419e82184f45d6cce57.tar.gz",
+        "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     }
 }

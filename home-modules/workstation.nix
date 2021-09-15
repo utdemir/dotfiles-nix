@@ -45,6 +45,7 @@ in
       inkscape
       macchanger
       gthumb
+      pocket-add
 
       # services
       google-cloud-sdk
