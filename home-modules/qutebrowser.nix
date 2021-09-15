@@ -18,6 +18,10 @@ with lib;
       c.editor.command = ["kitty", "kak", "{}"]
       c.content.javascript.enabled = False
 
+      c.aliases = {
+        "pocket-add": "spawn pocket-add {url}"
+      }
+
       config.load_autoconfig()
     '';
   };
