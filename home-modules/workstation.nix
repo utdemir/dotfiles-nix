@@ -30,6 +30,7 @@ in
       chromium
       deluge
       gimp
+      mypaint
       libreoffice
       meld
       mplayer
