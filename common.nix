@@ -73,10 +73,14 @@ with pkgs.lib;
     programs.command-not-found.enable = false;
     programs.dconf.enable = true;
     documentation.nixos.enable = false;
-    hardware.pulseaudio = {
+
+    services.pipewire = {
       enable = true;
-      package = pkgs.pulseaudioFull;
+      alsa.enable = true;
+      alsa.support32Bit = true;
+      pulse.enable = true;
     };
+
     hardware.opengl.driSupport32Bit = true;
     services.earlyoom = {
       enable = true;
