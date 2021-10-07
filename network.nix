@@ -60,7 +60,7 @@ in
       ];
       deployment.targetHost = machine.ip;
       deployment.targetUser = "root";
-      deployment.substituteOnDestination = true;
+      # deployment.substituteOnDestination = true;
 
       dotfiles.params.ip = machine.ip;
 
