@@ -77,6 +77,7 @@
         git.enabled = true;
         fish.enabled = true;
         workstation.enabled = true;
+        vscode.enabled = true;
       };
     };
   };

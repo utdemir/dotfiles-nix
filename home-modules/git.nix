@@ -27,6 +27,7 @@ with lib;
       ignores = [
         ".envrc"
         ".direnv"
+        ".vscode"
       ];
       extraConfig = {
         init = {

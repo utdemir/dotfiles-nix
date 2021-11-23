@@ -27,6 +27,7 @@ let
             "faac" # required for zoom
             "nvidia-x11"
             "nvidia-settings"
+            "vscode"
           ];
     };
   };

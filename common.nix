@@ -127,6 +127,7 @@ with pkgs.lib;
           ./home-modules/fish.nix
           ./home-modules/wm.nix
           ./home-modules/qutebrowser.nix
+          ./home-modules/vscode.nix
           ./home-modules/workstation.nix
         ];
 
