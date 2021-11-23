@@ -8,6 +8,7 @@ with lib;
   };
 
   config = mkIf config.dotfiles.x11.enabled {
+    environment.systemPackages = [ pkgs.arandr ];
     services.xserver = {
       enable = true;
       autorun = true;
