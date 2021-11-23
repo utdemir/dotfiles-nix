@@ -20,6 +20,7 @@
     services.fstrim.enable = true;
 
     services.xserver.videoDrivers = [ "nvidia" ];
+    services.xserver.wacom.enable = true;
     hardware.nvidia = {
       modesetting.enable = true;
     };
