@@ -56,6 +56,12 @@
     };
 
     dotfiles.x11.enabled = true;
+    services.xserver.displayManager.setupCommands = ''
+      ${pkgs.xorg.xrandr}/bin/xrandr \
+        --output HDMI-0 --mode 3840x2160 --primary \
+        --output DP-0 --mode 3840x2160 --right-of HDMI-0 \
+        || true
+    '';
 
     ########
     # HOME #
