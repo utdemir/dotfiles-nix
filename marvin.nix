@@ -46,6 +46,9 @@
     networking.networkmanager.enable = true;
     system.fsPackages = [ pkgs.btrfs-progs ];
 
+    # So I can build satellite.utdemir.com on this machine
+    boot.binfmt.emulatedSystems = [ "aarch64-linux" ];
+
     virtualisation.docker = {
       enable = true;
       liveRestore = false;
