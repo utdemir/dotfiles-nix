@@ -17,6 +17,8 @@ bindsym $mod+BackSpace exec xautolock -locknow
 bindsym $mod+q kill
 bindsym $mod+Shift+q kill
 
+bindsym $mod+y fullscreen disable, floating enable, resize set 400 300, sticky enable
+
 bindsym $mod+d exec rofi -show run
 bindsym $mod+p exec rofi-pass
 bindsym $mod+s exec i3-load-editor-layout
