@@ -67,7 +67,7 @@ qr2pass =
 
 rofi-pass =
   resholveScriptBin
-    "qr2pass"
+    "rofi-pass"
     { interpreter = "${bash}/bin/bash"; inputs = [ coreutils findutils rofi gnugrep ]; fake = { function = [ "pass" "rofi" ]; }; } # https://github.com/abathur/binlore/issues/3
     (builtins.readFile ./rofi-pass);
 
