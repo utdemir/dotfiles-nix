@@ -39,6 +39,13 @@ with pkgs.lib;
       permitRootLogin = "yes";
     };
 
+    nix = {
+      package = pkgs.nix_2_4;
+      extraOptions = ''
+        extra-experimental-features = nix-command
+      '';
+    };
+
     dotfiles.syncthing = {
       enabled = true;
       extraDevices = {

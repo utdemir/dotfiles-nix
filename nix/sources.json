@@ -5,10 +5,10 @@
         "homepage": "",
         "owner": "franciscolourenco",
         "repo": "done",
-        "rev": "7fda8f2c3e79835d5c1e6721fa48fe5ed4ba0858",
-        "sha256": "1snysg52fr1h6n188jhqzny4sfgzcjgpa9r9qvj9smkg7zmplmsy",
+        "rev": "d6abb267bb3fb7e987a9352bc43dcdb67bac9f06",
+        "sha256": "1h8v5jg9kkali50qq0jn0i1w68wp4c2l0fapnglnnpg0v4vv51za",
         "type": "tarball",
-        "url": "https://github.com/franciscolourenco/done/archive/7fda8f2c3e79835d5c1e6721fa48fe5ed4ba0858.tar.gz",
+        "url": "https://github.com/franciscolourenco/done/archive/d6abb267bb3fb7e987a9352bc43dcdb67bac9f06.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
     "fishPlugins-pure": {
@@ -29,10 +29,10 @@
         "homepage": "https://nix-community.github.io/home-manager/",
         "owner": "nix-community",
         "repo": "home-manager",
-        "rev": "b0651cc2173427857b172604f85da6afe69e1d41",
-        "sha256": "1pnb2wrqfb25bz9widhk4j526w4z99havgqdmq49y3lyjv3jf5gp",
+        "rev": "1aaa1a033bae6c53773ad4374756ac72ba25b729",
+        "sha256": "15m0k41ww6vag1spybxqj48bkz571firz8c2vkxkk5x8l4kb96d3",
         "type": "tarball",
-        "url": "https://github.com/nix-community/home-manager/archive/b0651cc2173427857b172604f85da6afe69e1d41.tar.gz",
+        "url": "https://github.com/nix-community/home-manager/archive/1aaa1a033bae6c53773ad4374756ac72ba25b729.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
     "kakounePlugins-kakboard": {
@@ -53,10 +53,10 @@
         "homepage": null,
         "owner": "kak-lsp",
         "repo": "kak-lsp",
-        "rev": "58d6fe781444134464df0fb89714562df0cef84f",
-        "sha256": "0g19ikhrrzd087hf115xq6v36jd9pd0snl4xb931f51fzpfbhaqn",
+        "rev": "cc760c48058f8e3413e548bd0ff121a8f62e44f8",
+        "sha256": "0c2dvv7wjdafybrb1vb4m6gy23m255w3smgwx98x7fxw2ybi1nrm",
         "type": "tarball",
-        "url": "https://github.com/kak-lsp/kak-lsp/archive/58d6fe781444134464df0fb89714562df0cef84f.tar.gz",
+        "url": "https://github.com/kak-lsp/kak-lsp/archive/cc760c48058f8e3413e548bd0ff121a8f62e44f8.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
     "kakounePlugins-rainbow": {
@@ -101,10 +101,10 @@
         "homepage": "",
         "owner": "nixos",
         "repo": "nixos-hardware",
-        "rev": "3cc8c47af31798040ea62499090540413279f832",
-        "sha256": "0l4pflis99q0095rrmxahp1w8jz38znq5pyni4x8n7cgcrv5gwq2",
+        "rev": "4c9f07277bd4bc29a051ff2a0ca58c6403e3881a",
+        "sha256": "0kz99f42173dh6sa7vw31vr4w348whmbv5n8yfylcjk6widhsslj",
         "type": "tarball",
-        "url": "https://github.com/nixos/nixos-hardware/archive/3cc8c47af31798040ea62499090540413279f832.tar.gz",
+        "url": "https://github.com/nixos/nixos-hardware/archive/4c9f07277bd4bc29a051ff2a0ca58c6403e3881a.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
     "nixpkgs": {
@@ -113,10 +113,10 @@
         "homepage": "",
         "owner": "nixos",
         "repo": "nixpkgs",
-        "rev": "a3a23d9599b0a82e333ad91db2cdc479313ce154",
-        "sha256": "05xmgrrnw6j39lh3d48kg064z510i0w5vvrm1s5cdwhdc2fkspjq",
+        "rev": "56cbe42f1668338d05febfbb866e32f2c865609a",
+        "sha256": "0m9q6g1yk9vq58ffzy17c46n4nfkjqncbn2mr9r9bp3i4j1sp7w9",
         "type": "tarball",
-        "url": "https://github.com/nixos/nixpkgs/archive/a3a23d9599b0a82e333ad91db2cdc479313ce154.tar.gz",
+        "url": "https://github.com/nixos/nixpkgs/archive/56cbe42f1668338d05febfbb866e32f2c865609a.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
     "pocket-add": {

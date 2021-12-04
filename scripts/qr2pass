@@ -3,4 +3,4 @@
 [[ -z "$1" ]] && { echo "otp name empty"; exit 1; }
 maim --delay 0.5 |
   zbarimg -q --raw /dev/stdin |
-  pass_ otp append "$1"
+  pass otp append "$1"

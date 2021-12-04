@@ -28,6 +28,7 @@ let
             "nvidia-x11"
             "nvidia-settings"
             "vscode"
+            "memtest86-efi"
           ];
     };
   };

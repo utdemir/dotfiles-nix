@@ -23,10 +23,10 @@ EOF
 
 case "$option" in
     "Copy password")
-       pass_ show -c "$selected"
+       pass show -c "$selected"
        ;;
     "Copy OTP token")
-       pass_ otp show -c "$selected"
+       pass otp show -c "$selected"
        ;;
     *)
        echo "Unknown answer from rofi" >&2
