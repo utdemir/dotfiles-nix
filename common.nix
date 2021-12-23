@@ -40,7 +40,6 @@ with pkgs.lib;
     };
 
     nix = {
-      package = pkgs.nix_2_4;
       extraOptions = ''
         extra-experimental-features = nix-command
       '';
