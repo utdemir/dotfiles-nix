@@ -37,7 +37,7 @@ let
     { hostname = "marvin"; ip = "100.93.35.37"; }
     { hostname = "serenity"; ip = "100.120.224.51"; }
     { hostname = "galactica"; ip = "100.124.248.14"; }
-    { hostname = "satellite"; ip = "100.74.139.49"; }
+    { hostname = "satellite"; ip = "satellite.utdemir.com"; }
   ];
 in
 {
