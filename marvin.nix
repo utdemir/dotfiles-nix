@@ -66,6 +66,7 @@
         --output DP-0 --mode 3840x2160 --right-of HDMI-0 \
         || true
     '';
+    services.avahi.enable = true;
 
     ########
     # HOME #
