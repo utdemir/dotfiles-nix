@@ -46,6 +46,8 @@ with pkgs.lib;
       '';
     };
 
+    services.vnstat.enable = true;
+
     dotfiles.syncthing = {
       enabled = true;
       extraDevices = {
@@ -74,7 +76,7 @@ with pkgs.lib;
 
     time.timeZone = "Pacific/Auckland";
     environment.systemPackages = with pkgs;
-      [ tmux neovim git curl wget ];
+      [ tmux neovim git curl wget vnstat ];
 
     environment.pathsToLink = [ "/share/fish" ];
     programs.command-not-found.enable = false;
