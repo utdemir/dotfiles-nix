@@ -64,6 +64,8 @@
     };
 
     services.logind.lidSwitch = "ignore";
+    hardware.bluetooth.enable = true;
+    services.blueman.enable = true;
 
     ########
     # HOME #
