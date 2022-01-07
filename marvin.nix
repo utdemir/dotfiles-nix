@@ -39,7 +39,13 @@
     services.blueman.enable = true;
 
     environment.systemPackages = [ pkgs.chrysalis ];
+    environment.systemPackages = [ pkgs.chrysalis pkgs.smartmontools ];
     services.udev.packages = [ pkgs.chrysalis ];
+
+    services.smartd = {
+      enable = true;
+      notifications.x11.enable = true;
+    };
 
     ##########
     # SYSTEM #
