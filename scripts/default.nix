@@ -1,5 +1,5 @@
 { runCommand
-, resholveScriptBin
+, resholve
 , symlinkJoin
 , stdenv
 , lib
@@ -24,49 +24,49 @@
 
 let
 sc =
-  resholveScriptBin
+  resholve.writeScriptBin
     "sc"
     { interpreter = "${bash}/bin/bash"; inputs = [ coreutils ]; keep = { "$EDITOR" = true; }; }
     (builtins.readFile ./sc);
 
 ergo =
-  resholveScriptBin
+  resholve.writeScriptBin
     "ergo"
     { interpreter = "${bash}/bin/bash"; inputs = [ coreutils pv yad ]; execer = [ "cannot:${yad}/bin/yad" ]; }
     (builtins.readFile ./ergo);
 
 battery-notification =
-  resholveScriptBin
+  resholve.writeScriptBin
     "battery-notification"
     { interpreter = "${bash}/bin/bash"; inputs = [ coreutils gawk libnotify ]; }
     (builtins.readFile ./battery-notification.sh);
 
 domain-lookup =
-  resholveScriptBin
+  resholve.writeScriptBin
     "domain-lookup"
     { interpreter = "${bash}/bin/bash"; inputs = [ coreutils dnsutils whois gnugrep ]; }
     (builtins.readFile ./domain-lookup);
 
 hr =
-  resholveScriptBin
+  resholve.writeScriptBin
     "hr"
     { interpreter = "${bash}/bin/bash"; inputs = [ coreutils ncurses ]; execer = [ "cannot:${ncurses}/bin/tput" ]; }
     (builtins.readFile ./hr);
 
 pass-rotate =
-  resholveScriptBin
+  resholve.writeScriptBin
     "pass-rotate"
     { interpreter = "${bash}/bin/bash"; inputs = [ coreutils gnused findutils ncurses ]; execer = [ "cannot:${ncurses}/bin/tput" ]; }
     (builtins.readFile ./pass-rotate);
 
 qr2pass =
-  resholveScriptBin
+  resholve.writeScriptBin
     "qr2pass"
     { interpreter = "${bash}/bin/bash"; inputs = [ maim zbar ]; fake = { function = [ "pass" ]; }; } # https://github.com/abathur/binlore/issues/3
     (builtins.readFile ./qr2pass);
 
 rofi-pass =
-  resholveScriptBin
+  resholve.writeScriptBin
     "rofi-pass"
     { interpreter = "${bash}/bin/bash"; inputs = [ coreutils findutils rofi gnugrep ]; fake = { function = [ "pass" "rofi" ]; }; } # https://github.com/abathur/binlore/issues/3
     (builtins.readFile ./rofi-pass);
