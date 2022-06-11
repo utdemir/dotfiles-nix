@@ -1,3 +1,6 @@
+| **Update: I am not using NixOS as my main OS anymore, so I am not going to maintain this repository. Please feel free to fork away!** |
+| --- |
+
 # Configuration of my workstation and servers
 
 This repository forms my home network; including services, applications
